@@ -76,6 +76,33 @@ const FLOWER = (
     <g className="p1">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="50" cy="26" rx="11" ry="20" transform={`rotate(${r} 50 50)`} />)}</g>
   </>
 );
+const Orn = () => (
+  <div className="orn" aria-hidden="true">
+    <i />
+    <svg viewBox="0 0 24 24" width="20" height="20">
+      <g fill="#2f4f9d">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="12" cy="6.5" rx="3" ry="5.5" transform={`rotate(${r} 12 12)`} />)}</g>
+      <circle cx="12" cy="12" r="2.6" fill="#c4572f" /><circle cx="12" cy="12" r=".9" fill="#e0b050" />
+    </svg>
+    <i />
+  </div>
+);
+const Entry = ({ w }) => (
+  <div className="entry">
+    <p><i>{POS[w.type] || w.type}</i> <b>1.</b> {w.de}</p>
+    <p className="note"><i>Hinweis.</i> {w.tip}</p>
+  </div>
+);
+// five little azulejo flowers instead of stars: one per Leitner box reached
+const Bloom = ({ n }) => (
+  <span className="bloom" role="img" aria-label={`Stufe ${n} von 5`}>
+    {[0, 1, 2, 3, 4].map(i => (
+      <svg key={i} viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <g fill={i < n ? "#2f4f9d" : "#dfe5f1"}>{[0, 90, 180, 270].map(r => <ellipse key={r} cx="12" cy="6.5" rx="3.4" ry="5.5" transform={`rotate(${r} 12 12)`} />)}</g>
+        <circle cx="12" cy="12" r="2.8" fill={i < n ? "#c4572f" : "#c9d2e6"} />
+      </svg>
+    ))}
+  </span>
+);
 const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", other: "Wort" };
 function Home({ words, progress, go }) {
   const latest = words[words.length - 1];
@@ -91,18 +118,8 @@ function Home({ words, progress, go }) {
           <b>{new Date(latest.added).getDate()}</b>
         </time>
         <h1>{latest.es} <Speak text={latest.es} /></h1>
-        <div className="orn" aria-hidden="true">
-          <i />
-          <svg viewBox="0 0 24 24" width="20" height="20">
-            <g fill="#2f4f9d">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="12" cy="6.5" rx="3" ry="5.5" transform={`rotate(${r} 12 12)`} />)}</g>
-            <circle cx="12" cy="12" r="2.6" fill="#c4572f" /><circle cx="12" cy="12" r=".9" fill="#e0b050" />
-          </svg>
-          <i />
-        </div>
-        <div className="entry">
-          <p><i>{POS[latest.type] || latest.type}</i> <b>1.</b> {latest.de}</p>
-          <p className="note"><i>Hinweis.</i> {latest.tip}</p>
-        </div>
+        <Orn />
+        <Entry w={latest} />
       </section>
       <div className="progress">
         <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${words.length} gelernt`}>
@@ -136,7 +153,9 @@ function Home({ words, progress, go }) {
 
 const Top = ({ done, progress }) => (
   <header className="top">
-    <button className="close" onClick={done} aria-label="Schließen">✕</button>
+    <button className="close" onClick={done} aria-label="Schließen">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+    </button>
     {progress != null && <div className="bar"><i style={{ width: `${progress * 100}%` }} /></div>}
   </header>
 );
@@ -152,7 +171,7 @@ function Flashcards({ words, progress, review, done }) {
   if (!queue.length) return (
     <div className="screen center">
       <Top done={done} />
-      <Mascot mood="happy" say={total ? "¡Genial! Alles wiederholt 🎉" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
+      <Mascot mood="happy" say={total ? "¡Genial! Alles wiederholt!" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
       <button className="btn primary" onClick={done}>Weiter</button>
     </div>
   );
@@ -173,12 +192,13 @@ function Flashcards({ words, progress, review, done }) {
       <div className={`flip ${flipped ? "flipped" : ""}`} onClick={() => { setFlipped(true); if (!flipped) speak(w.es); }}>
         <div className="face front card">
           <h1>{w.es}</h1>
+          <Orn />
           <small>Tippen zum Umdrehen</small>
         </div>
         <div className="face back card">
           <h2>{w.es} <Speak text={w.es} /></h2>
-          <p className="de">{w.de}</p>
-          <p className="tip">💡 {w.tip}</p>
+          <Orn />
+          <Entry w={w} />
           <ul className="examples">
             {w.examples.map(e => <li key={e.es}><Speak text={e.es} /><div><b>{e.es}</b><span>{e.de}</span></div></li>)}
           </ul>
@@ -226,7 +246,7 @@ function Practice({ words, done }) {
   if (!q) return (
     <div className="screen center">
       <Top done={done} />
-      <Mascot mood={score >= 7 ? "happy" : "idle"} say={`${score} von ${qs.length} richtig! ${score >= 7 ? "¡Olé! 🎉" : "¡Ánimo! 💪"}`} />
+      <Mascot mood={score >= 7 ? "happy" : "idle"} say={`${score} von ${qs.length} richtig! ${score >= 7 ? "¡Olé!" : "¡Ánimo!"}`} />
       <button className="btn primary" onClick={() => { setQs(makeQuestions(words)); setI(0); setScore(0); }}>Nochmal üben</button>
       <button className="btn ghost" onClick={done}>Fertig</button>
     </div>
@@ -248,7 +268,9 @@ function Practice({ words, done }) {
       <section className="card question">
         {q.kind === "cloze" && <><h2>{q.sentence.split("___").reduce((a, b) => <>{a}<span className="blank">{chosen ? q.answer : "____"}</span>{b}</>)}</h2><small>{q.hint}</small></>}
         {q.kind === "meaning" && <h1>{q.big} <Speak text={q.big} /></h1>}
-        {q.kind === "listen" && <button className="big-speak" onClick={() => speak(q.answer)}>🔊</button>}
+        {q.kind === "listen" && <button className="big-speak" onClick={() => speak(q.answer)} aria-label="Anhören">
+          <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3.5v6h3L11 19Z" fill="currentColor" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg>
+        </button>}
       </section>
       <div className="options">
         {q.options.map(o => (
@@ -258,7 +280,7 @@ function Practice({ words, done }) {
       </div>
       {chosen && (
         <div className={`feedback ${ok ? "good" : "bad"}`}>
-          <b>{ok ? "¡Muy bien! 🎉" : "Fast! Richtig ist:"}</b>
+          <b>{ok ? "¡Muy bien!" : "Fast! Richtig ist:"}</b>
           {!ok && <span>{q.answer}</span>}
           <button className="btn" onClick={next}>Weiter</button>
         </div>
@@ -275,15 +297,17 @@ function WordList({ words, progress, done }) {
     <div className="screen">
       <Top done={done} />
       <h2 className="title">Alle Wörter</h2>
+      <Orn />
       {list.map(w => (
         <section key={w.id} className="card item" onClick={() => setOpen(open === w.id ? null : w.id)}>
           <div className="item-head">
             <div><b>{w.es}</b><span className="de">{w.de}</span></div>
-            <span className="stars">{"★".repeat(Math.min(progress[w.id]?.box ?? 0, 5)).padEnd(5, "☆")}</span>
+            <Bloom n={Math.min(progress[w.id]?.box ?? 0, 5)} />
             <Speak text={w.es} />
           </div>
           {open === w.id && <>
-            <p className="tip">💡 {w.tip}</p>
+            <Orn />
+            <Entry w={w} />
             <ul className="examples">
               {w.examples.map(e => <li key={e.es}><Speak text={e.es} /><div><b>{e.es}</b><span>{e.de}</span></div></li>)}
             </ul>
