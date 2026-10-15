@@ -29,7 +29,9 @@ export function speak(text) {
 }
 
 const Speak = ({ text }) => (
-  <button className="speak" onClick={e => { e.stopPropagation(); speak(text); }} aria-label="Anhören">🔊</button>
+  <button className="speak" onClick={e => { e.stopPropagation(); speak(text); }} aria-label="Anhören">
+    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3.5v6h3L11 19Z" fill="currentColor" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg>
+  </button>
 );
 
 function greeting() {
@@ -67,27 +69,67 @@ export default function App() {
 }
 
 // ---------- home ----------
+// four-petal azulejo flower, painted in as words are learned
+const FLOWER = (
+  <>
+    <g className="p2">{[45, 135, 225, 315].map(r => <ellipse key={r} cx="50" cy="30" rx="8" ry="15" transform={`rotate(${r} 50 50)`} />)}</g>
+    <g className="p1">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="50" cy="26" rx="11" ry="20" transform={`rotate(${r} 50 50)`} />)}</g>
+  </>
+);
+const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", other: "Wort" };
 function Home({ words, progress, go }) {
   const latest = words[words.length - 1];
   const due = words.filter(w => isDue(progress[w.id])).length;
   const learned = words.filter(w => (progress[w.id]?.box ?? 0) >= 3).length;
   return (
-    <div className="screen">
-      <Mascot mood="idle" say={greeting()} />
-      <section className="card wotd" onClick={() => speak(latest.es)}>
-        <small>Wort des Tages · {new Date(latest.added).toLocaleDateString("de-DE", { day: "numeric", month: "long" })}</small>
+    <div className="screen home">
+      <Mascot mood="idle" size={104} say={greeting()} />
+      <section className="card wotd">
+        <div className="seal" aria-label="Wort des Tages"><span>Wort<br />des Tages</span></div>
+        <time className="stamp" dateTime={latest.added}>
+          <span>{new Date(latest.added).toLocaleDateString("de-DE", { month: "short" })}</span>
+          <b>{new Date(latest.added).getDate()}</b>
+        </time>
         <h1>{latest.es} <Speak text={latest.es} /></h1>
-        <p className="de">{latest.de}</p>
-        <p className="tip">💡 {latest.tip}</p>
+        <div className="orn" aria-hidden="true">
+          <i />
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <g fill="#2f4f9d">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="12" cy="6.5" rx="3" ry="5.5" transform={`rotate(${r} 12 12)`} />)}</g>
+            <circle cx="12" cy="12" r="2.6" fill="#c4572f" /><circle cx="12" cy="12" r=".9" fill="#e0b050" />
+          </svg>
+          <i />
+        </div>
+        <div className="entry">
+          <p><i>{POS[latest.type] || latest.type}</i> <b>1.</b> {latest.de}</p>
+          <p className="note"><i>Hinweis.</i> {latest.tip}</p>
+        </div>
       </section>
-      <div className="stats">
-        <div><b>{words.length}</b><span>Wörter</span></div>
-        <div><b>{learned}</b><span>gelernt</span></div>
-        <div><b>{due}</b><span>fällig</span></div>
+      <div className="progress">
+        <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${words.length} gelernt`}>
+          <defs><clipPath id="glaze"><rect x="0" y={104 - 104 * learned / words.length} width="104" height="104" /></clipPath></defs>
+          <rect x="2" y="2" width="100" height="100" rx="8" className="tile" />
+          <rect x="8" y="8" width="88" height="88" rx="4" className="tile-inner" />
+          <g transform="translate(2 2)" className="flower-off">{FLOWER}</g>
+          <g transform="translate(2 2)" clipPath="url(#glaze)" className="flower-on">{FLOWER}</g>
+          <circle cx="52" cy="52" r="19" className="tile-dot" />
+          <text x="52" y="61" textAnchor="middle">{learned}</text>
+        </svg>
+        <p><b>{due} fällig</b><span>{learned} von {words.length} Wörtern gelernt</span></p>
       </div>
-      <button className="btn primary" onClick={() => go("cards")}>🃏 Karteikarten{due ? ` (${due})` : ""}</button>
-      <button className="btn" onClick={() => go("practice")}>🎯 Üben</button>
-      <button className="btn ghost" onClick={() => go("list")}>📖 Alle Wörter</button>
+      <nav className="tabs">
+        {[
+          // baraja española: a fanned deck, espadas, copas
+          ["cards", "Karteikarten", <><rect x="6.5" y="4" width="11" height="16" rx="1.6" transform="rotate(-15 12 21)" fill="#dfe5f1" /><rect x="6.5" y="4" width="11" height="16" rx="1.6" transform="rotate(15 12 21)" fill="#f4d9cd" /><rect x="6.5" y="4" width="11" height="16" rx="1.6" fill="#fffdf8" /><circle cx="12" cy="12" r="3.4" fill="#e0b050" /><circle cx="12" cy="12" r="1.2" fill="#c4572f" stroke="none" /></>, due],
+          ["practice", "Üben", <><path d="M12 1.5 14.4 14H9.6Z" fill="#2f4f9d" /><path d="M6.5 14h11v2.2h-11Z" fill="#e0b050" /><path d="M11 16.2h2V21h-2Z" fill="#2f4f9d" stroke="none" /><circle cx="12" cy="22" r="1.4" fill="#c4572f" stroke="none" /></>],
+          ["list", "Alle Wörter", <><path d="M5.5 3h13c0 7-2.4 10.5-6.5 10.5S5.5 10 5.5 3Z" fill="#e0b050" /><path d="M12 13.5V19M8 21h8" /></>],
+        ].map(([id, label, icon, n]) => (
+          <button key={id} onClick={() => go(id)}>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
+            <span>{label}</span>
+            {n > 0 && <i>{n}</i>}
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }

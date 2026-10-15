@@ -14,14 +14,15 @@ export default defineConfig(({ command }) => ({
         short_name: "Toro",
         lang: "de",
         display: "standalone",
-        background_color: "#fbf3e4",
-        theme_color: "#fbf3e4",
+        background_color: "#f6f1e7",
+        theme_color: "#f6f1e7",
         icons: [
           { src: "icon-192.png", sizes: "192x192", type: "image/png" },
           { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
         ],
       },
       workbox: {
+        globPatterns: ["**/*.{js,css,html,woff2,png,svg}"],
         // words.json changes nightly: try the network, fall back to cache when offline
         runtimeCaching: [{ urlPattern: /words\.json$/, handler: "NetworkFirst" }],
       },

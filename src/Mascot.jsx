@@ -41,8 +41,8 @@ export default function Mascot({ mood = "idle", size = 140, say }) {
           {/* mouth */}
           <path className="mouth" d={sad ? "M90 158 Q100 150 110 158" : happy ? "M86 152 Q100 168 114 152" : "M92 154 Q100 160 108 154"}
             stroke="#3b2418" strokeWidth="4" fill={happy ? "#8a2a1c" : "none"} strokeLinecap="round" />
-          {/* little red scarf, for Spain */}
-          <path d="M60 172 Q100 186 140 172 L136 182 Q100 196 64 182 Z" fill="#c8102e" stroke="#3b2418" strokeWidth="3" />
+          {/* little blue scarf */}
+          <path d="M60 172 Q100 186 140 172 L136 182 Q100 196 64 182 Z" fill="#2f4f9d" stroke="#3b2418" strokeWidth="3" />
           <circle cx="100" cy="186" r="5" fill="#ffc400" stroke="#3b2418" strokeWidth="2" />
         </g>
       </svg>
