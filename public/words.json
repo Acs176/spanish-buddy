@@ -1,0 +1,731 @@
+{
+ "lastMsg": 98536,
+ "words": [
+  {
+   "id": "ayer",
+   "es": "ayer",
+   "de": "gestern",
+   "en": "yesterday",
+   "type": "adverb",
+   "added": "2026-09-30",
+   "tip": "Ayer, hoy, mañana – gestern, heute, morgen. Lern sie als Dreierpack!",
+   "examples": [
+    {
+     "es": "Ayer fui al cine.",
+     "de": "Gestern bin ich ins Kino gegangen."
+    },
+    {
+     "es": "Ayer hizo mucho calor.",
+     "de": "Gestern war es sehr heiß."
+    },
+    {
+     "es": "¿Qué hiciste ayer?",
+     "de": "Was hast du gestern gemacht?"
+    }
+   ],
+   "cloze": {
+    "es": "___ fue un día muy largo.",
+    "answer": "Ayer",
+    "de": "Gestern war ein sehr langer Tag."
+   },
+   "distractors": [
+    "Mañana",
+    "Nada",
+    "Juntos"
+   ]
+  },
+  {
+   "id": "hoy",
+   "es": "hoy",
+   "de": "heute",
+   "en": "today",
+   "type": "adverb",
+   "added": "2026-09-30",
+   "tip": "Das H ist im Spanischen immer stumm: „oi“.",
+   "examples": [
+    {
+     "es": "Hoy es lunes.",
+     "de": "Heute ist Montag."
+    },
+    {
+     "es": "Hoy no trabajo.",
+     "de": "Heute arbeite ich nicht."
+    },
+    {
+     "es": "¿Qué comemos hoy?",
+     "de": "Was essen wir heute?"
+    }
+   ],
+   "cloze": {
+    "es": "___ hace un día precioso.",
+    "answer": "Hoy",
+    "de": "Heute ist ein wunderschöner Tag."
+   },
+   "distractors": [
+    "Ayer",
+    "Antes",
+    "Nada"
+   ]
+  },
+  {
+   "id": "manana",
+   "es": "mañana",
+   "de": "morgen / der Morgen",
+   "en": "tomorrow / morning",
+   "type": "adverb",
+   "added": "2026-09-30",
+   "tip": "Doppelbedeutung: „mañana“ = morgen, „la mañana“ = der Vormittag. „Mañana por la mañana“ = morgen früh!",
+   "examples": [
+    {
+     "es": "Mañana voy a Madrid.",
+     "de": "Morgen fahre ich nach Madrid."
+    },
+    {
+     "es": "Nos vemos mañana.",
+     "de": "Wir sehen uns morgen."
+    },
+    {
+     "es": "Mañana por la mañana tengo clase.",
+     "de": "Morgen früh habe ich Unterricht."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy estoy cansado, lo hacemos ___.",
+    "answer": "mañana",
+    "de": "Heute bin ich müde, wir machen es morgen."
+   },
+   "distractors": [
+    "ayer",
+    "antes",
+    "todo"
+   ]
+  },
+  {
+   "id": "el-dia",
+   "es": "el día",
+   "de": "der Tag",
+   "en": "the day",
+   "type": "noun",
+   "added": "2026-10-04",
+   "tip": "Achtung: endet auf -a, ist aber männlich – EL día! „Buenos días“ = Guten Morgen.",
+   "examples": [
+    {
+     "es": "Buenos días, ¿qué tal?",
+     "de": "Guten Morgen, wie geht's?"
+    },
+    {
+     "es": "Es un día muy bonito.",
+     "de": "Es ist ein sehr schöner Tag."
+    },
+    {
+     "es": "Trabajo todos los días.",
+     "de": "Ich arbeite jeden Tag."
+    }
+   ],
+   "cloze": {
+    "es": "La palabra española del ___.",
+    "answer": "día",
+    "de": "Das spanische Wort des Tages."
+   },
+   "distractors": [
+    "mes",
+    "año",
+    "semana"
+   ]
+  },
+  {
+   "id": "la-semana",
+   "es": "la semana",
+   "de": "die Woche",
+   "en": "the week",
+   "type": "noun",
+   "added": "2026-10-04",
+   "tip": "„El fin de semana“ = das Wochenende.",
+   "examples": [
+    {
+     "es": "La semana que viene voy a la playa.",
+     "de": "Nächste Woche fahre ich an den Strand."
+    },
+    {
+     "es": "¿Qué haces el fin de semana?",
+     "de": "Was machst du am Wochenende?"
+    },
+    {
+     "es": "Una semana tiene siete días.",
+     "de": "Eine Woche hat sieben Tage."
+    }
+   ],
+   "cloze": {
+    "es": "Voy al gimnasio tres veces por ___.",
+    "answer": "semana",
+    "de": "Ich gehe dreimal pro Woche ins Fitnessstudio."
+   },
+   "distractors": [
+    "beso",
+    "hoy",
+    "nada"
+   ]
+  },
+  {
+   "id": "el-mes",
+   "es": "el mes",
+   "de": "der Monat",
+   "en": "the month",
+   "type": "noun",
+   "added": "2026-10-04",
+   "tip": "Plural: los meses.",
+   "examples": [
+    {
+     "es": "El mes que viene es diciembre.",
+     "de": "Nächsten Monat ist Dezember."
+    },
+    {
+     "es": "Vivo aquí desde hace un mes.",
+     "de": "Ich wohne seit einem Monat hier."
+    },
+    {
+     "es": "Pago el alquiler cada mes.",
+     "de": "Ich zahle jeden Monat die Miete."
+    }
+   ],
+   "cloze": {
+    "es": "Enero es el primer ___ del año.",
+    "answer": "mes",
+    "de": "Januar ist der erste Monat des Jahres."
+   },
+   "distractors": [
+    "día",
+    "año",
+    "beso"
+   ]
+  },
+  {
+   "id": "el-ano",
+   "es": "el año",
+   "de": "das Jahr",
+   "en": "the year",
+   "type": "noun",
+   "added": "2026-10-04",
+   "tip": "Vorsicht mit der Tilde! „año“ = Jahr, „ano“ = … etwas ganz anderes 😅. „¿Cuántos años tienes?“ = Wie alt bist du?",
+   "examples": [
+    {
+     "es": "¡Feliz año nuevo!",
+     "de": "Frohes neues Jahr!"
+    },
+    {
+     "es": "¿Cuántos años tienes?",
+     "de": "Wie alt bist du?"
+    },
+    {
+     "es": "El año pasado fui a Sevilla.",
+     "de": "Letztes Jahr war ich in Sevilla."
+    }
+   ],
+   "cloze": {
+    "es": "Tengo veinticinco ___.",
+    "answer": "años",
+    "de": "Ich bin fünfundzwanzig Jahre alt."
+   },
+   "distractors": [
+    "besos",
+    "juntos",
+    "tardes"
+   ]
+  },
+  {
+   "id": "ahora",
+   "es": "ahora",
+   "de": "jetzt",
+   "en": "now",
+   "type": "adverb",
+   "added": "2026-10-06",
+   "tip": "„Ahora mismo“ = genau jetzt, sofort.",
+   "examples": [
+    {
+     "es": "Te doy la palabra española del día ahora.",
+     "de": "Ich gebe dir jetzt das spanische Wort des Tages."
+    },
+    {
+     "es": "Ahora no puedo, estoy trabajando.",
+     "de": "Jetzt kann ich nicht, ich arbeite."
+    },
+    {
+     "es": "Voy ahora mismo.",
+     "de": "Ich komme sofort."
+    }
+   ],
+   "cloze": {
+    "es": "¿Dónde estás ___?",
+    "answer": "ahora",
+    "de": "Wo bist du jetzt?"
+   },
+   "distractors": [
+    "ayer",
+    "antes",
+    "nada"
+   ]
+  },
+  {
+   "id": "antes",
+   "es": "antes",
+   "de": "vorher / früher",
+   "en": "before",
+   "type": "adverb",
+   "added": "2026-10-06",
+   "tip": "„Antes de“ + Verb: „antes de dormir“ = vor dem Schlafen.",
+   "examples": [
+    {
+     "es": "Antes vivía en Berlín.",
+     "de": "Früher habe ich in Berlin gewohnt."
+    },
+    {
+     "es": "Llámame antes de salir.",
+     "de": "Ruf mich an, bevor du losgehst."
+    },
+    {
+     "es": "Antes de dormir leo un poco.",
+     "de": "Vor dem Schlafen lese ich ein bisschen."
+    }
+   ],
+   "cloze": {
+    "es": "Lávate las manos ___ de comer.",
+    "answer": "antes",
+    "de": "Wasch dir die Hände vor dem Essen."
+   },
+   "distractors": [
+    "ayer",
+    "ahora",
+    "más"
+   ]
+  },
+  {
+   "id": "despues",
+   "es": "después",
+   "de": "danach / später",
+   "en": "after / later",
+   "type": "adverb",
+   "added": "2026-10-06",
+   "tip": "Gegenteil von „antes“. Betonung auf der letzten Silbe: des-PUÉS.",
+   "examples": [
+    {
+     "es": "Hablamos después.",
+     "de": "Wir reden später."
+    },
+    {
+     "es": "Después de cenar vemos una peli.",
+     "de": "Nach dem Abendessen schauen wir einen Film."
+    },
+    {
+     "es": "Primero trabajo y después descanso.",
+     "de": "Erst arbeite ich und danach ruhe ich mich aus."
+    }
+   ],
+   "cloze": {
+    "es": "Ahora no puedo, te llamo ___.",
+    "answer": "después",
+    "de": "Jetzt kann ich nicht, ich rufe dich später an."
+   },
+   "distractors": [
+    "ayer",
+    "nada",
+    "todo"
+   ]
+  },
+  {
+   "id": "tarde",
+   "es": "tarde / la tarde",
+   "de": "spät / der Nachmittag, frühe Abend",
+   "en": "late / afternoon, evening",
+   "type": "adverb",
+   "added": "2026-10-06",
+   "tip": "„Llego tarde“ = ich komme zu spät. „La tarde“ = Nachmittag bis ca. 21 Uhr – in Spanien ist es lang! „Buenas tardes“ = Guten Tag/Abend.",
+   "examples": [
+    {
+     "es": "Lo siento, llego tarde.",
+     "de": "Tut mir leid, ich komme zu spät."
+    },
+    {
+     "es": "Buenas tardes, señora.",
+     "de": "Guten Tag, meine Dame."
+    },
+    {
+     "es": "Esta tarde vamos a la playa.",
+     "de": "Heute Nachmittag gehen wir an den Strand."
+    }
+   ],
+   "cloze": {
+    "es": "Date prisa, que llegamos ___.",
+    "answer": "tarde",
+    "de": "Beeil dich, wir kommen zu spät."
+   },
+   "distractors": [
+    "ayer",
+    "nada",
+    "todo"
+   ]
+  },
+  {
+   "id": "un-beso",
+   "es": "un beso",
+   "de": "ein Kuss",
+   "en": "a kiss",
+   "type": "noun",
+   "added": "2026-10-08",
+   "tip": "In Spanien endet man Nachrichten oft mit „un beso“ oder „besos“ – wie „Küsschen“.",
+   "examples": [
+    {
+     "es": "Un beso para ti, despegamos ahora.",
+     "de": "Ein Kuss für dich, wir heben jetzt ab."
+    },
+    {
+     "es": "Dame un beso.",
+     "de": "Gib mir einen Kuss."
+    },
+    {
+     "es": "Besos a tu familia.",
+     "de": "Grüße (Küsse) an deine Familie."
+    }
+   ],
+   "cloze": {
+    "es": "Buenas noches, un ___.",
+    "answer": "beso",
+    "de": "Gute Nacht, ein Kuss."
+   },
+   "distractors": [
+    "mes",
+    "día",
+    "año"
+   ]
+  },
+  {
+   "id": "un-besito",
+   "es": "un besito",
+   "de": "ein Küsschen",
+   "en": "a little kiss",
+   "type": "noun",
+   "added": "2026-10-08",
+   "tip": "-ito/-ita macht alles klein und süß: casa → casita, beso → besito. Wie „-chen“ im Deutschen!",
+   "examples": [
+    {
+     "es": "Un besito, guapa.",
+     "de": "Ein Küsschen, Hübsche."
+    },
+    {
+     "es": "Te mando un besito.",
+     "de": "Ich schicke dir ein Küsschen."
+    },
+    {
+     "es": "Dame un besito antes de irte.",
+     "de": "Gib mir ein Küsschen, bevor du gehst."
+    }
+   ],
+   "cloze": {
+    "es": "Te mando un ___ de buenas noches.",
+    "answer": "besito",
+    "de": "Ich schicke dir ein Gute-Nacht-Küsschen."
+   },
+   "distractors": [
+    "mes",
+    "año",
+    "todo"
+   ]
+  },
+  {
+   "id": "cuando",
+   "es": "cuando / ¿cuándo?",
+   "de": "wenn, als / wann?",
+   "en": "when",
+   "type": "adverb",
+   "added": "2026-10-09",
+   "tip": "In Fragen mit Akzent: ¿cuándo? Ohne Frage ohne Akzent: „cuando llegues“ = wenn du ankommst.",
+   "examples": [
+    {
+     "es": "¿Tú cuándo vas a venir a verme?",
+     "de": "Wann kommst du mich besuchen?"
+    },
+    {
+     "es": "Llámame cuando llegues.",
+     "de": "Ruf mich an, wenn du ankommst."
+    },
+    {
+     "es": "Cuando era niña vivía en Múnich.",
+     "de": "Als ich ein Kind war, wohnte ich in München."
+    }
+   ],
+   "cloze": {
+    "es": "¿___ es tu cumpleaños?",
+    "answer": "Cuándo",
+    "de": "Wann hast du Geburtstag?"
+   },
+   "distractors": [
+    "Ahora",
+    "Hoy",
+    "Todo"
+   ]
+  },
+  {
+   "id": "este",
+   "es": "este / esta",
+   "de": "dieser / diese",
+   "en": "this (one)",
+   "type": "adjective",
+   "added": "2026-10-10",
+   "tip": "este = männlich, esta = weiblich. „Esta noche“ = heute Nacht/heute Abend.",
+   "examples": [
+    {
+     "es": "Este para ayer.",
+     "de": "Dieses hier für gestern."
+    },
+    {
+     "es": "Este chico es mi hermano.",
+     "de": "Dieser Junge ist mein Bruder."
+    },
+    {
+     "es": "Esta noche dormimos juntos.",
+     "de": "Heute Nacht schlafen wir zusammen."
+    }
+   ],
+   "cloze": {
+    "es": "¿Qué haces ___ noche?",
+    "answer": "esta",
+    "de": "Was machst du heute Abend?"
+   },
+   "distractors": [
+    "este",
+    "ese",
+    "nada"
+   ]
+  },
+  {
+   "id": "ese",
+   "es": "ese / esa",
+   "de": "jener / jene, der da",
+   "en": "that (one)",
+   "type": "adjective",
+   "added": "2026-10-10",
+   "tip": "este/esta = hier bei mir, ese/esa = da bei dir. Ein T mehr = näher!",
+   "examples": [
+    {
+     "es": "¿Quién es esa chica?",
+     "de": "Wer ist das Mädchen da?"
+    },
+    {
+     "es": "Ese restaurante es muy bueno.",
+     "de": "Das Restaurant da ist sehr gut."
+    },
+    {
+     "es": "Dame esa taza, por favor.",
+     "de": "Gib mir bitte die Tasse da."
+    }
+   ],
+   "cloze": {
+    "es": "Me gusta mucho ___ vestido que llevas.",
+    "answer": "ese",
+    "de": "Mir gefällt das Kleid, das du trägst, sehr."
+   },
+   "distractors": [
+    "esa",
+    "todo",
+    "más"
+   ]
+  },
+  {
+   "id": "juntos",
+   "es": "juntos / juntas",
+   "de": "zusammen",
+   "en": "together",
+   "type": "adjective",
+   "added": "2026-10-11",
+   "tip": "Passt sich an: juntos (gemischt/männlich), juntas (nur Frauen).",
+   "examples": [
+    {
+     "es": "Esta noche dormimos juntos.",
+     "de": "Heute Nacht schlafen wir zusammen."
+    },
+    {
+     "es": "¿Vamos juntos al concierto?",
+     "de": "Gehen wir zusammen zum Konzert?"
+    },
+    {
+     "es": "Vivimos juntos desde hace un año.",
+     "de": "Wir wohnen seit einem Jahr zusammen."
+    }
+   ],
+   "cloze": {
+    "es": "Mañana cenamos ___.",
+    "answer": "juntos",
+    "de": "Morgen essen wir zusammen zu Abend."
+   },
+   "distractors": [
+    "ayer",
+    "nada",
+    "semana"
+   ]
+  },
+  {
+   "id": "todo",
+   "es": "todo",
+   "de": "alles / ganz",
+   "en": "everything / all",
+   "type": "other",
+   "added": "2026-10-12",
+   "tip": "„Todo bien?“ = Alles gut? „Todos los días“ = jeden Tag.",
+   "examples": [
+    {
+     "es": "¿Todo bien?",
+     "de": "Alles gut?"
+    },
+    {
+     "es": "Me lo he comido todo.",
+     "de": "Ich habe alles aufgegessen."
+    },
+    {
+     "es": "Gracias por todo.",
+     "de": "Danke für alles."
+    }
+   ],
+   "cloze": {
+    "es": "Gracias por ___, eres un amor.",
+    "answer": "todo",
+    "de": "Danke für alles, du bist ein Schatz."
+   },
+   "distractors": [
+    "ahora",
+    "menos",
+    "juntos"
+   ]
+  },
+  {
+   "id": "nada",
+   "es": "nada",
+   "de": "nichts",
+   "en": "nothing",
+   "type": "other",
+   "added": "2026-10-12",
+   "tip": "„De nada“ = gern geschehen. Doppelte Verneinung ist normal: „No sé nada“ = Ich weiß nichts.",
+   "examples": [
+    {
+     "es": "—Gracias. —De nada.",
+     "de": "—Danke. —Gern geschehen."
+    },
+    {
+     "es": "No tengo nada en la nevera.",
+     "de": "Ich habe nichts im Kühlschrank."
+    },
+    {
+     "es": "No pasa nada.",
+     "de": "Kein Problem / Macht nichts."
+    }
+   ],
+   "cloze": {
+    "es": "No pasa ___, tranquila.",
+    "answer": "nada",
+    "de": "Macht nichts, keine Sorge."
+   },
+   "distractors": [
+    "todo",
+    "más",
+    "ahora"
+   ]
+  },
+  {
+   "id": "mas",
+   "es": "más",
+   "de": "mehr / plus",
+   "en": "more / plus",
+   "type": "adverb",
+   "added": "2026-10-13",
+   "tip": "Mit Akzent! „más“ = mehr, „mas“ ohne Akzent = aber (sehr altmodisch). „Más o menos“ = mehr oder weniger.",
+   "examples": [
+    {
+     "es": "Más o menos llegaré a las siete.",
+     "de": "Ungefähr um sieben komme ich an."
+    },
+    {
+     "es": "Me gustas más que nadie en el mundo.",
+     "de": "Ich mag dich mehr als jeden anderen auf der Welt."
+    },
+    {
+     "es": "Dos más dos son cuatro.",
+     "de": "Zwei plus zwei ist vier."
+    }
+   ],
+   "cloze": {
+    "es": "¿Quieres ___ café?",
+    "answer": "más",
+    "de": "Möchtest du mehr Kaffee?"
+   },
+   "distractors": [
+    "nada",
+    "ayer",
+    "antes"
+   ]
+  },
+  {
+   "id": "menos",
+   "es": "menos",
+   "de": "weniger / minus",
+   "en": "less / minus",
+   "type": "adverb",
+   "added": "2026-10-13",
+   "tip": "Auch bei der Uhrzeit: „Son las ocho menos cuarto“ = Es ist Viertel vor acht.",
+   "examples": [
+    {
+     "es": "Cinco menos tres es dos.",
+     "de": "Fünf minus drei ist zwei."
+    },
+    {
+     "es": "Hoy hace menos frío.",
+     "de": "Heute ist es weniger kalt."
+    },
+    {
+     "es": "Son las ocho menos cuarto.",
+     "de": "Es ist Viertel vor acht."
+    }
+   ],
+   "cloze": {
+    "es": "Más o ___ llegaré a las siete.",
+    "answer": "menos",
+    "de": "Ungefähr um sieben komme ich an."
+   },
+   "distractors": [
+    "más",
+    "nada",
+    "antes"
+   ]
+  },
+  {
+   "id": "estar-muy-bueno",
+   "es": "estar muy bueno/a",
+   "de": "sehr lecker sein / heiß (attraktiv) sein",
+   "en": "to be really tasty / hot",
+   "type": "expression",
+   "added": "2026-10-15",
+   "tip": "Bei Essen: lecker. Bei Personen: heiß/sexy 🔥 Vorsicht: „es buena“ (ser) = sie ist ein guter Mensch – ganz anders!",
+   "examples": [
+    {
+     "es": "Estás muy buena.",
+     "de": "Du bist echt heiß."
+    },
+    {
+     "es": "La paella está muy buena.",
+     "de": "Die Paella ist sehr lecker."
+    },
+    {
+     "es": "El pescado está muy bueno.",
+     "de": "Der Fisch ist sehr lecker."
+    }
+   ],
+   "cloze": {
+    "es": "¡Qué rica! Esta tortilla está muy ___.",
+    "answer": "buena",
+    "de": "Wie lecker! Diese Tortilla ist sehr gut."
+   },
+   "distractors": [
+    "bueno",
+    "juntos",
+    "tarde"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.acs176.spanish-buddy</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/adriancarbonell/personal/spanish-buddy/sync.py</string>
+    <string>--push</string>
+  </array>
+  <!-- 02:00 nightly; if the Mac was asleep, launchd runs it on wake -->
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>2</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key><string>/tmp/spanish-buddy.log</string>
+  <key>StandardErrorPath</key><string>/tmp/spanish-buddy.log</string>
+</dict>
+</plist>
