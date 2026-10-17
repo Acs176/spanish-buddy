@@ -10,8 +10,8 @@ export default defineConfig(({ command }) => ({
       registerType: "autoUpdate",
       includeAssets: ["icon.svg", "apple-touch-icon.png"],
       manifest: {
-        name: "Toro · Spanisch lernen",
-        short_name: "Toro",
+        name: "Adrián · Spanisch lernen",
+        short_name: "Adrián",
         lang: "de",
         display: "standalone",
         background_color: "#f6f1e7",

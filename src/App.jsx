@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import Mascot from "./Mascot.jsx";
+import Mascot from "./Adrian.jsx";
+import Angela from "./Angela.jsx";
 
 // ---------- helpers ----------
 const DAY = 864e5;
@@ -50,10 +51,10 @@ const localDay = d => d.toLocaleDateString("sv"); // "sv" formats as YYYY-MM-DD,
 
 // shown when no word was added today; one per day, rotating
 const NO_WORD = [
-  ["¡Ay, caramba!", "Adrián hat dir heute noch keine palabra española del día geschickt. Toro ist empört. Stups ihn mal an, am besten mit einem Herz. 💌"],
+  ["¡Ay, caramba!", "Adrián hat dir heute noch keine palabra española del día geschickt. Schau nur, wie traurig er guckt! Stups ihn mal an, am besten mit einem Herz. 💌"],
   ["¡Silencio total!", "Kein Wort von Adrián heute. Hat er's vergessen oder sucht er noch die perfekte… wie sagt man „Ausrede“? Genau: excusa. 😏"],
-  ["Toro wartet…", "Das Wort des Tages steckt noch beim Postboten. Oder bei Adrián. Frag ihn ganz lieb, und bis dahin: eine Runde Karteikarten? 🐂"],
-  ["¡Alarma!", "Adrián schuldet dir heute ein Wort. Ein süßes Nachrichtchen wirkt Wunder, und Toro ist wieder glücklich. 💛"],
+  ["¡Paciencia!", "Das Wort des Tages steckt noch beim Postboten. Oder bei Adrián. Frag ihn ganz lieb, und bis dahin: eine Runde Karteikarten? 🐂"],
+  ["¡Alarma!", "Adrián schuldet dir heute ein Wort. Ein süßes Nachrichtchen wirkt Wunder, und Adrián strahlt wieder. 💛"],
 ];
 
 // ---------- app ----------
@@ -177,6 +178,11 @@ function Home({ words, progress, go }) {
   );
 }
 
+// Adrián guides (prompts, greetings), Ángela is the learner and reacts to her answers
+const Duo = ({ adrian = "idle", angela = "idle", say, size = 84 }) => (
+  <div className="duo"><Mascot mood={adrian} size={size} say={say} /><Angela mood={angela} size={size} /></div>
+);
+
 const Top = ({ done, progress }) => (
   <header className="top">
     <button className="close" onClick={done} aria-label="Schließen">
@@ -197,7 +203,7 @@ function Flashcards({ words, progress, review, done }) {
   if (!queue.length) return (
     <div className="screen center">
       <Top done={done} />
-      <Mascot mood="happy" say={total ? "¡Genial! Alles wiederholt!" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
+      <Duo adrian="happy" angela="happy" say={total ? "¡Genial! Alles wiederholt!" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
       <button className="btn primary" onClick={done}>Weiter</button>
     </div>
   );
@@ -214,7 +220,7 @@ function Flashcards({ words, progress, review, done }) {
   return (
     <div className="screen">
       <Top done={done} progress={1 - queue.length / total} />
-      <Mascot mood={mood} size={90} />
+      <Duo angela={mood} />
       <div className={`flip ${flipped ? "flipped" : ""}`} onClick={() => { setFlipped(true); if (!flipped) speak(w.es); }}>
         <div className="face front card">
           <h1>{w.es}</h1>
@@ -272,7 +278,7 @@ function Practice({ words, done }) {
   if (!q) return (
     <div className="screen center">
       <Top done={done} />
-      <Mascot mood={score >= 7 ? "happy" : "idle"} say={`${score} von ${qs.length} richtig! ${score >= 7 ? "¡Olé!" : "¡Ánimo!"}`} />
+      <Duo adrian={score >= 7 ? "happy" : "idle"} angela={score >= 7 ? "happy" : "idle"} say={`${score} von ${qs.length} richtig! ${score >= 7 ? "¡Olé!" : "¡Ánimo!"}`} />
       <button className="btn primary" onClick={() => { setQs(makeQuestions(words)); setI(0); setScore(0); }}>Nochmal üben</button>
       <button className="btn ghost" onClick={done}>Fertig</button>
     </div>
@@ -290,7 +296,7 @@ function Practice({ words, done }) {
   return (
     <div className="screen">
       <Top done={done} progress={i / qs.length} />
-      <Mascot mood={!chosen ? "idle" : ok ? "happy" : "sad"} size={90} say={q.prompt} />
+      <Duo angela={!chosen ? "idle" : ok ? "happy" : "sad"} say={q.prompt} />
       <section className="card question">
         {q.kind === "cloze" && <><h2>{q.sentence.split("___").reduce((a, b) => <>{a}<span className="blank">{chosen ? q.answer : "____"}</span>{b}</>)}</h2><small>{q.hint}</small></>}
         {q.kind === "meaning" && <h1>{q.big} <Speak text={q.big} /></h1>}
