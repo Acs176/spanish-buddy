@@ -1,22 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner } from "./srs.js";
 
 // ---------- helpers ----------
 const DAY = 864e5;
-const today = () => Math.floor(Date.now() / DAY);
 const shuffle = a => [...a].sort(() => Math.random() - 0.5); // ponytail: biased shuffle, fine for 4 options
 const pick = (arr, n, not) => shuffle(arr.filter(x => x !== not)).slice(0, n);
 
-// Leitner boxes: box n -> next review in INTERVALS[n] days
-const INTERVALS = [0, 1, 2, 4, 8, 16, 32];
-const isDue = p => !p || p.due <= today();
-
+// progress: { word-id: card }, scheduled by srs.js. The old Leitner "progress" key is converted once.
 function load() {
-  try { return JSON.parse(localStorage.getItem("progress")) || {}; } catch { return {}; }
+  try {
+    return JSON.parse(localStorage.getItem("cards")) || fromLeitner(JSON.parse(localStorage.getItem("progress")) || {});
+  } catch { return {}; }
 }
 function save(p) {
-  try { localStorage.setItem("progress", JSON.stringify(p)); } catch { /* private mode: progress just won't stick */ }
+  try { localStorage.setItem("cards", JSON.stringify(p)); } catch { /* private mode: progress just won't stick */ }
 }
 
 export function speak(text) {
@@ -69,9 +68,8 @@ export default function App() {
       .catch(() => setWords([]));
   }, []);
 
-  const review = (id, ok) => setProgress(prev => {
-    const box = ok ? Math.min((prev[id]?.box ?? 0) + 1, INTERVALS.length - 1) : 0;
-    const next = { ...prev, [id]: { box, due: today() + INTERVALS[box] } };
+  const review = (id, card) => setProgress(prev => {
+    const next = { ...prev, [id]: card };
     save(next);
     return next;
   });
@@ -127,8 +125,8 @@ function Home({ words, progress, go }) {
   const latest = words[words.length - 1];
   const wotd = latest.added === localDay(now) ? latest : null;
   const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
-  const due = words.filter(w => isDue(progress[w.id])).length;
-  const learned = words.filter(w => (progress[w.id]?.box ?? 0) >= 3).length;
+  const due = dueCount(words, progress);
+  const learned = words.filter(w => progress[w.id]?.st === "review").length; // graduated out of the learning steps
   return (
     <div className="screen home">
       <Mascot mood={wotd ? "idle" : "sad"} size={104} say={greeting(now)} />
@@ -194,32 +192,33 @@ const Top = ({ done, progress }) => (
 
 // ---------- flashcards ----------
 function Flashcards({ words, progress, review, done }) {
-  // ponytail: queue built once per session; "Nochmal" cards go to the back
-  const [queue, setQueue] = useState(() => shuffle(words.filter(w => isDue(progress[w.id]))).slice(0, 20));
-  const [total] = useState(queue.length);
+  const [w, setW] = useState(() => pickNext(words, progress)); // the card on screen stays put while you look at it
+  const [answered, setAnswered] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [mood, setMood] = useState("idle");
 
-  if (!queue.length) return (
+  if (!w) return (
     <div className="screen center">
       <Top done={done} />
-      <Duo adrian="happy" angela="happy" say={total ? "¡Genial! Alles wiederholt!" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
+      <Duo adrian="happy" angela="happy" say={answered ? "¡Genial! Alles wiederholt!" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
       <button className="btn primary" onClick={done}>Weiter</button>
     </div>
   );
 
-  const w = queue[0];
-  const answer = ok => {
-    review(w.id, ok);
-    setMood(ok ? "happy" : "sad");
+  const now = Date.now(), card = progress[w.id];
+  const answer = rating => {
+    const next = schedule(card, rating, now);
+    review(w.id, next);
+    setMood(["", "sad", "idle", "happy", "happy"][rating]);
     setFlipped(false);
-    setQueue(q => ok ? q.slice(1) : [...q.slice(1), q[0]]);
+    setAnswered(n => n + 1);
+    setW(pickNext(words, { ...progress, [w.id]: next }, now));
     setTimeout(() => setMood("idle"), 700);
   };
 
   return (
     <div className="screen">
-      <Top done={done} progress={1 - queue.length / total} />
+      <Top done={done} progress={answered / (answered + dueCount(words, progress, now))} />
       <Duo angela={mood} />
       <div className={`flip ${flipped ? "flipped" : ""}`} onClick={() => { setFlipped(true); if (!flipped) speak(w.es); }}>
         <div className="face front card">
@@ -237,9 +236,12 @@ function Flashcards({ words, progress, review, done }) {
         </div>
       </div>
       {flipped && (
-        <div className="row">
-          <button className="btn bad" onClick={() => answer(false)}>Nochmal</button>
-          <button className="btn good" onClick={() => answer(true)}>Gewusst ✓</button>
+        <div className="row grades">
+          {[["Nochmal", "bad"], ["Schwer", "hard"], ["Gut", "good"], ["Leicht", "easy"]].map(([label, cls], i) => (
+            <button key={cls} className={`btn ${cls}`} onClick={() => answer(i + 1)}>
+              {label}<small>{wait(schedule(card, i + 1, now), now)}</small>
+            </button>
+          ))}
         </div>
       )}
     </div>
@@ -334,7 +336,7 @@ function WordList({ words, progress, done }) {
         <section key={w.id} className="card item" onClick={() => setOpen(open === w.id ? null : w.id)}>
           <div className="item-head">
             <div><b>{w.es}</b><span className="de">{w.de}</span></div>
-            <Bloom n={Math.min(progress[w.id]?.box ?? 0, 5)} />
+            <Bloom n={stage(progress[w.id])} />
             <Speak text={w.es} />
           </div>
           {open === w.id && <>
