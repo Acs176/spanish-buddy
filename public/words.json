@@ -1,5 +1,5 @@
 {
- "lastMsg": 98536,
+ "lastMsg": 99280,
  "words": [
   {
    "id": "ayer",
@@ -726,6 +726,72 @@
     "juntos",
     "tarde"
    ]
+  },
+  {
+   "id": "me-pones",
+   "es": "me pones...?",
+   "de": "machst/gibst du mir...? (zum Bestellen)",
+   "en": "could you serve me...?",
+   "type": "expression",
+   "tip": "Typisch in Bar/Café beim Bestellen: wörtlich 'stellst du mir...?'. Achtung Wortwitz: 'me pones' heißt auch 'du machst mich an' – daher der Spruch 'Ángela, me pones' 😉",
+   "examples": [
+    {
+     "es": "¿Me pones un café, por favor?",
+     "de": "Machst du mir einen Kaffee, bitte?"
+    },
+    {
+     "es": "¿Me pones un poco de agua?",
+     "de": "Gibst du mir etwas Wasser?"
+    },
+    {
+     "es": "¿Me pones una cerveza?",
+     "de": "Machst du mir ein Bier?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ un zumo de naranja, por favor?",
+    "answer": "Me pones",
+    "de": "Machst du mir einen Orangensaft, bitte?"
+   },
+   "distractors": [
+    "Me das",
+    "Me traes",
+    "Me pide"
+   ],
+   "added": "2026-10-17"
+  },
+  {
+   "id": "me-gustaria",
+   "es": "me gustaría",
+   "de": "ich hätte gern / ich würde gerne",
+   "en": "I would like",
+   "type": "expression",
+   "tip": "Höflicher als 'quiero'. Es ist der Konditional von 'gustar' – perfekt zum Bestellen oder für Wünsche.",
+   "examples": [
+    {
+     "es": "Me gustaría un té, por favor.",
+     "de": "Ich hätte gern einen Tee, bitte."
+    },
+    {
+     "es": "Me gustaría ir a la playa.",
+     "de": "Ich würde gerne an den Strand gehen."
+    },
+    {
+     "es": "Me gustaría aprender español.",
+     "de": "Ich würde gerne Spanisch lernen."
+    }
+   ],
+   "cloze": {
+    "es": "___ un café con leche.",
+    "answer": "Me gustaría",
+    "de": "Ich hätte gern einen Milchkaffee."
+   },
+   "distractors": [
+    "Me gusto",
+    "Te gustaría",
+    "Me gustaba"
+   ],
+   "added": "2026-10-17"
   }
  ]
 }
