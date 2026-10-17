@@ -61,6 +61,9 @@ export default function App() {
   const [words, setWords] = useState(null);
   const [progress, setProgress] = useState(load);
   const [screen, setScreen] = useState("home");
+  const [splashing, setSplashing] = useState(true);
+  // ponytail: mock splash, a fixed 2 s. Drop the timer once there is real loading to wait for.
+  useEffect(() => { const t = setTimeout(() => setSplashing(false), 2000); return () => clearTimeout(t); }, []);
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "words.json", { cache: "no-cache" })
@@ -74,7 +77,12 @@ export default function App() {
     return next;
   });
 
-  if (!words) return <div className="screen center"><Mascot mood="talk" /></div>;
+  if (!words || splashing) return (
+    <div className="screen center splash">
+      <Mascot mood="idle" size={150} say="¡Un momento!" />
+      <div className="loadbar" role="progressbar" aria-label="Laden"><i /></div>
+    </div>
+  );
   if (!words.length) return <div className="screen center"><Mascot mood="sad" say="Keine Wörter gefunden… Internet an?" /></div>;
 
   const home = () => setScreen("home");
