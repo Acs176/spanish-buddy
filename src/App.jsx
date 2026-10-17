@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
-import { schedule, pickNext, dueCount, wait, stage, fromLeitner } from "./srs.js";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check } from "./srs.js";
 
 // ---------- helpers ----------
 const DAY = 864e5;
@@ -200,12 +200,12 @@ const Top = ({ done, progress }) => (
 
 // ---------- flashcards ----------
 function Flashcards({ words, progress, review, done }) {
-  const [w, setW] = useState(() => pickNext(words, progress)); // the card on screen stays put while you look at it
+  const [it, setIt] = useState(() => pickNext(words, progress)); // the card on screen stays put while you look at it
   const [answered, setAnswered] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [mood, setMood] = useState("idle");
 
-  if (!w) return (
+  if (!it) return (
     <div className="screen center">
       <Top done={done} />
       <Duo adrian="happy" angela="happy" say={answered ? "¡Genial! Alles wiederholt!" : "Heute ist nichts fällig. ¡Hasta mañana!"} />
@@ -213,14 +213,14 @@ function Flashcards({ words, progress, review, done }) {
     </div>
   );
 
-  const now = Date.now(), card = progress[w.id];
+  const w = it.w, now = Date.now(), card = progress[it.key];
   const answer = rating => {
     const next = schedule(card, rating, now);
-    review(w.id, next);
+    review(it.key, next);
     setMood(["", "sad", "idle", "happy", "happy"][rating]);
     setFlipped(false);
     setAnswered(n => n + 1);
-    setW(pickNext(words, { ...progress, [w.id]: next }, now));
+    setIt(pickNext(words, { ...progress, [it.key]: next }, now));
     setTimeout(() => setMood("idle"), 700);
   };
 
@@ -230,7 +230,11 @@ function Flashcards({ words, progress, review, done }) {
       <Duo angela={mood} />
       <div className={`flip ${flipped ? "flipped" : ""}`} onClick={() => { setFlipped(true); if (!flipped) speak(w.es); }}>
         <div className="face front card">
-          <h1>{w.es}</h1>
+          {it.dir === "prod" ? <>
+            <small>Wie sagt man auf Spanisch…?</small>
+            <h1 className="german">{w.de}</h1>
+            <p className="pos">{POS[w.type] || w.type}</p>
+          </> : <h1>{w.es}</h1>}
           <Orn />
           <small>Tippen zum Umdrehen</small>
         </div>
@@ -260,7 +264,7 @@ function Flashcards({ words, progress, review, done }) {
 function makeQuestions(words) {
   return shuffle(words).slice(0, 10).map((w, i) => {
     const others = words.filter(o => o !== w);
-    const kind = ["cloze", "meaning", "listen"][i % 3];
+    const kind = ["cloze", "meaning", "listen", "write"][i % 4];
     if (kind === "cloze") return {
       kind, w, prompt: "Ergänze den Satz", sentence: w.cloze.es, hint: w.cloze.de,
       answer: w.cloze.answer, options: shuffle([w.cloze.answer, ...w.cloze.distractors ?? w.distractors]),
@@ -269,6 +273,7 @@ function makeQuestions(words) {
       kind, w, prompt: "Was bedeutet…", big: w.es,
       answer: w.de, options: shuffle([w.de, ...pick(others, 3).map(o => o.de)]),
     };
+    if (kind === "write") return { kind, w, prompt: "Schreib es auf Spanisch", big: w.de, answer: w.es, options: [] };
     return {
       kind, w, prompt: "Was hörst du?",
       answer: w.es, options: shuffle([w.es, ...pick(others, 3).map(o => o.es)]),
@@ -280,6 +285,8 @@ function Practice({ words, done }) {
   const [qs, setQs] = useState(() => makeQuestions(words));
   const [i, setI] = useState(0);
   const [chosen, setChosen] = useState(null);
+  const [typed, setTyped] = useState("");
+  const [res, setRes] = useState(null); // typed answers: "ok" | "accent" | "no"
   const [score, setScore] = useState(0);
   const q = qs[i];
 
@@ -294,36 +301,61 @@ function Practice({ words, done }) {
     </div>
   );
 
-  const ok = chosen === q.answer;
+  const write = q.kind === "write";
+  const answered = write ? res : chosen;
+  const ok = write ? res && res !== "no" : chosen === q.answer; // a missing accent still counts, with a note
+  const submit = e => {
+    e.preventDefault();
+    if (res || !typed.trim()) return;
+    const r = check(typed, q.answer);
+    setRes(r);
+    if (r !== "no") setScore(s => s + 1);
+    speak(q.w.es);
+  };
   const choose = o => {
     if (chosen) return;
     setChosen(o);
     if (o === q.answer) setScore(s => s + 1);
     speak(q.kind === "cloze" ? q.sentence.replace("___", q.answer) : q.w.es);
   };
-  const next = () => { setChosen(null); setI(i + 1); };
+  const next = () => { setChosen(null); setTyped(""); setRes(null); setI(i + 1); };
 
   return (
     <div className="screen">
       <Top done={done} progress={i / qs.length} />
-      <Duo angela={!chosen ? "idle" : ok ? "happy" : "sad"} say={q.prompt} />
+      <Duo angela={!answered ? "idle" : ok ? "happy" : "sad"} say={q.prompt} />
       <section className="card question">
         {q.kind === "cloze" && <><h2>{q.sentence.split("___").reduce((a, b) => <>{a}<span className="blank">{chosen ? q.answer : "____"}</span>{b}</>)}</h2><small>{q.hint}</small></>}
         {q.kind === "meaning" && <h1>{q.big} <Speak text={q.big} /></h1>}
+        {write && <><h1 className="german">{q.big}</h1><small>{POS[q.w.type] || q.w.type}</small></>}
         {q.kind === "listen" && <button className="big-speak" onClick={() => speak(q.answer)} aria-label="Anhören">
           <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3.5v6h3L11 19Z" fill="currentColor" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg>
         </button>}
       </section>
-      <div className="options">
-        {q.options.map(o => (
-          <button key={o} onClick={() => choose(o)}
-            className={`opt ${chosen && o === q.answer ? "right" : ""} ${chosen === o && !ok ? "wrong" : ""}`}>{o}</button>
-        ))}
-      </div>
-      {chosen && (
+      {write ? (
+        <form className="typed" onSubmit={submit}>
+          <input value={typed} onChange={e => setTyped(e.target.value)} disabled={!!res} autoFocus lang="es"
+            autoCapitalize="off" autoCorrect="off" spellCheck={false} aria-label="Antwort" placeholder="Auf Spanisch schreiben…"
+            className={res ? (ok ? "right" : "wrong") : ""} />
+          {!res && <>
+            <div className="accents">
+              {[..."áéíóúñü¿¡"].map(ch => <button type="button" key={ch} onClick={() => setTyped(t => t + ch)}>{ch}</button>)}
+            </div>
+            <button className="btn primary" disabled={!typed.trim()}>Prüfen</button>
+          </>}
+        </form>
+      ) : (
+        <div className="options">
+          {q.options.map(o => (
+            <button key={o} onClick={() => choose(o)}
+              className={`opt ${chosen && o === q.answer ? "right" : ""} ${chosen === o && !ok ? "wrong" : ""}`}>{o}</button>
+          ))}
+        </div>
+      )}
+      {answered && (
         <div className={`feedback ${ok ? "good" : "bad"}`}>
-          <b>{ok ? "¡Muy bien!" : "Fast! Richtig ist:"}</b>
-          {!ok && <span>{q.answer}</span>}
+          <b>{res === "accent" ? "¡Casi! Mit Akzent:" : ok ? "¡Muy bien!" : "Fast! Richtig ist:"}</b>
+          {(res === "accent" || !ok) && <span>{q.answer}</span>}
           <button className="btn" onClick={next}>Weiter</button>
         </div>
       )}

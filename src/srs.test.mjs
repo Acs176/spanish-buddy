@@ -1,6 +1,6 @@
 // run: node src/srs.test.mjs
 import assert from "node:assert/strict";
-import { schedule, pickNext, dueCount, wait, stage, fromLeitner, today } from "./srs.js";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner, today, check } from "./srs.js";
 
 const now = Date.UTC(2026, 9, 17, 12), day = today(now), MIN = 6e4;
 const rev = (ivl, ease = 2.5) => ({ st: "review", ivl, ease, lapses: 0, due: day, seen: 0 });
@@ -34,13 +34,45 @@ assert.deepEqual([l.st, l.ivl, l.due], ["review", 1, day + 1]);
 const words = Array.from({ length: 30 }, (_, i) => ({ id: "w" + i }));
 assert.equal(dueCount(words, {}, now, day), 20);
 const cards = { w0: rev(5), w1: { ...rev(5), due: day + 3 } };
-assert.equal(pickNext(words, cards, now, day).id, "w0");
-assert.equal(pickNext(words, { w0: cards.w1, w1: cards.w1 }, now, day).id, "w2"); // nothing due: the first unseen word
+assert.equal(pickNext(words, cards, now, day).key, "w0");
+assert.equal(pickNext(words, { w0: cards.w1, w1: cards.w1 }, now, day).key, "w2"); // nothing due: the first unseen word
 // a learning card due in 8 min is shown early only when nothing else is waiting
 const soon = { w0: { st: "learn", step: 0, ease: 2.5, lapses: 0, due: now + 8 * MIN, seen: day } };
-assert.equal(pickNext([{ id: "w0" }], soon, now, day).id, "w0");
-assert.equal(pickNext(words.slice(0, 2), { ...soon, w1: rev(5) }, now, day).id, "w1");
-assert.equal(pickNext([{ id: "w0" }], { w0: { ...rev(5), due: day + 2 } }, now, day), null);
+assert.equal(pickNext([{ id: "w0" }], soon, now, day).key, "w0");
+assert.equal(pickNext(words.slice(0, 2), { ...soon, w1: rev(5) }, now, day).key, "w1");
+assert.equal(pickNext([{ id: "w0" }], { w0: { ...rev(3), due: day + 2 } }, now, day), null); // nothing due, production still locked
+
+// reverse (German -> Spanish) cards: they appear once the recognition card reaches 4 days, and they are the only thing due
+const two = [{ id: "a" }];
+assert.equal(dueCount(two, { a: { ...rev(3), due: day + 5 } }, now, day), 0);
+assert.equal(dueCount(two, { a: { ...rev(4), due: day + 5 } }, now, day), 1); // production card unlocked, new
+const p = pickNext(two, { a: { ...rev(4), due: day + 5 } }, now, day);
+assert.deepEqual([p.key, p.dir, p.w.id], ["a:p", "prod", "a"]);
+// once started it stays, even if the recognition card lapses
+assert.equal(dueCount(two, { a: { st: "learn", step: 0, ease: 2.3, lapses: 1, ivl: 1, due: now + 600000, seen: 0 }, "a:p": { ...rev(2), due: day } }, now, day), 2);
+// siblings are buried: answering one card hides the other until tomorrow
+const answered = { ...rev(5), due: day + 5, last: day };
+assert.equal(dueCount(two, { a: answered }, now, day), 0); // its production card is buried today
+assert.equal(dueCount(two, { a: { ...answered, last: day - 1 } }, now, day), 1);
+assert.equal(dueCount(two, { a: rev(5), "a:p": { ...rev(2), due: day + 2, last: day } }, now, day), 0); // and the other way round
+// at most 10 new production cards a day, on top of the 20 new words
+const many = Array.from({ length: 30 }, (_, i) => ({ id: "m" + i }));
+const known = Object.fromEntries(many.map(m => [m.id, { ...rev(9), due: day + 9 }]));
+assert.equal(dueCount(many, known, now, day), 10);
+assert.equal(schedule(undefined, 3, now, day).last, day);
+
+// typed answers
+assert.equal(check("la semana", "la semana"), "ok");
+assert.equal(check("Semana", "la semana"), "ok"); // article and case do not matter
+assert.equal(check("esta", "ese / esa"), "no");
+assert.equal(check("esa", "ese / esa"), "ok");
+assert.equal(check("estar muy bueno", "estar muy bueno/a"), "ok");
+assert.equal(check("a", "estar muy bueno/a"), "no");
+assert.equal(check("me pones", "me pones...?"), "ok");
+assert.equal(check("mas", "más"), "accent");
+assert.equal(check("ano", "año"), "no"); // ñ is its own letter
+assert.equal(check("mañana", "mañana"), "ok");
+assert.equal(check("hola", "adiós"), "no");
 
 // the 4am day boundary, in whatever time zone the test runs in
 const t = new Date(2026, 9, 17, 3, 59).getTime();

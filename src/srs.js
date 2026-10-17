@@ -1,17 +1,23 @@
 // Spaced repetition, modelled on Anki's v2 scheduler.
-// A card is { st: "learn" | "review", step, ivl, ease, due, lapses, seen }:
+// A card is { st: "learn" | "review", step, ivl, ease, due, lapses, seen, last }:
 //   learn  = in the learning steps (or relearning after a lapse, when ivl is set); due is a timestamp in ms
 //   review = graduated; due is a day number, ivl is the interval in days
-// A word with no card yet is "new". Ratings: 1 Again, 2 Hard, 3 Good, 4 Easy.
+//   seen = day the card was first answered, last = day it was last answered
+// A word has two cards, like Anki's "Basic (and reversed)": recognition (Spanish -> German, key = word id) and
+// production (German -> Spanish, key = word id + ":p"). The production card only appears once the recognition card
+// has settled, and the two never show on the same day. A card that does not exist yet is "new".
+// Ratings: 1 Again, 2 Hard, 3 Good, 4 Easy.
 // ponytail: no fuzz, no overdue bonus, no review-per-day cap; add them if the deck grows past a few hundred words.
 const MIN = 6e4, DAY = 864e5;
 const LEARN = [1, 10], RELEARN = [10]; // minutes
-const NEW_PER_DAY = 20, LEARN_AHEAD = 20; // minutes: a learning card due this soon is shown when nothing else is
+const NEW_PER_DAY = 20, PROD_PER_DAY = 10, LEARN_AHEAD = 20; // LEARN_AHEAD: minutes
+const UNLOCK_IVL = 4; // days: the production card appears when the recognition card reaches this interval
+const PROD = ":p";
 
 // Anki's day starts at 4am local time
 export const today = (t = Date.now()) => Math.floor((t - new Date(t).getTimezoneOffset() * MIN - 4 * 36e5) / DAY);
 
-export function schedule(card, rating, now = Date.now(), day = today(now)) {
+function next(card, rating, now, day) {
   const c = card ?? { st: "learn", step: 0, ease: 2.5, lapses: 0, seen: day };
   if (c.st === "review") {
     const hard = Math.max(c.ivl + 1, Math.round(c.ivl * 1.2));
@@ -29,16 +35,30 @@ export function schedule(card, rating, now = Date.now(), day = today(now)) {
   if (rating === 3) return c.step + 1 < steps.length ? wait(c.step + 1, steps[c.step + 1]) : graduate(c.ivl || 1);
   return graduate(c.ivl ? c.ivl + 1 : 4);
 }
+export const schedule = (card, rating, now = Date.now(), day = today(now)) => ({ ...next(card, rating, now, day), last: day });
 
-// what is waiting: learning cards (due now or within the learn-ahead window), reviews due today, and today's new words
+// every card that exists or could be introduced: { key, w, dir } for each word's recognition card, plus its
+// production card once that is unlocked (and for good once it has been started)
+function items(words, cards) {
+  return words.flatMap(w => {
+    const rec = cards[w.id], k = w.id + PROD;
+    const prod = cards[k] || (rec && rec.st === "review" && rec.ivl >= UNLOCK_IVL);
+    return prod ? [{ key: w.id, w, dir: "rec" }, { key: k, w, dir: "prod" }] : [{ key: w.id, w, dir: "rec" }];
+  });
+}
+
+// what is waiting: learning cards (due now or within the learn-ahead window), reviews due today, and today's new cards
 function queues(words, cards, now, day) {
-  const seen = words.filter(w => cards[w.id]);
-  const byDue = (a, b) => cards[a.id].due - cards[b.id].due;
-  const newToday = seen.filter(w => cards[w.id].seen === day).length;
+  const all = items(words, cards);
+  const buried = i => cards[i.dir === "rec" ? i.w.id + PROD : i.w.id]?.last === day; // the other card of this word was answered today
+  const open = all.filter(i => !buried(i));
+  const byDue = (a, b) => cards[a.key].due - cards[b.key].due;
+  const newToday = dir => all.filter(i => i.dir === dir && cards[i.key]?.seen === day).length;
+  const fresh = (dir, cap) => open.filter(i => i.dir === dir && !cards[i.key]).slice(0, Math.max(0, cap - newToday(dir)));
   return {
-    learn: seen.filter(w => cards[w.id].st === "learn" && cards[w.id].due <= now + LEARN_AHEAD * MIN).sort(byDue),
-    rev: seen.filter(w => cards[w.id].st === "review" && cards[w.id].due <= day).sort(byDue),
-    fresh: words.filter(w => !cards[w.id]).slice(0, Math.max(0, NEW_PER_DAY - newToday)), // oldest words first, like Anki
+    learn: open.filter(i => cards[i.key]?.st === "learn" && cards[i.key].due <= now + LEARN_AHEAD * MIN).sort(byDue),
+    rev: open.filter(i => cards[i.key]?.st === "review" && cards[i.key].due <= day).sort(byDue),
+    fresh: [...fresh("rec", NEW_PER_DAY), ...fresh("prod", PROD_PER_DAY)], // oldest words first, like Anki
   };
 }
 
@@ -47,10 +67,10 @@ export function dueCount(words, cards, now = Date.now(), day = today(now)) {
   return q.learn.length + q.rev.length + q.fresh.length;
 }
 
-// the next word to show: learning cards that are due, then reviews, then new words, then a learning card ahead of time
+// the next card to show: learning cards that are due, then reviews, then new cards, then a learning card ahead of time
 export function pickNext(words, cards, now = Date.now(), day = today(now)) {
   const { learn, rev, fresh } = queues(words, cards, now, day);
-  if (learn[0] && cards[learn[0].id].due <= now) return learn[0];
+  if (learn[0] && cards[learn[0].key].due <= now) return learn[0];
   return rev[0] ?? fresh[0] ?? learn[0] ?? null;
 }
 
@@ -71,4 +91,15 @@ export function fromLeitner(old, now = Date.now()) {
   return Object.fromEntries(Object.entries(old).map(([id, p]) => [id, p.box
     ? { st: "review", ivl: DAYS[p.box], ease: 2.5, lapses: 0, due: p.due, seen: 0 }
     : { st: "learn", step: 0, ease: 2.5, lapses: 0, due: now, seen: 0 }]));
+}
+
+// typed answers: "ok", "accent" (right letters, wrong or missing accents) or "no". Ignores case, punctuation, a leading
+// article, and either side of "ese / esa"; "bueno/a" also accepts "bueno". The ñ is a different letter, not an accent.
+const strip = s => s.toLowerCase().replace(/[¿?¡!.,…]/g, "").replace(/\s+/g, " ").trim().replace(/^(el|la|los|las|un|una|unos|unas) /, "");
+const plain = s => s.replace(/ñ/g, "§").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/§/g, "ñ");
+export function check(input, es) {
+  const answers = [es, ...es.split(" / "), es.replace(/\/\w+/g, "")].map(strip);
+  const got = strip(input);
+  if (answers.includes(got)) return "ok";
+  return answers.some(a => plain(a) === plain(got)) ? "accent" : "no";
 }

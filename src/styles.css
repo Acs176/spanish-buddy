@@ -251,3 +251,18 @@ h1, h2, p { margin: 0; }
 .loadbar { width: 180px; height: 10px; margin-top: 24px; border: 2px solid var(--blue); border-radius: 99px; background: var(--card); overflow: hidden; }
 .loadbar i { display: block; height: 100%; background: var(--blue); animation: load 2s ease-out forwards; }
 @keyframes load { from { width: 0; } }
+
+/* German-first flashcards and typed answers */
+.face.front .german, .question .german { font-size: 28px; line-height: 1.2; }
+.face.front .pos { color: var(--red); font-style: italic; margin-top: 6px; }
+.typed { display: flex; flex-direction: column; gap: 12px; }
+.typed input {
+  width: 100%; box-sizing: border-box; padding: 14px; text-align: center; border: 2px solid var(--blue); border-radius: 8px;
+  background: var(--card); color: var(--ink); font: 600 22px ui-serif, "New York", Georgia, serif;
+}
+.typed input:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.typed input.right { background: #e2efe4; border-color: var(--green-dark); }
+.typed input.wrong { background: #f6dfd6; border-color: var(--red); animation: shake .35s; }
+.accents { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.accents button { min-width: 38px; padding: 8px 0; border: 2px solid var(--blue); border-radius: 8px; background: var(--card); color: var(--blue); font: 700 18px ui-serif, Georgia, serif; }
+.typed .btn:disabled { opacity: .45; }
