@@ -34,10 +34,27 @@ const Speak = ({ text }) => (
   </button>
 );
 
-function greeting() {
-  const h = new Date().getHours();
+function greeting(now) {
+  const h = now.getHours();
   return h < 13 ? "¡Buenos días!" : h < 21 ? "¡Buenas tardes!" : "¡Buenas noches!";
 }
+
+// re-renders every minute so the date and greeting follow the clock (also after the PWA sat in the background)
+function useNow() {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => { const t = setInterval(() => setNow(new Date()), 6e4); return () => clearInterval(t); }, []);
+  return now;
+}
+
+const localDay = d => d.toLocaleDateString("sv"); // "sv" formats as YYYY-MM-DD, in local time
+
+// shown when no word was added today; one per day, rotating
+const NO_WORD = [
+  ["¡Ay, caramba!", "Adrián hat dir heute noch keine palabra española del día geschickt. Toro ist empört. Stups ihn mal an, am besten mit einem Herz. 💌"],
+  ["¡Silencio total!", "Kein Wort von Adrián heute. Hat er's vergessen oder sucht er noch die perfekte… wie sagt man „Ausrede“? Genau: excusa. 😏"],
+  ["Toro wartet…", "Das Wort des Tages steckt noch beim Postboten. Oder bei Adrián. Frag ihn ganz lieb, und bis dahin: eine Runde Karteikarten? 🐂"],
+  ["¡Alarma!", "Adrián schuldet dir heute ein Wort. Ein süßes Nachrichtchen wirkt Wunder, und Toro ist wieder glücklich. 💛"],
+];
 
 // ---------- app ----------
 export default function App() {
@@ -105,21 +122,30 @@ const Bloom = ({ n }) => (
 );
 const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", other: "Wort" };
 function Home({ words, progress, go }) {
+  const now = useNow();
   const latest = words[words.length - 1];
+  const wotd = latest.added === localDay(now) ? latest : null;
+  const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
   const due = words.filter(w => isDue(progress[w.id])).length;
   const learned = words.filter(w => (progress[w.id]?.box ?? 0) >= 3).length;
   return (
     <div className="screen home">
-      <Mascot mood="idle" size={104} say={greeting()} />
-      <section className="card wotd">
-        <div className="seal" aria-label="Wort des Tages"><span>Wort<br />des Tages</span></div>
-        <time className="stamp" dateTime={latest.added}>
-          <span>{new Date(latest.added).toLocaleDateString("de-DE", { month: "short" })}</span>
-          <b>{new Date(latest.added).getDate()}</b>
+      <Mascot mood={wotd ? "idle" : "sad"} size={104} say={greeting(now)} />
+      <section className={`card wotd ${wotd ? "" : "empty"}`}>
+        {wotd && <div className="seal" aria-label="Wort des Tages"><span>Wort<br />des Tages</span></div>}
+        <time className="stamp" dateTime={localDay(now)}>
+          <span>{now.toLocaleDateString("de-DE", { month: "short" })}</span>
+          <b>{now.getDate()}</b>
         </time>
-        <h1>{latest.es} <Speak text={latest.es} /></h1>
-        <Orn />
-        <Entry w={latest} />
+        {wotd ? <>
+          <h1>{wotd.es} <Speak text={wotd.es} /></h1>
+          <Orn />
+          <Entry w={wotd} />
+        </> : <>
+          <h1>{emptyTitle}</h1>
+          <Orn />
+          <p className="entry">{emptyMsg}</p>
+        </>}
       </section>
       <div className="progress">
         <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${words.length} gelernt`}>

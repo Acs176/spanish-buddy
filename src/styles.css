@@ -75,6 +75,8 @@ h1, h2, p { margin: 0; }
 .wotd small { color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; font-size: 12px; }
 .wotd h1 { font: 700 42px/1.05 ui-serif, "New York", "Iowan Old Style", Georgia, serif; letter-spacing: -.01em; margin: 6px 0 2px; }
 .de { color: var(--muted); font-size: 18px; font-weight: 600; }
+.wotd.empty h1 { font-size: 32px; }
+.wotd.empty .entry { text-align: center; }
 .entry { text-align: left; font-family: ui-serif, "New York", Georgia, serif; font-size: 17px; line-height: 1.5; }
 .wotd .speak {
   width: 36px; height: 36px; padding: 0; border-radius: 50%; margin-left: 6px; vertical-align: middle; font-size: 18px;

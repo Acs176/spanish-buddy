@@ -5,7 +5,7 @@ local DB, have Claude turn them into study cards, append to public/words.json.
 Usage: python3 sync.py [--push]
 """
 import json, re, sqlite3, subprocess, sys, unicodedata
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -68,7 +68,7 @@ def main():
     print(f"{len(msgs)} new message(s)")
     for pk, ts, text in msgs:
         known = {norm(w["es"]) for w in words}
-        day = datetime.fromtimestamp(ts + APPLE_EPOCH, timezone.utc).date().isoformat()
+        day = datetime.fromtimestamp(ts + APPLE_EPOCH).date().isoformat()  # local date: the app compares against the local day
         try:
             items = ask_claude(text, [w["es"] for w in words])
         except Exception as e:  # leave it for tomorrow's run; never write half-parsed data
