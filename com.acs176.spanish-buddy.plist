@@ -5,9 +5,10 @@
   <key>Label</key><string>com.acs176.spanish-buddy</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/bin/python3</string>
-    <string>/Users/adriancarbonell/personal/spanish-buddy/sync.py</string>
-    <string>--push</string>
+    <!-- via bash: macOS lets bash-launched children read WhatsApp's DB, a bare python3 from launchd gets "authorization denied" -->
+    <string>/bin/bash</string>
+    <string>-c</string>
+    <string>/usr/bin/python3 /Users/adriancarbonell/personal/spanish-buddy/sync.py --push</string>
   </array>
   <!-- 02:00 nightly; if the Mac was asleep, launchd runs it on wake -->
   <key>StartCalendarInterval</key><dict><key>Hour</key><integer>2</integer><key>Minute</key><integer>0</integer></dict>
