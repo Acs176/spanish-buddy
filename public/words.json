@@ -1,5 +1,5 @@
 {
- "lastMsg": 99280,
+ "lastMsg": 99920,
  "words": [
   {
    "id": "ayer",
@@ -792,6 +792,138 @@
     "Me gustaba"
    ],
    "added": "2026-10-17"
+  },
+  {
+   "id": "por-cierto",
+   "es": "por cierto",
+   "de": "übrigens",
+   "en": "by the way",
+   "type": "expression",
+   "tip": "Wörtlich heißt es „für sicher/gewiss\" (cierto = sicher), aber man benutzt es wie „übrigens\", um kurz das Thema zu wechseln. Nicht mit „ciertamente\" (= gewiss, tatsächlich) verwechseln!",
+   "examples": [
+    {
+     "es": "Por cierto, ¿has comido ya?",
+     "de": "Übrigens, hast du schon gegessen?"
+    },
+    {
+     "es": "Por cierto, mañana es la fiesta.",
+     "de": "Übrigens, morgen ist die Party."
+    },
+    {
+     "es": "Por cierto, me gusta tu camisa.",
+     "de": "Übrigens, mir gefällt dein Hemd."
+    }
+   ],
+   "cloze": {
+    "es": "___, tengo que contarte una cosa.",
+    "answer": "Por cierto",
+    "de": "Übrigens, ich muss dir etwas erzählen."
+   },
+   "distractors": [
+    "Por favor",
+    "Por supuesto",
+    "Por fin"
+   ],
+   "added": "2026-10-18"
+  },
+  {
+   "id": "aqui",
+   "es": "aquí",
+   "de": "hier",
+   "en": "here",
+   "type": "adverb",
+   "tip": "Zeigt auf einen Ort nah bei dir ('hier bei mir'). Merkhilfe: 'aquí' = 'a-hier'. Betonung auf dem í!",
+   "examples": [
+    {
+     "es": "Vivo aquí.",
+     "de": "Ich wohne hier."
+    },
+    {
+     "es": "Ven aquí, por favor.",
+     "de": "Komm bitte hierher."
+    },
+    {
+     "es": "Aquí hace mucho calor.",
+     "de": "Hier ist es sehr heiß."
+    }
+   ],
+   "cloze": {
+    "es": "Pon las llaves ___, encima de la mesa.",
+    "answer": "aquí",
+    "de": "Leg die Schlüssel hier hin, auf den Tisch."
+   },
+   "distractors": [
+    "allí",
+    "ahí",
+    "arriba"
+   ],
+   "added": "2026-10-18"
+  },
+  {
+   "id": "alli",
+   "es": "allí",
+   "de": "dort",
+   "en": "there (far away)",
+   "type": "adverb",
+   "tip": "Für einen Ort, der weit von dir UND vom Zuhörer entfernt ist (dort drüben). Gegenstück zu 'aquí'.",
+   "examples": [
+    {
+     "es": "Mi casa está allí.",
+     "de": "Mein Haus ist dort."
+    },
+    {
+     "es": "Allí no hay nadie.",
+     "de": "Dort ist niemand."
+    },
+    {
+     "es": "Vamos a comer allí.",
+     "de": "Wir gehen dort essen."
+    }
+   ],
+   "cloze": {
+    "es": "¿Ves la montaña? Mi pueblo está ___.",
+    "answer": "allí",
+    "de": "Siehst du den Berg? Mein Dorf ist dort."
+   },
+   "distractors": [
+    "aquí",
+    "ahí",
+    "cerca"
+   ],
+   "added": "2026-10-18"
+  },
+  {
+   "id": "ahi",
+   "es": "ahí",
+   "de": "da",
+   "en": "there (near you)",
+   "type": "adverb",
+   "tip": "Für einen Ort nah beim Zuhörer ('da bei dir'). Liegt zwischen 'aquí' (bei mir) und 'allí' (weit weg).",
+   "examples": [
+    {
+     "es": "¿Qué haces ahí?",
+     "de": "Was machst du da?"
+    },
+    {
+     "es": "Déjalo ahí.",
+     "de": "Lass es da."
+    },
+    {
+     "es": "Ahí tienes tu café.",
+     "de": "Da hast du deinen Kaffee."
+    }
+   ],
+   "cloze": {
+    "es": "Siéntate ___, al lado de la ventana.",
+    "answer": "ahí",
+    "de": "Setz dich da hin, neben das Fenster."
+   },
+   "distractors": [
+    "aquí",
+    "allí",
+    "lejos"
+   ],
+   "added": "2026-10-18"
   }
  ]
 }
