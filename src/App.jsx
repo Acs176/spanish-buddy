@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
+import Postcards, { hasUnread } from "./Postcards.jsx";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
 // ---------- helpers ----------
@@ -53,7 +54,7 @@ export function speak(text) {
   speechSynthesis.speak(u);
 }
 
-const Speak = ({ text }) => (
+export const Speak = ({ text }) => (
   <button className="speak" onClick={e => { e.stopPropagation(); speak(text); }} aria-label="Anhören">
     <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3.5v6h3L11 19Z" fill="currentColor" /><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg>
   </button>
@@ -115,6 +116,7 @@ export default function App() {
   const home = () => setScreen("home");
   if (screen === "cards") return <Flashcards words={words} progress={progress} review={review} done={home} />;
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
+  if (screen === "post") return <Postcards done={home} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <Home words={words} progress={progress} go={setScreen} />;
 }
@@ -127,7 +129,7 @@ const FLOWER = (
     <g className="p1">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="50" cy="26" rx="11" ry="20" transform={`rotate(${r} 50 50)`} />)}</g>
   </>
 );
-const Orn = () => (
+export const Orn = () => (
   <div className="orn" aria-hidden="true">
     <i />
     <svg viewBox="0 0 24 24" width="20" height="20">
@@ -164,6 +166,16 @@ function Home({ words, progress, go }) {
   const learned = words.filter(w => progress[w.id]?.st === "review").length; // graduated out of the learning steps
   return (
     <div className="screen home">
+      <button className="mailbox" onClick={() => go("post")} aria-label={`Postkarten${hasUnread() ? ", neue Post" : ""}`}>
+        {/* a yellow Correos mailbox on its post */}
+        <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+          <path d="M21 36h6v10h-6Z" fill="#1b2f5e" />
+          <path d="M9 18a15 13 0 0 1 30 0v18H9Z" fill="#e0b050" stroke="#1b2f5e" strokeWidth="2.5" strokeLinejoin="round" />
+          <path d="M15 19h18" stroke="#1b2f5e" strokeWidth="3" strokeLinecap="round" />
+          <path d="M18 27c2 2 4 2 6 0s4-2 6 0" fill="none" stroke="#2f4f9d" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+        {hasUnread() && <i />}
+      </button>
       <Mascot mood={wotd ? "idle" : "sad"} size={104} say={greeting(now)} />
       <section className={`card wotd ${wotd ? "" : "empty"}`}>
         {wotd && <div className="seal" aria-label="Wort des Tages"><span>Wort<br />des Tages</span></div>}
@@ -216,7 +228,7 @@ const Duo = ({ adrian = "idle", angela = "idle", say, size = 84 }) => (
   <div className="duo"><Mascot mood={adrian} size={size} say={say} /><Angela mood={angela} size={size} /></div>
 );
 
-const Top = ({ done, progress }) => (
+export const Top = ({ done, progress }) => (
   <header className="top">
     <button className="close" onClick={done} aria-label="Schließen">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>

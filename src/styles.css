@@ -269,3 +269,88 @@ h1, h2, p { margin: 0; }
 .chips button { padding: 6px 12px; border: 2px solid var(--blue); border-radius: 99px; background: var(--card); color: var(--blue); font: 600 14px system-ui, sans-serif; }
 .chips button[aria-pressed="true"] { background: var(--blue); color: var(--card); }
 .typed .btn:disabled { opacity: .45; }
+
+/* postcards: the mailbox on the home screen, the feed and the open postcard */
+.home { position: relative; }
+.mailbox { position: absolute; top: calc(env(safe-area-inset-top) + 12px); right: 16px; padding: 0; border: 0; background: none; line-height: 0; }
+.mailbox:active { transform: translateY(2px); }
+.mailbox i { position: absolute; top: 0; right: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--red); border: 2px solid var(--card); }
+.hand { font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; }
+.sub { text-align: center; color: var(--muted); font: italic 16px ui-serif, "New York", Georgia, serif; margin-top: -8px; }
+.feed { display: flex; flex-direction: column; gap: 26px; padding: 10px 4px 24px; }
+.postcard {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 1px 92px; gap: 12px; padding: 20px 14px 16px;
+  text-align: left; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+  box-shadow: 0 3px 0 rgba(27, 47, 94, .12), 0 12px 18px -12px rgba(27, 47, 94, .4); transform: rotate(var(--tilt, 0deg));
+}
+.postcard::before { /* airmail edge */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 4px 4px 0 0;
+  background: repeating-linear-gradient(-45deg, var(--red) 0 8px, var(--card) 8px 12px, var(--blue) 12px 20px, var(--card) 20px 24px);
+}
+button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
+.pc-text { display: flex; flex-direction: column; gap: 6px; font-size: 17px; line-height: 1.3; }
+.pc-text .clamp { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.pc-text .sign { align-self: flex-end; text-align: right; margin-top: 6px; }
+.pc-line { background: var(--line); }
+.pc-side { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.pstamp {
+  width: 64px; height: 76px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--stamp); color: var(--card); border: 4px dotted var(--card); outline: 1px solid var(--line);
+  box-shadow: inset 0 0 0 3px var(--stamp), inset 0 0 0 4.5px var(--yellow); font-family: ui-serif, "New York", Georgia, serif;
+}
+.pstamp b { font-size: 19px; line-height: 1.1; } .pstamp small { font-size: 13px; opacity: .85; }
+.addr { align-self: stretch; padding-bottom: 3px; border-bottom: 1px solid #cfdcef; font: italic 15px/1.25 ui-serif, "New York", Georgia, serif; }
+.postmark {
+  position: absolute; right: 64px; top: 24px; width: 54px; height: 54px; display: grid; place-items: center; pointer-events: none;
+  border: 2px solid var(--red); border-radius: 50%; color: var(--red); opacity: .55; transform: rotate(-14deg); font: 800 11px system-ui, sans-serif;
+}
+.pc-new {
+  position: absolute; top: -10px; left: -6px; padding: 5px 9px; border-radius: 99px; background: var(--red); color: #fff;
+  font: 800 11px/1 system-ui, sans-serif; text-transform: uppercase; letter-spacing: .05em; transform: rotate(-6deg);
+}
+/* the open postcard: every section is a piece of mail */
+.post { gap: 26px; }
+.paper {
+  position: relative; padding: 24px 18px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+  box-shadow: 0 3px 0 rgba(27, 47, 94, .12), 0 12px 18px -12px rgba(27, 47, 94, .4); transform: rotate(calc(var(--tilt, 0deg) / 2));
+}
+.paper::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 4px 4px 0 0; }
+.postcard::before, .paper::before {
+  background: repeating-linear-gradient(-45deg, var(--red) 0 8px, var(--card) 8px 12px, var(--blue) 12px 20px, var(--card) 20px 24px);
+}
+.paper h2.hand { font-size: 30px; line-height: 1.1; text-align: center; color: var(--ink); }
+.paper h3.hand { margin: 0; font-size: 22px; font-weight: 400; color: var(--blue); }
+.rule { margin-top: 16px; padding-top: 14px; border-top: 1px dashed #cfdcef; }
+.rule p { margin-top: 4px; line-height: 1.45; font-family: ui-serif, "New York", Georgia, serif; font-size: 17px; }
+.merk { /* a rubber stamp */
+  margin: 20px 6px 4px; padding: 10px 12px; border: 2.5px solid var(--red); border-radius: 8px; color: var(--red-dark);
+  font-size: 20px; line-height: 1.25; text-align: center; transform: rotate(-1.5deg);
+}
+.paper .examples li { padding-bottom: 12px; border-bottom: 1px dashed #cfdcef; }
+.paper .examples li:last-child { padding-bottom: 0; border-bottom: 0; }
+.note { /* taped on */
+  position: relative; padding: 22px 18px 16px; background: #fbeccf; line-height: 1.45; transform: rotate(1deg);
+  font-family: ui-serif, "New York", Georgia, serif; font-size: 17px; box-shadow: 0 10px 16px -12px rgba(27, 47, 94, .5);
+}
+.note::before { content: ""; position: absolute; top: -11px; left: 50%; width: 92px; height: 22px; margin-left: -46px; background: rgba(224, 176, 80, .75); transform: rotate(-3deg); }
+.note b { display: block; margin-bottom: 4px; color: var(--red-dark); font-size: 24px; font-weight: 400; }
+.label { margin: 0; color: var(--muted); font: 800 12px system-ui, sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+.reply { display: flex; flex-direction: column; gap: 6px; }
+.reply header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.pstamp.mini { --stamp: var(--blue); width: 48px; height: 56px; flex: none; border-width: 3px; }
+.pstamp.mini b { font-size: 18px; } .pstamp.mini small { font-size: 11px; }
+.reply .q { font: 700 22px/1.3 ui-serif, "New York", Georgia, serif; }
+.reply > small { color: var(--muted); font-style: italic; }
+.reply .options { margin-top: 10px; }
+.reply .opt { background: transparent; border: 2px dashed #b9c6e0; box-shadow: none; font: 400 22px/1.2 "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; }
+.reply .opt.right { background: #e2efe4; border: 2px solid var(--green-dark); }
+.reply .opt.wrong { background: #f6dfd6; border: 2px solid var(--red); text-decoration: line-through; }
+.reply .btn { margin-top: 10px; }
+.reply.done { text-align: center; }
+.pairs { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; font-family: ui-serif, "New York", Georgia, serif; }
+.pairs li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px dashed #cfdcef; }
+.pairs li:last-child { border-bottom: 0; padding-bottom: 0; }
+.pairs b { display: block; font-size: 16px; line-height: 1.25; }
+.pairs span { display: block; color: var(--muted); font-style: italic; font-size: 14px; line-height: 1.3; }
+.pairs i { color: var(--red); font-style: normal; font-size: 18px; }
+.pairs li > div:last-child { text-align: right; }
