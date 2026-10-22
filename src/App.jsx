@@ -18,6 +18,28 @@ function save(p) {
   try { localStorage.setItem("cards", JSON.stringify(p)); } catch { /* private mode: progress just won't stick */ }
 }
 
+// backup = all of localStorage as one line of text, so new keys are included without touching this
+async function backup() {
+  const text = JSON.stringify({ ...localStorage });
+  try { await navigator.share({ title: "Spanisch-Backup", text }); }
+  catch (e) {
+    if (e.name === "AbortError") return; // closed the share sheet
+    await navigator.clipboard.writeText(text);
+    alert("Backup kopiert. Speicher es z. B. in Notizen.");
+  }
+}
+function restore() {
+  const text = prompt("Backup hier einfügen:");
+  if (!text) return;
+  try {
+    const data = JSON.parse(text);
+    JSON.parse(data.cards); // throws unless there is progress in it
+    if (!confirm("Aktuellen Fortschritt durch das Backup ersetzen?")) return;
+    Object.entries(data).forEach(([k, v]) => localStorage.setItem(k, v));
+    location.reload();
+  } catch { alert("Das ist kein gültiges Backup."); }
+}
+
 export function speak(text) {
   if (!("speechSynthesis" in window)) return;
   const u = new SpeechSynthesisUtterance(text.replace(/[¿?¡!]/g, ""));
@@ -64,6 +86,8 @@ export default function App() {
   const [splashing, setSplashing] = useState(true);
   // ponytail: mock splash, a fixed 2 s. Drop the timer once there is real loading to wait for.
   useEffect(() => { const t = setTimeout(() => setSplashing(false), 2000); return () => clearTimeout(t); }, []);
+  // asks the browser not to clear our storage when the phone runs low on space
+  useEffect(() => { navigator.storage?.persist?.(); }, []);
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "words.json", { cache: "no-cache" })
@@ -388,6 +412,10 @@ function WordList({ words, progress, done }) {
           </>}
         </section>
       ))}
+      <div className="row">
+        <button className="btn ghost" onClick={backup}>Backup sichern</button>
+        <button className="btn ghost" onClick={restore}>Backup laden</button>
+      </div>
     </div>
   );
 }
