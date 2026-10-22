@@ -124,7 +124,8 @@ export default function App() {
   if (screen === "cards") return <Flashcards words={words} progress={progress} review={review} done={home} />;
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
-  if (screen === "list") return <WordList words={words} progress={progress} done={home} replay={replay} />;
+  if (screen === "settings") return <Settings done={home} replay={replay} />;
+  if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <>
     <Home words={words} progress={progress} go={setScreen} />
     {news?.stage === "tour" && <Tour key={news.n.id} steps={news.n.steps} done={seen} />}
@@ -187,6 +188,17 @@ function Home({ words, progress, go }) {
           <circle cx="12" cy="12.6" r="1" fill="#e0b050" />
         </svg>
         {hasUnread() && <i />}
+      </button>
+      <button className="gear" onClick={() => go("settings")} aria-label="Einstellungen">
+        {/* an azulejo-blue cog with the tile's gold and red centre */}
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+          <g fill="#2f4f9d">
+            {[0, 45, 90, 135, 180, 225, 270, 315].map(r => <rect key={r} x="10.2" y="1.6" width="3.6" height="5" rx="1.1" transform={`rotate(${r} 12 12)`} />)}
+            <circle cx="12" cy="12" r="7.2" />
+          </g>
+          <circle cx="12" cy="12" r="3.4" fill="#e0b050" />
+          <circle cx="12" cy="12" r="1.3" fill="#c4572f" />
+        </svg>
       </button>
       <Mascot mood={wotd ? "idle" : "sad"} size={104} say={greeting(now)} />
       <section className={`card wotd ${wotd ? "" : "empty"}`}>
@@ -440,7 +452,7 @@ function Practice({ words, progress, done }) {
 }
 
 // ---------- word list ----------
-function WordList({ words, progress, done, replay }) {
+function WordList({ words, progress, done }) {
   const [open, setOpen] = useState(null);
   const list = useMemo(() => [...words].reverse(), [words]);
   return (
@@ -464,11 +476,30 @@ function WordList({ words, progress, done, replay }) {
           </>}
         </section>
       ))}
-      <div className="row">
-        <button className="btn ghost" onClick={backup}>Backup sichern</button>
-        <button className="btn ghost" onClick={restore}>Backup laden</button>
-      </div>
-      <button className="btn ghost" onClick={replay}>Einführung nochmal ansehen</button>
+    </div>
+  );
+}
+
+// ---------- settings ----------
+function Settings({ done, replay }) {
+  return (
+    <div className="screen">
+      <Top done={done} />
+      <h2 className="title">Einstellungen</h2>
+      <Orn />
+      <section className="card setting">
+        <h3>Tour durch die App</h3>
+        <p>Adriáns Brief und die Tour vom ersten Mal, noch einmal von vorn.</p>
+        <button className="btn" onClick={replay}>Tour ansehen</button>
+      </section>
+      <section className="card setting">
+        <h3>Backup</h3>
+        <p>Dein Fortschritt ist nur auf diesem Handy gespeichert. Sichere ihn ab und zu, z. B. in Notizen oder per WhatsApp an Adrián. Mit „Laden“ holst du ihn zurück, auch auf einem neuen Handy.</p>
+        <div className="row">
+          <button className="btn" onClick={backup}>Sichern</button>
+          <button className="btn" onClick={restore}>Laden</button>
+        </div>
+      </section>
     </div>
   );
 }

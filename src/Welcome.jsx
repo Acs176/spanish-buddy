@@ -21,10 +21,15 @@ export const NEWS = [
       [".progress", "Das Blümchen auf der Kachel füllt sich mit jedem Wort, das du gelernt hast. Daneben steht, wie viele Karten heute dran sind."],
       [".tabs button:nth-child(1)", "Karteikarten: Hier wiederholst du die Wörter. Dreh die Karte um und sag ehrlich, wie gut du es wusstest. Die App merkt sich, wann jedes Wort wiederkommen soll."],
       [".tabs button:nth-child(2)", "Üben: kleine Runden mit Lückensätzen, Hören und Schreiben. Wörter, die dir schwerfallen, kommen öfter dran."],
-      [".tabs button:nth-child(3)", "Alle Wörter: deine ganze Sammlung. Ganz unten kannst du ein Backup speichern, damit dein Fortschritt nie verloren geht."],
+      [".tabs button:nth-child(3)", "Alle Wörter: deine ganze Sammlung, mit allen Beispielsätzen zum Anhören."],
       [".mailbox", "Und das ist dein Briefkasten. Hier kommen meine Postkarten an, wenn ich dir ein Grammatik-Rätsel erkläre."],
+      [".gear", "Darunter sind die Einstellungen. Dort speicherst du ab und zu ein Backup, damit dein Fortschritt nie verloren geht, und kannst diese Tour nochmal ansehen."],
       [null, "¡Eso es todo! Viel Spaß, Angela. Ich freu mich auf jedes Wort, das du lernst. 💛"],
     ],
+  },
+  {
+    id: "settings",
+    steps: [[".gear", "Neu: die Einstellungen! Hier speicherst du dein Backup und kannst die Tour nochmal ansehen."]],
   },
 ];
 
