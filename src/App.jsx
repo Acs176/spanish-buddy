@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
+import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
 // ---------- helpers ----------
@@ -88,6 +89,8 @@ export default function App() {
   const [progress, setProgress] = useState(load);
   const [screen, setScreen] = useState("home");
   const [splashing, setSplashing] = useState(true);
+  // an announcement she hasn't seen (Welcome.jsx): its letter first, then its tour over the home screen
+  const [news, setNews] = useState(() => { const n = nextNews(); return n && { n, stage: n.letter ? "letter" : "tour" }; });
   // ponytail: mock splash, a fixed 2 s. Drop the timer once there is real loading to wait for.
   useEffect(() => { const t = setTimeout(() => setSplashing(false), 2000); return () => clearTimeout(t); }, []);
   // asks the browser not to clear our storage when the phone runs low on space
@@ -113,12 +116,19 @@ export default function App() {
   );
   if (!words.length) return <div className="screen center"><Mascot mood="sad" say="Keine Wörter gefunden… Internet an?" /></div>;
 
+  const seen = () => { markSeen(news.n); const n = nextNews(); setNews(n && { n, stage: n.letter ? "letter" : "tour" }); };
+  if (news?.stage === "letter") return <Welcome key={news.n.id} news={news.n} done={() => news.n.steps ? setNews({ ...news, stage: "tour" }) : seen()} />;
+
   const home = () => setScreen("home");
+  const replay = () => { setScreen("home"); setNews({ n: NEWS[0], stage: "letter" }); };
   if (screen === "cards") return <Flashcards words={words} progress={progress} review={review} done={home} />;
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
-  if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
-  return <Home words={words} progress={progress} go={setScreen} />;
+  if (screen === "list") return <WordList words={words} progress={progress} done={home} replay={replay} />;
+  return <>
+    <Home words={words} progress={progress} go={setScreen} />
+    {news?.stage === "tour" && <Tour key={news.n.id} steps={news.n.steps} done={seen} />}
+  </>;
 }
 
 // ---------- home ----------
@@ -430,7 +440,7 @@ function Practice({ words, progress, done }) {
 }
 
 // ---------- word list ----------
-function WordList({ words, progress, done }) {
+function WordList({ words, progress, done, replay }) {
   const [open, setOpen] = useState(null);
   const list = useMemo(() => [...words].reverse(), [words]);
   return (
@@ -458,6 +468,7 @@ function WordList({ words, progress, done }) {
         <button className="btn ghost" onClick={backup}>Backup sichern</button>
         <button className="btn ghost" onClick={restore}>Backup laden</button>
       </div>
+      <button className="btn ghost" onClick={replay}>Einführung nochmal ansehen</button>
     </div>
   );
 }
