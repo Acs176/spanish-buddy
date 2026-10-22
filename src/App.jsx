@@ -225,7 +225,7 @@ function Home({ words, progress, go }) {
   );
 }
 
-// Adrián guides (prompts, greetings), Ángela is the learner and reacts to her answers
+// Adrián guides (prompts, greetings), Angela is the learner and reacts to her answers
 const Duo = ({ adrian = "idle", angela = "idle", say, size = 84 }) => (
   <div className="duo"><Mascot mood={adrian} size={size} say={say} /><Angela mood={angela} size={size} /></div>
 );

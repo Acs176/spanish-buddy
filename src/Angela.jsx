@@ -1,4 +1,4 @@
-// Ángela, in the same flat, outlined style as Adrian.jsx. mood: "idle" | "happy" | "sad" | "talk". Same props and CSS hooks.
+// Angela, in the same flat, outlined style as Adrian.jsx. mood: "idle" | "happy" | "sad" | "talk". Same props and CSS hooks.
 const INK = "#3b2418", HAIR = "#dcb468", HAIR_DARK = "#b88a48", HAIR_LIGHT = "#f0d79a", SKIN = "#f2cba8", GOLD = "#e0b050", ROSE = "#c98a5a";
 const line = { stroke: INK, strokeWidth: 4, strokeLinejoin: "round", strokeLinecap: "round" };
 // glasses lens: a rounded hexagon, wider at the top outer corner like her real frames

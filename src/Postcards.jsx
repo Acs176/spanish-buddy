@@ -16,7 +16,7 @@ function Front({ c, i, full, isNew, onClick }) {
   return (
     <Tag className={`postcard ${full ? "open" : ""}`} style={look(i)} onClick={onClick}>
       <div className="pc-text hand">
-        <span>Liebe Ángela,</span>
+        <span>Liebe Angela,</span>
         <span className={full ? "" : "clamp"}>{c.letter}</span>
         {full && <span className="sign">Un beso,<br />Adrián</span>}
       </div>
