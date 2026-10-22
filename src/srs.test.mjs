@@ -1,6 +1,6 @@
 // run: node src/srs.test.mjs
 import assert from "node:assert/strict";
-import { schedule, pickNext, dueCount, wait, stage, fromLeitner, today, check } from "./srs.js";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner, today, check, difficulty, pickHard, miss } from "./srs.js";
 
 const now = Date.UTC(2026, 9, 17, 12), day = today(now), MIN = 6e4;
 const rev = (ivl, ease = 2.5) => ({ st: "review", ivl, ease, lapses: 0, due: day, seen: 0 });
@@ -87,3 +87,17 @@ const m = fromLeitner({ a: { box: 3, due: day }, b: { box: 0, due: day } }, now)
 assert.deepEqual([m.a.st, m.a.ivl, m.b.st], ["review", 4, "learn"]);
 
 console.log("srs ok");
+
+// Üben: difficulty adds misses, lapses and lost ease; misses fall back to 0 after enough right answers
+assert.equal(difficulty("x", {}), 1);
+assert.equal(difficulty("x", { x: rev(5, 2.0), "x:p": { ...rev(5), lapses: 2 } }, { x: 3 }), 1 + 3 + 1 + 2);
+let ms = miss({}, "x", false);
+assert.equal(ms.x, 2);
+ms = miss(miss(miss(ms, "x", true), "x", true), "x", true);
+assert.equal(ms.x, 0);
+// a word weighted 9x is picked first about 90% of the time
+const hard = { id: "h" }, easy = { id: "e" };
+let first = 0;
+for (let i = 0; i < 2000; i++) if (pickHard([easy, hard], w => w === hard ? 9 : 1, 1)[0] === hard) first++;
+assert.ok(first > 1700 && first < 1900, first);
+assert.equal(pickHard([easy, hard], () => 1, 5).length, 2);

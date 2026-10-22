@@ -265,4 +265,7 @@ h1, h2, p { margin: 0; }
 .typed input.wrong { background: #f6dfd6; border-color: var(--red); animation: shake .35s; }
 .accents { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
 .accents button { min-width: 38px; padding: 8px 0; border: 2px solid var(--blue); border-radius: 8px; background: var(--card); color: var(--blue); font: 700 18px ui-serif, Georgia, serif; }
+.chips { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.chips button { padding: 6px 12px; border: 2px solid var(--blue); border-radius: 99px; background: var(--card); color: var(--blue); font: 600 14px system-ui, sans-serif; }
+.chips button[aria-pressed="true"] { background: var(--blue); color: var(--card); }
 .typed .btn:disabled { opacity: .45; }

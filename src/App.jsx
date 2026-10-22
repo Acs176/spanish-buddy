@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
-import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check } from "./srs.js";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
 // ---------- helpers ----------
 const DAY = 864e5;
@@ -14,9 +14,12 @@ function load() {
     return JSON.parse(localStorage.getItem("cards")) || fromLeitner(JSON.parse(localStorage.getItem("progress")) || {});
   } catch { return {}; }
 }
-function save(p) {
-  try { localStorage.setItem("cards", JSON.stringify(p)); } catch { /* private mode: progress just won't stick */ }
-}
+const store = (key, v) => {
+  try { localStorage.setItem(key, JSON.stringify(v)); } catch { /* private mode: progress just won't stick */ }
+};
+const save = p => store("cards", p);
+// Üben mistakes per word id, see miss() in srs.js
+const loadMisses = () => { try { return JSON.parse(localStorage.getItem("misses")) || {}; } catch { return {}; } };
 
 // backup = all of localStorage as one line of text, so new keys are included without touching this
 async function backup() {
@@ -111,7 +114,7 @@ export default function App() {
 
   const home = () => setScreen("home");
   if (screen === "cards") return <Flashcards words={words} progress={progress} review={review} done={home} />;
-  if (screen === "practice") return <Practice words={words} done={home} />;
+  if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <Home words={words} progress={progress} go={setScreen} />;
 }
@@ -151,7 +154,7 @@ const Bloom = ({ n }) => (
     ))}
   </span>
 );
-const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", other: "Wort" };
+const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", verb: "Verb", other: "Wort" };
 function Home({ words, progress, go }) {
   const now = useNow();
   const latest = words[words.length - 1];
@@ -285,8 +288,13 @@ function Flashcards({ words, progress, review, done }) {
 }
 
 // ---------- practice ----------
-function makeQuestions(words) {
-  return shuffle(words).slice(0, 10).map((w, i) => {
+// sections of Üben, by word type; one shows up once it has enough words for 4 answer options
+const SECTIONS = { all: "Alle", verb: "Verben", adjective: "Adjektive", adverb: "Adverbien", noun: "Nomen", expression: "Ausdrücke" };
+const sectionsOf = words => Object.keys(SECTIONS).filter(t => t === "all" || words.filter(w => w.type === t).length >= 4);
+
+// 10 words, the ones she finds hardest more often; wrong options come from the same pool, so same word type in a section
+function makeQuestions(words, weight) {
+  return shuffle(pickHard(words, weight, 10)).map((w, i) => {
     const others = words.filter(o => o !== w);
     const kind = ["cloze", "meaning", "listen", "write"][i % 4];
     if (kind === "cloze") return {
@@ -305,8 +313,12 @@ function makeQuestions(words) {
   });
 }
 
-function Practice({ words, done }) {
-  const [qs, setQs] = useState(() => makeQuestions(words));
+function Practice({ words, progress, done }) {
+  const [misses, setMisses] = useState(loadMisses);
+  const [section, setSection] = useState("all");
+  const questions = (s, m = misses) =>
+    makeQuestions(s === "all" ? words : words.filter(w => w.type === s), w => difficulty(w.id, progress, m));
+  const [qs, setQs] = useState(() => questions("all"));
   const [i, setI] = useState(0);
   const [chosen, setChosen] = useState(null);
   const [typed, setTyped] = useState("");
@@ -316,11 +328,20 @@ function Practice({ words, done }) {
 
   useEffect(() => { if (q?.kind === "listen") speak(q.answer); }, [q]);
 
+  const restart = s => { setSection(s); setQs(questions(s)); setI(0); setScore(0); };
+  const sections = sectionsOf(words);
+  const chips = sections.length > 1 && (
+    <div className="chips" role="group" aria-label="Bereich">
+      {sections.map(s => <button key={s} aria-pressed={s === section} onClick={() => restart(s)}>{SECTIONS[s]}</button>)}
+    </div>
+  );
+
   if (!q) return (
     <div className="screen center">
       <Top done={done} />
       <Duo adrian={score >= 7 ? "happy" : "idle"} angela={score >= 7 ? "happy" : "idle"} say={`${score} von ${qs.length} richtig! ${score >= 7 ? "¡Olé!" : "¡Ánimo!"}`} />
-      <button className="btn primary" onClick={() => { setQs(makeQuestions(words)); setI(0); setScore(0); }}>Nochmal üben</button>
+      {chips}
+      <button className="btn primary" onClick={() => restart(section)}>Nochmal üben</button>
       <button className="btn ghost" onClick={done}>Fertig</button>
     </div>
   );
@@ -328,18 +349,24 @@ function Practice({ words, done }) {
   const write = q.kind === "write";
   const answered = write ? res : chosen;
   const ok = write ? res && res !== "no" : chosen === q.answer; // a missing accent still counts, with a note
+  const mark = right => {
+    if (right) setScore(s => s + 1);
+    const m = miss(misses, q.w.id, right);
+    setMisses(m);
+    store("misses", m);
+  };
   const submit = e => {
     e.preventDefault();
     if (res || !typed.trim()) return;
     const r = check(typed, q.answer);
     setRes(r);
-    if (r !== "no") setScore(s => s + 1);
+    mark(r !== "no");
     speak(q.w.es);
   };
   const choose = o => {
     if (chosen) return;
     setChosen(o);
-    if (o === q.answer) setScore(s => s + 1);
+    mark(o === q.answer);
     speak(q.kind === "cloze" ? q.sentence.replace("___", q.answer) : q.w.es);
   };
   const next = () => { setChosen(null); setTyped(""); setRes(null); setI(i + 1); };
@@ -347,6 +374,7 @@ function Practice({ words, done }) {
   return (
     <div className="screen">
       <Top done={done} progress={i / qs.length} />
+      {i === 0 && !answered && chips}
       <Duo angela={!answered ? "idle" : ok ? "happy" : "sad"} say={q.prompt} />
       <section className="card question">
         {q.kind === "cloze" && <><h2>{q.sentence.split("___").reduce((a, b) => <>{a}<span className="blank">{chosen ? q.answer : "____"}</span>{b}</>)}</h2><small>{q.hint}</small></>}

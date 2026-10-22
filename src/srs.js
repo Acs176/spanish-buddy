@@ -103,3 +103,15 @@ export function check(input, es) {
   if (answers.includes(got)) return "ok";
   return answers.some(a => plain(a) === plain(got)) ? "accent" : "no";
 }
+
+// ---------- Üben ----------
+// how hard a word is for her: Üben misses, plus lapses and lost ease on both flashcards. 1 = nothing against it.
+export function difficulty(id, cards, misses = {}) {
+  const lost = c => c ? c.lapses + Math.max(0, 2.5 - c.ease) * 2 : 0;
+  return 1 + (misses[id] || 0) + lost(cards[id]) + lost(cards[id + PROD]);
+}
+// n words, harder ones more likely, each at most once (Efraimidis–Spirakis weighted sampling)
+export const pickHard = (words, weight, n) =>
+  words.map(w => [Math.random() ** (1 / weight(w)), w]).sort((a, b) => b[0] - a[0]).slice(0, n).map(x => x[1]);
+// a miss adds 2, a right answer takes 1 back: a missed word stays "hard" until she gets it right twice
+export const miss = (misses, id, ok) => ({ ...misses, [id]: Math.max(0, (misses[id] || 0) + (ok ? -1 : 2)) });
