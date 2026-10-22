@@ -167,12 +167,14 @@ function Home({ words, progress, go }) {
   return (
     <div className="screen home">
       <button className="mailbox" onClick={() => go("post")} aria-label={`Postkarten${hasUnread() ? ", neue Post" : ""}`}>
-        {/* a yellow Correos mailbox on its post */}
-        <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
-          <path d="M21 36h6v10h-6Z" fill="#1b2f5e" />
-          <path d="M9 18a15 13 0 0 1 30 0v18H9Z" fill="#e0b050" stroke="#1b2f5e" strokeWidth="2.5" strokeLinejoin="round" />
-          <path d="M15 19h18" stroke="#1b2f5e" strokeWidth="3" strokeLinecap="round" />
-          <path d="M18 27c2 2 4 2 6 0s4-2 6 0" fill="none" stroke="#2f4f9d" strokeWidth="2" strokeLinecap="round" />
+        {/* an airmail envelope with a wax seal, like the postcards inside */}
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="1.8" fill="#fffdf8" stroke="#2f4f9d" strokeWidth="1.6" />
+          <rect x="3.9" y="6.9" width="16.2" height="10.2" rx=".6" stroke="#c4572f" strokeWidth="1.3" strokeDasharray="2 2" />
+          <rect x="3.9" y="6.9" width="16.2" height="10.2" rx=".6" stroke="#2f4f9d" strokeWidth="1.3" strokeDasharray="2 2" strokeDashoffset="2" />
+          <path d="M2.8 6 12 12.6 21.2 6" stroke="#2f4f9d" strokeWidth="1.6" />
+          <circle cx="12" cy="12.6" r="2.6" fill="#c4572f" />
+          <circle cx="12" cy="12.6" r="1" fill="#e0b050" />
         </svg>
         {hasUnread() && <i />}
       </button>

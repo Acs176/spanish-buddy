@@ -272,9 +272,14 @@ h1, h2, p { margin: 0; }
 
 /* postcards: the mailbox on the home screen, the feed and the open postcard */
 .home { position: relative; }
-.mailbox { position: absolute; top: calc(env(safe-area-inset-top) + 12px); right: 16px; padding: 0; border: 0; background: none; line-height: 0; }
-.mailbox:active { transform: translateY(2px); }
-.mailbox i { position: absolute; top: 0; right: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--red); border: 2px solid var(--card); }
+.mailbox { /* same glazed tile as the bottom bar */
+  position: absolute; top: calc(env(safe-area-inset-top) + 16px); right: 16px; width: 48px; height: 48px; padding: 0;
+  display: grid; place-items: center; border: 2px solid var(--blue); border-radius: 8px;
+  background: linear-gradient(160deg, #fff, var(--card) 55%, #f3ecdc); box-shadow: inset 0 2px 0 #fff, 0 4px 0 rgba(27, 47, 94, .35);
+  transition: transform .06s, box-shadow .06s;
+}
+.mailbox:active { transform: translateY(3px); box-shadow: inset 0 2px 0 #fff, 0 1px 0 rgba(27, 47, 94, .35); }
+.mailbox i { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; border-radius: 50%; background: var(--red); border: 2px solid var(--card); }
 .hand { font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; }
 .sub { text-align: center; color: var(--muted); font: italic 16px ui-serif, "New York", Georgia, serif; margin-top: -8px; }
 .feed { display: flex; flex-direction: column; gap: 26px; padding: 10px 4px 24px; }
