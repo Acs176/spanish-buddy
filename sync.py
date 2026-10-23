@@ -87,7 +87,8 @@ def main():
         git = lambda *a: subprocess.run(["git", "-C", str(ROOT), *a], check=False)
         git("add", "public/words.json")
         git("commit", "-m", f"words: sync {datetime.now():%Y-%m-%d}")
-        git("push")
+        # keepalive: if the Mac sleeps mid-push the dead connection drops in ~1 min instead of hanging forever
+        git("-c", "core.sshCommand=ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=4", "push")
 
 
 if __name__ == "__main__":
