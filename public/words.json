@@ -1,5 +1,5 @@
 {
- "lastMsg": 99920,
+ "lastMsg": 101800,
  "words": [
   {
    "id": "ayer",
@@ -924,6 +924,171 @@
     "lejos"
    ],
    "added": "2026-10-18"
+  },
+  {
+   "id": "arriba",
+   "es": "arriba",
+   "de": "oben / nach oben",
+   "en": "up / above",
+   "type": "adverb",
+   "tip": "Merke: arrIBA zeigt nach oben. Gegenteil von [[abajo]]. 'Arriba España' ist ein patriotischer Ruf ('Hoch lebe Spanien').",
+   "examples": [
+    {
+     "es": "El gato está arriba.",
+     "de": "Die Katze ist oben."
+    },
+    {
+     "es": "Mira arriba, hay una estrella.",
+     "de": "Schau nach oben, da ist ein Stern."
+    },
+    {
+     "es": "Mi habitación está arriba.",
+     "de": "Mein Zimmer ist oben."
+    }
+   ],
+   "cloze": {
+    "es": "Los vecinos viven ___, en el tercer piso.",
+    "answer": "arriba",
+    "de": "Die Nachbarn wohnen oben, im dritten Stock."
+   },
+   "distractors": [
+    "abajo",
+    "delante",
+    "cerca"
+   ],
+   "added": "2026-10-20"
+  },
+  {
+   "id": "abajo",
+   "es": "abajo",
+   "de": "unten / nach unten",
+   "en": "down / below",
+   "type": "adverb",
+   "tip": "Gegenteil von [[arriba]]. 'Vamos abajo' = 'Lass uns nach unten gehen'. Enthält 'bajo' (niedrig) – das hilft beim Merken.",
+   "examples": [
+    {
+     "es": "El perro duerme abajo.",
+     "de": "Der Hund schläft unten."
+    },
+    {
+     "es": "Vamos abajo a la cocina.",
+     "de": "Lass uns runter in die Küche gehen."
+    },
+    {
+     "es": "Tu móvil está abajo, en la mesa.",
+     "de": "Dein Handy ist unten, auf dem Tisch."
+    }
+   ],
+   "cloze": {
+    "es": "La tienda está ___, en la planta baja.",
+    "answer": "abajo",
+    "de": "Der Laden ist unten, im Erdgeschoss."
+   },
+   "distractors": [
+    "arriba",
+    "detrás",
+    "lejos"
+   ],
+   "added": "2026-10-20"
+  },
+  {
+   "id": "la-habitacion",
+   "es": "la habitación",
+   "de": "das Zimmer",
+   "en": "the room",
+   "type": "noun",
+   "tip": "Nicht mit dem englischen 'habitation' verwechseln – 'la habitación' ist einfach das Zimmer. Für 'Hotelzimmer' sagt man 'una habitación de hotel'.",
+   "examples": [
+    {
+     "es": "Mi habitación es pequeña.",
+     "de": "Mein Zimmer ist klein."
+    },
+    {
+     "es": "Voy a limpiar la habitación.",
+     "de": "Ich werde das Zimmer putzen."
+    },
+    {
+     "es": "La habitación tiene una ventana grande.",
+     "de": "Das Zimmer hat ein großes Fenster."
+    }
+   ],
+   "cloze": {
+    "es": "Quiero reservar una ___ para dos noches.",
+    "answer": "habitación",
+    "de": "Ich möchte ein Zimmer für zwei Nächte reservieren."
+   },
+   "distractors": [
+    "cocina",
+    "casa",
+    "puerta"
+   ],
+   "added": "2026-10-20"
+  },
+  {
+   "id": "la-cocina",
+   "es": "la cocina",
+   "de": "die Küche",
+   "en": "the kitchen",
+   "type": "noun",
+   "tip": "Nicht mit dem englischen 'cooker' verwechseln. 'La cocina' ist sowohl der Raum (Küche) als auch der Herd. Merke: Es ist weiblich – la cocina.",
+   "examples": [
+    {
+     "es": "La cocina es muy grande.",
+     "de": "Die Küche ist sehr groß."
+    },
+    {
+     "es": "Mi madre está en la cocina.",
+     "de": "Meine Mutter ist in der Küche."
+    },
+    {
+     "es": "La cocina está limpia.",
+     "de": "Die Küche ist sauber."
+    }
+   ],
+   "cloze": {
+    "es": "Preparo la comida en la ___.",
+    "answer": "cocina",
+    "de": "Ich bereite das Essen in der Küche zu."
+   },
+   "distractors": [
+    "casa",
+    "mesa",
+    "ventana"
+   ],
+   "added": "2026-10-23"
+  },
+  {
+   "id": "cocinar",
+   "es": "cocinar",
+   "de": "kochen",
+   "en": "to cook",
+   "type": "verb",
+   "tip": "Regelmäßiges Verb auf -ar. Es steckt in 'la cocina' drin: In der Küche (cocina) wird gekocht (cocinar).",
+   "examples": [
+    {
+     "es": "Me gusta cocinar.",
+     "de": "Ich koche gern."
+    },
+    {
+     "es": "Ella sabe cocinar muy bien.",
+     "de": "Sie kann sehr gut kochen."
+    },
+    {
+     "es": "Hoy voy a cocinar pasta.",
+     "de": "Heute werde ich Nudeln kochen."
+    }
+   ],
+   "cloze": {
+    "es": "Mi padre va a ___ la cena.",
+    "answer": "cocinar",
+    "de": "Mein Vater wird das Abendessen kochen."
+   },
+   "distractors": [
+    "comer",
+    "limpiar",
+    "comprar"
+   ],
+   "added": "2026-10-23"
   }
  ]
 }
