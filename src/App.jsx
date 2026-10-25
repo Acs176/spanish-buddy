@@ -170,8 +170,9 @@ const Bloom = ({ n }) => (
 const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", verb: "Verb", other: "Wort" };
 function Home({ words, progress, go }) {
   const now = useNow();
-  const latest = words[words.length - 1];
-  const wotd = latest.added === localDay(now) ? latest : null;
+  // words usually arrive late in the evening, so a word received on day D is the word of the day on D+1
+  const yesterday = new Date(now); yesterday.setDate(now.getDate() - 1); // setDate, not now - DAY: DST days aren't 24h
+  const wotd = words.findLast(w => w.added === localDay(yesterday)) ?? null;
   const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
   const due = dueCount(words, progress);
   const learned = words.filter(w => progress[w.id]?.st === "review").length; // graduated out of the learning steps
