@@ -3,7 +3,8 @@ import Mascot from "./Adrian.jsx";
 
 // Announcements: a letter from Adrián in an envelope, then a tour with a spotlight on the home screen.
 // Each shows once; the ids she has seen live in localStorage "seen". To announce a new feature, add an entry at the end:
-// letter (optional) = paragraphs, steps (optional) = [CSS selector on the home screen, or null for no spotlight, text].
+// Every entry opens with the envelope. letter (optional) = paragraphs; without one, opening the envelope goes straight to the tour.
+// steps (optional) = [CSS selector on the home screen, or null for no spotlight, text].
 // The first entry is the first-run welcome; finishing it marks every entry seen, since the welcome tour covers the app.
 export const NEWS = [
   {
@@ -31,6 +32,23 @@ export const NEWS = [
     id: "settings",
     steps: [[".gear", "Neu: die Einstellungen! Hier speicherst du dein Backup und kannst die Tour nochmal ansehen."]],
   },
+  {
+    id: "deck",
+    say: "¡Angela, Post für dich!",
+    greeting: "¡Hola amiga!",
+    letter: [
+      "I miss you a lot, but soon you'll be in my arms again. I've made a couple changes to your app. You know me, I put a lot of care on certain things (especially when it comes to you).",
+      "You know I sometimes send you more than one palabra del día, now you will be able to see multiple palabras del día for one day.",
+      "I'm still kinda struggling with the script that updates the palabritas, because it only runs when my computer is on. But no worries I'll find a way ;)",
+      "Arrive safely in Berlin and have a nice day! Don't forget your stretches and mental preparation for Wednesday. Oh girl you're gonna need them. Thursday you might wake up with a little bit of sore muscles ;)",
+    ],
+    sign: "Un besote,",
+    // ".deck, .wotd": the whole stack on a day with several words, else the single card
+    steps: [
+      [".deck, .wotd", "Neu: Ich schicke dir die Wörter ja meistens abends. Deshalb ist das Wort von gestern jetzt dein Wort des Tages. 😉"],
+      [".deck, .wotd", "Und wenn ich dir mal mehrere Wörter auf einmal schicke, liegen sie hier als Kartenstapel. Wisch die oberste Karte zur Seite, dann kommt die nächste."],
+    ],
+  },
 ];
 
 const readSeen = () => { try { return JSON.parse(localStorage.getItem("seen")) || []; } catch { return []; } };
@@ -46,7 +64,7 @@ export function Welcome({ news, done }) {
   const open = () => {
     if (stage !== "closed") return;
     setStage("opening");
-    setTimeout(() => setStage("open"), 1300); // flap, then the letter slides out, then it unfolds
+    setTimeout(() => (news.letter ? setStage("open") : done()), 1300); // flap, then the letter slides out, then it unfolds
   };
 
   if (stage === "open") return (
@@ -55,7 +73,7 @@ export function Welcome({ news, done }) {
         <span className="pstamp" style={{ "--stamp": "var(--red)" }} aria-hidden="true"><b>¡Hola!</b><small>2026</small></span>
         <p className="greet">{news.greeting ?? "Liebe Angela,"}</p>
         {news.letter.map(p => <p key={p}>{p}</p>)}
-        <p className="sign">Un beso,<br />Adrián</p>
+        <p className="sign">{news.sign ?? "Un beso,"}<br />Adrián</p>
       </article>
       <button className="btn primary" onClick={done}>{news.button ?? (news.steps ? "Zeig's mir" : "¡Gracias!")}</button>
     </div>

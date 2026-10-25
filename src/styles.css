@@ -395,6 +395,7 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .letter .pstamp b { font-size: 15px; }
 .letter p { margin-top: 12px; font: 20px/1.35 "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; }
 .letter .greet { margin: 6px 0 0; padding-right: 76px; font-size: 30px; color: var(--blue); }
+.letter .greet + p { padding-right: 60px; } /* clear the stamp when the first line is long */
 .letter .sign { text-align: right; }
 .rise { animation: rise .7s cubic-bezier(.3, 1.3, .5, 1); }
 @keyframes rise { from { opacity: 0; transform: translateY(80px) scale(.9); } }
@@ -418,3 +419,12 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .setting { display: flex; flex-direction: column; gap: 10px; }
 .setting h3 { margin: 0; font: 700 20px/1.2 ui-serif, "New York", Georgia, serif; }
 .setting p { color: var(--muted); font-size: 15px; line-height: 1.45; }
+
+/* word of the day: several words from one message, as a stack of cards (see Deck) */
+.deck { display: grid; margin-right: 24px; }
+.deck > .card { grid-area: 1 / 1; transform-origin: right center; transition: transform .3s cubic-bezier(.2, .8, .3, 1.15), opacity .3s; }
+.deck > .card:not(.uppermost) { filter: brightness(.97); }
+.deck > .uppermost { touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.deck > .nudge { animation: nudge 1.1s 1s ease-in-out; }
+/* once on load: tug the top card aside to show there's more underneath */
+@keyframes nudge { 35% { transform: translateX(-40px) rotate(-4deg); } 70% { transform: translateX(6px) rotate(1deg); } }

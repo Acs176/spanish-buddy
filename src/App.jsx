@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
@@ -89,8 +89,8 @@ export default function App() {
   const [progress, setProgress] = useState(load);
   const [screen, setScreen] = useState("home");
   const [splashing, setSplashing] = useState(true);
-  // an announcement she hasn't seen (Welcome.jsx): its letter first, then its tour over the home screen
-  const [news, setNews] = useState(() => { const n = nextNews(); return n && { n, stage: n.letter ? "letter" : "tour" }; });
+  // an announcement she hasn't seen (Welcome.jsx): the envelope (and its letter, if any) first, then its tour over the home screen
+  const [news, setNews] = useState(() => { const n = nextNews(); return n && { n, stage: "letter" }; });
   // ponytail: mock splash, a fixed 2 s. Drop the timer once there is real loading to wait for.
   useEffect(() => { const t = setTimeout(() => setSplashing(false), 2000); return () => clearTimeout(t); }, []);
   // asks the browser not to clear our storage when the phone runs low on space
@@ -116,7 +116,7 @@ export default function App() {
   );
   if (!words.length) return <div className="screen center"><Mascot mood="sad" say="Keine Wörter gefunden… Internet an?" /></div>;
 
-  const seen = () => { markSeen(news.n); const n = nextNews(); setNews(n && { n, stage: n.letter ? "letter" : "tour" }); };
+  const seen = () => { markSeen(news.n); const n = nextNews(); setNews(n && { n, stage: "letter" }); };
   if (news?.stage === "letter") return <Welcome key={news.n.id} news={news.n} done={() => news.n.steps ? setNews({ ...news, stage: "tour" }) : seen()} />;
 
   const home = () => setScreen("home");
@@ -167,12 +167,63 @@ const Bloom = ({ n }) => (
     ))}
   </span>
 );
+const Seal = () => <div className="seal" aria-label="Wort des Tages"><span>Wort<br />des Tages</span></div>;
+const Stamp = ({ now }) => (
+  <time className="stamp" dateTime={localDay(now)}>
+    <span>{now.toLocaleDateString("de-DE", { month: "short" })}</span>
+    <b>{now.getDate()}</b>
+  </time>
+);
+const WordFace = ({ w }) => <><h1>{w.es} <Speak text={w.es} /></h1><Orn /><Entry w={w} /></>;
+// several words on one day: a stack of cards; swipe the top one off and it slides to the bottom of the stack
+function Deck({ words, now }) {
+  const [order, setOrder] = useState(() => words.map(w => w.id));
+  const [dx, setDx] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [swiped, setSwiped] = useState(false); // the nudge hint plays only until the first swipe
+  const drag = useRef(null);
+  const down = e => { drag.current = { x: e.clientX, moved: false }; };
+  const move = e => {
+    const d = drag.current;
+    if (!d) return;
+    // capture only once it's clearly a swipe, so a plain tap still reaches the speaker button
+    if (!d.moved && Math.abs(e.clientX - d.x) > 6) { d.moved = true; setDragging(true); e.currentTarget.setPointerCapture(e.pointerId); }
+    if (d.moved) setDx(e.clientX - d.x);
+  };
+  const up = () => {
+    drag.current = null;
+    setDragging(false);
+    if (Math.abs(dx) < 70) return setDx(0); // not far enough: spring back
+    setSwiped(true);
+    setDx(Math.sign(dx) * window.innerWidth); // fly off the side…
+    setTimeout(() => { setOrder(o => [...o.slice(1), o[0]]); setDx(0); }, 260); // …then tuck under the stack
+  };
+  return (
+    <div className="deck">
+      {words.map(w => {
+        const k = order.indexOf(w.id);
+        const style = k === 0
+          ? { transform: `translateX(${dx}px) rotate(${dx / 16}deg)`, transition: dragging ? "none" : undefined }
+          : { transform: `translateX(${Math.min(k, 2) * 12}px) scale(${1 - Math.min(k, 2) * .06})`, opacity: k > 2 ? 0 : 1 };
+        return (
+          <section key={w.id} className={`card wotd ${k === 0 ? "uppermost" : ""} ${k === 0 && !swiped ? "nudge" : ""}`} style={{ ...style, zIndex: words.length - k }}
+            aria-hidden={k > 0} onPointerDown={k === 0 ? down : undefined} onPointerMove={k === 0 ? move : undefined}
+            onPointerUp={k === 0 ? up : undefined} onPointerCancel={k === 0 ? up : undefined}>
+            {k === 0 && <><Seal /><Stamp now={now} /></>}
+            <WordFace w={w} />
+          </section>
+        );
+      })}
+    </div>
+  );
+}
 const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", verb: "Verb", other: "Wort" };
 function Home({ words, progress, go }) {
   const now = useNow();
   // words usually arrive late in the evening, so a word received on day D is the word of the day on D+1
   const yesterday = new Date(now); yesterday.setDate(now.getDate() - 1); // setDate, not now - DAY: DST days aren't 24h
-  const wotd = words.findLast(w => w.added === localDay(yesterday)) ?? null;
+  const wotds = words.filter(w => w.added === localDay(yesterday)); // a message can teach several
+  const wotd = wotds[0];
   const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
   const due = dueCount(words, progress);
   const learned = words.filter(w => progress[w.id]?.st === "review").length; // graduated out of the learning steps
@@ -202,22 +253,15 @@ function Home({ words, progress, go }) {
         </svg>
       </button>
       <Mascot mood={wotd ? "idle" : "sad"} size={104} say={greeting(now)} />
-      <section className={`card wotd ${wotd ? "" : "empty"}`}>
-        {wotd && <div className="seal" aria-label="Wort des Tages"><span>Wort<br />des Tages</span></div>}
-        <time className="stamp" dateTime={localDay(now)}>
-          <span>{now.toLocaleDateString("de-DE", { month: "short" })}</span>
-          <b>{now.getDate()}</b>
-        </time>
-        {wotd ? <>
-          <h1>{wotd.es} <Speak text={wotd.es} /></h1>
-          <Orn />
-          <Entry w={wotd} />
-        </> : <>
+      {wotds.length > 1 ? <Deck words={wotds} now={now} /> : <section className={`card wotd ${wotd ? "" : "empty"}`}>
+        {wotd && <Seal />}
+        <Stamp now={now} />
+        {wotd ? <WordFace w={wotd} /> : <>
           <h1>{emptyTitle}</h1>
           <Orn />
           <p className="entry">{emptyMsg}</p>
         </>}
-      </section>
+      </section>}
       <div className="progress">
         <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${words.length} gelernt`}>
           <defs><clipPath id="glaze"><rect x="0" y={104 - 104 * learned / words.length} width="104" height="104" /></clipPath></defs>
