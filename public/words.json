@@ -1,5 +1,5 @@
 {
- "lastMsg": 101800,
+ "lastMsg": 102629,
  "words": [
   {
    "id": "ayer",
@@ -1089,6 +1089,105 @@
     "comprar"
    ],
    "added": "2026-10-23"
+  },
+  {
+   "id": "el-queso",
+   "es": "el queso",
+   "de": "der Käse",
+   "en": "the cheese",
+   "type": "noun",
+   "tip": "Männlich: 'el queso'. Merkhilfe: klingt wie 'Keso' – ein Frischkäse, den es in Deutschland gibt. In Spanien gibt es berühmten 'queso manchego' aus La Mancha.",
+   "examples": [
+    {
+     "es": "Me gusta mucho el queso.",
+     "de": "Ich mag Käse sehr."
+    },
+    {
+     "es": "¿Quieres queso en el bocadillo?",
+     "de": "Möchtest du Käse im Brötchen?"
+    },
+    {
+     "es": "El queso manchego es de España.",
+     "de": "Der Manchego-Käse kommt aus Spanien."
+    }
+   ],
+   "cloze": {
+    "es": "Compro pan y ___ en el supermercado.",
+    "answer": "queso",
+    "de": "Ich kaufe Brot und Käse im Supermarkt."
+   },
+   "distractors": [
+    "jamón",
+    "leche",
+    "mantequilla"
+   ],
+   "added": "2026-10-24"
+  },
+  {
+   "id": "un-quesito",
+   "es": "un quesito",
+   "de": "eine heiße Frau (umgangssprachlich)",
+   "en": "a hottie (slang)",
+   "type": "expression",
+   "tip": "Wörtlich 'kleiner Käse' bzw. ein Schmelzkäse-Ecken, aber umgangssprachlich in Spanien für eine attraktive/heiße Person. Vorsichtig und nur locker unter Freunden verwenden!",
+   "examples": [
+    {
+     "es": "Ángela es un quesito.",
+     "de": "Ángela ist eine heiße Frau."
+    },
+    {
+     "es": "Ese chico es un quesito.",
+     "de": "Dieser Junge ist richtig heiß."
+    },
+    {
+     "es": "¡Madre mía, menudo quesito!",
+     "de": "Meine Güte, was für eine heiße Person!"
+    }
+   ],
+   "cloze": {
+    "es": "Mira a tu amigo, ¡es un ___!",
+    "answer": "quesito",
+    "de": "Schau dir deinen Freund an, er ist richtig heiß!"
+   },
+   "distractors": [
+    "bombón",
+    "caramelo",
+    "cielo"
+   ],
+   "added": "2026-10-24"
+  },
+  {
+   "id": "claro",
+   "es": "claro",
+   "de": "klar / natürlich",
+   "en": "of course",
+   "type": "adverb",
+   "tip": "Wörtlich heißt 'claro' zwar 'klar/hell', aber im Alltag benutzt du es ständig als 'na klar!' / 'natürlich!' zum Zustimmen. Praktisch wie das deutsche 'Klar!'.",
+   "examples": [
+    {
+     "es": "¿Vienes a la fiesta? ¡Claro!",
+     "de": "Kommst du zur Party? Na klar!"
+    },
+    {
+     "es": "Claro que sí.",
+     "de": "Aber natürlich."
+    },
+    {
+     "es": "Está muy claro.",
+     "de": "Das ist ganz klar/offensichtlich."
+    }
+   ],
+   "cloze": {
+    "es": "¿Me ayudas con esto? —¡___ que sí!",
+    "answer": "claro",
+    "de": "Hilfst du mir dabei? — Aber klar!"
+   },
+   "distractors": [
+    "seguro",
+    "vale",
+    "quizás"
+   ],
+   "added": "2026-10-24"
   }
  ]
 }
