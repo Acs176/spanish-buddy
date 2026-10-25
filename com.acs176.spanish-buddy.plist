@@ -8,10 +8,10 @@
     <!-- via bash: macOS lets bash-launched children read WhatsApp's DB, a bare python3 from launchd gets "authorization denied" -->
     <string>/bin/bash</string>
     <string>-c</string>
-    <string>/usr/bin/python3 /Users/adriancarbonell/personal/spanish-buddy/sync.py --push</string>
+    <string>/usr/bin/python3 -u /Users/adriancarbonell/personal/spanish-buddy/sync.py --push</string>
   </array>
-  <!-- 02:00 nightly; if the Mac was asleep, launchd runs it on wake -->
-  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>2</integer><key>Minute</key><integer>0</integer></dict>
+  <!-- hourly, not nightly: a 02:00 run fires in a 2s DarkWake with the lid shut and freezes; runs with no new messages are a cheap no-op -->
+  <key>StartInterval</key><integer>3600</integer>
   <key>StandardOutPath</key><string>/tmp/spanish-buddy.log</string>
   <key>StandardErrorPath</key><string>/tmp/spanish-buddy.log</string>
 </dict>
