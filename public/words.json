@@ -1,5 +1,5 @@
 {
- "lastMsg": 102629,
+ "lastMsg": 102991,
  "words": [
   {
    "id": "ayer",
@@ -1188,6 +1188,39 @@
     "quizás"
    ],
    "added": "2026-10-24"
+  },
+  {
+   "id": "significar",
+   "es": "significar",
+   "de": "bedeuten",
+   "en": "to mean",
+   "type": "verb",
+   "tip": "Klingt wie 'signifikant' – wenn etwas 'significa', hat es eine Bedeutung. Oft in der Frage '¿Qué significa...?' (Was bedeutet...?). Regelmäßiges -ar-Verb.",
+   "examples": [
+    {
+     "es": "¿Qué significa esta palabra?",
+     "de": "Was bedeutet dieses Wort?"
+    },
+    {
+     "es": "No sé qué significa eso.",
+     "de": "Ich weiß nicht, was das bedeutet."
+    },
+    {
+     "es": "Esta señal significa 'stop'.",
+     "de": "Dieses Schild bedeutet 'Stopp'."
+    }
+   ],
+   "cloze": {
+    "es": "¿Qué ___ tu nombre en alemán?",
+    "answer": "significa",
+    "de": "Was bedeutet dein Name auf Deutsch?"
+   },
+   "distractors": [
+    "significan",
+    "significo",
+    "significar"
+   ],
+   "added": "2026-10-25"
   }
  ]
 }
