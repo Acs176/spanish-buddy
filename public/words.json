@@ -1,5 +1,5 @@
 {
- "lastMsg": 102991,
+ "lastMsg": 103673,
  "words": [
   {
    "id": "ayer",
@@ -1221,6 +1221,39 @@
     "significar"
    ],
    "added": "2026-10-25"
+  },
+  {
+   "id": "dulces-suenos",
+   "es": "dulces sueños",
+   "de": "süße Träume",
+   "en": "sweet dreams",
+   "type": "expression",
+   "tip": "Wörtlich 'süße Träume' – sagt man zum Gute-Nacht-Wünschen, genau wie im Deutschen. 'dulce' = süß, Plural 'dulces'.",
+   "examples": [
+    {
+     "es": "¡Buenas noches, dulces sueños!",
+     "de": "Gute Nacht, süße Träume!"
+    },
+    {
+     "es": "Te quiero, dulces sueños.",
+     "de": "Ich liebe dich, süße Träume."
+    },
+    {
+     "es": "Me voy a dormir, dulces sueños a todos.",
+     "de": "Ich gehe schlafen, süße Träume an alle."
+    }
+   ],
+   "cloze": {
+    "es": "Hasta mañana, cariño, ___.",
+    "answer": "dulces sueños",
+    "de": "Bis morgen, Schatz, süße Träume."
+   },
+   "distractors": [
+    "buenos días",
+    "felices fiestas",
+    "buena suerte"
+   ],
+   "added": "2026-10-26"
   }
  ]
 }
