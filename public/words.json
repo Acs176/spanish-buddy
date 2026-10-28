@@ -1,5 +1,5 @@
 {
- "lastMsg": 103673,
+ "lastMsg": 104581,
  "words": [
   {
    "id": "ayer",
@@ -1254,6 +1254,72 @@
     "buena suerte"
    ],
    "added": "2026-10-26"
+  },
+  {
+   "id": "la-derecha",
+   "es": "la derecha",
+   "de": "die rechte Seite / rechts",
+   "en": "right",
+   "type": "noun",
+   "tip": "'A la derecha' heißt 'nach rechts'. Merkhilfe: 'derecha' klingt wie 'direkt' – aber Vorsicht, es bedeutet rechts, nicht geradeaus! 'Derecho' (ohne a) heißt dagegen 'geradeaus'.",
+   "examples": [
+    {
+     "es": "El baño está a la derecha.",
+     "de": "Das Bad ist rechts."
+    },
+    {
+     "es": "Gira a la derecha.",
+     "de": "Bieg nach rechts ab."
+    },
+    {
+     "es": "Mi mano derecha.",
+     "de": "Meine rechte Hand."
+    }
+   ],
+   "cloze": {
+    "es": "El supermercado está a la ___.",
+    "answer": "derecha",
+    "de": "Der Supermarkt ist rechts."
+   },
+   "distractors": [
+    "izquierda",
+    "arriba",
+    "abajo"
+   ],
+   "added": "2026-10-28"
+  },
+  {
+   "id": "la-izquierda",
+   "es": "la izquierda",
+   "de": "die linke Seite / links",
+   "en": "left",
+   "type": "noun",
+   "tip": "'A la izquierda' heißt 'nach links'. Das Wort ist nicht lateinischen Ursprungs, sondern baskisch – deshalb klingt es ganz anders als im Deutschen und ist schwer zu merken. Einfach oft wiederholen!",
+   "examples": [
+    {
+     "es": "La casa está a la izquierda.",
+     "de": "Das Haus ist links."
+    },
+    {
+     "es": "Estoy a tu izquierda.",
+     "de": "Ich bin links von dir."
+    },
+    {
+     "es": "Gira a la izquierda.",
+     "de": "Bieg nach links ab."
+    }
+   ],
+   "cloze": {
+    "es": "El parque está a la ___.",
+    "answer": "izquierda",
+    "de": "Der Park ist links."
+   },
+   "distractors": [
+    "derecha",
+    "aquí",
+    "allí"
+   ],
+   "added": "2026-10-28"
   }
  ]
 }
