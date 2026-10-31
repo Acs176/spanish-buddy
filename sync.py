@@ -5,7 +5,7 @@ then voice every Spanish text the app speaks with ElevenLabs into public/audio/.
 
 Usage: python3 sync.py [--push]
 """
-import hashlib, json, re, sqlite3, subprocess, sys, unicodedata, urllib.request
+import hashlib, json, re, sqlite3, subprocess, sys, time, unicodedata, urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -79,6 +79,27 @@ def spoken(words):
     return list(dict.fromkeys(texts))
 
 
+def forget(ids, key):
+    """Delete the ElevenLabs history entries for what we just generated; the mp3s live in the repo."""
+    left = []
+    for hid in ids:
+        req = urllib.request.Request(f"https://api.elevenlabs.io/v1/history/{hid}",
+                                     headers={"xi-api-key": key}, method="DELETE")
+        for attempt in range(3):  # a fresh entry takes a moment to show up in history
+            try:
+                urllib.request.urlopen(req, timeout=30).close()
+                break
+            except Exception as e:
+                err = e
+                time.sleep(2)
+        else:
+            left.append(hid)
+    if left:  # harmless: they just stay visible in the History tab
+        print(f"history: {len(left)} entr{'y' if len(left) == 1 else 'ies'} not deleted ({err})", file=sys.stderr)
+    elif ids:
+        print(f"history: deleted {len(ids)}")
+
+
 def voice(data):
     """Generate the missing MP3s, map text -> file in words.json, drop files nothing uses. Returns how many it made."""
     key = subprocess.run(["security", "find-generic-password", "-s", "elevenlabs", "-w"],
@@ -86,7 +107,7 @@ def voice(data):
     AUDIO.mkdir(exist_ok=True)
     # voice and model are in the name, so changing either re-voices everything on the next run
     files = {t: f"audio/{hashlib.sha1(f'{VOICE}|{MODEL}|{t}'.encode()).hexdigest()[:16]}.mp3" for t in spoken(data["words"])}
-    made = 0
+    made, history = 0, []
     for t, f in files.items():
         if (ROOT / "public" / f).exists():
             continue
@@ -95,12 +116,15 @@ def voice(data):
             data=json.dumps({"text": t, "model_id": MODEL}).encode(),
             headers={"xi-api-key": key, "Content-Type": "application/json"})
         try:
-            mp3 = urllib.request.urlopen(req, timeout=60).read()
+            with urllib.request.urlopen(req, timeout=60) as r:
+                mp3, hid = r.read(), r.headers.get("history-item-id")
         except Exception as e:  # out of credits, offline...: the app falls back to the browser voice, retry next run
             print(f"audio: stopped at {t!r} ({e})", file=sys.stderr)
             break
         (ROOT / "public" / f).write_bytes(mp3)
         made += 1
+        history += [hid] if hid else []
+    forget(history, key)
     data["audio"] = {t: f for t, f in files.items() if (ROOT / "public" / f).exists()}
     WORDS.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
     for old in set(AUDIO.glob("*.mp3")) - {ROOT / "public" / f for f in files.values()}:
