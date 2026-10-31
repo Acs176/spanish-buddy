@@ -45,7 +45,21 @@ function restore() {
   } catch { alert("Das ist kein gültiges Backup."); }
 }
 
+// text -> mp3 in Adrián's voice, from words.json (sync.py); anything missing uses the browser voice
+let audio = {}, playing;
+
 export function speak(text) {
+  playing?.pause();
+  window.speechSynthesis?.cancel();
+  if (audio[text]) {
+    playing = new Audio(import.meta.env.BASE_URL + audio[text]);
+    playing.play().catch(() => browserSpeak(text));
+    return;
+  }
+  browserSpeak(text);
+}
+
+function browserSpeak(text) {
   if (!("speechSynthesis" in window)) return;
   const u = new SpeechSynthesisUtterance(text.replace(/[¿?¡!]/g, ""));
   u.lang = "es-ES";
@@ -98,7 +112,7 @@ export default function App() {
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "words.json", { cache: "no-cache" })
-      .then(r => r.json()).then(d => setWords(d.words))
+      .then(r => r.json()).then(d => { audio = d.audio ?? {}; setWords(d.words); })
       .catch(() => setWords([]));
   }, []);
 

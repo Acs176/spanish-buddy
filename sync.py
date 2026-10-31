@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Nightly: pull new "la palabra española del día" messages from WhatsApp Desktop's
-local DB, have Claude turn them into study cards, append to public/words.json.
+local DB, have Claude turn them into study cards, append to public/words.json,
+then voice every Spanish text the app speaks with ElevenLabs into public/audio/.
 
 Usage: python3 sync.py [--push]
 """
-import json, re, sqlite3, subprocess, sys, unicodedata
+import hashlib, json, re, sqlite3, subprocess, sys, unicodedata, urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -13,6 +14,10 @@ WORDS = ROOT / "public" / "words.json"
 DB = Path.home() / "Library/Group Containers/group.net.whatsapp.WhatsApp.shared/ChatStorage.sqlite"
 CLAUDE = "/opt/homebrew/bin/claude"  # absolute: launchd has a bare PATH
 APPLE_EPOCH = 978307200
+AUDIO = ROOT / "public" / "audio"
+NODE = "/opt/homebrew/bin/node"
+VOICE = "MV203a6fgbW4G4K46Fbw"  # Adrián's cloned voice
+MODEL = "eleven_v4"
 
 PROMPT = """You help a native GERMAN speaker learn SPANISH FROM SPAIN (Castilian: vosotros, Spain vocabulary).
 Below is a WhatsApp message in which their friend teaches them one or more "Spanish words of the day".
@@ -61,6 +66,49 @@ def ask_claude(text, known):
     return extract_json(r.stdout)
 
 
+def spoken(words):
+    """Every text the app passes to speak(), keyed exactly as the app does."""
+    cards = json.loads(subprocess.run(
+        [NODE, "--input-type=module", "-e", "import c from './src/postcards.js'; console.log(JSON.stringify(c))"],
+        cwd=ROOT, capture_output=True, text=True, check=True).stdout)
+    texts = []
+    for w in words:
+        texts += [w["es"], *(e["es"] for e in w["examples"]), w["cloze"]["es"].replace("___", w["cloze"]["answer"])]
+    for c in cards:
+        texts += [*(e["es"] for e in c["examples"]), *(q["es"].replace("___", q["answer"]) for q in c["quiz"])]
+    return list(dict.fromkeys(texts))
+
+
+def voice(data):
+    """Generate the missing MP3s, map text -> file in words.json, drop files nothing uses. Returns how many it made."""
+    key = subprocess.run(["security", "find-generic-password", "-s", "elevenlabs", "-w"],
+                         capture_output=True, text=True, check=True).stdout.strip()
+    AUDIO.mkdir(exist_ok=True)
+    # voice and model are in the name, so changing either re-voices everything on the next run
+    files = {t: f"audio/{hashlib.sha1(f'{VOICE}|{MODEL}|{t}'.encode()).hexdigest()[:16]}.mp3" for t in spoken(data["words"])}
+    made = 0
+    for t, f in files.items():
+        if (ROOT / "public" / f).exists():
+            continue
+        req = urllib.request.Request(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE}?output_format=mp3_44100_128",
+            data=json.dumps({"text": t, "model_id": MODEL}).encode(),
+            headers={"xi-api-key": key, "Content-Type": "application/json"})
+        try:
+            mp3 = urllib.request.urlopen(req, timeout=60).read()
+        except Exception as e:  # out of credits, offline...: the app falls back to the browser voice, retry next run
+            print(f"audio: stopped at {t!r} ({e})", file=sys.stderr)
+            break
+        (ROOT / "public" / f).write_bytes(mp3)
+        made += 1
+    data["audio"] = {t: f for t, f in files.items() if (ROOT / "public" / f).exists()}
+    WORDS.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
+    for old in set(AUDIO.glob("*.mp3")) - {ROOT / "public" / f for f in files.values()}:
+        old.unlink()
+    print(f"audio: {made} new, {len(data['audio'])}/{len(files)} voiced")
+    return made
+
+
 def main():
     data = json.loads(WORDS.read_text()) if WORDS.exists() else {"lastMsg": 0, "words": []}
     words = data["words"]
@@ -83,9 +131,15 @@ def main():
         data["lastMsg"] = pk  # saved after every message, so a crash mid-run loses nothing
         WORDS.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
 
-    if "--push" in sys.argv and msgs:
+    try:
+        made = voice(data)
+    except Exception as e:  # no key, node missing...: still push the new words
+        print(f"audio: skipped ({e})", file=sys.stderr)
+        made = 0
+
+    if "--push" in sys.argv and (msgs or made):
         git = lambda *a: subprocess.run(["git", "-C", str(ROOT), *a], check=False)
-        git("add", "public/words.json")
+        git("add", "public/words.json", "public/audio")
         git("commit", "-m", f"words: sync {datetime.now():%Y-%m-%d}")
         # keepalive: if the Mac sleeps mid-push the dead connection drops in ~1 min instead of hanging forever
         git("-c", "core.sshCommand=ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=4", "push")

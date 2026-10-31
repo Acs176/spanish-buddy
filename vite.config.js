@@ -24,7 +24,11 @@ export default defineConfig(({ command }) => ({
       workbox: {
         globPatterns: ["**/*.{js,css,html,woff2,png,svg}"],
         // words.json changes nightly: try the network, fall back to cache when offline
-        runtimeCaching: [{ urlPattern: /words\.json$/, handler: "NetworkFirst" }],
+        // mp3 names change whenever the audio does, so a cached one is never stale
+        runtimeCaching: [
+          { urlPattern: /words\.json$/, handler: "NetworkFirst" },
+          { urlPattern: /\/audio\/.*\.mp3$/, handler: "CacheFirst", options: { cacheName: "audio" } },
+        ],
       },
     }),
   ],
