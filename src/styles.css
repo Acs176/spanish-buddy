@@ -210,6 +210,7 @@ h1, h2, p { margin: 0; }
 
 /* mascot */
 .mascot-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.mascot-wrap.poke { border: 0; padding: 0; background: none; font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .duo { display: flex; align-items: flex-end; justify-content: center; gap: 6px; }
 .bubble {
   background: var(--card); border: 2px solid var(--blue); border-radius: 12px; padding: 8px 14px; box-shadow: 0 3px 0 var(--yellow);

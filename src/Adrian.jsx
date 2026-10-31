@@ -1,11 +1,13 @@
 // Adrián, the mascot, drawn in the app's own style (flat fills, bold dark outlines, azulejo palette) like the old Toro.
 // mood: "idle" | "happy" | "sad" | "talk". Same props and CSS hooks (.body .eyes .mouth .shadow) as Toro had.
+// onPoke makes him a button.
 const INK = "#3b2418", HAIR = "#2f1f17", HAIR_FILL = "#4a3228", SKIN = "#d49c70";
 const line = { stroke: INK, strokeWidth: 4, strokeLinejoin: "round", strokeLinecap: "round" };
-export default function Adrian({ mood = "idle", size = 140, say }) {
+export default function Adrian({ mood = "idle", size = 140, say, onPoke }) {
   const happy = mood === "happy", sad = mood === "sad";
+  const Wrap = onPoke ? "button" : "div";
   return (
-    <div className="mascot-wrap">
+    <Wrap className={`mascot-wrap ${onPoke ? "poke" : ""}`} onClick={onPoke} aria-label={onPoke && "Adrián antippen"}>
       {say && <div className="bubble">{say}</div>}
       <svg className={`mascot ${mood}`} width={size} height={size} viewBox="0 0 200 200" aria-hidden="true">
         <ellipse cx="100" cy="188" rx="52" ry="7" className="shadow" />
@@ -70,6 +72,6 @@ export default function Adrian({ mood = "idle", size = 140, say }) {
           </g>
         </g>
       </svg>
-    </div>
+    </Wrap>
   );
 }

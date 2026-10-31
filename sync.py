@@ -71,7 +71,7 @@ def spoken(words):
     cards = json.loads(subprocess.run(
         [NODE, "--input-type=module", "-e", "import c from './src/postcards.js'; console.log(JSON.stringify(c))"],
         cwd=ROOT, capture_output=True, text=True, check=True).stdout)
-    texts = []
+    texts = ["Adrián"]  # the mascot says his name when poked on the home screen
     for w in words:
         texts += [w["es"], *(e["es"] for e in w["examples"]), w["cloze"]["es"].replace("___", w["cloze"]["answer"])]
     for c in cards:

@@ -54,7 +54,7 @@ export function speak(text) {
   if (audio[text]) {
     playing = new Audio(import.meta.env.BASE_URL + audio[text]);
     playing.play().catch(() => browserSpeak(text));
-    return;
+    return playing;
   }
   browserSpeak(text);
 }
@@ -241,6 +241,13 @@ function Home({ words, progress, go }) {
   const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
   const due = dueCount(words, progress);
   const learned = words.filter(w => progress[w.id]?.st === "review").length; // graduated out of the learning steps
+  const [talking, setTalking] = useState(false);
+  const poke = () => {
+    const a = speak("Adrián");
+    setTalking(true);
+    if (a) a.onended = a.onpause = () => playing === a && setTalking(false); // a re-poke pauses the old clip, keep talking
+    else setTimeout(() => setTalking(false), 800); // browser voice: no end event worth trusting
+  };
   return (
     <div className="screen home">
       <button className="mailbox" onClick={() => go("post")} aria-label={`Postkarten${hasUnread() ? ", neue Post" : ""}`}>
@@ -266,7 +273,7 @@ function Home({ words, progress, go }) {
           <circle cx="12" cy="12" r="1.3" fill="#c4572f" />
         </svg>
       </button>
-      <Mascot mood={wotd ? "idle" : "sad"} size={104} say={greeting(now)} />
+      <Mascot mood={talking ? "talk" : wotd ? "idle" : "sad"} size={104} say={greeting(now)} onPoke={poke} />
       {wotds.length > 1 ? <Deck words={wotds} now={now} /> : <section className={`card wotd ${wotd ? "" : "empty"}`}>
         {wotd && <Seal />}
         <Stamp now={now} />
