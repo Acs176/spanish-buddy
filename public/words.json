@@ -1,5 +1,5 @@
 {
- "lastMsg": 104581,
+ "lastMsg": 106136,
  "words": [
   {
    "id": "ayer",
@@ -1320,6 +1320,171 @@
     "allí"
    ],
    "added": "2026-10-28"
+  },
+  {
+   "id": "quien",
+   "es": "quién",
+   "de": "wer",
+   "en": "who",
+   "type": "other",
+   "tip": "Fragewort für Personen. Mit Akzent in Fragen: ¿Quién? Plural: ¿Quiénes? (wer, mehrere). Nicht mit 'que' verwechseln.",
+   "examples": [
+    {
+     "es": "¿Quién es ese chico?",
+     "de": "Wer ist dieser Junge?"
+    },
+    {
+     "es": "¿Quién viene a la fiesta?",
+     "de": "Wer kommt zur Party?"
+    },
+    {
+     "es": "No sé quién llama.",
+     "de": "Ich weiß nicht, wer anruft."
+    }
+   ],
+   "cloze": {
+    "es": "¿___ ha comido mi queso?",
+    "answer": "Quién",
+    "de": "Wer hat meinen Käse gegessen?"
+   },
+   "distractors": [
+    "Qué",
+    "Cuál",
+    "Cómo"
+   ],
+   "added": "2026-11-01"
+  },
+  {
+   "id": "cuanto",
+   "es": "cuánto",
+   "de": "wie viel / wie viele",
+   "en": "how much / how many",
+   "type": "other",
+   "tip": "Passt sich an: cuánto/cuánta (wie viel), cuántos/cuántas (wie viele). ¿Cuánto cuesta? = Wie viel kostet es?",
+   "examples": [
+    {
+     "es": "¿Cuánto cuesta el café?",
+     "de": "Wie viel kostet der Kaffee?"
+    },
+    {
+     "es": "¿Cuántos años tienes?",
+     "de": "Wie alt bist du?"
+    },
+    {
+     "es": "¿Cuánta agua bebes al día?",
+     "de": "Wie viel Wasser trinkst du am Tag?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ dinero tienes?",
+    "answer": "Cuánto",
+    "de": "Wie viel Geld hast du?"
+   },
+   "distractors": [
+    "Cuál",
+    "Quién",
+    "Dónde"
+   ],
+   "added": "2026-11-01"
+  },
+  {
+   "id": "cual",
+   "es": "cuál",
+   "de": "welche(r/s) / welcher von denen",
+   "en": "which one",
+   "type": "other",
+   "tip": "Fragt nach Auswahl aus einer Gruppe. Plural: cuáles. In Spanien oft statt 'qué' vor 'ser': ¿Cuál es tu nombre?",
+   "examples": [
+    {
+     "es": "¿Cuál prefieres, el rojo o el azul?",
+     "de": "Welchen bevorzugst du, den roten oder den blauen?"
+    },
+    {
+     "es": "¿Cuál es tu casa?",
+     "de": "Welches ist dein Haus?"
+    },
+    {
+     "es": "No sé cuáles son míos.",
+     "de": "Ich weiß nicht, welche meine sind."
+    }
+   ],
+   "cloze": {
+    "es": "¿___ de estos libros es tuyo?",
+    "answer": "Cuál",
+    "de": "Welches von diesen Büchern gehört dir?"
+   },
+   "distractors": [
+    "Cuánto",
+    "Quién",
+    "Cómo"
+   ],
+   "added": "2026-11-01"
+  },
+  {
+   "id": "como",
+   "es": "cómo",
+   "de": "wie",
+   "en": "how",
+   "type": "adverb",
+   "tip": "Mit Akzent in Fragen: ¿Cómo estás? Ohne Akzent 'como' = wie/als (Vergleich) oder 'ich esse' (comer). Achte auf den Akzent!",
+   "examples": [
+    {
+     "es": "¿Cómo estás?",
+     "de": "Wie geht es dir?"
+    },
+    {
+     "es": "¿Cómo te llamas?",
+     "de": "Wie heißt du?"
+    },
+    {
+     "es": "¿Cómo se dice esto en español?",
+     "de": "Wie sagt man das auf Spanisch?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ vas al trabajo, en coche o en bus?",
+    "answer": "Cómo",
+    "de": "Wie fährst du zur Arbeit, mit dem Auto oder mit dem Bus?"
+   },
+   "distractors": [
+    "Dónde",
+    "Cuándo",
+    "Quién"
+   ],
+   "added": "2026-11-01"
+  },
+  {
+   "id": "donde",
+   "es": "dónde",
+   "de": "wo",
+   "en": "where",
+   "type": "adverb",
+   "tip": "¿Dónde? = wo. Für die Richtung 'wohin': ¿Adónde vas? Mit Akzent in Fragen.",
+   "examples": [
+    {
+     "es": "¿Dónde está el baño?",
+     "de": "Wo ist die Toilette?"
+    },
+    {
+     "es": "¿Dónde vives?",
+     "de": "Wo wohnst du?"
+    },
+    {
+     "es": "No sé dónde están mis llaves.",
+     "de": "Ich weiß nicht, wo meine Schlüssel sind."
+    }
+   ],
+   "cloze": {
+    "es": "¿___ has dejado el coche?",
+    "answer": "Dónde",
+    "de": "Wo hast du das Auto abgestellt?"
+   },
+   "distractors": [
+    "Cómo",
+    "Quién",
+    "Cuál"
+   ],
+   "added": "2026-11-01"
   }
  ],
  "audio": {
@@ -1522,6 +1687,30 @@
   "Estoy a tu izquierda.": "audio/76e3cbe26e0d28b2.mp3",
   "Gira a la izquierda.": "audio/1dc81981535aaf55.mp3",
   "El parque está a la izquierda.": "audio/fa129cfc0c1273a4.mp3",
+  "quién": "audio/3700defc23d254f2.mp3",
+  "¿Quién es ese chico?": "audio/80e737666c01a816.mp3",
+  "¿Quién viene a la fiesta?": "audio/b7b8421d623eacfa.mp3",
+  "No sé quién llama.": "audio/38c3f858aeafaf43.mp3",
+  "¿Quién ha comido mi queso?": "audio/604a87345cb6802e.mp3",
+  "cuánto": "audio/e7aa4b762c71b35b.mp3",
+  "¿Cuánto cuesta el café?": "audio/1e5d711ad5a4400b.mp3",
+  "¿Cuánta agua bebes al día?": "audio/e73ab9debb1a4868.mp3",
+  "¿Cuánto dinero tienes?": "audio/1b3671f86e727e8c.mp3",
+  "cuál": "audio/069ceec24e5e0038.mp3",
+  "¿Cuál prefieres, el rojo o el azul?": "audio/812c291ab937067b.mp3",
+  "¿Cuál es tu casa?": "audio/c5ee171f13d87cce.mp3",
+  "No sé cuáles son míos.": "audio/40eb747271b668e6.mp3",
+  "¿Cuál de estos libros es tuyo?": "audio/425e171660727a35.mp3",
+  "cómo": "audio/bbd0b3d4b6b145b0.mp3",
+  "¿Cómo estás?": "audio/13a6f0d06d8466f9.mp3",
+  "¿Cómo te llamas?": "audio/dd9aab885de1e5d1.mp3",
+  "¿Cómo se dice esto en español?": "audio/79ec8ceba05020d1.mp3",
+  "¿Cómo vas al trabajo, en coche o en bus?": "audio/f5a858ce852d4174.mp3",
+  "dónde": "audio/8d3ae969b97609b2.mp3",
+  "¿Dónde está el baño?": "audio/236e84caf1407564.mp3",
+  "¿Dónde vives?": "audio/a40c12848b5d41fe.mp3",
+  "No sé dónde están mis llaves.": "audio/2efdb90e9da49865.mp3",
+  "¿Dónde has dejado el coche?": "audio/9233e81ebd01e58b.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
