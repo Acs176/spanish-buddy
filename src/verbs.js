@@ -160,16 +160,19 @@ export const leftToday = (painted, day) => Math.min(DAILY - paintedToday(painted
 // A round: she produces forms for the tile closest to done, then the next, so the petals add up to a finished tile
 // instead of spreading over the wall; once today's petals are painted, any forms, for practice. The other questions are
 // the listening warm-up (quien), which earns no petal. Shuffled, so the two mix.
-export function makeRound(verbs, painted, day) {
-  const forms = verbs.flatMap(v => PEOPLE.map((_, p) => ({ v, p })));
-  const need = [...verbs].sort((a, b) => petals(b, painted) - petals(a, painted)); // sort is stable: the older verb first on a tie
+// focus: the tile she tapped; the whole round is about that verb, whether or not it still has petals to earn.
+export function makeRound(verbs, painted, day, focus) {
+  const pool = focus ? [focus] : verbs;
+  const forms = pool.flatMap(v => PEOPLE.map((_, p) => ({ v, p })));
+  const deal = n => { const f = shuffle(forms); return Array.from({ length: n }, (_, i) => f[i % f.length]); }; // repeats when a round is about one verb
+  const need = [...pool].sort((a, b) => petals(b, painted) - petals(a, painted)); // sort is stable: the older verb first on a tie
   const produce = [], room = Math.min(PRODUCED, DAILY - paintedToday(painted, day));
   for (const v of need) {
     const left = PEOPLE.map((_, p) => PER_FORM - (painted[key(v, p)]?.n ?? 0));
     for (let p = 0; produce.length < room && left[0] + left[1] > 0; p = 1 - p) if (left[p] > 0) { left[p]--; produce.push({ v, p }); }
   }
-  const rest = shuffle(forms), used = {};
-  const picks = [...produce, ...rest.slice(0, PRODUCED - produce.length), ...shuffle(forms).slice(0, ROUND - PRODUCED)];
+  const used = {};
+  const picks = [...produce, ...deal(PRODUCED - produce.length), ...deal(ROUND - PRODUCED)];
   return shuffle(picks.map(({ v, p }, i) => {
     const seen = used[key(v, p)] = (used[key(v, p)] ?? -1) + 1; // the same form twice gets a different sentence
     const line = v.lines[seen % v.lines.length], answer = v.forms[p];

@@ -112,8 +112,8 @@ export default function Verbs({ done }) {
     save(next); setPainted(next); setFiring(false); setFresh(won);
   }} /></>;
   if (help) return <Intro done={() => { try { localStorage.setItem("verbsIntro", "1"); } catch { /* private mode: it shows again next time */ } setHelp(false); window.scrollTo(0, 0); }} />;
-  if (game) return <Round key={game} painted={painted} earn={earn} again={play} done={() => setGame(0)} />;
   const v = VERBS.find(x => x.id === open), next = nextStep(painted);
+  if (game) return <Round key={game} painted={painted} focus={v} earn={earn} again={play} done={() => setGame(0)} />;
   return (
     <Workshop>
       <Top done={done} />
@@ -137,8 +137,8 @@ export default function Verbs({ done }) {
   );
 }
 
-function Round({ painted, earn, again, done }) {
-  const [qs] = useState(() => makeRound(unlocked(painted), painted, today()));
+function Round({ painted, focus, earn, again, done }) {
+  const [qs] = useState(() => makeRound(unlocked(painted), painted, today(), focus));
   const [start] = useState(painted); // to count the petals of this round at the end
   const [i, setI] = useState(0);
   const [chosen, setChosen] = useState(null); // quien: the person tapped; choose: the form tapped; write: what check() said

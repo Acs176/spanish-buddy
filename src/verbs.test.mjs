@@ -87,6 +87,19 @@ for (const q of r) {
   assert.ok(q.sentence.toLowerCase().includes(q.answer));
 }
 
+// a tapped tile makes the whole round about that verb, spending petals only on the forms that still need them
+const tener = VERBS[2], firstFour = VERBS.slice(0, 4);
+const focused = makeRound(firstFour, {}, 40, tener);
+assert.equal(focused.length, 8);
+assert.ok(focused.every(q => q.v === tener));
+assert.equal(focused.filter(q => q.kind !== "quien").length, 4);
+assert.deepEqual([...new Set(focused.map(q => q.p))].sort(), [0, 1]);
+let yoDone = {};
+for (let i = 0; i < 3; i++) yoDone = paint(yoDone, "tener:0", 40);
+assert.ok(makeRound(firstFour, yoDone, 40, tener).filter(q => q.kind !== "quien" && q.p === 1).length >= 3); // tú's last three petals; the fourth is practice, either form
+// without a tile tapped, the closest tile still comes first
+assert.ok(makeRound(firstFour, {}, 40).filter(q => q.kind !== "quien").every(q => q.v === VERBS[0]));
+
 // with the day's petals painted, she still gets questions to produce, for practice
 const r2 = makeRound(VERBS.slice(0, 4), eight, 10);
 assert.equal(r2.length, 8);
