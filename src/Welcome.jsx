@@ -21,7 +21,7 @@ export const NEWS = [
       [".wotd", "Hier erscheint jeden Tag das Wort, das ich dir schicke. Tipp auf den Lautsprecher, dann hörst du, wie man es sagt. Und wenn ich's mal vergesse, guck ich traurig: dann darfst du mich erinnern. 😉"],
       [".progress", "Das Blümchen auf der Kachel füllt sich mit jedem Wort, das du gelernt hast. Daneben steht, wie viele Karten heute dran sind."],
       [".tabs button:nth-child(1)", "Karteikarten: Hier wiederholst du die Wörter. Dreh die Karte um und sag ehrlich, wie gut du es wusstest. Die App merkt sich, wann jedes Wort wiederkommen soll."],
-      [".tabs button:nth-child(2)", "Üben: kleine Runden mit Lückensätzen, Hören und Schreiben. Wörter, die dir schwerfallen, kommen öfter dran."],
+      [".tabs button:nth-child(2)", "Spiele: Hier wohnen Üben, mit Lückensätzen, Hören und Schreiben, und ¿Quién?, mein Verbenspiel. Wörter, die dir schwerfallen, kommen öfter dran."],
       [".tabs button:nth-child(3)", "Alle Wörter: deine ganze Sammlung, mit allen Beispielsätzen zum Anhören."],
       [".mailbox", "Und das ist dein Briefkasten. Hier kommen meine Postkarten an, wenn ich dir ein Grammatik-Rätsel erkläre."],
       [".gear", "Darunter sind die Einstellungen. Dort speicherst du ab und zu ein Backup, damit dein Fortschritt nie verloren geht, und kannst diese Tour nochmal ansehen."],
@@ -48,6 +48,16 @@ export const NEWS = [
       [".deck, .wotd", "Neu: Ich schicke dir die Wörter ja meistens abends. Deshalb ist das Wort von gestern jetzt dein Wort des Tages. 😉"],
       [".deck, .wotd", "Und wenn ich dir mal mehrere Wörter auf einmal schicke, liegen sie hier als Kartenstapel. Wisch die oberste Karte zur Seite, dann kommt die nächste."],
     ],
+  },
+  {
+    id: "verbs",
+    say: "¡Angela, Post für dich!",
+    letter: [
+      "du kennst jetzt schon so viele Wörter. Damit du richtige Sätze bauen kannst, fehlen dir nur noch die Verben, und dafür habe ich uns ein kleines Spiel gebaut: ¿Quién?",
+      "Du bist yo, ich bin tú. Hör gut auf die Endung: tengo hambre, dann hast du Hunger. Tienes hambre, dann habe ich Hunger.",
+      "Jede Form, die du richtig bildest, malt ein Blütenblatt auf die Kachel des Verbs. Über Nacht trocknet es, und am nächsten Tag brennst du es selbst im Ofen. Ja, mit Feuer.",
+    ],
+    steps: [[".tabs button:nth-child(2)", "Tipp auf Spiele: Dort findest du Üben und jetzt auch ¿Quién?, mit ser, estar, tener und ir. Jede fertige Kachel bringt dir das nächste Verb. 😉"]],
   },
 ];
 

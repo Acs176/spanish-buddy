@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
+import Verbs from "./Verbs.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
@@ -138,6 +139,7 @@ export default function App() {
   if (screen === "cards") return <Flashcards words={words} progress={progress} review={review} done={home} />;
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
+  if (screen === "verbs") return <Verbs done={home} />;
   if (screen === "settings") return <Settings done={home} replay={replay} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <>
@@ -232,8 +234,14 @@ function Deck({ words, now }) {
   );
 }
 const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", noun: "Nomen", verb: "Verb", other: "Wort" };
+// the sheet behind the Spiele tab: screen, name, what it is, icon
+const GAMES = [
+  ["practice", "Üben", "Lücken, Hören, Schreiben", <><path d="M12 1.5 14.4 14H9.6Z" fill="#2f4f9d" /><path d="M6.5 14h11v2.2h-11Z" fill="#e0b050" /><path d="M11 16.2h2V21h-2Z" fill="#2f4f9d" stroke="none" /><circle cx="12" cy="22" r="1.4" fill="#c4572f" stroke="none" /></>],
+  ["verbs", "¿Quién?", "Verben, yo und tú", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
+];
 function Home({ words, progress, go }) {
   const now = useNow();
+  const [games, setGames] = useState(false);
   // words usually arrive late in the evening, so a word received on day D is the word of the day on D+1
   const yesterday = new Date(now); yesterday.setDate(now.getDate() - 1); // setDate, not now - DAY: DST days aren't 24h
   const wotds = words.filter(w => w.added === localDay(yesterday)); // a message can teach several
@@ -299,22 +307,37 @@ function Home({ words, progress, go }) {
         {[
           // baraja española: a fanned deck, espadas, copas
           ["cards", "Karteikarten", <><rect x="6.5" y="4" width="11" height="16" rx="1.6" transform="rotate(-15 12 21)" fill="#dfe5f1" /><rect x="6.5" y="4" width="11" height="16" rx="1.6" transform="rotate(15 12 21)" fill="#f4d9cd" /><rect x="6.5" y="4" width="11" height="16" rx="1.6" fill="#fffdf8" /><circle cx="12" cy="12" r="3.4" fill="#e0b050" /><circle cx="12" cy="12" r="1.2" fill="#c4572f" stroke="none" /></>, due],
-          ["practice", "Üben", <><path d="M12 1.5 14.4 14H9.6Z" fill="#2f4f9d" /><path d="M6.5 14h11v2.2h-11Z" fill="#e0b050" /><path d="M11 16.2h2V21h-2Z" fill="#2f4f9d" stroke="none" /><circle cx="12" cy="22" r="1.4" fill="#c4572f" stroke="none" /></>],
+          // a die, opens the sheet of games
+          ["games", "Spiele", <><rect x="4" y="4" width="16" height="16" rx="3" fill="#fffdf8" /><g fill="#c4572f" stroke="none"><circle cx="8.5" cy="8.5" r="1.6" /><circle cx="15.5" cy="15.5" r="1.6" /></g><circle cx="12" cy="12" r="1.6" fill="#e0b050" stroke="none" /><g fill="#2f4f9d" stroke="none"><circle cx="15.5" cy="8.5" r="1.6" /><circle cx="8.5" cy="15.5" r="1.6" /></g></>],
           ["list", "Alle Wörter", <><path d="M5.5 3h13c0 7-2.4 10.5-6.5 10.5S5.5 10 5.5 3Z" fill="#e0b050" /><path d="M12 13.5V19M8 21h8" /></>],
         ].map(([id, label, icon, n]) => (
-          <button key={id} onClick={() => go(id)}>
+          <button key={id} onClick={() => id === "games" ? setGames(true) : go(id)} aria-haspopup={id === "games" ? "dialog" : undefined}>
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
             <span>{label}</span>
             {n > 0 && <i>{n}</i>}
           </button>
         ))}
       </nav>
+      <div className={`sheet-bg ${games ? "open" : ""}`} onClick={() => setGames(false)} />
+      <div className={`sheet ${games ? "open" : ""}`} role="dialog" aria-label="Spiele">
+        <i className="grip" aria-hidden="true" />
+        <h2 className="title">Spiele</h2>
+        <div className="games">
+          {GAMES.map(([id, label, sub, icon]) => (
+            <button key={id} onClick={() => go(id)}>
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
+              <b>{label}</b>
+              <small>{sub}</small>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
 // Adrián guides (prompts, greetings), Angela is the learner and reacts to her answers
-const Duo = ({ adrian = "idle", angela = "idle", say, size = 84 }) => (
+export const Duo = ({ adrian = "idle", angela = "idle", say, size = 84 }) => (
   <div className="duo"><Mascot mood={adrian} size={size} say={say} /><Angela mood={angela} size={size} /></div>
 );
 

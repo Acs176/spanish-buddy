@@ -68,10 +68,12 @@ def ask_claude(text, known):
 
 def spoken(words):
     """Every text the app passes to speak(), keyed exactly as the app does."""
-    cards = json.loads(subprocess.run(
-        [NODE, "--input-type=module", "-e", "import c from './src/postcards.js'; console.log(JSON.stringify(c))"],
-        cwd=ROOT, capture_output=True, text=True, check=True).stdout)
-    texts = ["Adrián"]  # the mascot says his name when poked on the home screen
+    src = subprocess.run(
+        [NODE, "--input-type=module", "-e",
+         "import c from './src/postcards.js'; import { verbTexts as v } from './src/verbs.js'; console.log(JSON.stringify({ cards: c, verbs: v() }))"],
+        cwd=ROOT, capture_output=True, text=True, check=True).stdout
+    cards, verbs = json.loads(src)["cards"], json.loads(src)["verbs"]
+    texts = ["Adrián", *verbs]  # the mascot says his name when poked on the home screen
     for w in words:
         texts += [w["es"], *(e["es"] for e in w["examples"]), w["cloze"]["es"].replace("___", w["cloze"]["answer"])]
     for c in cards:
