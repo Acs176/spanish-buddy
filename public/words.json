@@ -1,5 +1,5 @@
 {
- "lastMsg": 106136,
+ "lastMsg": 107471,
  "words": [
   {
    "id": "ayer",
@@ -1485,6 +1485,204 @@
     "Cuál"
    ],
    "added": "2026-11-01"
+  },
+  {
+   "id": "el-tenedor",
+   "es": "el tenedor",
+   "de": "die Gabel",
+   "en": "the fork",
+   "type": "noun",
+   "tip": "Männlich: 'el tenedor'. Eselsbrücke: Eine Gabel 'hält' (tener = haben/halten) das Essen fest.",
+   "examples": [
+    {
+     "es": "Necesito un tenedor para comer.",
+     "de": "Ich brauche eine Gabel zum Essen."
+    },
+    {
+     "es": "El tenedor está en la mesa.",
+     "de": "Die Gabel liegt auf dem Tisch."
+    },
+    {
+     "es": "¿Me pones un tenedor, por favor?",
+     "de": "Gibst du mir bitte eine Gabel?"
+    }
+   ],
+   "cloze": {
+    "es": "Como la carne con el ___.",
+    "answer": "tenedor",
+    "de": "Ich esse das Fleisch mit der Gabel."
+   },
+   "distractors": [
+    "cuchillo",
+    "cuchara",
+    "plato"
+   ],
+   "added": "2026-11-04"
+  },
+  {
+   "id": "el-cuchillo",
+   "es": "el cuchillo",
+   "de": "das Messer",
+   "en": "the knife",
+   "type": "noun",
+   "tip": "Männlich: 'el cuchillo'. Das 'll' wird in Spanien wie ein weiches 'j' gesprochen: 'kutschijo'.",
+   "examples": [
+    {
+     "es": "El cuchillo corta muy bien.",
+     "de": "Das Messer schneidet sehr gut."
+    },
+    {
+     "es": "Necesito un cuchillo para el pan.",
+     "de": "Ich brauche ein Messer für das Brot."
+    },
+    {
+     "es": "El cuchillo está al lado del plato.",
+     "de": "Das Messer liegt neben dem Teller."
+    }
+   ],
+   "cloze": {
+    "es": "Corto el queso con el ___.",
+    "answer": "cuchillo",
+    "de": "Ich schneide den Käse mit dem Messer."
+   },
+   "distractors": [
+    "tenedor",
+    "cuchara",
+    "vaso"
+   ],
+   "added": "2026-11-04"
+  },
+  {
+   "id": "la-cuchara",
+   "es": "la cuchara",
+   "de": "der Löffel",
+   "en": "the spoon",
+   "type": "noun",
+   "tip": "Weiblich: 'la cuchara'. Achtung: im Deutschen männlich (der Löffel), im Spanischen weiblich!",
+   "examples": [
+    {
+     "es": "Como la sopa con la cuchara.",
+     "de": "Ich esse die Suppe mit dem Löffel."
+    },
+    {
+     "es": "¿Dónde está la cuchara?",
+     "de": "Wo ist der Löffel?"
+    },
+    {
+     "es": "La cuchara es pequeña.",
+     "de": "Der Löffel ist klein."
+    }
+   ],
+   "cloze": {
+    "es": "Necesito una ___ para el yogur.",
+    "answer": "cuchara",
+    "de": "Ich brauche einen Löffel für den Joghurt."
+   },
+   "distractors": [
+    "cuchillo",
+    "tenedor",
+    "servilleta"
+   ],
+   "added": "2026-11-04"
+  },
+  {
+   "id": "listo",
+   "es": "listo",
+   "de": "fertig / clever",
+   "en": "ready / clever",
+   "type": "adjective",
+   "tip": "Zwei Bedeutungen! Mit 'estar' = fertig/bereit ('estoy listo'), mit 'ser' = clever/schlau ('es muy listo').",
+   "examples": [
+    {
+     "es": "¿Estás listo para salir?",
+     "de": "Bist du bereit zum Gehen?"
+    },
+    {
+     "es": "La comida ya está lista.",
+     "de": "Das Essen ist schon fertig."
+    },
+    {
+     "es": "Tu hijo es muy listo.",
+     "de": "Dein Sohn ist sehr clever."
+    }
+   ],
+   "cloze": {
+    "es": "Ya estoy ___, podemos irnos.",
+    "answer": "listo",
+    "de": "Ich bin schon fertig, wir können gehen."
+   },
+   "distractors": [
+    "lista",
+    "listos",
+    "tonto"
+   ],
+   "added": "2026-11-04"
+  },
+  {
+   "id": "repite-otra-vez",
+   "es": "repite otra vez",
+   "de": "wiederhol(e) noch einmal",
+   "en": "repeat again",
+   "type": "expression",
+   "tip": "'repite' ist der Imperativ von 'repetir' (du-Form). 'otra vez' = noch einmal. 'vez' = Mal.",
+   "examples": [
+    {
+     "es": "No te entiendo, repite otra vez, por favor.",
+     "de": "Ich verstehe dich nicht, wiederhol bitte noch einmal."
+    },
+    {
+     "es": "Repite otra vez la palabra.",
+     "de": "Wiederhol das Wort noch einmal."
+    },
+    {
+     "es": "¿Puedes repetir otra vez?",
+     "de": "Kannst du es noch einmal wiederholen?"
+    }
+   ],
+   "cloze": {
+    "es": "No lo he oído bien, ___ ___ ___.",
+    "answer": "repite otra vez",
+    "de": "Ich habe es nicht gut gehört, wiederhol noch einmal."
+   },
+   "distractors": [
+    "repite más despacio",
+    "habla otra vez",
+    "dilo una vez"
+   ],
+   "added": "2026-11-04"
+  },
+  {
+   "id": "esperar",
+   "es": "esperar",
+   "de": "warten",
+   "en": "to wait",
+   "type": "verb",
+   "tip": "Espera! ist der Imperativ (du-Form) von esperar und heißt 'Warte!'. Achtung: esperar bedeutet auch 'hoffen' – der Kontext entscheidet.",
+   "examples": [
+    {
+     "es": "Espera un momento, por favor.",
+     "de": "Warte bitte einen Moment."
+    },
+    {
+     "es": "Te espero en la puerta.",
+     "de": "Ich warte an der Tür auf dich."
+    },
+    {
+     "es": "Tenemos que esperar el autobús.",
+     "de": "Wir müssen auf den Bus warten."
+    }
+   ],
+   "cloze": {
+    "es": "___ aquí, vuelvo en cinco minutos.",
+    "answer": "Espera",
+    "de": "Warte hier, ich bin in fünf Minuten zurück."
+   },
+   "distractors": [
+    "Mira",
+    "Escucha",
+    "Corre"
+   ],
+   "added": "2026-11-04"
   }
  ],
  "audio": {
@@ -1818,6 +2016,36 @@
   "¿Dónde vives?": "audio/a40c12848b5d41fe.mp3",
   "No sé dónde están mis llaves.": "audio/2efdb90e9da49865.mp3",
   "¿Dónde has dejado el coche?": "audio/9233e81ebd01e58b.mp3",
+  "el tenedor": "audio/39b1162f48d62885.mp3",
+  "Necesito un tenedor para comer.": "audio/05d98369bd88a5e1.mp3",
+  "El tenedor está en la mesa.": "audio/1289eb03a6c8cdf9.mp3",
+  "¿Me pones un tenedor, por favor?": "audio/6a1ae32dd9077d35.mp3",
+  "Como la carne con el tenedor.": "audio/f08840d1bbf1c5a4.mp3",
+  "el cuchillo": "audio/df2771eb2a18c9d5.mp3",
+  "El cuchillo corta muy bien.": "audio/47bf5ffc9f5a8f95.mp3",
+  "Necesito un cuchillo para el pan.": "audio/1885c6073de1fead.mp3",
+  "El cuchillo está al lado del plato.": "audio/5f97054fdf40f410.mp3",
+  "Corto el queso con el cuchillo.": "audio/93cf83ea1c5018e0.mp3",
+  "la cuchara": "audio/adfc856d7f61e247.mp3",
+  "Como la sopa con la cuchara.": "audio/4a0aa009e2216f5c.mp3",
+  "¿Dónde está la cuchara?": "audio/79b27ed789bbf3d1.mp3",
+  "La cuchara es pequeña.": "audio/759e8900bd34295c.mp3",
+  "Necesito una cuchara para el yogur.": "audio/49b47cf61ad2d369.mp3",
+  "listo": "audio/36cff960d72eb870.mp3",
+  "¿Estás listo para salir?": "audio/8278261c2a669fb3.mp3",
+  "La comida ya está lista.": "audio/b0f6ceb1ca919918.mp3",
+  "Tu hijo es muy listo.": "audio/9a00717dbfa74a80.mp3",
+  "Ya estoy listo, podemos irnos.": "audio/d202983b5ea788b6.mp3",
+  "repite otra vez": "audio/c17ad103ae4b5e95.mp3",
+  "No te entiendo, repite otra vez, por favor.": "audio/6cb72e72a26bf9c3.mp3",
+  "Repite otra vez la palabra.": "audio/3ce4fe966665a412.mp3",
+  "¿Puedes repetir otra vez?": "audio/dacc9b809fe01866.mp3",
+  "No lo he oído bien, repite otra vez repite otra vez repite otra vez.": "audio/9e6377338d44c7a2.mp3",
+  "esperar": "audio/d3c8ff409e6776a6.mp3",
+  "Espera un momento, por favor.": "audio/6e9b1c1bedbe8cae.mp3",
+  "Te espero en la puerta.": "audio/dfe9f799efd81cce.mp3",
+  "Tenemos que esperar el autobús.": "audio/9c3ebb9b6aac9a51.mp3",
+  "Espera aquí, vuelvo en cinco minutos.": "audio/9302e9a209c2ebc6.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
