@@ -1,5 +1,5 @@
 {
- "lastMsg": 108238,
+ "lastMsg": 108241,
  "words": [
   {
    "id": "ayer",
@@ -1881,6 +1881,105 @@
     "todavía"
    ],
    "added": "2026-11-07"
+  },
+  {
+   "id": "ningun-ninguno",
+   "es": "ningún / ninguno",
+   "de": "kein / keiner",
+   "en": "none / no",
+   "type": "adjective",
+   "tip": "'ningún' steht vor männlichen Substantiven (ningún problema), 'ninguno' steht allein (No tengo ninguno). Für weiblich: 'ninguna'.",
+   "examples": [
+    {
+     "es": "No tengo ningún problema.",
+     "de": "Ich habe kein Problem."
+    },
+    {
+     "es": "No hay ninguna silla libre.",
+     "de": "Es ist kein Stuhl frei."
+    },
+    {
+     "es": "¿Quieres uno? No, no quiero ninguno.",
+     "de": "Willst du einen? Nein, ich will keinen."
+    }
+   ],
+   "cloze": {
+    "es": "No conozco a ___ persona aquí.",
+    "answer": "ninguna",
+    "de": "Ich kenne hier keine Person."
+   },
+   "distractors": [
+    "ningún",
+    "ninguno",
+    "alguna"
+   ],
+   "added": "2026-11-07"
+  },
+  {
+   "id": "el-sitio-el-lugar",
+   "es": "el sitio / el lugar",
+   "de": "der Ort / der Platz",
+   "en": "place",
+   "type": "noun",
+   "tip": "In Spanien hörst du sehr oft 'sitio' im Alltag ('un buen sitio para comer'). 'lugar' ist etwas formeller, aber beide bedeuten dasselbe.",
+   "examples": [
+    {
+     "es": "Conozco un buen sitio para comer.",
+     "de": "Ich kenne einen guten Ort zum Essen."
+    },
+    {
+     "es": "¿Hay sitio para mí?",
+     "de": "Gibt es Platz für mich?"
+    },
+    {
+     "es": "Este lugar es muy bonito.",
+     "de": "Dieser Ort ist sehr schön."
+    }
+   ],
+   "cloze": {
+    "es": "No hay ___ en el coche para todos.",
+    "answer": "sitio",
+    "de": "Im Auto ist kein Platz für alle."
+   },
+   "distractors": [
+    "cosa",
+    "casa",
+    "tiempo"
+   ],
+   "added": "2026-11-07"
+  },
+  {
+   "id": "la-cosa",
+   "es": "la cosa",
+   "de": "das Ding / die Sache",
+   "en": "the thing",
+   "type": "noun",
+   "tip": "Sehr nützliches Wort, wenn dir der genaue Begriff fehlt: '¿Cómo se llama esta cosa?' Vorsicht: nicht mit deutsch 'Kost' verwechseln – es bedeutet 'Ding/Sache'.",
+   "examples": [
+    {
+     "es": "¿Qué es esta cosa?",
+     "de": "Was ist dieses Ding?"
+    },
+    {
+     "es": "Tengo muchas cosas que hacer.",
+     "de": "Ich habe viele Dinge zu tun."
+    },
+    {
+     "es": "Es una cosa importante.",
+     "de": "Es ist eine wichtige Sache."
+    }
+   ],
+   "cloze": {
+    "es": "Hay una ___ que no entiendo.",
+    "answer": "cosa",
+    "de": "Es gibt eine Sache, die ich nicht verstehe."
+   },
+   "distractors": [
+    "casa",
+    "sitio",
+    "persona"
+   ],
+   "added": "2026-11-07"
   }
  ],
  "audio": {
@@ -2274,6 +2373,21 @@
   "¿Entonces vienes a la fiesta?": "audio/1d0e9b0c1275c7b0.mp3",
   "No tengo dinero, entonces no compro nada.": "audio/29edd04078381f62.mp3",
   "Estoy cansado, entonces me voy a casa.": "audio/0c8c20ef4da6025a.mp3",
+  "ningún / ninguno": "audio/f1f73473383dffd0.mp3",
+  "No tengo ningún problema.": "audio/390fceb459824893.mp3",
+  "No hay ninguna silla libre.": "audio/0e27695ae4dda711.mp3",
+  "¿Quieres uno? No, no quiero ninguno.": "audio/3c069de39fe7ad84.mp3",
+  "No conozco a ninguna persona aquí.": "audio/41b9c41ebe0c0d6e.mp3",
+  "el sitio / el lugar": "audio/6b6ef957fc0d1a33.mp3",
+  "Conozco un buen sitio para comer.": "audio/7b7628528e6d8bfe.mp3",
+  "¿Hay sitio para mí?": "audio/f32ee91a1f6bae68.mp3",
+  "Este lugar es muy bonito.": "audio/d7c3e6829972c524.mp3",
+  "No hay sitio en el coche para todos.": "audio/27f78b5641b12874.mp3",
+  "la cosa": "audio/6d08f484f5e09bea.mp3",
+  "¿Qué es esta cosa?": "audio/f5ec6cee24c64b06.mp3",
+  "Tengo muchas cosas que hacer.": "audio/9e1bae225314c5db.mp3",
+  "Es una cosa importante.": "audio/6bb6dbf093d8961c.mp3",
+  "Hay una cosa que no entiendo.": "audio/8fc193d86f09c57d.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
