@@ -51,19 +51,23 @@ function restore() {
 // notifications: she turns them on here, then sends the subscription (one line) to Adrián, who adds it to
 // push-subscriptions.txt on the Mac; sync.py pushes "Morgen lernst du…" with it. KEY's private half is in his Keychain.
 const KEY = "BJvxbb3jG83tIPDC6MRVbuTyoieXgScH6VezXfCxOD_3hDDc6cxM9hQ4CQdwwv-bNX9jHuqmENYP5l0_doDR9-Q";
-async function notifications() {
-  if (!("PushManager" in window) || !navigator.serviceWorker) return alert("Das geht nur in der App auf dem Home-Bildschirm. Öffne sie von dort und versuch es nochmal.");
-  if (await Notification.requestPermission() !== "granted") return alert("Ohne Erlaubnis keine Nachrichten. Du kannst sie in den iPhone-Einstellungen bei „Adrián“ erlauben.");
-  const reg = await navigator.serviceWorker.ready;
-  const key = Uint8Array.from(atob(KEY.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
-  const sub = await reg.pushManager.getSubscription() ?? await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
-  const text = JSON.stringify(sub);
-  try { await navigator.share({ title: "Für Adrián", text }); }
-  catch (e) {
-    if (e.name === "AbortError") return;
-    await navigator.clipboard.writeText(text);
-    alert("Kopiert. Schick es Adrián per WhatsApp.");
-  }
+// iOS only allows subscribe() and share() straight from a tap, with no await before them: so the worker is
+// looked up ahead of time, subscribe() asks permission itself, and sending the line is a second tap.
+let worker;
+navigator.serviceWorker?.ready.then(r => worker = r);
+const KEY_BYTES = Uint8Array.from(atob(KEY.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
+function subscribe() {
+  if (!worker || !("PushManager" in window)) return Promise.reject(new Error("Das geht nur in der App auf dem Home-Bildschirm. Öffne sie von dort und versuch es nochmal."));
+  return worker.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: KEY_BYTES }) // same key: returns the existing one
+    .then(sub => JSON.stringify(sub), e => {
+      throw Notification.permission === "denied" ? new Error("Ohne Erlaubnis keine Nachrichten. Du kannst sie in den iPhone-Einstellungen bei „Adrián“ erlauben.") : e;
+    });
+}
+function sendLine(text) {
+  navigator.share({ title: "Für Adrián", text }).catch(e => {
+    if (e.name === "AbortError") return; // closed the share sheet
+    navigator.clipboard.writeText(text).then(() => alert("Kopiert. Schick es Adrián per WhatsApp."), () => prompt("Kopier das und schick es Adrián:", text));
+  });
 }
 
 // text -> mp3 in Adrián's voice, from words.json (sync.py); anything missing uses the browser voice
@@ -599,6 +603,7 @@ function Settings({ done, replay }) {
   const [sound, setOn] = useState(soundOn);
   const toggle = () => { setSound(!sound); setOn(!sound); if (!sound) play("right"); };
   const [music, setM] = useState(musicOn);
+  const [line, setLine] = useState(null); // her push subscription, ready to send
   return (
     <div className="screen">
       <Top done={done} />
@@ -622,7 +627,9 @@ function Settings({ done, replay }) {
       <section className="card setting">
         <h3>Benachrichtigungen</h3>
         <p>Eine Nachricht, sobald Adrián dir ein neues Wort schickt. Erlaube sie und schick ihm dann die Zeile, die erscheint.</p>
-        <button className="btn" onClick={() => notifications().catch(e => alert("Das hat nicht geklappt: " + e.message))}>🔔 Aktivieren</button>
+        {line
+          ? <button className="btn primary" onClick={() => sendLine(line)}>An Adrián schicken</button>
+          : <button className="btn" onClick={() => subscribe().then(setLine, e => alert(e.name === "Error" ? e.message : "Das hat nicht geklappt: " + e.message) /* ours are plain Errors, the browser's DOMExceptions */)}>🔔 Aktivieren</button>}
       </section>
       <section className="card setting">
         <h3>Backup</h3>
