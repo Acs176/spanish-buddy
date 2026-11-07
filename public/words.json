@@ -1683,6 +1683,171 @@
     "Corre"
    ],
    "added": "2026-11-04"
+  },
+  {
+   "id": "mismo-misma",
+   "es": "mismo/misma",
+   "de": "selbe/selber, gleiche",
+   "en": "same",
+   "type": "adjective",
+   "tip": "Steht meist vor dem Nomen: 'el mismo día' = 'der gleiche Tag'. 'lo mismo' heißt 'dasselbe'. Passt sich in Geschlecht an: mismo (m), misma (f).",
+   "examples": [
+    {
+     "es": "Vivimos en la misma calle.",
+     "de": "Wir wohnen in derselben Straße."
+    },
+    {
+     "es": "Es siempre lo mismo.",
+     "de": "Es ist immer dasselbe."
+    },
+    {
+     "es": "Tenemos el mismo coche.",
+     "de": "Wir haben das gleiche Auto."
+    }
+   ],
+   "cloze": {
+    "es": "Los dos llevamos la ___ camiseta.",
+    "answer": "misma",
+    "de": "Wir beide tragen dasselbe T-Shirt."
+   },
+   "distractors": [
+    "propia",
+    "igual",
+    "única"
+   ],
+   "added": "2026-11-07"
+  },
+  {
+   "id": "ya",
+   "es": "ya",
+   "de": "schon, bereits; jetzt",
+   "en": "already, now",
+   "type": "adverb",
+   "tip": "Sehr häufiges Füllwort. 'ya' = 'schon' (Ya está. = Schon fertig.). 'ya no' = 'nicht mehr'. Achtung: kein falscher Freund zum deutschen 'ja'!",
+   "examples": [
+    {
+     "es": "Ya he comido.",
+     "de": "Ich habe schon gegessen."
+    },
+    {
+     "es": "Ya no vivo aquí.",
+     "de": "Ich wohne nicht mehr hier."
+    },
+    {
+     "es": "¡Ya voy!",
+     "de": "Ich komme schon!"
+    }
+   ],
+   "cloze": {
+    "es": "No te preocupes, ___ está todo listo.",
+    "answer": "ya",
+    "de": "Mach dir keine Sorgen, es ist schon alles fertig."
+   },
+   "distractors": [
+    "aún",
+    "todavía",
+    "pronto"
+   ],
+   "added": "2026-11-07"
+  },
+  {
+   "id": "nadie",
+   "es": "nadie",
+   "de": "niemand",
+   "en": "nobody",
+   "type": "other",
+   "tip": "Pronomen. Mit Verb oft doppelte Verneinung: 'No viene nadie' = 'Es kommt niemand'. Gegenteil von 'alguien' (jemand).",
+   "examples": [
+    {
+     "es": "No hay nadie en casa.",
+     "de": "Es ist niemand zu Hause."
+    },
+    {
+     "es": "Nadie sabe la respuesta.",
+     "de": "Niemand kennt die Antwort."
+    },
+    {
+     "es": "No conozco a nadie aquí.",
+     "de": "Ich kenne hier niemanden."
+    }
+   ],
+   "cloze": {
+    "es": "Llamé, pero no contestó ___.",
+    "answer": "nadie",
+    "de": "Ich habe angerufen, aber niemand hat geantwortet."
+   },
+   "distractors": [
+    "alguien",
+    "ninguno",
+    "nada"
+   ],
+   "added": "2026-11-07"
+  },
+  {
+   "id": "la-pregunta",
+   "es": "la pregunta",
+   "de": "die Frage",
+   "en": "question",
+   "type": "noun",
+   "tip": "Vom Verb 'preguntar' (fragen). 'hacer una pregunta' = 'eine Frage stellen' (nicht 'machen' im Sinn, aber mit 'hacer'). Nicht verwechseln mit 'la respuesta' (Antwort).",
+   "examples": [
+    {
+     "es": "Tengo una pregunta.",
+     "de": "Ich habe eine Frage."
+    },
+    {
+     "es": "Es una buena pregunta.",
+     "de": "Das ist eine gute Frage."
+    },
+    {
+     "es": "¿Puedo hacer una pregunta?",
+     "de": "Darf ich eine Frage stellen?"
+    }
+   ],
+   "cloze": {
+    "es": "El profesor no entendió mi ___.",
+    "answer": "pregunta",
+    "de": "Der Lehrer hat meine Frage nicht verstanden."
+   },
+   "distractors": [
+    "respuesta",
+    "palabra",
+    "duda"
+   ],
+   "added": "2026-11-07"
+  },
+  {
+   "id": "la-respuesta",
+   "es": "la respuesta",
+   "de": "die Antwort",
+   "en": "answer",
+   "type": "noun",
+   "tip": "Vom Verb 'responder' (antworten). Gegenstück zu 'la pregunta'. 'dar una respuesta' = 'eine Antwort geben'.",
+   "examples": [
+    {
+     "es": "No sé la respuesta.",
+     "de": "Ich kenne die Antwort nicht."
+    },
+    {
+     "es": "Tu respuesta es correcta.",
+     "de": "Deine Antwort ist richtig."
+    },
+    {
+     "es": "Espero tu respuesta.",
+     "de": "Ich warte auf deine Antwort."
+    }
+   ],
+   "cloze": {
+    "es": "Todavía no tengo una ___ para ti.",
+    "answer": "respuesta",
+    "de": "Ich habe noch keine Antwort für dich."
+   },
+   "distractors": [
+    "pregunta",
+    "solución",
+    "idea"
+   ],
+   "added": "2026-11-07"
   }
  ],
  "audio": {
@@ -2046,6 +2211,31 @@
   "Te espero en la puerta.": "audio/dfe9f799efd81cce.mp3",
   "Tenemos que esperar el autobús.": "audio/9c3ebb9b6aac9a51.mp3",
   "Espera aquí, vuelvo en cinco minutos.": "audio/9302e9a209c2ebc6.mp3",
+  "mismo/misma": "audio/6c15eeeebe0d1612.mp3",
+  "Vivimos en la misma calle.": "audio/f83a7d45eb186b3d.mp3",
+  "Es siempre lo mismo.": "audio/327d9a2caa8453dc.mp3",
+  "Tenemos el mismo coche.": "audio/4e2151204ebcf4f5.mp3",
+  "Los dos llevamos la misma camiseta.": "audio/0fd5bd9ae4006861.mp3",
+  "ya": "audio/c91fe962579a7e67.mp3",
+  "Ya he comido.": "audio/28873966607049fa.mp3",
+  "Ya no vivo aquí.": "audio/2dcc6b7bcaa04380.mp3",
+  "¡Ya voy!": "audio/9b85ae82985314c6.mp3",
+  "No te preocupes, ya está todo listo.": "audio/6223900b7d56f54f.mp3",
+  "nadie": "audio/e7b6706022139c90.mp3",
+  "No hay nadie en casa.": "audio/507ef1f76ca4d839.mp3",
+  "Nadie sabe la respuesta.": "audio/5594053fdd250188.mp3",
+  "No conozco a nadie aquí.": "audio/c230650f17b102d0.mp3",
+  "Llamé, pero no contestó nadie.": "audio/8bd9ed50363853d4.mp3",
+  "la pregunta": "audio/a9442db5eff9da2d.mp3",
+  "Tengo una pregunta.": "audio/01ad771b554def37.mp3",
+  "Es una buena pregunta.": "audio/8e80f0ab2375a462.mp3",
+  "¿Puedo hacer una pregunta?": "audio/de47bb2b1a45c233.mp3",
+  "El profesor no entendió mi pregunta.": "audio/23fcddac5f39fbd2.mp3",
+  "la respuesta": "audio/a1c351c64a1592cd.mp3",
+  "No sé la respuesta.": "audio/240d54f7f286e6fb.mp3",
+  "Tu respuesta es correcta.": "audio/9f835240d93a963c.mp3",
+  "Espero tu respuesta.": "audio/0950d6abd16c4933.mp3",
+  "Todavía no tengo una respuesta para ti.": "audio/137406fadd6d67cc.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
