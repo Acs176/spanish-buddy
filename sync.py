@@ -16,6 +16,8 @@ CLAUDE = "/opt/homebrew/bin/claude"  # absolute: launchd has a bare PATH
 APPLE_EPOCH = 978307200
 AUDIO = ROOT / "public" / "audio"
 NODE = "/opt/homebrew/bin/node"
+SUBS = ROOT / "push-subscriptions.txt"  # gitignored: one subscription per line, from Einstellungen → Benachrichtigungen
+VAPID_PUBLIC = "BJvxbb3jG83tIPDC6MRVbuTyoieXgScH6VezXfCxOD_3hDDc6cxM9hQ4CQdwwv-bNX9jHuqmENYP5l0_doDR9-Q"  # same as KEY in App.jsx
 VOICE = "MV203a6fgbW4G4K46Fbw"  # Adrián's cloned voice
 MODEL = "eleven_v4"
 
@@ -102,6 +104,28 @@ def forget(ids, key):
         print(f"history: deleted {len(ids)}")
 
 
+def notify(new):
+    """Web push "Morgen lernst du…" to every subscription: a word that arrives today is tomorrow's Wort des Tages."""
+    subs = [l for l in SUBS.read_text().splitlines() if l.strip()] if SUBS.exists() else []
+    if not new or not subs:
+        return
+    private = subprocess.run(["security", "find-generic-password", "-s", "spanish-buddy-vapid", "-w"],
+                             capture_output=True, text=True, check=True).stdout.strip()
+    body = "\n".join(f"{w['es']} · {w['de']}" for w in new)
+    payload = json.dumps({"title": "Morgen lernst du…", "body": body}, ensure_ascii=False)
+    js = """
+import * as wp from 'web-push';
+const [pub, priv, payload, ...subs] = process.argv.slice(1);
+wp.setVapidDetails('https://github.com/Acs176/spanish-buddy', pub, priv);
+for (const s of subs) await wp.sendNotification(JSON.parse(s), payload).then(
+  () => console.log('notify: sent'),
+  e => console.error(e.statusCode === 404 || e.statusCode === 410
+    ? 'notify: a subscription expired, ask Angela to turn notifications on again and replace it in push-subscriptions.txt'
+    : `notify: failed (${e.statusCode ?? e.message})`));
+"""
+    subprocess.run([NODE, "--input-type=module", "-e", js, VAPID_PUBLIC, private, payload, *subs], cwd=ROOT, timeout=60)
+
+
 def voice(data):
     """Generate the missing MP3s, map text -> file in words.json, drop files nothing uses. Returns how many it made."""
     key = subprocess.run(["security", "find-generic-password", "-s", "elevenlabs", "-w"],
@@ -139,6 +163,7 @@ def main():
     data = json.loads(WORDS.read_text()) if WORDS.exists() else {"lastMsg": 0, "words": []}
     words = data["words"]
     msgs = new_messages(data["lastMsg"])
+    before = len(words)
     print(f"{len(msgs)} new message(s)")
     for pk, ts, text in msgs:
         known = {norm(w["es"]) for w in words}
@@ -169,6 +194,10 @@ def main():
         git("commit", "-m", f"words: sync {datetime.now():%Y-%m-%d}")
         # keepalive: if the Mac sleeps mid-push the dead connection drops in ~1 min instead of hanging forever
         git("-c", "core.sshCommand=ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=4", "push")
+        try:
+            notify(words[before:])
+        except Exception as e:  # never let a notification break the sync
+            print(f"notify: skipped ({e})", file=sys.stderr)
 
 
 if __name__ == "__main__":

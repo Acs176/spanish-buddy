@@ -23,6 +23,7 @@ export default defineConfig(({ command }) => ({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,woff2,png,svg}"],
+        importScripts: ["push-sw.js"], // notifications
         // words.json changes nightly: try the network, fall back to cache when offline
         // mp3 names change whenever the audio does, so a cached one is never stale
         runtimeCaching: [

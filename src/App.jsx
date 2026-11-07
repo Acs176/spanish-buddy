@@ -48,6 +48,24 @@ function restore() {
   } catch { alert("Das ist kein gültiges Backup."); }
 }
 
+// notifications: she turns them on here, then sends the subscription (one line) to Adrián, who adds it to
+// push-subscriptions.txt on the Mac; sync.py pushes "Morgen lernst du…" with it. KEY's private half is in his Keychain.
+const KEY = "BJvxbb3jG83tIPDC6MRVbuTyoieXgScH6VezXfCxOD_3hDDc6cxM9hQ4CQdwwv-bNX9jHuqmENYP5l0_doDR9-Q";
+async function notifications() {
+  if (!("PushManager" in window) || !navigator.serviceWorker) return alert("Das geht nur in der App auf dem Home-Bildschirm. Öffne sie von dort und versuch es nochmal.");
+  if (await Notification.requestPermission() !== "granted") return alert("Ohne Erlaubnis keine Nachrichten. Du kannst sie in den iPhone-Einstellungen bei „Adrián“ erlauben.");
+  const reg = await navigator.serviceWorker.ready;
+  const key = Uint8Array.from(atob(KEY.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
+  const sub = await reg.pushManager.getSubscription() ?? await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
+  const text = JSON.stringify(sub);
+  try { await navigator.share({ title: "Für Adrián", text }); }
+  catch (e) {
+    if (e.name === "AbortError") return;
+    await navigator.clipboard.writeText(text);
+    alert("Kopiert. Schick es Adrián per WhatsApp.");
+  }
+}
+
 // text -> mp3 in Adrián's voice, from words.json (sync.py); anything missing uses the browser voice
 let audio = {}, playing;
 
@@ -600,6 +618,11 @@ function Settings({ done, replay }) {
         <h3>Musik</h3>
         <p>Leise Gitarre auf dem Startbildschirm und an der ¿Quién?-Wand.</p>
         <button className="btn" onClick={() => { setMusic(!music); setM(!music); }} aria-pressed={music}>{music ? "🎸 An" : "🔇 Aus"}</button>
+      </section>
+      <section className="card setting">
+        <h3>Benachrichtigungen</h3>
+        <p>Eine Nachricht, sobald Adrián dir ein neues Wort schickt. Erlaube sie und schick ihm dann die Zeile, die erscheint.</p>
+        <button className="btn" onClick={() => notifications().catch(e => alert("Das hat nicht geklappt: " + e.message))}>🔔 Aktivieren</button>
       </section>
       <section className="card setting">
         <h3>Backup</h3>
