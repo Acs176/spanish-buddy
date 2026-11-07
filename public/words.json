@@ -1,5 +1,5 @@
 {
- "lastMsg": 107471,
+ "lastMsg": 108238,
  "words": [
   {
    "id": "ayer",
@@ -1848,6 +1848,39 @@
     "idea"
    ],
    "added": "2026-11-07"
+  },
+  {
+   "id": "entonces",
+   "es": "entonces",
+   "de": "dann / also",
+   "en": "then",
+   "type": "adverb",
+   "tip": "Zwei Bedeutungen: zeitlich 'dann/damals' und logisch 'also/in dem Fall'. Eselsbrücke: enTONCES klingt fast wie 'and once' → 'und dann'. Sehr häufiges Füllwort im Gespräch.",
+   "examples": [
+    {
+     "es": "Primero comemos y entonces salimos.",
+     "de": "Zuerst essen wir und dann gehen wir raus."
+    },
+    {
+     "es": "¿Entonces vienes a la fiesta?",
+     "de": "Kommst du also zur Party?"
+    },
+    {
+     "es": "No tengo dinero, entonces no compro nada.",
+     "de": "Ich habe kein Geld, also kaufe ich nichts."
+    }
+   ],
+   "cloze": {
+    "es": "Estoy cansado, ___ me voy a casa.",
+    "answer": "entonces",
+    "de": "Ich bin müde, also gehe ich nach Hause."
+   },
+   "distractors": [
+    "luego",
+    "pronto",
+    "todavía"
+   ],
+   "added": "2026-11-07"
   }
  ],
  "audio": {
@@ -2236,6 +2269,11 @@
   "Tu respuesta es correcta.": "audio/9f835240d93a963c.mp3",
   "Espero tu respuesta.": "audio/0950d6abd16c4933.mp3",
   "Todavía no tengo una respuesta para ti.": "audio/137406fadd6d67cc.mp3",
+  "entonces": "audio/a2adc286659642a4.mp3",
+  "Primero comemos y entonces salimos.": "audio/707f0e13e716294c.mp3",
+  "¿Entonces vienes a la fiesta?": "audio/1d0e9b0c1275c7b0.mp3",
+  "No tengo dinero, entonces no compro nada.": "audio/29edd04078381f62.mp3",
+  "Estoy cansado, entonces me voy a casa.": "audio/0c8c20ef4da6025a.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
