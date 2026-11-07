@@ -3,6 +3,7 @@ import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
 import Verbs from "./Verbs.jsx";
+import Stories from "./Story.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic } from "./music.js";
@@ -125,6 +126,7 @@ const NO_WORD = [
 // ---------- app ----------
 export default function App() {
   const [words, setWords] = useState(null);
+  const [stories, setStories] = useState([]);
   const [progress, setProgress] = useState(load);
   const [screen, setScreen] = useState("home");
   const [splashing, setSplashing] = useState(true);
@@ -137,7 +139,7 @@ export default function App() {
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + "words.json", { cache: "no-cache" })
-      .then(r => r.json()).then(d => { audio = d.audio ?? {}; setWords(d.words); })
+      .then(r => r.json()).then(d => { audio = d.audio ?? {}; setStories(d.stories ?? []); setWords(d.words); })
       .catch(() => setWords([]));
   }, []);
 
@@ -164,10 +166,11 @@ export default function App() {
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
   if (screen === "verbs") return <Verbs done={home} />;
+  if (screen === "story") return <Stories stories={stories} done={home} />;
   if (screen === "settings") return <Settings done={home} replay={replay} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <>
-    <Home words={words} progress={progress} go={setScreen} />
+    <Home words={words} progress={progress} go={setScreen} story={stories.length > 0} />
     {news?.stage === "tour" && <Tour key={news.n.id} steps={news.n.steps} done={seen} />}
   </>;
 }
@@ -261,9 +264,11 @@ const POS = { adjective: "Adjektiv", adverb: "Adverb", expression: "Ausdruck", n
 // the sheet behind the Spiele tab: screen, name, what it is, icon
 const GAMES = [
   ["practice", "Üben", "Lücken, Hören, Schreiben", <><path d="M12 1.5 14.4 14H9.6Z" fill="#2f4f9d" /><path d="M6.5 14h11v2.2h-11Z" fill="#e0b050" /><path d="M11 16.2h2V21h-2Z" fill="#2f4f9d" stroke="none" /><circle cx="12" cy="22" r="1.4" fill="#c4572f" stroke="none" /></>],
+  // an open book, a red ribbon bookmark
+  ["story", "Geschichten", "Jeden Tag eine neue", <><path d="M12 6C9.5 4.3 6.5 4 3 4.5v14c3.5-.5 6.5-.2 9 1.5 2.5-1.7 5.5-2 9-1.5v-14C17.5 4 14.5 4.3 12 6Z" fill="#fffdf8" /><path d="M12 6v14" /><path d="M15.5 4.6v6l1.5-1.3 1.5 1.3V4.5" fill="#c4572f" stroke="none" /><path d="M5.5 8.5c1.8-.2 3.5 0 4.5.6M5.5 11.5c1.8-.2 3.5 0 4.5.6" stroke="#e0b050" /></>],
   ["verbs", "¿Quién?", "Verben, yo und tú", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
 ];
-function Home({ words, progress, go }) {
+function Home({ words, progress, go, story }) {
   const now = useNow();
   useEffect(() => { startMusic("casual"); return stopMusic; }, []);
   const [games, setGames] = useState(false);
@@ -348,7 +353,7 @@ function Home({ words, progress, go }) {
         <i className="grip" aria-hidden="true" />
         <h2 className="title">Spiele</h2>
         <div className="games">
-          {GAMES.map(([id, label, sub, icon]) => (
+          {GAMES.filter(([id]) => id !== "story" || story).map(([id, label, sub, icon]) => (
             <button key={id} onClick={() => go(id)}>
               <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
               <b>{label}</b>

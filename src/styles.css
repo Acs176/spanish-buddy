@@ -550,3 +550,16 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .deck > .nudge { animation: nudge 1.1s 1s ease-in-out; }
 /* once on load: tug the top card aside to show there's more underneath */
 @keyframes nudge { 35% { transform: translateX(-40px) rotate(-4deg); } 70% { transform: translateX(6px) rotate(1deg); } }
+
+/* the daily story: every sentence is a button that speaks and shows its German */
+.story { display: flex; flex-direction: column; gap: 4px; font: 19px/1.45 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
+.story button { all: unset; cursor: pointer; padding: 4px 6px; border-radius: 8px; color: var(--ink); }
+.story button[aria-expanded="true"] { background: #eef2fa; }
+.story button span { display: block; color: var(--muted); font-style: italic; font-size: 15px; }
+.story button:focus-visible { outline: 3px solid var(--yellow); }
+.story mark { background: none; color: var(--red); border-bottom: 2px dotted var(--red); }
+.story > small { margin-top: 8px; color: var(--muted); font-style: italic; text-align: center; }
+.story-item { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer; }
+.story-item b { font: 700 21px/1.2 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
+.story-item small { color: var(--muted); margin-top: 4px; }
+.story-item .de { font: italic 16px ui-serif, "New York", "Iowan Old Style", Georgia, serif; }

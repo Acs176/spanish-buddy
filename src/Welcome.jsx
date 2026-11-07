@@ -59,6 +59,10 @@ export const NEWS = [
     ],
     steps: [[".tabs button:nth-child(2)", "Tipp auf Spiele: Dort findest du Üben und jetzt auch ¿Quién?, mit ser, estar, tener und ir. Jede fertige Kachel bringt dir das nächste Verb. 😉"]],
   },
+  {
+    id: "story",
+    steps: [[".tabs button:nth-child(2)", "Neu unter Spiele: jeden Tag eine kleine Geschichte, nur aus Wörtern, die du schon kennst, und drei neuen. Du wirst staunen, wie viel du verstehst. 📖"]],
+  },
 ];
 
 const readSeen = () => { try { return JSON.parse(localStorage.getItem("seen")) || []; } catch { return []; } };

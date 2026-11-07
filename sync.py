@@ -5,7 +5,7 @@ then voice every Spanish text the app speaks with ElevenLabs into public/audio/.
 
 Usage: python3 sync.py [--push]
 """
-import hashlib, json, re, sqlite3, subprocess, sys, time, unicodedata, urllib.request
+import hashlib, json, random, re, sqlite3, subprocess, sys, time, unicodedata, urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -40,6 +40,28 @@ Message:
 {text}
 >>>"""
 
+STORY = """You write a short daily reading story for a native GERMAN speaker learning SPANISH FROM SPAIN (Castilian: vosotros, Spain vocabulary).
+Goal: she should finish it thinking "I understood almost all of that!", and learn a little on the way.
+About her: she loves travelling around the world and climbing (bouldering, crags, mountains). Most stories should touch one of these:
+a trip somewhere in the world, a climbing day, a hostel, a train, a summit, a café after climbing... Vary places and situations.
+Recent story titles, don't repeat their topic: {titles}
+
+Words she has learned: {known}
+
+Rules:
+- Natural, correct Spain Spanish, the way people really talk. 8 to 12 short sentences, present tense mostly, A1 level. A small scene with a gentle point or a smile at the end.
+- Build it from the learned words above. Besides those, use ONLY very basic words: articles, pronouns, prepositions, numbers, colours,
+  y/pero/porque/que/no/sí/muy, and the most common forms of ser, estar, tener, ir, hacer, querer, poder, gustar.
+- Introduce EXACTLY 3 new words that are not on the list, each guessable from context. Don't reuse these recent new words: {recent}
+- Use as many learned words as fit naturally, prefer the newest ones: {newest}
+
+Return ONLY JSON, no prose, no code fences:
+{{"title": "Spanish title", "de": "German title",
+  "sentences": [{{"es": "one sentence", "de": "German translation"}}],
+  "new": [{{"es": "the new word exactly as it appears in the text", "de": "German meaning"}}],
+  "questions": [{{"es": "simple Spanish question about the story", "de": "German translation", "answer": "short Spanish answer", "options": ["answer + 2 wrong short Spanish answers"]}}]}}  // exactly 3 questions
+"""
+
 
 def norm(s):
     """Lowercase, accent-free, for duplicate checks."""
@@ -68,7 +90,36 @@ def ask_claude(text, known):
     return extract_json(r.stdout)
 
 
-def spoken(words):
+def story(data, today):
+    """One new story a day, written from the words she has. Returns True if it wrote one."""
+    stories = data.setdefault("stories", [])
+    if stories and stories[-1]["day"] == today or not data["words"]:
+        return False
+    write_story(data, today)
+    return True
+
+
+def write_story(data, today):
+    """Append a story to data["stories"] (oldest first) and save."""
+    stories = data.setdefault("stories", [])
+    known = [w["es"] for w in data["words"]]
+    prompt = STORY.format(known=", ".join(known), newest=", ".join(known[-10:]),
+                          recent=", ".join(n["es"] for s in stories[-3:] for n in s["new"]) or "none",
+                          titles=", ".join(s["title"] for s in stories[-7:]) or "none")
+    r = subprocess.run([CLAUDE, "-p", prompt], capture_output=True, text=True, timeout=300)
+    if r.returncode:
+        raise RuntimeError(f"claude exit {r.returncode}: {(r.stdout + r.stderr).strip()[:300]}")
+    out = r.stdout
+    st = json.loads(out[out.index("{"): out.rindex("}") + 1])
+    assert st["sentences"] and len(st["questions"]) == 3 and all(q["answer"] in q["options"] for q in st["questions"])
+    for q in st["questions"]:
+        random.shuffle(q["options"])
+    stories.append({"day": today, **st})
+    WORDS.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
+    print(f"story: {st['title']} (+ {', '.join(n['es'] for n in st['new'])})")
+
+
+def spoken(words, stories=()):
     """Every text the app passes to speak(), keyed exactly as the app does."""
     src = subprocess.run(
         [NODE, "--input-type=module", "-e",
@@ -80,6 +131,8 @@ def spoken(words):
         texts += [w["es"], *(e["es"] for e in w["examples"]), w["cloze"]["es"].replace("___", w["cloze"]["answer"])]
     for c in cards:
         texts += [*(e["es"] for e in c["examples"]), *(q["es"].replace("___", q["answer"]) for q in c["quiz"])]
+    for st in stories:  # every story stays readable in the list, so all of them are voiced
+        texts += [s["es"] for s in st["sentences"]]
     return list(dict.fromkeys(texts))
 
 
@@ -132,7 +185,7 @@ def voice(data):
                          capture_output=True, text=True, check=True).stdout.strip()
     AUDIO.mkdir(exist_ok=True)
     # voice and model are in the name, so changing either re-voices everything on the next run
-    files = {t: f"audio/{hashlib.sha1(f'{VOICE}|{MODEL}|{t}'.encode()).hexdigest()[:16]}.mp3" for t in spoken(data["words"])}
+    files = {t: f"audio/{hashlib.sha1(f'{VOICE}|{MODEL}|{t}'.encode()).hexdigest()[:16]}.mp3" for t in spoken(data["words"], data.get("stories", []))}
     made, history = 0, []
     for t, f in files.items():
         if (ROOT / "public" / f).exists():
@@ -183,12 +236,18 @@ def main():
         WORDS.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
 
     try:
+        wrote = story(data, datetime.now().date().isoformat())
+    except Exception as e:  # bad JSON, claude down...: try again next hour
+        print(f"story: skipped ({e})", file=sys.stderr)
+        wrote = False
+
+    try:
         made = voice(data)
     except Exception as e:  # no key, node missing...: still push the new words
         print(f"audio: skipped ({e})", file=sys.stderr)
         made = 0
 
-    if "--push" in sys.argv and (msgs or made):
+    if "--push" in sys.argv and (msgs or made or wrote):
         git = lambda *a: subprocess.run(["git", "-C", str(ROOT), *a], check=False)
         git("add", "public/words.json", "public/audio")
         git("commit", "-m", f"words: sync {datetime.now():%Y-%m-%d}")

@@ -93,7 +93,7 @@ function Postcard({ c, i, done }) {
   );
 }
 
-function Quiz({ quiz, style }) {
+export function Quiz({ quiz, style, retry = "¡Casi! Lies die Karte nochmal und versuch's gleich wieder." }) {
   const [i, setI] = useState(0);
   const [chosen, setChosen] = useState(null);
   const [score, setScore] = useState(0);
@@ -103,7 +103,7 @@ function Quiz({ quiz, style }) {
     <section className="paper reply done" style={style}>
       <h3 className="label">Respuesta · Antwortkarte</h3>
       <p className="q">{score} von {quiz.length} richtig</p>
-      <p>{score === quiz.length ? "¡Perfecto! Adrián ist stolz auf dich. 💌" : "¡Casi! Lies die Karte nochmal und versuch's gleich wieder."}</p>
+      <p>{score === quiz.length ? "¡Perfecto! Adrián ist stolz auf dich. 💌" : retry}</p>
       <button className="btn" onClick={() => { setI(0); setScore(0); }}>Nochmal</button>
     </section>
   );
