@@ -5,6 +5,7 @@ import Postcards, { hasUnread } from "./Postcards.jsx";
 import Verbs from "./Verbs.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
+import { startMusic, stopMusic, musicOn, setMusic } from "./music.js";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
 // ---------- helpers ----------
@@ -242,6 +243,7 @@ const GAMES = [
 ];
 function Home({ words, progress, go }) {
   const now = useNow();
+  useEffect(() => { startMusic("casual"); return stopMusic; }, []);
   const [games, setGames] = useState(false);
   // words usually arrive late in the evening, so a word received on day D is the word of the day on D+1
   const yesterday = new Date(now); yesterday.setDate(now.getDate() - 1); // setDate, not now - DAY: DST days aren't 24h
@@ -578,6 +580,7 @@ function WordList({ words, progress, done }) {
 function Settings({ done, replay }) {
   const [sound, setOn] = useState(soundOn);
   const toggle = () => { setSound(!sound); setOn(!sound); if (!sound) play("right"); };
+  const [music, setM] = useState(musicOn);
   return (
     <div className="screen">
       <Top done={done} />
@@ -592,6 +595,11 @@ function Settings({ done, replay }) {
         <h3>Töne</h3>
         <p>Ein kleiner Klang bei richtigen und falschen Antworten und am Ende einer Lektion.</p>
         <button className="btn" onClick={toggle} aria-pressed={sound}>{sound ? "🔈 An" : "🔇 Aus"}</button>
+      </section>
+      <section className="card setting">
+        <h3>Musik</h3>
+        <p>Leise Gitarre auf dem Startbildschirm und an der ¿Quién?-Wand.</p>
+        <button className="btn" onClick={() => { setMusic(!music); setM(!music); }} aria-pressed={music}>{music ? "🎸 An" : "🔇 Aus"}</button>
       </section>
       <section className="card setting">
         <h3>Backup</h3>

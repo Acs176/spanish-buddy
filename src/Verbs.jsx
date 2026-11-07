@@ -6,6 +6,7 @@ import { Duo, Orn, Speak, Top, speak } from "./App.jsx";
 import VERBS, { PER_FORM, PEOPLE, PETALS, SLOTS, finished, fire, key, leftToday, makeRound, paint, petals, states, toNext, unlocked, waiting } from "./verbs.js";
 import { check, today } from "./srs.js";
 import { play } from "./sound.js";
+import { startMusic, stopMusic } from "./music.js";
 
 // petals painted per form, see paint() in verbs.js
 const load = () => { try { return JSON.parse(localStorage.getItem("verbs")) || {}; } catch { return {}; } };
@@ -105,6 +106,8 @@ export default function Verbs({ done }) {
   const [help, setHelp] = useState(() => { try { return !localStorage.getItem("verbsIntro"); } catch { return false; } });
   const [fresh, setFresh] = useState([]); // verbs the kiln just unlocked
   const play = () => { setFresh([]); setGame(g => g + 1); };
+  const wall = !firing && !help && !game;
+  useEffect(() => { if (wall) { startMusic("flamenco"); return stopMusic; } }, [wall]);
   const earn = k => setPainted(p => { const next = paint(p, k, today()); save(next); return next; });
 
   if (firing) return <><TileDefs /><Kiln painted={painted} day={today()} done={() => {

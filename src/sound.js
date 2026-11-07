@@ -4,7 +4,7 @@ let ctx;
 export const soundOn = () => { try { return localStorage.getItem("sound") !== "off"; } catch { return true; } };
 export const setSound = on => { try { localStorage.setItem("sound", on ? "on" : "off"); } catch { /* private mode */ } };
 
-function ac() {
+export function ac() {
   ctx ||= new AudioContext();
   if (ctx.state === "suspended") ctx.resume(); // iOS starts it suspended until a tap
   return ctx;

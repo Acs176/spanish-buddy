@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flamenco loop</title>
+<!-- Saved sketch: the varied Andalusian-cadence guitar loop (Am–G–F–E), plucked strings made in code. Open in a browser and press Play. -->
+<style>body{font-family:system-ui;background:#f6f1e7;color:#222;padding:2rem}button{font-size:18px;padding:12px 24px}#ch{font-size:22px;font-weight:600}#info{color:#666;font-size:14px}</style>
+<button id="pb">▶ Play</button>
+<div id="ch"></div><div id="info"></div>
+<script>
+let c,master,timer,on=false,next=0,step=0,cyc=-1,prog,pat,mel,strum,last=659;const cache={};
+const V={Am:[110,164.8,220,261.6,329.6],G:[98,146.8,196,246.9,293.7],F:[87.3,130.8,174.6,220,261.6],E:[82.4,123.5,164.8,207.7,246.9],Dm:[73.4,146.8,220,293.7,349.2],C:[130.8,164.8,196,261.6,329.6]};
+const PROGS=[['Am','G','F','E'],['Am','G','F','E'],['Dm','C','Am','E'],['F','E','Am','E'],['Am','Dm','Am','E']];
+const PATS=[[0,2,3,4,3,2],[0,2,4,3,4,2],[0,3,2,4,2,3],[0,2,3,2,4,3]];
+const EIGHTH=60/76/2;const r=a=>a[Math.floor(Math.random()*a.length)];
+function pluck(f){if(cache[f])return cache[f];const sr=c.sampleRate,len=sr*2.5,N=Math.round(sr/f),b=c.createBuffer(1,len,sr),d=b.getChannelData(0);for(let i=0;i<N;i++)d[i]=Math.random()*2-1;for(let i=1;i<N;i++)d[i]=(d[i]+d[i-1])/2;for(let i=N+1;i<len;i++)d[i]=(d[i-N]+d[i-N-1])*.4985;return cache[f]=b}
+function note(f,t,v){const s=c.createBufferSource(),g=c.createGain();s.buffer=pluck(f);g.gain.value=v*(.85+Math.random()*.3);s.connect(g).connect(master);s.start(Math.max(c.currentTime,t+(Math.random()-.5)*.016))}
+function newCycle(){cyc++;prog=cyc%4===0?PROGS[0]:r(PROGS);pat=r(PATS);mel=cyc%4!==0&&Math.random()<.7;strum=Math.random()<.4;
+document.getElementById('info').textContent=`Round ${cyc+1} · ${mel?'melody':'calm'}${strum?' · strum at the end':''}`}
+function tune(ch){const pool=V[ch].slice(2).map(f=>f*2).sort((a,b)=>a-b);const i=pool.reduce((b,f,k)=>Math.abs(f-last)<Math.abs(pool[b]-last)?k:b,0);const j=Math.min(pool.length-1,Math.max(0,i+r([-1,0,0,1])));return last=pool[j]}
+function tick(){while(next<c.currentTime+.3){const e=step%6,bar=Math.floor(step/6)%4;if(e===0&&bar===0)newCycle();const ch=prog[bar],fs=V[ch];
+if(e===0)document.getElementById('ch').textContent=ch;
+if(strum&&bar===3&&e===0){fs.forEach((f,k)=>note(f,next+k*.018,.32));note(fs[4]*2,next+.1,.15)}
+else if(!(strum&&bar===3&&e<3)){note(fs[pat[e]],next,e===0?.5:.32)}
+if(mel&&(e===0||e===3)&&Math.random()<.8){const f=bar===3&&e===3&&ch==='E'?329.6:tune(ch);note(f,next+.01,.3)}
+next+=EIGHTH*(e===0?1.08:1)*(bar===3&&e===5&&cyc%2?1.25:1);step++}}
+function start(){c||=new AudioContext();c.resume();master=c.createGain();master.gain.value=1.2;const lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=2600;master.connect(lp).connect(c.destination);next=c.currentTime+.1;step=0;cyc=-1;timer=setInterval(tick,80);tick()}
+function stop(){clearInterval(timer);master.gain.setTargetAtTime(0,c.currentTime,.3);document.getElementById('ch').textContent='';document.getElementById('info').textContent=''}
+const pb=document.getElementById('pb');pb.onclick=()=>{on=!on;on?start():stop();pb.textContent=on?'■ Stop':'▶ Play'};
+</script>
