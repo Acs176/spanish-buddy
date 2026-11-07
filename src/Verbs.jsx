@@ -5,6 +5,7 @@ import Kiln, { PETAL, Tile, TileDefs, paintBricks } from "./Kiln.jsx";
 import { Duo, Orn, Speak, Top, speak } from "./App.jsx";
 import VERBS, { PER_FORM, PEOPLE, PETALS, SLOTS, finished, fire, key, leftToday, makeRound, paint, petals, states, toNext, unlocked, waiting } from "./verbs.js";
 import { check, today } from "./srs.js";
+import { play } from "./sound.js";
 
 // petals painted per form, see paint() in verbs.js
 const load = () => { try { return JSON.parse(localStorage.getItem("verbs")) || {}; } catch { return {}; } };
@@ -152,6 +153,7 @@ function Round({ painted, focus, earn, again, done }) {
   const q = qs[i];
 
   useEffect(() => { if (q?.kind === "quien") speak(q.sentence); }, [q]);
+  useEffect(() => { if (!q) play("done"); }, [q]);
   useEffect(() => {
     if (!fly) return;
     const a = flyer.current.getBoundingClientRect(), b = tile.current.getBoundingClientRect();
@@ -177,6 +179,7 @@ function Round({ painted, focus, earn, again, done }) {
   }
 
   const answer = (right, el) => {
+    play(right ? "right" : "wrong");
     if (right) {
       setScore(s => s + 1);
       if (q.kind !== "quien") {

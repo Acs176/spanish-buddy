@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { play } from "./sound.js";
 import VERBS, { PEOPLE, states, waiting } from "./verbs.js";
 
 const rnd = (a, b) => a + Math.random() * (b - a);
@@ -184,13 +185,13 @@ export default function Kiln({ painted, day, done }) {
     return () => { stop(); timers.current.forEach(clearTimeout); };
   }, []);
 
-  const finish = () => { timers.current.forEach(clearTimeout); heat.current = .2; setStage("end"); };
+  const finish = () => { timers.current.forEach(clearTimeout); heat.current = .2; setStage("end"); if (stage !== "fired") play("ding"); }; // fired already dinged
   const burn = () => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return finish();
-    heat.current = 1; setStage("burn");
+    heat.current = 1; setStage("burn"); play("crackle");
     timers.current = [
       setTimeout(() => setStage("hot"), 1500),
-      setTimeout(() => setStage("fired"), 3000),
+      setTimeout(() => { setStage("fired"); play("ding"); }, 3000),
       setTimeout(() => { heat.current = .2; setStage("forward"); }, 3900),
       setTimeout(() => setStage("end"), 4700),
     ];

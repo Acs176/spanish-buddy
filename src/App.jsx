@@ -4,6 +4,7 @@ import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
 import Verbs from "./Verbs.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
+import { play, soundOn, setSound } from "./sound.js";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
 // ---------- helpers ----------
@@ -356,6 +357,7 @@ function Flashcards({ words, progress, review, done }) {
   const [answered, setAnswered] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [mood, setMood] = useState("idle");
+  useEffect(() => { if (!it && answered) play("done"); }, [it, answered]);
 
   if (!it) return (
     <div className="screen center">
@@ -369,6 +371,7 @@ function Flashcards({ words, progress, review, done }) {
   const answer = rating => {
     const next = schedule(card, rating, now);
     review(it.key, next);
+    if (rating !== 2) play(rating === 1 ? "wrong" : "right");
     setMood(["", "sad", "idle", "happy", "happy"][rating]);
     setFlipped(false);
     setAnswered(n => n + 1);
@@ -452,6 +455,7 @@ function Practice({ words, progress, done }) {
   const q = qs[i];
 
   useEffect(() => { if (q?.kind === "listen") speak(q.answer); }, [q]);
+  useEffect(() => { if (!q) play("done"); }, [q]);
 
   const restart = s => { setSection(s); setQs(questions(s)); setI(0); setScore(0); };
   const sections = sectionsOf(words);
@@ -475,6 +479,7 @@ function Practice({ words, progress, done }) {
   const answered = write ? res : chosen;
   const ok = write ? res && res !== "no" : chosen === q.answer; // a missing accent still counts, with a note
   const mark = right => {
+    play(right ? "right" : "wrong");
     if (right) setScore(s => s + 1);
     const m = miss(misses, q.w.id, right);
     setMisses(m);
@@ -571,6 +576,8 @@ function WordList({ words, progress, done }) {
 
 // ---------- settings ----------
 function Settings({ done, replay }) {
+  const [sound, setOn] = useState(soundOn);
+  const toggle = () => { setSound(!sound); setOn(!sound); if (!sound) play("right"); };
   return (
     <div className="screen">
       <Top done={done} />
@@ -580,6 +587,11 @@ function Settings({ done, replay }) {
         <h3>Tour durch die App</h3>
         <p>Adriáns Brief und die Tour vom ersten Mal, noch einmal von vorn.</p>
         <button className="btn" onClick={replay}>Tour ansehen</button>
+      </section>
+      <section className="card setting">
+        <h3>Töne</h3>
+        <p>Ein kleiner Klang bei richtigen und falschen Antworten und am Ende einer Lektion.</p>
+        <button className="btn" onClick={toggle} aria-pressed={sound}>{sound ? "🔈 An" : "🔇 Aus"}</button>
       </section>
       <section className="card setting">
         <h3>Backup</h3>
