@@ -2451,7 +2451,18 @@
   "Pero entonces ya no estoy sola.": "audio/12ff61f8c0d7ed30.mp3",
   "Ahora los dos vamos juntos al mismo sitio.": "audio/da200f09de5b8c1d.mp3",
   "El pueblo ya está ahí abajo, a la derecha.": "audio/b1d249c42219bc56.mp3",
-  "Hoy no voy a ningún lugar sola, y eso está muy bien.": "audio/80946a32fde0a8dd.mp3"
+  "Hoy no voy a ningún lugar sola, y eso está muy bien.": "audio/80946a32fde0a8dd.mp3",
+  "Hoy quiero cocinar algo.": "audio/317fe0c7fa6d46a5.mp3",
+  "Voy a la cocina, pero ya es muy tarde y aquí no hay nadie.": "audio/65228077afec67c9.mp3",
+  "En la nevera hay pan y queso.": "audio/a835159619bf3dc0.mp3",
+  "¡Qué bien! Puedo hacer un quesito.": "audio/956496a55627b946.mp3",
+  "Pongo el pan y el queso en un plato.": "audio/d12fb872ee6cbfd3.mp3",
+  "Pero aquí no hay ningún cuchillo. Hay una cuchara.": "audio/b149862879992643.mp3",
+  "Entonces, ¿qué hago?": "audio/61d1b735abd22649.mp3",
+  "No espero más: hago el quesito con la cuchara.": "audio/f9046c2533043395.mp3",
+  "No es la misma cosa, pero ya está.": "audio/c8c0ca448facb268.mp3",
+  "Está muy bueno.": "audio/224b290b00ddd22f.mp3",
+  "Mañana tengo una pregunta: ¿dónde están los cuchillos?": "audio/af7c31a3a14b5c9e.mp3"
  },
  "stories": [
   {
@@ -2749,6 +2760,103 @@
       "Sí, va sola",
       "No, va con un hombre",
       "Va con Ana"
+     ]
+    }
+   ]
+  },
+  {
+   "day": "2026-11-08",
+   "title": "Un quesito en la cocina",
+   "de": "Ein kleines Käsebrot in der Küche",
+   "sentences": [
+    {
+     "es": "Hoy quiero cocinar algo.",
+     "de": "Heute möchte ich etwas kochen."
+    },
+    {
+     "es": "Voy a la cocina, pero ya es muy tarde y aquí no hay nadie.",
+     "de": "Ich gehe in die Küche, aber es ist schon sehr spät und hier ist niemand."
+    },
+    {
+     "es": "En la nevera hay pan y queso.",
+     "de": "Im Kühlschrank gibt es Brot und Käse."
+    },
+    {
+     "es": "¡Qué bien! Puedo hacer un quesito.",
+     "de": "Wie schön! Ich kann ein kleines Käsebrot machen."
+    },
+    {
+     "es": "Pongo el pan y el queso en un plato.",
+     "de": "Ich lege das Brot und den Käse auf einen Teller."
+    },
+    {
+     "es": "Pero aquí no hay ningún cuchillo. Hay una cuchara.",
+     "de": "Aber hier gibt es kein Messer. Es gibt einen Löffel."
+    },
+    {
+     "es": "Entonces, ¿qué hago?",
+     "de": "Und jetzt, was mache ich?"
+    },
+    {
+     "es": "No espero más: hago el quesito con la cuchara.",
+     "de": "Ich warte nicht länger: Ich mache das Käsebrot mit dem Löffel."
+    },
+    {
+     "es": "No es la misma cosa, pero ya está.",
+     "de": "Es ist nicht dasselbe, aber es geht."
+    },
+    {
+     "es": "Está muy bueno.",
+     "de": "Es schmeckt sehr gut."
+    },
+    {
+     "es": "Mañana tengo una pregunta: ¿dónde están los cuchillos?",
+     "de": "Morgen habe ich eine Frage: Wo sind die Messer?"
+    }
+   ],
+   "new": [
+    {
+     "es": "la nevera",
+     "de": "der Kühlschrank"
+    },
+    {
+     "es": "pan",
+     "de": "das Brot"
+    },
+    {
+     "es": "un plato",
+     "de": "ein Teller"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Qué hay en la nevera?",
+     "de": "Was gibt es im Kühlschrank?",
+     "answer": "Pan y queso.",
+     "options": [
+      "Pan y queso.",
+      "Pan y cuchillos.",
+      "Nada."
+     ]
+    },
+    {
+     "es": "¿Con qué hace el quesito?",
+     "de": "Womit macht sie das Käsebrot?",
+     "answer": "Con una cuchara.",
+     "options": [
+      "Con un cuchillo.",
+      "Con una cuchara.",
+      "Con un tenedor."
+     ]
+    },
+    {
+     "es": "¿Hay alguien en la cocina?",
+     "de": "Ist jemand in der Küche?",
+     "answer": "No, no hay nadie.",
+     "options": [
+      "Sí, una amiga.",
+      "No, no hay nadie.",
+      "Sí, hay mucha gente."
      ]
     }
    ]
