@@ -2462,7 +2462,19 @@
   "No espero más: hago el quesito con la cuchara.": "audio/f9046c2533043395.mp3",
   "No es la misma cosa, pero ya está.": "audio/c8c0ca448facb268.mp3",
   "Está muy bueno.": "audio/224b290b00ddd22f.mp3",
-  "Mañana tengo una pregunta: ¿dónde están los cuchillos?": "audio/af7c31a3a14b5c9e.mp3"
+  "Mañana tengo una pregunta: ¿dónde están los cuchillos?": "audio/af7c31a3a14b5c9e.mp3",
+  "Hoy Marta está en el albergue, pero ya no hay nadie.": "audio/c7160f7908457137.mp3",
+  "Todos están ya en las rocas.": "audio/d5a034939228caf9.mp3",
+  "Marta quiere ir también, pero no tiene las llaves de la habitación.": "audio/4aaa99830365584b.mp3",
+  "¿Dónde están las llaves? Esa es la pregunta.": "audio/1da0e354e4f780a6.mp3",
+  "La respuesta está en la cocina: allí, a la derecha.": "audio/0eb65ccb65b9c697.mp3",
+  "¡Ya está! Ahora Marta tiene las llaves.": "audio/5dab7c9780868477.mp3",
+  "Quiere un café, pero no hay. Entonces va a las rocas sin café.": "audio/7c01463599a69002.mp3",
+  "Allí está Ana, con dos cafés.": "audio/a445948bebd5e51f.mp3",
+  "Uno es para Marta. \"¿Para mí?\" \"Claro.\"": "audio/7a96b8c4a645ea97.mp3",
+  "El café está muy bueno.": "audio/c0daae64705c1ab2.mp3",
+  "Las dos están juntas, y ahora todo está bien.": "audio/826193f40e8c5929.mp3",
+  "\"Por cierto, ¿y las llaves?\" \"Aquí, claro.\"": "audio/e9d4f22566a52256.mp3"
  },
  "stories": [
   {
@@ -2857,6 +2869,107 @@
       "Sí, una amiga.",
       "No, no hay nadie.",
       "Sí, hay mucha gente."
+     ]
+    }
+   ]
+  },
+  {
+   "day": "2026-11-09",
+   "title": "Las llaves",
+   "de": "Die Schlüssel",
+   "sentences": [
+    {
+     "es": "Hoy Marta está en el albergue, pero ya no hay nadie.",
+     "de": "Heute ist Marta in der Herberge, aber es ist schon niemand mehr da."
+    },
+    {
+     "es": "Todos están ya en las rocas.",
+     "de": "Alle sind schon an den Felsen."
+    },
+    {
+     "es": "Marta quiere ir también, pero no tiene las llaves de la habitación.",
+     "de": "Marta will auch gehen, aber sie hat die Schlüssel vom Zimmer nicht."
+    },
+    {
+     "es": "¿Dónde están las llaves? Esa es la pregunta.",
+     "de": "Wo sind die Schlüssel? Das ist die Frage."
+    },
+    {
+     "es": "La respuesta está en la cocina: allí, a la derecha.",
+     "de": "Die Antwort ist in der Küche: dort, rechts."
+    },
+    {
+     "es": "¡Ya está! Ahora Marta tiene las llaves.",
+     "de": "Fertig! Jetzt hat Marta die Schlüssel."
+    },
+    {
+     "es": "Quiere un café, pero no hay. Entonces va a las rocas sin café.",
+     "de": "Sie will einen Kaffee, aber es gibt keinen. Also geht sie ohne Kaffee zu den Felsen."
+    },
+    {
+     "es": "Allí está Ana, con dos cafés.",
+     "de": "Dort ist Ana, mit zwei Kaffees."
+    },
+    {
+     "es": "Uno es para Marta. \"¿Para mí?\" \"Claro.\"",
+     "de": "Einer ist für Marta. „Für mich?\" „Klar.\""
+    },
+    {
+     "es": "El café está muy bueno.",
+     "de": "Der Kaffee ist sehr gut."
+    },
+    {
+     "es": "Las dos están juntas, y ahora todo está bien.",
+     "de": "Die beiden sind zusammen, und jetzt ist alles gut."
+    },
+    {
+     "es": "\"Por cierto, ¿y las llaves?\" \"Aquí, claro.\"",
+     "de": "„Übrigens, und die Schlüssel?\" „Hier, klar.\""
+    }
+   ],
+   "new": [
+    {
+     "es": "el albergue",
+     "de": "die Herberge (Hostel)"
+    },
+    {
+     "es": "las rocas",
+     "de": "die Felsen"
+    },
+    {
+     "es": "las llaves",
+     "de": "die Schlüssel"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Dónde están las llaves?",
+     "de": "Wo sind die Schlüssel?",
+     "answer": "En la cocina.",
+     "options": [
+      "En la habitación.",
+      "En la cocina.",
+      "En las rocas."
+     ]
+    },
+    {
+     "es": "¿Quién tiene dos cafés?",
+     "de": "Wer hat zwei Kaffees?",
+     "answer": "Ana.",
+     "options": [
+      "Nadie.",
+      "Ana.",
+      "Marta."
+     ]
+    },
+    {
+     "es": "¿Cómo está el café?",
+     "de": "Wie ist der Kaffee?",
+     "answer": "Muy bueno.",
+     "options": [
+      "Frío.",
+      "Muy bueno.",
+      "Muy malo."
      ]
     }
    ]
