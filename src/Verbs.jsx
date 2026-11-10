@@ -33,7 +33,8 @@ const Both = ({ size = 140, say, mood }) => (
 const WHO = [Angela, Mascot, LockEmUp, Both];
 const Who = ({ p, ...rest }) => { const C = WHO[p]; return <C {...rest} />; };
 const NAMES = ["Angela", "Adrián", "Mr. Lock 'em up", "los dos"];
-const CLS = ["yo", "tu", "el", "nos"]; // each person's colour in styles.css
+const CLS = ["yo", "tu", "el", "nos"];
+const ALL = [...PEOPLE, "vosotros", "ellos"]; // the whole present on the verb's card, the ones not played yet greyed out // each person's colour in styles.css
 const FLY = ["#d9683a", "#476fc4", "#4f9150", "#8d55a4"];
 
 // the game happens in the workshop: a brick wall in warm light behind every page
@@ -180,8 +181,10 @@ export default function Verbs({ done }) {
         <section key={v.id} className="card forms" ref={el => el?.scrollIntoView({ block: "nearest" })}>
           <h3>{v.id} <Speak text={v.id} /></h3>
           <p className="sub">{v.de}</p>
-          {PEOPLE.slice(0, n).map((who, p) => (
-            <p key={who}><i>{who}</i> <b>{v.forms[p]}</b> <Dots p={p} states={states(v, painted, false, n).slice(p * PER_FORM, (p + 1) * PER_FORM)} /> <Speak text={v.forms[p]} /></p>
+          {ALL.map((who, p) => (
+            <p key={who} className={p < n ? "" : "soon"}><i>{who}</i> <b>{v.forms[p]}</b>
+              {p < n ? <Dots p={p} states={states(v, painted, false, n).slice(p * PER_FORM, (p + 1) * PER_FORM)} /> : <small>pronto</small>}
+              <Speak text={v.forms[p]} /></p>
           ))}
         </section>
       )}

@@ -213,6 +213,6 @@ export function makeRound(verbs, painted, day, focus) {
 // everything the game says, for sync.py to voice
 export const verbTexts = () => VERBS.flatMap(v => [
   v.id,
-  ...v.forms.slice(0, PEOPLE.length),
+  ...v.forms, // all six: the verb's card shows the whole present, even the people not played yet
   ...v.lines.flatMap(l => PEOPLE.flatMap((_, p) => l.de[p] ? [fill(l, v.forms[p])] : [])),
 ]);

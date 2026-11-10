@@ -536,7 +536,9 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .forms h3 { margin: 0; text-align: center; font: 700 26px/1.2 ui-serif, "New York", Georgia, serif; }
 .forms .sub { margin: 2px 0 10px; }
 .forms p:not(.sub) { display: flex; align-items: center; gap: 8px; padding: 6px 0; font: 19px ui-serif, "New York", Georgia, serif; }
-.forms p > i { min-width: 32px; color: var(--red); }
+.forms p > i { width: 82px; flex: none; color: var(--red); }
+.forms p.soon i, .forms p.soon b { opacity: .45; }
+.forms p.soon small { color: var(--muted); font: italic 13px ui-serif, "New York", Georgia, serif; border: 1px dashed #b5a586; border-radius: 99px; padding: 1px 8px; }
 .forms b { flex: 1; }
 .sub.small { margin-top: 0; font-size: 14px; }
 .who { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
