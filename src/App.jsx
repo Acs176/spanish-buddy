@@ -266,7 +266,7 @@ const GAMES = [
   ["practice", "Üben", "Lücken, Hören, Schreiben", <><path d="M12 1.5 14.4 14H9.6Z" fill="#2f4f9d" /><path d="M6.5 14h11v2.2h-11Z" fill="#e0b050" /><path d="M11 16.2h2V21h-2Z" fill="#2f4f9d" stroke="none" /><circle cx="12" cy="22" r="1.4" fill="#c4572f" stroke="none" /></>],
   // an open book, a red ribbon bookmark
   ["story", "Geschichten", "Jeden Tag eine neue", <><path d="M12 6C9.5 4.3 6.5 4 3 4.5v14c3.5-.5 6.5-.2 9 1.5 2.5-1.7 5.5-2 9-1.5v-14C17.5 4 14.5 4.3 12 6Z" fill="#fffdf8" /><path d="M12 6v14" /><path d="M15.5 4.6v6l1.5-1.3 1.5 1.3V4.5" fill="#c4572f" stroke="none" /><path d="M5.5 8.5c1.8-.2 3.5 0 4.5.6M5.5 11.5c1.8-.2 3.5 0 4.5.6" stroke="#e0b050" /></>],
-  ["verbs", "¿Quién?", "Verben, yo und tú", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
+  ["verbs", "¿Quién?", "Verben: wer macht was?", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
 ];
 function Home({ words, progress, go, story }) {
   const now = useNow();

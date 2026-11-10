@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
+import LockEmUp from "./LockEmUp.jsx";
 import Kiln, { PETAL, Tile, TileDefs, paintBricks } from "./Kiln.jsx";
 import { Duo, Orn, Speak, Top, speak } from "./App.jsx";
-import VERBS, { PER_FORM, PEOPLE, PETALS, SLOTS, finished, fire, key, leftToday, makeRound, paint, petals, states, toNext, unlocked, waiting } from "./verbs.js";
+import VERBS, { BASE, PER_FORM, PEOPLE, PETALS, SLOTS, active, finished, fire, key, leftToday, makeRound, paint, petals, states, toNext, unlocked, waiting } from "./verbs.js";
 import { check, today } from "./srs.js";
 import { play } from "./sound.js";
 import { startMusic, stopMusic } from "./music.js";
@@ -15,10 +16,25 @@ const any = a => a[Math.floor(Math.random() * a.length)];
 const RIGHT = ["¡Eso es!", "¡Olé!", "¡Claro que sí!", "¡Muy bien!", "¡Qué crack!"];
 const WRONG = ["¡Uy! Fast!", "¡Ay, ay, ay!", "¿Cómo? Adrián ist verwirrt.", "¡Qué va! Noch nicht ganz.", "¡Madre mía! Gleich nochmal."];
 
-// the person doing it: yo is Angela, tú is Adrián
-const Who = ({ p, ...rest }) => p === 0 ? <Angela {...rest} /> : <Mascot {...rest} />;
-const NAMES = ["Angela", "Adrián"];
-const FLY = ["#d9683a", "#476fc4"];
+// nosotros: the two of them cheek to cheek, leaning in, a heart over them, one bubble for both
+const Both = ({ size = 140, say, mood }) => (
+  <div className="mascot-wrap">
+    {say && <div className="bubble">{say}</div>}
+    <div className="pair" style={{ width: size * 1.25, height: size * .82, marginTop: size * .14 }}>
+      <div className="her"><Angela mood={mood} size={size * .82} /></div>
+      <div className="him" style={{ left: size * .43 }}><Mascot mood={mood} size={size * .82} /></div>
+      <svg className="love" viewBox="0 0 24 24" width={size * .16} height={size * .16} aria-hidden="true">
+        <path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11Z" fill="#c4572f" stroke="#3b2418" strokeWidth="1.8" />
+      </svg>
+    </div>
+  </div>
+);
+// the person doing it: yo is Angela, tú is Adrián, él is Mr. Lock 'em up, nosotros both of them
+const WHO = [Angela, Mascot, LockEmUp, Both];
+const Who = ({ p, ...rest }) => { const C = WHO[p]; return <C {...rest} />; };
+const NAMES = ["Angela", "Adrián", "Mr. Lock 'em up", "los dos"];
+const CLS = ["yo", "tu", "el", "nos"]; // each person's colour in styles.css
+const FLY = ["#d9683a", "#476fc4", "#4f9150", "#8d55a4"];
 
 // the game happens in the workshop: a brick wall in warm light behind every page
 function Workshop({ center, children }) {
@@ -36,7 +52,7 @@ function Workshop({ center, children }) {
 
 // open tiles, then the next verb's name waiting faintly in its recess, then empty ones
 function Wall({ painted, open, setOpen, fresh = [] }) {
-  const verbs = unlocked(painted);
+  const verbs = unlocked(painted), n = active(painted);
   return (
     <div className="wall">
       {Array.from({ length: SLOTS }, (_, i) => {
@@ -45,7 +61,7 @@ function Wall({ painted, open, setOpen, fresh = [] }) {
         return (
           <button key={v.id} className={`slot ${fresh.includes(v.id) ? "new" : ""}`} aria-pressed={open === v.id} onClick={() => setOpen?.(open === v.id ? null : v.id)}
             aria-label={`${v.id}, ${petals(v, painted)} von ${PETALS} Blütenblättern`}>
-            <Tile petals={states(v, painted)} gold={finished(v, painted)} />
+            <Tile petals={states(v, painted, false, n)} gold={finished(v, painted)} />
             <b>{v.id}</b>
           </button>
         );
@@ -70,7 +86,7 @@ function nextStep(painted) {
 // three dots per form: glazed, still wet, or not painted yet
 const Dots = ({ states: s, p }) => (
   <span className="dots" role="img" aria-label={`${s.filter(x => x !== "empty").length} von ${PER_FORM}`}>
-    {s.map((x, i) => <i key={i} className={`${x} ${p ? "tu" : "yo"}`} />)}
+    {s.map((x, i) => <i key={i} className={`${x} ${CLS[p]}`} />)}
   </span>
 );
 
@@ -78,7 +94,7 @@ const Dots = ({ states: s, p }) => (
 const stepTile = s => [s, "empty", "empty", s, "empty", "empty"];
 const STEPS = [
   ["Malen", "🖌️", "wet", "Eine richtige Antwort malt ein Blütenblatt. Bilde die Form selbst: Die Hörfragen ¿Quién? sind nur zum Aufwärmen."],
-  ["Trocknen", "🌙", "wet", "Das Blütenblatt bleibt über Nacht blass. Pro Tag kannst du 8 Blütenblätter malen."],
+  ["Trocknen", "🌙", "wet", "Das Blütenblatt bleibt über Nacht blass. Pro Tag gibt es nur eine Handvoll Blütenblätter zu malen."],
   ["Brennen", "🔥", "fired", "Am nächsten Tag kommt deine Kachel in den Ofen und glänzt danach für immer."],
 ];
 function Intro({ done }) {
@@ -98,6 +114,36 @@ function Intro({ done }) {
   );
 }
 
+// someone new comes into the workshop: Mr. Lock 'em up after two finished tiles, then the two of them together (see ARRIVE)
+// [what they say, the German, who it is, where their glaze goes, the button]
+const ARRIVAL = [, ,
+  ["¡Hola! Soy Mr. Lock 'em up.", "er, sie", "Mr. Lock 'em up kommt in die Werkstatt.", "Seine grünen Blätter glasieren den linken Rand.", "¡Hola, Mr. Lock 'em up!"],
+  ["¡Ahora pintamos juntos!", "wir", "Angela und Adrián malen jetzt zusammen.", "Ihre lila Blätter glasieren den rechten Rand.", "¡Vamos juntos!"],
+];
+function Arrival({ p, done }) {
+  const [say, de, text, glaze, ok] = ARRIVAL[p];
+  useEffect(() => { play("done"); }, []);
+  return (
+    <Workshop center>
+      <h2 className="title">¡Toc, toc!</h2>
+      <Who p={p} size={150} say={say} mood="happy" />
+      <section className="card arrival" style={{ "--c": FLY[p] }}>
+        <p className="label">Neu in der Werkstatt</p>
+        <h3>{PEOPLE[p]} <i>{de}</i></h3>
+        <p className="lead">{text}</p>
+        <div className="verbchips">
+          {VERBS.slice(0, 4).map(v => <button key={v.id} onClick={() => speak(v.forms[p])}>{v.forms[p]}</button>)}
+        </div>
+        <div className="glazeinfo">
+          <Tile petals={Array(PER_FORM * (p + 1)).fill("fired")} />
+          <p>{glaze} Ein Extra: Die nächste Kachel kommt wie immer.</p>
+        </div>
+      </section>
+      <button className="btn primary" onClick={done}>{ok}</button>
+    </Workshop>
+  );
+}
+
 export default function Verbs({ done }) {
   const [painted, setPainted] = useState(load);
   const [game, setGame] = useState(0); // which round, 0 = none: a new number starts the round fresh
@@ -105,6 +151,7 @@ export default function Verbs({ done }) {
   const [firing, setFiring] = useState(() => waiting(load(), today()).length > 0); // yesterday's petals come first
   const [help, setHelp] = useState(() => { try { return !localStorage.getItem("verbsIntro"); } catch { return false; } });
   const [fresh, setFresh] = useState([]); // verbs the kiln just unlocked
+  const [met, setMet] = useState(() => { try { return +localStorage.getItem("verbsMet") || BASE; } catch { return BASE; } }); // people she has been introduced to
   const play = () => { setFresh([]); setGame(g => g + 1); };
   const wall = !firing && !help && !game;
   useEffect(() => { if (wall) { startMusic("flamenco"); return stopMusic; } }, [wall]);
@@ -116,6 +163,8 @@ export default function Verbs({ done }) {
     save(next); setPainted(next); setFiring(false); setFresh(won);
   }} /></>;
   if (help) return <Intro done={() => { try { localStorage.setItem("verbsIntro", "1"); } catch { /* private mode: it shows again next time */ } setHelp(false); window.scrollTo(0, 0); }} />;
+  const n = active(painted);
+  if (met < n) return <Arrival key={met} p={met} done={() => { try { localStorage.setItem("verbsMet", met + 1); } catch { /* private mode: he knocks again next time */ } setMet(met + 1); }} />;
   const v = VERBS.find(x => x.id === open), next = nextStep(painted);
   if (game) return <Round key={game} painted={painted} focus={v} earn={earn} again={play} done={() => setGame(0)} />;
   return (
@@ -131,8 +180,8 @@ export default function Verbs({ done }) {
         <section key={v.id} className="card forms" ref={el => el?.scrollIntoView({ block: "nearest" })}>
           <h3>{v.id} <Speak text={v.id} /></h3>
           <p className="sub">{v.de}</p>
-          {PEOPLE.map((who, p) => (
-            <p key={who}><i>{who}</i> <b>{v.forms[p]}</b> <Dots p={p} states={states(v, painted).slice(p * PER_FORM, (p + 1) * PER_FORM)} /> <Speak text={v.forms[p]} /></p>
+          {PEOPLE.slice(0, n).map((who, p) => (
+            <p key={who}><i>{who}</i> <b>{v.forms[p]}</b> <Dots p={p} states={states(v, painted, false, n).slice(p * PER_FORM, (p + 1) * PER_FORM)} /> <Speak text={v.forms[p]} /></p>
           ))}
         </section>
       )}
@@ -153,7 +202,7 @@ function Round({ painted, focus, earn, again, done }) {
   const [fresh, setFresh] = useState(null); // which petal of the tile just landed
   const [note, setNote] = useState(""); // why a right answer earned no petal
   const tile = useRef(), flyer = useRef();
-  const q = qs[i];
+  const q = qs[i], n = active(start); // who plays stays the same for the whole round
 
   useEffect(() => { if (q?.kind === "quien") speak(q.sentence); }, [q]);
   useEffect(() => { if (!q) play("done"); }, [q]);
@@ -168,7 +217,7 @@ function Round({ painted, focus, earn, again, done }) {
   }, [fly]);
 
   if (!q) {
-    const count = p => VERBS.reduce((sum, v) => sum + petals(v, p), 0);
+    const count = p => VERBS.reduce((sum, v) => sum + petals(v, p, PEOPLE.length), 0);
     const got = count(painted) - count(start);
     return (
       <Workshop center>
@@ -224,18 +273,18 @@ function Round({ painted, focus, earn, again, done }) {
           </button>
         </section>
         <div className="who">
-          {PEOPLE.map((who, p) => (
+          {PEOPLE.slice(0, n).map((who, p) => (
             <button key={who} onClick={e => tap(p, e)} aria-label={`${who}, ${NAMES[p]}`}
               className={`opt ${answered && p === q.p ? "right" : ""} ${chosen === p && !ok ? "wrong" : ""}`}>
               <Who p={p} size={104} mood={!answered ? "idle" : p === q.p ? "happy" : chosen === p ? "sad" : "idle"} />
-              <span>{who} · {NAMES[p]}</span>
+              <span className="whoname"><b>{who}</b><small>{NAMES[p]}</small></span>
             </button>
           ))}
         </div>
       </> : <>
         <div className="paintrow">
           <div className="duo"><Who p={q.p} size={92} say={PEOPLE[q.p]} mood={!answered ? "idle" : ok ? "happy" : "sad"} /></div>
-          <div className="livetile" ref={tile}><Tile petals={states(q.v, painted)} gold={finished(q.v, painted)} fresh={fresh} /></div>
+          <div className="livetile" ref={tile}><Tile petals={states(q.v, painted, false, n)} gold={finished(q.v, painted)} fresh={fresh} /></div>
         </div>
         <section className="card question">
           <small>{q.v.id}</small>

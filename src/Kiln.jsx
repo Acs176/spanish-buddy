@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { play } from "./sound.js";
-import VERBS, { PEOPLE, states, waiting } from "./verbs.js";
+import VERBS, { active, states, waiting } from "./verbs.js";
 
 const rnd = (a, b) => a + Math.random() * (b - a);
 
@@ -68,22 +68,28 @@ export const TileDefs = () => (
     <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#fff" stopOpacity=".5" /><stop offset=".35" stopColor="#fff" stopOpacity="0" /></linearGradient>
     <radialGradient id="tyo" cx=".4" cy=".35" r=".8"><stop offset="0" stopColor="#d9683a" /><stop offset="1" stopColor="#a93f19" /></radialGradient>
     <radialGradient id="ttu" cx=".4" cy=".35" r=".8"><stop offset="0" stopColor="#476fc4" /><stop offset="1" stopColor="#2a4a9b" /></radialGradient>
+    <radialGradient id="tel" cx=".4" cy=".35" r=".8"><stop offset="0" stopColor="#5fa35a" /><stop offset="1" stopColor="#2f6b35" /></radialGradient>
+    <radialGradient id="tnos" cx=".4" cy=".35" r=".8"><stop offset="0" stopColor="#a467bb" /><stop offset="1" stopColor="#6b3a85" /></radialGradient>
     <filter id="tgl" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur in="SourceAlpha" stdDeviation="3.4" result="b" />
       <feSpecularLighting in="b" surfaceScale="4" specularConstant="1" specularExponent="44" lightingColor="#fff" result="s"><feDistantLight azimuth="232" elevation="50" /></feSpecularLighting>
       <feComposite in="s" in2="SourceAlpha" operator="in" result="sp" /><feComposite in="SourceGraphic" in2="sp" operator="arithmetic" k1="0" k2="1" k3=".9" k4="0" /></filter>
   </defs></svg>
 );
-const ROT = [240, 300, 180, 60, 120, 0]; // yo on the left, tú on the right; the first petals point sideways so that reads at once
+// yo on the left, tú on the right; the first petals point sideways so that reads at once.
+// Then the glaze, small leaves round the edge: él in the left corners and side, nosotros in the right ones.
+const ROT = [240, 300, 180, 60, 120, 0, 270, 315, 225, 90, 45, 135];
 export const PETAL = "M100 30C127 46 125 74 100 91 75 74 73 46 100 30Z";
-const WET = ["#e4b9a2", "#adbbd9"], WET_LINE = ["#c78d70", "#8596bb"], FIRED_LINE = ["#7c2a0e", "#172f70"];
+export const GLAZE = ["url(#tyo)", "url(#ttu)", "url(#tel)", "url(#tnos)"];
+const WET = ["#e4b9a2", "#adbbd9", "#bcd6b4", "#d6bde0"], WET_LINE = ["#c78d70", "#8596bb", "#86a97e", "#a88bb8"], FIRED_LINE = ["#7c2a0e", "#172f70", "#1d4a22", "#4a2260"];
 function Petal({ i, state, fresh }) {
-  const who = i < 3 ? 0 : 1;
+  const who = Math.floor(i / 3), a = ROT[i], d = a % 90 ? 58 : 52; // a leaf in a corner sits further out than one on a side
   const look = state === "empty" ? { fill: "#e9dcc2", fillOpacity: .55, stroke: "#a79777", strokeOpacity: .6, strokeWidth: 1, strokeDasharray: "2.5 3" }
     : state === "wet" ? { fill: WET[who], stroke: WET_LINE[who], strokeWidth: 1 }
-    : { fill: who ? "url(#ttu)" : "url(#tyo)", stroke: FIRED_LINE[who], strokeWidth: 1.2 };
-  return <g transform={`rotate(${ROT[i]} 100 100)`}><path d={PETAL} className={fresh ? "tpop" : undefined} {...look} /></g>;
+    : { fill: GLAZE[who], stroke: FIRED_LINE[who], strokeWidth: 1.2 };
+  const t = who < 2 ? `rotate(${a} 100 100)` : `rotate(${a} 100 100) translate(100 ${100 - d}) scale(.36) translate(-100 -100)`;
+  return <g transform={t}><path d={PETAL} className={fresh ? "tpop" : undefined} vectorEffect="non-scaling-stroke" {...look} /></g>;
 }
-// petals: six states from states() in verbs.js. fresh: index of the petal that just landed. gold: a finished tile.
+// petals: three states per person from states() in verbs.js, six without the glaze. fresh: index of the petal that just landed. gold: a finished tile.
 export const Tile = ({ petals, fresh, gold }) => (
   <svg className="gtile" viewBox="0 0 200 200" aria-hidden="true">
     <rect x="2" y="2" width="196" height="196" rx="15" fill="url(#tb)" />
@@ -170,7 +176,7 @@ export default function Kiln({ painted, day, done }) {
   const [stage, setStage] = useState("idle"); // idle → burn → hot → fired → forward → end
   const heat = useRef(.14), timers = useRef([]);
   const r = { wall: useRef(), lit: useRef(), fire: useRef(), front: useRef(), embers: useRef(), glow: useRef(), fit: useRef() };
-  const verbs = VERBS.filter(v => forms.some(f => f.v === v));
+  const verbs = VERBS.filter(v => forms.some(f => f.v === v)), n = active(painted);
   const L = layout(verbs.length);
 
   useEffect(() => {
@@ -220,8 +226,8 @@ export default function Kiln({ painted, day, done }) {
           <div className="ktiles" style={{ gridTemplateColumns: `repeat(${L.cols}, ${L.size}px)`, gap: L.gap, top: 533 - L.h, "--dy": `${L.dy}px`, "--sc": L.scale }}>
             {verbs.map(v => (
               <div key={v.id} className="ktile" style={{ width: L.size, height: L.size }}>
-                <div className="kwet"><Tile petals={states(v, painted)} /></div>
-                <div className="kglazed"><Tile petals={states(v, painted, true)} /></div>
+                <div className="kwet"><Tile petals={states(v, painted, false, n)} /></div>
+                <div className="kglazed"><Tile petals={states(v, painted, true, n)} /></div>
                 <div className="khotlayer" />
                 <div className="kclip"><i /></div>
               </div>

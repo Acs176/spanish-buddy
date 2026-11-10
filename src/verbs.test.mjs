@@ -1,6 +1,6 @@
 // run: node src/verbs.test.mjs
 import assert from "node:assert/strict";
-import VERBS, { PEOPLE, PETALS, SLOTS, key, fill, paint, petals, states, finished, waiting, fire, unlocked, toNext, leftToday, makeRound, verbTexts } from "./verbs.js";
+import VERBS, { PEOPLE, PETALS, RIVAL, active, daily, SLOTS, key, fill, paint, petals, states, finished, waiting, fire, unlocked, toNext, leftToday, makeRound, verbTexts } from "./verbs.js";
 
 // the data: six forms, and every line has one gap and a translation per person
 for (const v of VERBS) {
@@ -9,6 +9,7 @@ for (const v of VERBS) {
     assert.equal(l.es.split("___").length, 2, l.es);
     assert.equal(l.de.length, PEOPLE.length, l.es);
   }
+  for (const p of PEOPLE.keys()) assert.ok(v.lines.filter(l => l.de[p]).length >= 2, `${v.id} ${PEOPLE[p]}`);
 }
 
 // the form is capitalised only when it opens the sentence
@@ -83,7 +84,7 @@ assert.equal(r.filter(q => q.kind === "quien").length, 4);
 for (const q of r) {
   assert.equal(new Set(q.options).size, 4);
   assert.ok(q.options.includes(q.answer));
-  assert.ok(q.options.includes(q.v.forms[1 - q.p]));
+  assert.ok(q.options.includes(q.v.forms[RIVAL[q.p]]));
   assert.ok(q.sentence.toLowerCase().includes(q.answer));
 }
 
@@ -109,5 +110,22 @@ assert.equal(r2.filter(q => q.kind !== "quien").length, 4);
 const texts = verbTexts();
 for (const q of r) assert.ok(texts.includes(q.sentence), q.sentence);
 assert.equal(new Set(texts).size, texts.length);
+
+// Mr. Lock 'em up joins after two finished tiles, nosotros after four; their petals glaze, more petals a day, the wall keeps its pace
+const fireAll = (painted, verbs, day) => { for (const v of verbs) for (let i = 0; i < 3; i++) for (const p of [0, 1]) painted = { ...painted, [key(v, p)]: { n: 3, day, fired: 3 } }; return painted; };
+assert.equal(active({}), 2);
+assert.equal(active(fireAll({}, VERBS.slice(0, 1), 1)), 2);
+const two = fireAll({}, VERBS.slice(0, 2), 1);
+assert.equal(active(two), 3);
+assert.equal(active(fireAll({}, VERBS.slice(0, 4), 1)), 4);
+assert.equal(daily(3), 12);
+assert.equal(states(VERBS[0], two, false, 3).length, 9);
+assert.ok(finished(VERBS[0], paint(two, "ser:2", 5))); // a wet glaze petal doesn't unfinish the tile
+const r3 = makeRound(unlocked(two), two, 5);
+const made = r3.filter(q => q.kind !== "quien");
+assert.equal(made.filter(q => q.p === 2).length, 2); // every other produced form is Mr. Lock 'em up's
+assert.equal(made.filter(q => q.p < 2).length, 2);
+assert.ok(r3.every(q => q.p < 3 && q.de)); // nosotros isn't in yet
+for (const q of makeRound(unlocked(two), two, 5, VERBS[0])) assert.ok(q.de, q.sentence);
 
 console.log("verbs ok");

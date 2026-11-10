@@ -481,6 +481,8 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .dots i { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid #b5a586; }
 .dots .yo.wet { background: #e4b9a2; border-color: #c78d70; } .dots .tu.wet { background: #adbbd9; border-color: #8596bb; }
 .dots .yo.fired { background: #c4572f; border-color: #7c2a0e; } .dots .tu.fired { background: #2f4f9d; border-color: #172f70; }
+.dots .el.wet { background: #bcd6b4; border-color: #86a97e; } .dots .nos.wet { background: #d6bde0; border-color: #a88bb8; }
+.dots .el.fired { background: #3f7f42; border-color: #1d4a22; } .dots .nos.fired { background: #7c4797; border-color: #4a2260; }
 .step { display: flex; align-items: center; gap: 14px; padding: 14px; text-align: left; }
 .steptile { position: relative; width: 74px; flex: none; }
 .steptile i { position: absolute; right: -8px; bottom: -6px; font-size: 20px; font-style: normal; }
@@ -534,11 +536,33 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .forms h3 { margin: 0; text-align: center; font: 700 26px/1.2 ui-serif, "New York", Georgia, serif; }
 .forms .sub { margin: 2px 0 10px; }
 .forms p:not(.sub) { display: flex; align-items: center; gap: 8px; padding: 6px 0; font: 19px ui-serif, "New York", Georgia, serif; }
-.forms p > i { width: 32px; color: var(--red); }
+.forms p > i { min-width: 32px; color: var(--red); }
 .forms b { flex: 1; }
 .sub.small { margin-top: 0; font-size: 14px; }
 .who { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.who .opt { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; font-size: 16px; }
+.who .opt:last-child:nth-child(odd) { grid-column: span 2; }
+.pair { position: relative; }
+.pair > div { position: absolute; top: 0; }
+.pair .her { left: 0; z-index: 1; transform: rotate(9deg); }
+.pair .him { transform: rotate(-9deg); }
+.pair .love { position: absolute; left: 64%; top: -14%; z-index: 2; animation: hover 2.4s ease-in-out infinite; }
+@keyframes hover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.arrival { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 22px 20px; }
+.arrival .label { color: var(--c); }
+.arrival h3 { font: 700 34px/1 ui-serif, "New York", "Iowan Old Style", Georgia, serif; color: var(--c); }
+.arrival h3 i { font: italic 400 20px ui-serif, "New York", Georgia, serif; color: var(--muted); margin-left: 4px; }
+.arrival .lead { font: 18px/1.35 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
+.verbchips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.verbchips button { padding: 6px 14px; border: 2px solid var(--c); border-radius: 99px; background: transparent; color: var(--c); font: 600 18px ui-serif, "New York", Georgia, serif; }
+.verbchips button:active { transform: translateY(2px); }
+.glazeinfo { display: flex; align-items: center; gap: 14px; margin-top: 4px; padding-top: 14px; border-top: 1px dashed #cdbb94; text-align: left; }
+.glazeinfo svg { width: 76px; flex: none; }
+.glazeinfo p { color: var(--muted); font: italic 15px/1.35 ui-serif, "New York", Georgia, serif; }
+.workshop .bubble { color: #1b2f5e; }
+.who .opt { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; padding: 10px 4px; font-size: 16px; }
+.whoname { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.whoname b { font: italic 600 20px/1 ui-serif, "New York", "Iowan Old Style", Georgia, serif; color: #1b2f5e; }
+.whoname small { font: 700 11px/1.1 "Avenir Next Condensed", "DIN Condensed", "Arial Narrow", system-ui, sans-serif; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 .feedback .tr { font-style: italic; font-size: 15px; }
 .feedback .speak { width: 28px; height: 28px; font-size: 14px; }
 
