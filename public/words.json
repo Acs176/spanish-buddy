@@ -1,5 +1,5 @@
 {
- "lastMsg": 108241,
+ "lastMsg": 109031,
  "words": [
   {
    "id": "ayer",
@@ -1980,6 +1980,72 @@
     "persona"
    ],
    "added": "2026-11-07"
+  },
+  {
+   "id": "fuera",
+   "es": "fuera",
+   "de": "draußen",
+   "en": "outside",
+   "type": "adverb",
+   "tip": "Merke: 'fuera' = raus/draußen. Auch in '¡Fuera!' = 'Raus!'. Gegenteil von 'dentro'.",
+   "examples": [
+    {
+     "es": "Los niños juegan fuera.",
+     "de": "Die Kinder spielen draußen."
+    },
+    {
+     "es": "Hace frío fuera.",
+     "de": "Draußen ist es kalt."
+    },
+    {
+     "es": "Te espero fuera.",
+     "de": "Ich warte draußen auf dich."
+    }
+   ],
+   "cloze": {
+    "es": "Vamos a comer ___ hoy, hace buen tiempo.",
+    "answer": "fuera",
+    "de": "Lass uns heute draußen essen, das Wetter ist schön."
+   },
+   "distractors": [
+    "dentro",
+    "arriba",
+    "lejos"
+   ],
+   "added": "2026-11-11"
+  },
+  {
+   "id": "dentro",
+   "es": "dentro",
+   "de": "drinnen",
+   "en": "inside",
+   "type": "adverb",
+   "tip": "Merke: 'dentro' = drin/innen. Oft 'dentro de' = innerhalb von (auch zeitlich: 'dentro de una hora' = in einer Stunde). Gegenteil von 'fuera'.",
+   "examples": [
+    {
+     "es": "El gato está dentro.",
+     "de": "Die Katze ist drinnen."
+    },
+    {
+     "es": "Vamos dentro, llueve.",
+     "de": "Gehen wir rein, es regnet."
+    },
+    {
+     "es": "Hay comida dentro de la nevera.",
+     "de": "Es gibt Essen im Kühlschrank."
+    }
+   ],
+   "cloze": {
+    "es": "Cuando hace frío, prefiero quedarme ___.",
+    "answer": "dentro",
+    "de": "Wenn es kalt ist, bleibe ich lieber drinnen."
+   },
+   "distractors": [
+    "fuera",
+    "abajo",
+    "cerca"
+   ],
+   "added": "2026-11-11"
   }
  ],
  "audio": {
@@ -2508,6 +2574,16 @@
   "Tengo muchas cosas que hacer.": "audio/9e1bae225314c5db.mp3",
   "Es una cosa importante.": "audio/6bb6dbf093d8961c.mp3",
   "Hay una cosa que no entiendo.": "audio/8fc193d86f09c57d.mp3",
+  "fuera": "audio/707a341d45e461ff.mp3",
+  "Los niños juegan fuera.": "audio/b9792f534ec42e05.mp3",
+  "Hace frío fuera.": "audio/f3a71ce248bdb858.mp3",
+  "Te espero fuera.": "audio/8798589525026bff.mp3",
+  "Vamos a comer fuera hoy, hace buen tiempo.": "audio/58f3de91d9897edd.mp3",
+  "dentro": "audio/67f67ac93b714a1c.mp3",
+  "El gato está dentro.": "audio/3367c16c90be2319.mp3",
+  "Vamos dentro, llueve.": "audio/6404ba2b3c0d8400.mp3",
+  "Hay comida dentro de la nevera.": "audio/19f91b9ab5a9bab9.mp3",
+  "Cuando hace frío, prefiero quedarme dentro.": "audio/3a9146fa1aca2bca.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
