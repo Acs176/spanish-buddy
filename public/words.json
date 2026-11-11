@@ -2619,7 +2619,18 @@
   "Entonces Marta me hace una pregunta: \"¿Está muy difícil?\".": "audio/7450b00931772d73.mp3",
   "Mi respuesta es \"no, ahora no\".": "audio/479f2e4c67ae9779.mp3",
   "Arriba del todo no hay nadie más, solo Marta y yo.": "audio/fdf3d53b7fe31dad.mp3",
-  "Y ya me gustaría escalar otra vez.": "audio/2a6ec15bb7c3b79d.mp3"
+  "Y ya me gustaría escalar otra vez.": "audio/2a6ec15bb7c3b79d.mp3",
+  "Esta tarde quiero ir a un sitio.": "audio/4a517067ec639c71.mp3",
+  "Tengo un mapa aquí, pero no me gusta nada.": "audio/8fb56d24901e9dd8.mp3",
+  "Ahora estoy en la misma calle otra vez.": "audio/0a4bf557d8a107bd.mp3",
+  "Aquí no está nadie.": "audio/ae007a6dc4f76a88.mp3",
+  "Estoy perdida.": "audio/bfa8fe472d2c9b1c.mp3",
+  "Entonces, ¿a quién hago la pregunta?": "audio/700217b7abf35e92.mp3",
+  "A nadie, claro.": "audio/41bcdb57fa956b67.mp3",
+  "Espero y no hago nada.": "audio/d827621e41dab3ee.mp3",
+  "Ya no quiero el mapa.": "audio/02ae2092e844fe66.mp3",
+  "Mi sitio está ahí, a la derecha, arriba del todo.": "audio/49cd43cfb00f178a.mp3",
+  "Entonces, ¿para qué quiero un mapa?": "audio/a4cc2f57df7955b9.mp3"
  },
  "stories": [
   {
@@ -3208,6 +3219,103 @@
       "No, no hay nadie más.",
       "Hay diez personas.",
       "Sí, mucha gente."
+     ]
+    }
+   ]
+  },
+  {
+   "day": "2026-11-11",
+   "title": "El mapa",
+   "de": "Die Karte",
+   "sentences": [
+    {
+     "es": "Esta tarde quiero ir a un sitio.",
+     "de": "Heute Nachmittag möchte ich an einen Ort gehen."
+    },
+    {
+     "es": "Tengo un mapa aquí, pero no me gusta nada.",
+     "de": "Ich habe hier eine Karte, aber sie gefällt mir überhaupt nicht."
+    },
+    {
+     "es": "Ahora estoy en la misma calle otra vez.",
+     "de": "Jetzt bin ich wieder in derselben Straße."
+    },
+    {
+     "es": "Aquí no está nadie.",
+     "de": "Hier ist niemand."
+    },
+    {
+     "es": "Estoy perdida.",
+     "de": "Ich habe mich verlaufen / ich bin verloren."
+    },
+    {
+     "es": "Entonces, ¿a quién hago la pregunta?",
+     "de": "Wem stelle ich dann die Frage?"
+    },
+    {
+     "es": "A nadie, claro.",
+     "de": "Niemandem, klar."
+    },
+    {
+     "es": "Espero y no hago nada.",
+     "de": "Ich warte und mache nichts."
+    },
+    {
+     "es": "Ya no quiero el mapa.",
+     "de": "Ich will die Karte nicht mehr."
+    },
+    {
+     "es": "Mi sitio está ahí, a la derecha, arriba del todo.",
+     "de": "Mein Ort ist da, rechts, ganz oben."
+    },
+    {
+     "es": "Entonces, ¿para qué quiero un mapa?",
+     "de": "Wozu will ich dann eine Karte?"
+    }
+   ],
+   "new": [
+    {
+     "es": "el mapa",
+     "de": "die (Land)Karte"
+    },
+    {
+     "es": "la calle",
+     "de": "die Straße"
+    },
+    {
+     "es": "perdida",
+     "de": "verloren, verirrt (sich verlaufen haben)"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Qué tiene ella aquí?",
+     "de": "Was hat sie hier?",
+     "answer": "Un mapa.",
+     "options": [
+      "Un queso.",
+      "Un mapa.",
+      "Un café."
+     ]
+    },
+    {
+     "es": "¿Hay alguien en la calle?",
+     "de": "Ist jemand auf der Straße?",
+     "answer": "No, nadie.",
+     "options": [
+      "Sí, está Ana.",
+      "Sí, dos chicas.",
+      "No, nadie."
+     ]
+    },
+    {
+     "es": "¿Dónde está su sitio?",
+     "de": "Wo ist ihr Ort?",
+     "answer": "Ahí, a la derecha.",
+     "options": [
+      "Aquí, a la izquierda.",
+      "Ahí, a la derecha.",
+      "Abajo."
      ]
     }
    ]
