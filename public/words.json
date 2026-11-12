@@ -1,5 +1,5 @@
 {
- "lastMsg": 109031,
+ "lastMsg": 109178,
  "words": [
   {
    "id": "ayer",
@@ -2046,6 +2046,39 @@
     "cerca"
    ],
    "added": "2026-11-11"
+  },
+  {
+   "id": "estar-cansado-a",
+   "es": "estar cansado/a",
+   "de": "müde sein",
+   "en": "to be tired",
+   "type": "expression",
+   "tip": "Mit 'estar', nicht 'ser'! Es ist ein Zustand: 'estoy cansada' sagt eine Frau, 'estoy cansado' ein Mann. Merke: canSADo klingt wie 'sad/erschöpft'.",
+   "examples": [
+    {
+     "es": "Estoy muy cansado hoy.",
+     "de": "Ich bin heute sehr müde."
+    },
+    {
+     "es": "¿Estás cansada?",
+     "de": "Bist du müde?"
+    },
+    {
+     "es": "Después del trabajo estoy cansado.",
+     "de": "Nach der Arbeit bin ich müde."
+    }
+   ],
+   "cloze": {
+    "es": "No quiero salir, estoy muy ___.",
+    "answer": "cansada",
+    "de": "Ich will nicht rausgehen, ich bin sehr müde."
+   },
+   "distractors": [
+    "cansado",
+    "cansados",
+    "cansar"
+   ],
+   "added": "2026-11-11"
   }
  ],
  "audio": {
@@ -2584,6 +2617,11 @@
   "Vamos dentro, llueve.": "audio/6404ba2b3c0d8400.mp3",
   "Hay comida dentro de la nevera.": "audio/19f91b9ab5a9bab9.mp3",
   "Cuando hace frío, prefiero quedarme dentro.": "audio/3a9146fa1aca2bca.mp3",
+  "estar cansado/a": "audio/c54fbee0d4c1ea52.mp3",
+  "Estoy muy cansado hoy.": "audio/77ac23a5fc975ef2.mp3",
+  "¿Estás cansada?": "audio/72eab2318d56ca83.mp3",
+  "Después del trabajo estoy cansado.": "audio/a5e0241da724daf8.mp3",
+  "No quiero salir, estoy muy cansada.": "audio/603777187b225961.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
@@ -2706,7 +2744,19 @@
   "Espero y no hago nada.": "audio/d827621e41dab3ee.mp3",
   "Ya no quiero el mapa.": "audio/02ae2092e844fe66.mp3",
   "Mi sitio está ahí, a la derecha, arriba del todo.": "audio/49cd43cfb00f178a.mp3",
-  "Entonces, ¿para qué quiero un mapa?": "audio/a4cc2f57df7955b9.mp3"
+  "Entonces, ¿para qué quiero un mapa?": "audio/a4cc2f57df7955b9.mp3",
+  "Hoy mi amiga y yo vamos al lago en bici.": "audio/cc2d24c00efe9161.mp3",
+  "Estamos muy cansadas, pero el día está muy bueno.": "audio/be8c7a7d5120e708.mp3",
+  "El lago está fuera, a la derecha, y nadie va ahí.": "audio/32ba5b828aa28f43.mp3",
+  "Cuando estamos ahí, no hay nadie en ningún sitio.": "audio/b55a53acc566650c.mp3",
+  "Yo hago una pregunta: \"¿Quieres nadar?\"": "audio/dff4b961ac5c9e36.mp3",
+  "Mi amiga no hace ninguna pregunta: esa es la respuesta, ya está dentro del lago.": "audio/98c4c3f695d75b3d.mp3",
+  "Entonces yo también nado.": "audio/770e0e49084e67eb.mp3",
+  "Nadamos juntas mucho y estamos muy bien.": "audio/474082448570b7af.mp3",
+  "Después estamos fuera otra vez, muy cansadas.": "audio/0230de2b08bd7d2a.mp3",
+  "Por cierto, aquí no hay ninguna cosa: solo nosotras, el lago y las bicis.": "audio/a377bd6eeaf81625.mp3",
+  "Este lugar es nuestro, y aquí no hay nadie más.": "audio/faa3b84fae85703a.mp3",
+  "Entonces, ¿quién quiere un hotel? ¡Nosotras tenemos el lago!": "audio/9e49f51ecc2edfed.mp3"
  },
  "stories": [
   {
@@ -3392,6 +3442,107 @@
       "Aquí, a la izquierda.",
       "Ahí, a la derecha.",
       "Abajo."
+     ]
+    }
+   ]
+  },
+  {
+   "day": "2026-11-12",
+   "title": "Nadie en el lago",
+   "de": "Niemand am See",
+   "sentences": [
+    {
+     "es": "Hoy mi amiga y yo vamos al lago en bici.",
+     "de": "Heute fahren meine Freundin und ich mit dem Fahrrad zum See."
+    },
+    {
+     "es": "Estamos muy cansadas, pero el día está muy bueno.",
+     "de": "Wir sind sehr müde, aber der Tag ist sehr schön."
+    },
+    {
+     "es": "El lago está fuera, a la derecha, y nadie va ahí.",
+     "de": "Der See liegt draußen, rechts, und niemand geht dorthin."
+    },
+    {
+     "es": "Cuando estamos ahí, no hay nadie en ningún sitio.",
+     "de": "Wenn wir dort sind, ist niemand an irgendeinem Ort."
+    },
+    {
+     "es": "Yo hago una pregunta: \"¿Quieres nadar?\"",
+     "de": "Ich stelle eine Frage: „Willst du schwimmen?\""
+    },
+    {
+     "es": "Mi amiga no hace ninguna pregunta: esa es la respuesta, ya está dentro del lago.",
+     "de": "Meine Freundin stellt keine Frage: das ist die Antwort, sie ist schon im See."
+    },
+    {
+     "es": "Entonces yo también nado.",
+     "de": "Dann schwimme ich auch."
+    },
+    {
+     "es": "Nadamos juntas mucho y estamos muy bien.",
+     "de": "Wir schwimmen zusammen viel und es geht uns sehr gut."
+    },
+    {
+     "es": "Después estamos fuera otra vez, muy cansadas.",
+     "de": "Danach sind wir wieder draußen, sehr müde."
+    },
+    {
+     "es": "Por cierto, aquí no hay ninguna cosa: solo nosotras, el lago y las bicis.",
+     "de": "Übrigens, hier gibt es nichts: nur wir, der See und die Fahrräder."
+    },
+    {
+     "es": "Este lugar es nuestro, y aquí no hay nadie más.",
+     "de": "Dieser Ort ist unser, und hier ist niemand sonst."
+    },
+    {
+     "es": "Entonces, ¿quién quiere un hotel? ¡Nosotras tenemos el lago!",
+     "de": "Also, wer will ein Hotel? Wir haben den See!"
+    }
+   ],
+   "new": [
+    {
+     "es": "la bici",
+     "de": "das Fahrrad"
+    },
+    {
+     "es": "el lago",
+     "de": "der See"
+    },
+    {
+     "es": "nadar",
+     "de": "schwimmen"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Cómo van al lago?",
+     "de": "Wie fahren sie zum See?",
+     "answer": "En bici.",
+     "options": [
+      "En bici.",
+      "En coche.",
+      "En tren."
+     ]
+    },
+    {
+     "es": "¿Hay alguien más en el lago?",
+     "de": "Ist noch jemand am See?",
+     "answer": "No, nadie.",
+     "options": [
+      "Hay dos amigos.",
+      "No, nadie.",
+      "Sí, mucha gente."
+     ]
+    },
+    {
+     "es": "¿Qué hacen en el lago?",
+     "de": "Was machen sie im See?",
+     "answer": "Nadan.",
+     "options": [
+      "Cocinan.",
+      "Nadan.",
+      "Esperan el tren."
      ]
     }
    ]
