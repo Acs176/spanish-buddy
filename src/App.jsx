@@ -4,6 +4,7 @@ import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
 import Verbs, { kilnReady, verbCount } from "./Verbs.jsx";
 import Stories, { storyNew } from "./Story.jsx";
+import Mosaic, { MILESTONES, reached, unseen, Unlock } from "./Mosaic.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic } from "./music.js";
@@ -170,19 +171,12 @@ export default function App() {
   if (screen === "settings") return <Settings done={home} replay={replay} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <>
-    <Home words={words} progress={progress} go={setScreen} stories={stories} />
+    <Home words={words} progress={progress} go={setScreen} stories={stories} calm={news?.stage === "tour"} />
     {news?.stage === "tour" && <Tour key={news.n.id} steps={news.n.steps} done={seen} />}
   </>;
 }
 
 // ---------- home ----------
-// four-petal azulejo flower, painted in as words are learned
-const FLOWER = (
-  <>
-    <g className="p2">{[45, 135, 225, 315].map(r => <ellipse key={r} cx="50" cy="30" rx="8" ry="15" transform={`rotate(${r} 50 50)`} />)}</g>
-    <g className="p1">{[0, 90, 180, 270].map(r => <ellipse key={r} cx="50" cy="26" rx="11" ry="20" transform={`rotate(${r} 50 50)`} />)}</g>
-  </>
-);
 export const Orn = () => (
   <div className="orn" aria-hidden="true">
     <i />
@@ -268,7 +262,7 @@ const GAMES = [
   ["story", "Geschichten", "Jeden Tag eine neue", <><path d="M12 6C9.5 4.3 6.5 4 3 4.5v14c3.5-.5 6.5-.2 9 1.5 2.5-1.7 5.5-2 9-1.5v-14C17.5 4 14.5 4.3 12 6Z" fill="#fffdf8" /><path d="M12 6v14" /><path d="M15.5 4.6v6l1.5-1.3 1.5 1.3V4.5" fill="#c4572f" stroke="none" /><path d="M5.5 8.5c1.8-.2 3.5 0 4.5.6M5.5 11.5c1.8-.2 3.5 0 4.5.6" stroke="#e0b050" /></>],
   ["verbs", "¿Quién?", "Verben: wer macht was?", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
 ];
-function Home({ words, progress, go, stories }) {
+function Home({ words, progress, go, stories, calm }) {
   const now = useNow();
   useEffect(() => { startMusic("casual"); return stopMusic; }, []);
   const [games, setGames] = useState(false);
@@ -282,6 +276,8 @@ function Home({ words, progress, go, stories }) {
   const vc = verbCount(); // plus the verb forms she has mastered in ¿Quién?
   const learned = words.filter(w => progress[w.id]?.st === "review").length + vc.learned; // graduated out of the learning steps
   const total = words.length + vc.total;
+  const toNext = (MILESTONES[reached(learned)] ?? learned) - learned;
+  const [unlock, setUnlock] = useState(() => unseen(learned)); // a new milestone on the tile: its unlock screen, once
   const [talking, setTalking] = useState(false);
   const poke = () => {
     const a = speak("Adrián");
@@ -325,16 +321,8 @@ function Home({ words, progress, go, stories }) {
         </>}
       </section>}
       <div className="progress">
-        <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${total} gelernt`}>
-          <defs><clipPath id="glaze"><rect x="0" y={104 - 104 * learned / total} width="104" height="104" /></clipPath></defs>
-          <rect x="2" y="2" width="100" height="100" rx="8" className="tile" />
-          <rect x="8" y="8" width="88" height="88" rx="4" className="tile-inner" />
-          <g transform="translate(2 2)" className="flower-off">{FLOWER}</g>
-          <g transform="translate(2 2)" clipPath="url(#glaze)" className="flower-on">{FLOWER}</g>
-          <circle cx="52" cy="52" r="19" className="tile-dot" />
-          <text x="52" y="61" textAnchor="middle">{learned}</text>
-        </svg>
-        <p><b>{due} fällig</b><span>{learned} von {total} Wörtern gelernt</span></p>
+        <Mosaic learned={learned} />
+        <p><b>{due} fällig</b><span>{learned} von {total} Wörtern gelernt</span>{toNext > 0 && <small>noch {toNext} bis zum nächsten Muster</small>}</p>
       </div>
       <nav className="tabs">
         {[
@@ -352,6 +340,7 @@ function Home({ words, progress, go, stories }) {
           </button>
         ))}
       </nav>
+      {unlock && !calm && <Unlock learned={learned} done={() => setUnlock(false)} />}
       <div className={`sheet-bg ${games ? "open" : ""}`} onClick={() => setGames(false)} />
       <div className={`sheet ${games ? "open" : ""}`} role="dialog" aria-label="Spiele">
         <i className="grip" aria-hidden="true" />

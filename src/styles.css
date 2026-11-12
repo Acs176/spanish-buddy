@@ -96,13 +96,90 @@ h1, h2, p { margin: 0; }
 .entry b { font-family: ui-rounded, system-ui, sans-serif; font-size: 13px; margin: 0 2px 0 6px; }
 .entry .note { margin-top: 8px; font-size: 15px; color: var(--muted); padding-left: 1.2em; text-indent: -1.2em; }
 .progress { display: flex; align-items: center; gap: 18px; padding: 0 8px; }
-.progress .tile { fill: var(--card); stroke: var(--blue); stroke-width: 3; }
-.progress .tile-inner { fill: none; stroke: var(--yellow); stroke-width: 1.5; }
-.progress .flower-off .p1 { fill: #dfe5f1; } .progress .flower-off .p2 { fill: #ecf0f7; }
-.progress .flower-on .p1 { fill: #3a5aa8; } .progress .flower-on .p2 { fill: #a9b9de; }
-.progress .tile-dot { fill: var(--card); stroke: var(--red); stroke-width: 3; }
-.progress text { font: 700 28px ui-serif, "New York", "Iowan Old Style", Georgia, serif; fill: var(--ink); }
 .progress b { display: block; font: 700 28px/1.1 ui-serif, "New York", "Iowan Old Style", Georgia, serif; letter-spacing: -.01em; }
+.progress small { display: block; margin-top: 4px; color: var(--blue); font: 600 13px/1.2 "Avenir Next Condensed", "DIN Condensed", "Arial Narrow", system-ui, sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+.progress p { position: relative; } /* paints over the tile's rays */
+/* the home tile in 3D (Mosaic.jsx): the flower floats above the tile, it sways, and tilts toward a finger */
+.mosaic { position: relative; flex: none; isolation: isolate; perspective: calc(var(--size) * 4); touch-action: none; }
+.mosaic .tilt { width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .2s ease-out;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+.mosaic .obj { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: sway 8s ease-in-out infinite;
+  transition: transform 1.2s cubic-bezier(.3, 1.3, .4, 1); }
+@keyframes sway { 0%, 100% { transform: rotateX(8deg) rotateY(-10deg); } 50% { transform: rotateX(-6deg) rotateY(10deg); } }
+.mosaic svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mosaic .mtile { filter: drop-shadow(0 4px 0 rgba(27, 47, 94, .25)); }
+.mosaic .mflower { transform: translateZ(calc(var(--size) * .17)); filter: drop-shadow(0 calc(var(--size) * .06) calc(var(--size) * .04) rgba(27, 47, 94, .35)); }
+.mosaic .edge { position: absolute; inset: 2.5%; border-radius: 9%; background: #22397a; transform: translateZ(calc(var(--size) * -.06)); }
+.mosaic .glare { position: absolute; inset: 0; border-radius: 8%; pointer-events: none; transform: translateZ(calc(var(--size) * .18));
+  background: radial-gradient(circle at var(--gx, 30%) var(--gy, 20%), rgba(255, 255, 255, .5), transparent 55%); opacity: .7; }
+.mosaic .mtile, .mosaic .mflower, .mosaic .glare { backface-visibility: hidden; }
+/* the terracotta back, shown face down on the unlock screen */
+.mosaic .mback { position: absolute; inset: 0; border-radius: 8%; transform: translateZ(calc(var(--size) * -.07)) rotateY(180deg); backface-visibility: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fbe6d4;
+  background: repeating-linear-gradient(45deg, rgba(0, 0, 0, .05) 0 6px, transparent 6px 12px), radial-gradient(circle at 30% 30%, #d9825f, #a9502a);
+  border: calc(var(--size) * .025) solid #8c4122; box-shadow: inset 0 0 0 calc(var(--size) * .05) rgba(255, 255, 255, .12); }
+.mosaic .mback b { font: italic 700 calc(var(--size) * .26)/1 ui-serif, Georgia, serif; }
+.mosaic .mback small { font: italic calc(var(--size) * .09) ui-serif, Georgia, serif; opacity: .85; }
+.mosaic.facedown .obj { transform: rotateY(180deg); animation: none; }
+/* auras, from 100 words on, adding up: a breathing halo, turning rays, a glint over the glaze, twinkling sparks */
+.mosaic.halo .mtile { animation: halo 3.2s ease-in-out infinite; }
+@keyframes halo {
+  0%, 100% { filter: drop-shadow(0 4px 0 rgba(27, 47, 94, .25)) drop-shadow(0 0 3px rgba(224, 176, 80, .35)); }
+  50% { filter: drop-shadow(0 4px 0 rgba(27, 47, 94, .25)) drop-shadow(0 0 14px rgba(224, 176, 80, .95)); }
+}
+.mosaic.rays::before {
+  content: ""; position: absolute; inset: -30%; z-index: -1; border-radius: 50%;
+  background: repeating-conic-gradient(rgba(224, 176, 80, .55) 0 7deg, transparent 7deg 22.5deg);
+  -webkit-mask: radial-gradient(closest-side, #000 45%, transparent); mask: radial-gradient(closest-side, #000 45%, transparent);
+  animation: rays 18s linear infinite;
+}
+@keyframes rays { to { transform: rotate(360deg); } }
+.mosaic .glint { animation: glint 4.5s ease-in-out infinite; }
+@keyframes glint { 0%, 55% { transform: translateX(-120px); } 85%, 100% { transform: translateX(300px); } }
+.mosaic .spark {
+  position: absolute; z-index: 1; color: var(--yellow); font-size: calc(var(--size) * .12); font-style: normal; line-height: 1; text-shadow: 0 0 6px #fff;
+  opacity: 0; animation: twinkle 2.4s ease-in-out infinite;
+}
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.3); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
+@media (prefers-reduced-motion: reduce) { .mosaic .obj, .mosaic .mtile, .mosaic::before, .mosaic .glint, .mosaic .spark { animation: none; } .mosaic .spark { opacity: .8; } }
+
+/* the unlock screen: a new milestone on the tile */
+.unlock { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  padding: 24px 24px calc(env(safe-area-inset-bottom) + 24px); text-align: center; color: var(--ink); cursor: pointer;
+  background: radial-gradient(circle at 50% 40%, #fff7df 0%, var(--bg) 50%, #ece2cc 100%); animation: ufade .5s ease-out both; }
+/* framed like the cards: a blue line and a gold one */
+.unlock::before { content: ""; position: absolute; inset: calc(env(safe-area-inset-top) + 12px) 12px calc(env(safe-area-inset-bottom) + 12px);
+  border: 2px solid var(--blue); border-radius: 18px; box-shadow: inset 0 0 0 5px var(--bg), inset 0 0 0 6.5px var(--yellow); pointer-events: none; }
+@keyframes ufade { from { opacity: 0; } }
+.unlock .ulabel { height: 34px; display: flex; align-items: flex-end; font: 700 14px/1 "Avenir Next Condensed", "DIN Condensed", "Arial Narrow", system-ui, sans-serif; text-transform: uppercase; letter-spacing: .14em; color: var(--red); }
+.unlock.done .ulabel { font: italic 700 30px/1.1 ui-serif, Georgia, serif; letter-spacing: 0; text-transform: none; color: var(--blue); animation: upop .6s cubic-bezier(.2, 1.6, .4, 1) both; }
+.unlock .ustage { position: relative; margin: 30px 0; }
+.unlock .ufoot { display: flex; flex-direction: column; align-items: center; gap: 18px; height: 230px; }
+.unlock .uhint { font: italic 17px ui-serif, Georgia, serif; color: var(--muted); animation: breathe 1.6s ease-in-out infinite; }
+@keyframes breathe { 50% { opacity: .35; } }
+.unlock.wait .mosaic { animation: hover 2.4s ease-in-out infinite; }
+.unlock.turn .mosaic .obj, .unlock.paint .mosaic .obj { animation: none; transform: rotateY(-360deg) scale(1.1); }
+.unlock .mosaic.rays::before { inset: -45%; }
+/* the reveal: from the turn's 1.1 it swells with the music, bounces back and lands where the sway starts */
+.unlock.done .mosaic .obj { animation: settle 1.1s cubic-bezier(.3, 0, .3, 1) both, sway 8s ease-in-out 1.1s infinite; }
+@keyframes settle {
+  0% { transform: rotateY(0) scale(1.1); }
+  30% { transform: rotateY(0) rotateZ(-3deg) scale(1.22); }
+  55% { transform: rotateY(0) rotateZ(2deg) scale(.95); }
+  78% { transform: rotateX(4deg) rotateY(-5deg) scale(1.02); }
+  100% { transform: rotateX(8deg) rotateY(-10deg) scale(1); }
+}
+.unlock h2 { margin: 0; font: 700 40px/1 ui-serif, Georgia, serif; animation: upop .6s cubic-bezier(.2, 1.6, .4, 1) .1s both; }
+.unlock .utext { max-width: 300px; font: italic 17px/1.4 ui-serif, Georgia, serif; color: var(--muted); animation: upop .6s ease-out .25s both; }
+.unlock .btn { min-width: 160px; animation: upop .6s cubic-bezier(.2, 1.6, .4, 1) .45s both; }
+@keyframes upop { from { opacity: 0; transform: translateY(14px) scale(.9); } }
+.unlock .burst { position: absolute; left: 50%; top: 50%; pointer-events: none; }
+.unlock .burst i { position: absolute; left: -10px; top: -14px; color: #d9a441; font: normal 24px/1 sans-serif; text-shadow: 0 0 6px #fff, 0 1px 0 #b98a2e;
+  animation: burst 1.2s cubic-bezier(.1, .7, .3, 1) both; }
+@keyframes burst { from { transform: rotate(var(--a)) translateY(0) scale(.4); opacity: 1; } to { transform: rotate(var(--a)) translateY(-190px) scale(1); opacity: 0; } }
+.unlock::after { content: ""; position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.unlock.done::after { animation: flash .7s ease-out; }
+@keyframes flash { 0% { opacity: .75; } 100% { opacity: 0; } }
 .progress span { color: var(--muted); font: italic 16px/1.3 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
 
 /* bottom menu: the three actions are glazed feature tiles set into the tiled dado */

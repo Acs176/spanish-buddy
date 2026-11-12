@@ -109,3 +109,40 @@ export function stopMusic() {
   setTimeout(() => out.disconnect(), 1500);
   cur = null;
 }
+
+// the unlock screen's flourish: rasgueados on D, E and a ringing A, then a little run up the A chord
+export function fanfare() {
+  if (!musicOn() || !window.AudioContext) return;
+  const c = ac(), s = STYLES.casual, out = c.createGain(), t = c.currentTime + .05;
+  out.gain.value = .45; out.connect(c.destination);
+  const note = (f, at, v) => { const src = c.createBufferSource(), g = c.createGain(); src.buffer = string(c, s, f); g.gain.value = v; src.connect(g).connect(out); src.start(t + at); };
+  const strum = (ch, at, v, up) => (up ? [...s.chords[ch]].reverse() : s.chords[ch]).forEach((f, k) => note(f, at + k * .014, v));
+  strum("D", 0, .4); strum("D", .17, .25, true); strum("E", .34, .4); strum("E", .51, .25, true);
+  strum("A", .72, .55); note(220, .72, .4);
+  [440, 554.4, 659.3, 880, 1108.7].forEach((f, i) => note(f, 1.0 + i * .09, .35));
+  setTimeout(() => out.disconnect(), 4000);
+}
+
+// before the reveal: a tremolo that climbs and speeds up over a low E, with a swelling hiss; E resolves into fanfare()'s A.
+// len: seconds until the reveal. Returns a function that cuts it off.
+export function suspense(len) {
+  if (!musicOn() || !window.AudioContext) return () => {};
+  const c = ac(), s = STYLES.flamenco, out = c.createGain(), t = c.currentTime + .02;
+  out.gain.setValueAtTime(.12, t); out.gain.linearRampToValueAtTime(.5, t + len); out.connect(c.destination);
+  const note = (f, at, v) => { const src = c.createBufferSource(), g = c.createGain(); src.buffer = string(c, s, f); g.gain.value = v; src.connect(g).connect(out); src.start(t + at); };
+  [0, len * .5].forEach(at => note(82.4, at, .6)); // the low E, twice
+  const tops = [246.9, 261.6, 293.7, 329.6, 349.2, 415.3]; // B C D E F G#: climbing to the leading tone
+  for (let at = 0; at < len - .05;) {
+    const p = at / len;
+    note(tops[Math.floor(p * tops.length)], at, .22 + p * .2);
+    at += .13 - p * .085; // 8 plucks a second, speeding up to about 20
+  }
+  // a hiss that rises with it
+  const n = Math.round(c.sampleRate * len), b = c.createBuffer(1, n, c.sampleRate), d = b.getChannelData(0);
+  for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+  const src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+  f.type = "bandpass"; f.Q.value = .9; f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(5000, t + len);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.18, t + len);
+  src.buffer = b; src.connect(f).connect(g).connect(out); src.start(t);
+  return () => { out.gain.cancelScheduledValues(c.currentTime); out.gain.setTargetAtTime(0, c.currentTime, .05); setTimeout(() => out.disconnect(), 500); };
+}

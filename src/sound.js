@@ -32,6 +32,18 @@ const SOUNDS = {
     f.type = "highpass"; f.frequency.value = 800; s.buffer = b;
     s.connect(f).connect(c.destination); s.start();
   },
+  // the unlock screen (Mosaic.jsx): the tile turning over, the glaze going on, and the reveal
+  whoosh() {
+    const c = ac(), n = c.sampleRate * .9, b = c.createBuffer(1, n, c.sampleRate), d = b.getChannelData(0), t = c.currentTime;
+    for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / n);
+    const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+    f.type = "bandpass"; f.Q.value = 1.2; f.frequency.setValueAtTime(300, t); f.frequency.exponentialRampToValueAtTime(2600, t + .8);
+    g.gain.value = .5; s.buffer = b; s.connect(f).connect(g).connect(c.destination); s.start();
+  },
+  tinkle() { [0, .07, .15].forEach(at => tone(1800 + Math.random() * 1400, at, .35, "sine", .05)); },
+  // after the reveal: a shower of high chimes that thins out over three seconds
+  shimmer() { for (let i = 0; i < 26; i++) { const at = 3 * (i / 26) ** 1.6; tone(1700 + Math.random() * 2600, at, .7, "sine", .05 * (1 - at / 3.4)); } },
+  sparkle() { for (let i = 0; i < 9; i++) tone(2000 + Math.random() * 2200, i * .05, .5, "sine", .045); },
   ding() { tone(1047, 0, .9, "sine", .12); tone(1568, .05, .9, "sine", .08); },
 };
 
