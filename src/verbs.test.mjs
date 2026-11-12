@@ -1,6 +1,6 @@
 // run: node src/verbs.test.mjs
 import assert from "node:assert/strict";
-import VERBS, { PEOPLE, PETALS, RIVAL, active, daily, SLOTS, key, fill, paint, petals, states, finished, waiting, fire, unlocked, toNext, leftToday, makeRound, verbTexts } from "./verbs.js";
+import VERBS, { PEOPLE, PETALS, RIVAL, active, daily, SLOTS, key, fill, paint, petals, states, finished, waiting, fire, unlocked, toNext, leftToday, makeRound, verbTexts, verbWords } from "./verbs.js";
 
 // the data: six forms, and every line has one gap and a translation per person
 for (const v of VERBS) {
@@ -105,6 +105,11 @@ assert.ok(makeRound(firstFour, {}, 40).filter(q => q.kind !== "quien").every(q =
 const r2 = makeRound(VERBS.slice(0, 4), eight, 10);
 assert.equal(r2.length, 8);
 assert.equal(r2.filter(q => q.kind !== "quien").length, 4);
+
+// verb forms count as words: soy fired is 1, soy and eres fired finish ser, so 3; 4 verbs on the wall, yo and tú: 12
+assert.deepEqual(verbWords({}), { learned: 0, total: 12 });
+assert.deepEqual(verbWords({ "ser:0": { n: 3, day: 1, fired: 3 }, "ser:1": { n: 3, day: 1, fired: 2 } }), { learned: 1, total: 12 });
+assert.equal(verbWords({ "ser:0": { n: 3, day: 1, fired: 3 }, "ser:1": { n: 3, day: 1, fired: 3 } }).learned, 3);
 
 // everything spoken in the game has a text to voice
 const texts = verbTexts();

@@ -4,13 +4,14 @@ import Angela from "./Angela.jsx";
 import LockEmUp from "./LockEmUp.jsx";
 import Kiln, { PETAL, Tile, TileDefs, paintBricks } from "./Kiln.jsx";
 import { Duo, Orn, Speak, Top, speak } from "./App.jsx";
-import VERBS, { BASE, PER_FORM, PEOPLE, PETALS, SLOTS, active, finished, fire, key, leftToday, makeRound, paint, petals, states, toNext, unlocked, waiting } from "./verbs.js";
+import VERBS, { BASE, PER_FORM, PEOPLE, PETALS, SLOTS, active, finished, fire, key, leftToday, makeRound, paint, petals, states, toNext, unlocked, verbWords, waiting } from "./verbs.js";
 import { check, today } from "./srs.js";
 import { play } from "./sound.js";
 import { startMusic, stopMusic } from "./music.js";
 
 // petals painted per form, see paint() in verbs.js
 const load = () => { try { return JSON.parse(localStorage.getItem("verbs")) || {}; } catch { return {}; } };
+export const verbCount = () => verbWords(load()); // its fired forms count as learned words on the home screen
 export const kilnReady = () => waiting(load(), today()).length > 0; // yesterday's petals wait in the kiln: red dot on the game
 const save = p => { try { localStorage.setItem("verbs", JSON.stringify(p)); } catch { /* private mode */ } };
 const any = a => a[Math.floor(Math.random() * a.length)];

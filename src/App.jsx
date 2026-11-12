@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
-import Verbs, { kilnReady } from "./Verbs.jsx";
+import Verbs, { kilnReady, verbCount } from "./Verbs.jsx";
 import Stories, { storyNew } from "./Story.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
@@ -279,7 +279,9 @@ function Home({ words, progress, go, stories }) {
   const wotd = wotds[0];
   const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
   const due = dueCount(words, progress);
-  const learned = words.filter(w => progress[w.id]?.st === "review").length; // graduated out of the learning steps
+  const vc = verbCount(); // plus the verb forms she has mastered in ¿Quién?
+  const learned = words.filter(w => progress[w.id]?.st === "review").length + vc.learned; // graduated out of the learning steps
+  const total = words.length + vc.total;
   const [talking, setTalking] = useState(false);
   const poke = () => {
     const a = speak("Adrián");
@@ -323,8 +325,8 @@ function Home({ words, progress, go, stories }) {
         </>}
       </section>}
       <div className="progress">
-        <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${words.length} gelernt`}>
-          <defs><clipPath id="glaze"><rect x="0" y={104 - 104 * learned / words.length} width="104" height="104" /></clipPath></defs>
+        <svg viewBox="0 0 104 104" width="104" height="104" role="img" aria-label={`${learned} von ${total} gelernt`}>
+          <defs><clipPath id="glaze"><rect x="0" y={104 - 104 * learned / total} width="104" height="104" /></clipPath></defs>
           <rect x="2" y="2" width="100" height="100" rx="8" className="tile" />
           <rect x="8" y="8" width="88" height="88" rx="4" className="tile-inner" />
           <g transform="translate(2 2)" className="flower-off">{FLOWER}</g>
@@ -332,7 +334,7 @@ function Home({ words, progress, go, stories }) {
           <circle cx="52" cy="52" r="19" className="tile-dot" />
           <text x="52" y="61" textAnchor="middle">{learned}</text>
         </svg>
-        <p><b>{due} fällig</b><span>{learned} von {words.length} Wörtern gelernt</span></p>
+        <p><b>{due} fällig</b><span>{learned} von {total} Wörtern gelernt</span></p>
       </div>
       <nav className="tabs">
         {[

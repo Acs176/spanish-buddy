@@ -163,6 +163,14 @@ export const waiting = (painted, day) => VERBS.flatMap(v => PEOPLE.map((_, p) =>
 export const fire = (painted, day) => Object.fromEntries(Object.entries(painted).map(([k, c]) => [k, c.day < day ? { ...c, fired: c.n } : c]));
 // she starts with four verbs; every finished tile brings the next one onto the wall
 export const unlocked = painted => VERBS.slice(0, START + done(painted));
+// for the home screen's word count: each form with its petals fired is a word, and the infinitive once the tile is finished.
+// The total grows with the wall: per unlocked verb, the infinitive plus a form for each person in the workshop.
+export const verbWords = painted => {
+  const vs = unlocked(painted), n = active(painted);
+  const learned = vs.reduce((sum, v) => sum + (finished(v, painted) ? 1 : 0)
+    + PEOPLE.slice(0, n).filter((_, p) => (painted[key(v, p)]?.fired ?? 0) >= PER_FORM).length, 0);
+  return { learned, total: vs.length * (1 + n) };
+};
 // petals still to paint on the tile closest to done, the next unlock; 0: one is fully painted and only needs the kiln
 export const toNext = painted => Math.min(...unlocked(painted).filter(v => !finished(v, painted)).map(v => PETALS - petals(v, painted)));
 // petals she can still paint today: what's left of the day's allowance, if the wall has room for that many
