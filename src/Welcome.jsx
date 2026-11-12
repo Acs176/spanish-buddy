@@ -19,7 +19,7 @@ export const NEWS = [
     button: "Zeig mir die App",
     steps: [
       [".wotd", "Hier erscheint jeden Tag das Wort, das ich dir schicke. Tipp auf den Lautsprecher, dann hörst du, wie man es sagt. Und wenn ich's mal vergesse, guck ich traurig: dann darfst du mich erinnern. 😉"],
-      [".progress", "Das Blümchen auf der Kachel füllt sich mit jedem Wort, das du gelernt hast. Daneben steht, wie viele Karten heute dran sind."],
+      [".progress", "Das ist dein Azulejo: Mit jedem Wort, das du lernst, bekommt er ein neues Muster. Tipp drauf, dann siehst du alle in der Sala de trofeos. Daneben steht, wie viele Karten heute dran sind."],
       [".tabs button:nth-child(1)", "Karteikarten: Hier wiederholst du die Wörter. Dreh die Karte um und sag ehrlich, wie gut du es wusstest. Die App merkt sich, wann jedes Wort wiederkommen soll."],
       [".tabs button:nth-child(2)", "Spiele: Hier wohnen Üben, mit Lückensätzen, Hören und Schreiben, und ¿Quién?, mein Verbenspiel. Wörter, die dir schwerfallen, kommen öfter dran."],
       [".tabs button:nth-child(3)", "Alle Wörter: deine ganze Sammlung, mit allen Beispielsätzen zum Anhören."],
@@ -62,6 +62,20 @@ export const NEWS = [
   {
     id: "story",
     steps: [[".tabs button:nth-child(2)", "Neu unter Spiele: jeden Tag eine kleine Geschichte, nur aus Wörtern, die du schon kennst, und drei neuen. Du wirst staunen, wie viel du verstehst. 📖"]],
+  },
+  {
+    id: "mosaic",
+    say: "¡Angela, Post für dich!",
+    letter: [
+      "erinnerst du dich an das kleine Blümchen auf der Kachel? Das ist jetzt ein echter Azulejo, und er wächst mit dir: Bei jedem Meilenstein bekommt er ein neues Muster, bis 1000 Wörter. Ab 100 fängt er sogar an zu leuchten.",
+      "Wenn du einen neuen Meilenstein erreichst, liegt er erst umgedreht vor dir. Tipp ihn an und mach den Ton an. 🔊",
+      "Alle deine Azulejos stehen in der Sala de trofeos, in einer Vitrine, nur für dich.",
+      "Und jede Verbform, die du in ¿Quién? beherrschst, zählt jetzt auch als gelerntes Wort.",
+    ],
+    steps: [
+      [".trophy-door", "Das ist dein Azulejo. Tipp drauf, dann öffnet sich die Sala de trofeos mit allen, die du schon gesammelt hast."],
+      [".tabs button:nth-child(2)", "Und wenn hier ein roter Punkt ist, wartet in einem Spiel etwas Neues auf dich: eine neue Geschichte oder Kacheln, die in den Ofen wollen."],
+    ],
   },
 ];
 
