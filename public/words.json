@@ -1,5 +1,5 @@
 {
- "lastMsg": 109178,
+ "lastMsg": 109353,
  "words": [
   {
    "id": "ayer",
@@ -2079,6 +2079,39 @@
     "cansar"
    ],
    "added": "2026-11-11"
+  },
+  {
+   "id": "el-cachondeo",
+   "es": "el cachondeo",
+   "de": "der Spaß, die Albernei; das Chaos",
+   "en": "joking around; messing about; chaos",
+   "type": "noun",
+   "tip": "Typisch spanisches Umgangswort! Zwei Bedeutungen: 1) herumalbern, Witze machen, nichts ernst nehmen. 2) eine chaotische, lächerliche Situation. Oft: 'estar de cachondeo' = Spaß machen / 'ser un cachondeo' = ein einziges Chaos sein. Merke: Jemand, der gern albert, ist 'un cachondo / una cachonda'.",
+   "examples": [
+    {
+     "es": "Estamos de cachondeo todo el día.",
+     "de": "Wir albern den ganzen Tag herum."
+    },
+    {
+     "es": "Esta reunión es un cachondeo, nadie sabe nada.",
+     "de": "Dieses Meeting ist ein Chaos, niemand weiß etwas."
+    },
+    {
+     "es": "No te lo tomes en serio, es solo cachondeo.",
+     "de": "Nimm es nicht ernst, das ist nur Spaß."
+    }
+   ],
+   "cloze": {
+    "es": "Con mis amigos siempre hay mucho ___ y nos reímos un montón.",
+    "answer": "cachondeo",
+    "de": "Mit meinen Freunden gibt es immer viel Spaß und wir lachen eine Menge."
+   },
+   "distractors": [
+    "cuchareo",
+    "cacharreo",
+    "cachondismo"
+   ],
+   "added": "2026-11-12"
   }
  ],
  "audio": {
@@ -2622,6 +2655,11 @@
   "¿Estás cansada?": "audio/72eab2318d56ca83.mp3",
   "Después del trabajo estoy cansado.": "audio/a5e0241da724daf8.mp3",
   "No quiero salir, estoy muy cansada.": "audio/603777187b225961.mp3",
+  "el cachondeo": "audio/7a7392542f7ca47d.mp3",
+  "Estamos de cachondeo todo el día.": "audio/ca941de451626fcf.mp3",
+  "Esta reunión es un cachondeo, nadie sabe nada.": "audio/a23d0bef776a02e8.mp3",
+  "No te lo tomes en serio, es solo cachondeo.": "audio/7a2bdde78b25fd17.mp3",
+  "Con mis amigos siempre hay mucho cachondeo y nos reímos un montón.": "audio/a95fe238751aea10.mp3",
   "Soy alemana, pero vivo en Madrid.": "audio/701305f2eaf30d01.mp3",
   "Mi hermano es profesor.": "audio/cb4c71f66f45ecf9.mp3",
   "Son las nueve y media.": "audio/b665a07d0506e7d5.mp3",
