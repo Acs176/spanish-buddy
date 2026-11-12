@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Mascot from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
-import Verbs from "./Verbs.jsx";
-import Stories from "./Story.jsx";
+import Verbs, { kilnReady } from "./Verbs.jsx";
+import Stories, { storyNew } from "./Story.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic } from "./music.js";
@@ -170,7 +170,7 @@ export default function App() {
   if (screen === "settings") return <Settings done={home} replay={replay} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <>
-    <Home words={words} progress={progress} go={setScreen} story={stories.length > 0} />
+    <Home words={words} progress={progress} go={setScreen} stories={stories} />
     {news?.stage === "tour" && <Tour key={news.n.id} steps={news.n.steps} done={seen} />}
   </>;
 }
@@ -268,10 +268,11 @@ const GAMES = [
   ["story", "Geschichten", "Jeden Tag eine neue", <><path d="M12 6C9.5 4.3 6.5 4 3 4.5v14c3.5-.5 6.5-.2 9 1.5 2.5-1.7 5.5-2 9-1.5v-14C17.5 4 14.5 4.3 12 6Z" fill="#fffdf8" /><path d="M12 6v14" /><path d="M15.5 4.6v6l1.5-1.3 1.5 1.3V4.5" fill="#c4572f" stroke="none" /><path d="M5.5 8.5c1.8-.2 3.5 0 4.5.6M5.5 11.5c1.8-.2 3.5 0 4.5.6" stroke="#e0b050" /></>],
   ["verbs", "¿Quién?", "Verben: wer macht was?", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
 ];
-function Home({ words, progress, go, story }) {
+function Home({ words, progress, go, stories }) {
   const now = useNow();
   useEffect(() => { startMusic("casual"); return stopMusic; }, []);
   const [games, setGames] = useState(false);
+  const fresh = { story: storyNew(stories), verbs: kilnReady() }; // something new inside: a red dot on the game and on Spiele
   // words usually arrive late in the evening, so a word received on day D is the word of the day on D+1
   const yesterday = new Date(now); yesterday.setDate(now.getDate() - 1); // setDate, not now - DAY: DST days aren't 24h
   const wotds = words.filter(w => w.added === localDay(yesterday)); // a message can teach several
@@ -345,6 +346,7 @@ function Home({ words, progress, go, story }) {
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
             <span>{label}</span>
             {n > 0 && <i>{n}</i>}
+            {id === "games" && Object.values(fresh).some(Boolean) && <i className="dot" />}
           </button>
         ))}
       </nav>
@@ -353,11 +355,12 @@ function Home({ words, progress, go, story }) {
         <i className="grip" aria-hidden="true" />
         <h2 className="title">Spiele</h2>
         <div className="games">
-          {GAMES.filter(([id]) => id !== "story" || story).map(([id, label, sub, icon]) => (
+          {GAMES.filter(([id]) => id !== "story" || stories.length).map(([id, label, sub, icon]) => (
             <button key={id} onClick={() => go(id)}>
               <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icon}</svg>
               <b>{label}</b>
               <small>{sub}</small>
+              {fresh[id] && <i className="dot" />}
             </button>
           ))}
         </div>
@@ -385,6 +388,7 @@ function Flashcards({ words, progress, review, done }) {
   const [it, setIt] = useState(() => pickNext(words, progress)); // the card on screen stays put while you look at it
   const [answered, setAnswered] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [back, setBack] = useState(null); // the word on the back: it keeps the old one while the card turns back, so the next answer isn't spoiled
   const [mood, setMood] = useState("idle");
   useEffect(() => { if (!it && answered) play("done"); }, [it, answered]);
 
@@ -396,7 +400,7 @@ function Flashcards({ words, progress, review, done }) {
     </div>
   );
 
-  const w = it.w, now = Date.now(), card = progress[it.key];
+  const w = it.w, b = back ?? w, now = Date.now(), card = progress[it.key];
   const answer = rating => {
     const next = schedule(card, rating, now);
     review(it.key, next);
@@ -412,7 +416,7 @@ function Flashcards({ words, progress, review, done }) {
     <div className="screen">
       <Top done={done} progress={answered / (answered + dueCount(words, progress, now))} />
       <Duo angela={mood} />
-      <div className={`flip ${flipped ? "flipped" : ""}`} onClick={() => { setFlipped(true); if (!flipped) speak(w.es); }}>
+      <div className={`flip ${flipped ? "flipped" : ""}`} onClick={() => { setFlipped(true); setBack(w); if (!flipped) speak(w.es); }}>
         <div className="face front card">
           {it.dir === "prod" ? <>
             <small>Wie sagt man auf Spanisch…?</small>
@@ -423,11 +427,11 @@ function Flashcards({ words, progress, review, done }) {
           <small>Tippen zum Umdrehen</small>
         </div>
         <div className="face back card">
-          <h2>{w.es} <Speak text={w.es} /></h2>
+          <h2>{b.es} <Speak text={b.es} /></h2>
           <Orn />
-          <Entry w={w} />
+          <Entry w={b} />
           <ul className="examples">
-            {w.examples.map(e => <li key={e.es}><Speak text={e.es} /><div><b>{e.es}</b><span>{e.de}</span></div></li>)}
+            {b.examples.map(e => <li key={e.es}><Speak text={e.es} /><div><b>{e.es}</b><span>{e.de}</span></div></li>)}
           </ul>
         </div>
       </div>

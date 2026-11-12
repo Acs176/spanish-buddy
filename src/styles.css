@@ -150,7 +150,7 @@ h1, h2, p { margin: 0; }
 .grip { width: 44px; height: 5px; border-radius: 99px; background: #c9d2e6; }
 .games { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 448px; }
 .games button {
-  display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 18px 8px 16px; color: var(--blue);
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 18px 8px 16px; color: var(--blue);
   background: linear-gradient(160deg, #fff 0%, var(--card) 55%, #f3ecdc 100%); border: 2px solid var(--blue); border-radius: 8px;
   box-shadow: inset 0 2px 0 #fff, 0 4px 0 rgba(27, 47, 94, .35); transition: transform .06s, box-shadow .06s;
 }
@@ -302,7 +302,7 @@ h1, h2, p { margin: 0; }
 }
 .mailbox:active, .gear:active { transform: translateY(3px); box-shadow: inset 0 2px 0 #fff, 0 1px 0 rgba(27, 47, 94, .35); }
 .gear { top: calc(env(safe-area-inset-top) + 76px); }
-.mailbox i { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; border-radius: 50%; background: var(--red); border: 2px solid var(--card); }
+.mailbox i, i.dot { position: absolute; top: -6px; right: -6px; min-width: 0; padding: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--red); border: 2px solid var(--card); }
 .hand { font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; }
 .sub { text-align: center; color: var(--muted); font: italic 16px ui-serif, "New York", Georgia, serif; margin-top: -8px; }
 .feed { display: flex; flex-direction: column; gap: 26px; padding: 10px 4px 24px; }
@@ -585,7 +585,7 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .story button:focus-visible { outline: 3px solid var(--yellow); }
 .story mark { background: none; color: var(--red); border-bottom: 2px dotted var(--red); }
 .story > small { margin-top: 8px; color: var(--muted); font-style: italic; text-align: center; }
-.story-item { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer; }
+.story-item { position: relative; display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer; }
 .story-item b { font: 700 21px/1.2 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
 .story-item small { color: var(--muted); margin-top: 4px; }
 .story-item .de { font: italic 16px ui-serif, "New York", "Iowan Old Style", Georgia, serif; }

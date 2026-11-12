@@ -11,6 +11,7 @@ import { startMusic, stopMusic } from "./music.js";
 
 // petals painted per form, see paint() in verbs.js
 const load = () => { try { return JSON.parse(localStorage.getItem("verbs")) || {}; } catch { return {}; } };
+export const kilnReady = () => waiting(load(), today()).length > 0; // yesterday's petals wait in the kiln: red dot on the game
 const save = p => { try { localStorage.setItem("verbs", JSON.stringify(p)); } catch { /* private mode */ } };
 const any = a => a[Math.floor(Math.random() * a.length)];
 const RIGHT = ["¡Eso es!", "¡Olé!", "¡Claro que sí!", "¡Muy bien!", "¡Qué crack!"];

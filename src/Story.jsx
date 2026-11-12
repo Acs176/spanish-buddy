@@ -6,6 +6,15 @@ import { Quiz } from "./Postcards.jsx";
 const bare = es => es.replace(/^(el|la|los|las|un|una)\s+/i, ""); // "el café" is "un café" in the text
 const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+// red dot on a story newer than the newest one she has opened, and on the game while there is one
+// ponytail: one "newest opened" day, not a list; opening the newest also clears older unread ones
+const seen = () => { try { return localStorage.getItem("storySeen") ?? ""; } catch { return ""; } };
+export const storyNew = stories => {
+  // first time: only the newest story counts as new, not the whole archive
+  if (stories.length && !seen()) try { localStorage.setItem("storySeen", stories.at(-2)?.day ?? " "); } catch { /* private mode */ }
+  return (stories.at(-1)?.day ?? "") > seen();
+};
+
 export default function Stories({ stories, done }) {
   const [open, setOpen] = useState(null);
   if (open) return <Story story={open} done={() => setOpen(null)} />;
@@ -16,8 +25,12 @@ export default function Stories({ stories, done }) {
       <h2 className="title">Geschichten</h2>
       <p className="sub">Jeden Tag eine neue, von Adrián</p>
       {[...stories].reverse().map(st => (
-        <button key={st.day + st.title} className="card item story-item" onClick={() => { setOpen(st); window.scrollTo(0, 0); }}>
+        <button key={st.day + st.title} className="card item story-item" onClick={() => {
+          setOpen(st); window.scrollTo(0, 0);
+          if (st.day > seen()) try { localStorage.setItem("storySeen", st.day); } catch { /* private mode */ }
+        }}>
           <b>{st.title}</b>
+          {st.day > seen() && <i className="dot" />}
           <span className="de">{st.de}</span>
           <small>{date(st.day)} · neu: {st.new.map(n => n.es).join(", ")}</small>
         </button>
