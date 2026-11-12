@@ -1,4 +1,5 @@
 :root {
+  --azulejo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23f8f4ea'/%3E%3Crect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%23c9d2e6' stroke-width='1.5'/%3E%3Cg fill='%23a9b9de'%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(45 20 20)'/%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(135 20 20)'/%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(225 20 20)'/%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(315 20 20)'/%3E%3C/g%3E%3Cg fill='%233a5aa8'%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8'/%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8' transform='rotate(90 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8' transform='rotate(180 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8' transform='rotate(270 20 20)'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3.6' fill='%23c4572f'/%3E%3Ccircle cx='20' cy='20' r='1.3' fill='%23f8f4ea'/%3E%3Cg fill='none' stroke='%23d9a441' stroke-width='1.6'%3E%3Cpath d='M0 6a6 6 0 0 0 6-6M34 0a6 6 0 0 0 6 6M40 34a6 6 0 0 0-6 6M6 40a6 6 0 0 0-6-6'/%3E%3C/g%3E%3C/svg%3E");
   --bg: #f6f1e7;
   --card: #fffdf8;
   --ink: #1b2f5e;
@@ -187,7 +188,7 @@ h1, h2, p { margin: 0; }
 .tabs {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 2; display: flex; justify-content: center; gap: 12px;
   padding: 14px 16px calc(env(safe-area-inset-bottom) + 14px);
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23f8f4ea'/%3E%3Crect x='.75' y='.75' width='38.5' height='38.5' fill='none' stroke='%23c9d2e6' stroke-width='1.5'/%3E%3Cg fill='%23a9b9de'%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(45 20 20)'/%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(135 20 20)'/%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(225 20 20)'/%3E%3Cellipse cx='20' cy='12' rx='3.2' ry='6' transform='rotate(315 20 20)'/%3E%3C/g%3E%3Cg fill='%233a5aa8'%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8'/%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8' transform='rotate(90 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8' transform='rotate(180 20 20)'/%3E%3Cellipse cx='20' cy='10.5' rx='4.2' ry='8' transform='rotate(270 20 20)'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3.6' fill='%23c4572f'/%3E%3Ccircle cx='20' cy='20' r='1.3' fill='%23f8f4ea'/%3E%3Cg fill='none' stroke='%23d9a441' stroke-width='1.6'%3E%3Cpath d='M0 6a6 6 0 0 0 6-6M34 0a6 6 0 0 0 6 6M40 34a6 6 0 0 0-6 6M6 40a6 6 0 0 0-6-6'/%3E%3C/g%3E%3C/svg%3E") center bottom / 40px 40px repeat;
+  background: var(--azulejo) center bottom / 40px 40px repeat;
   border-top: 5px solid var(--blue); box-shadow: 0 -3px 0 var(--yellow);
 }
 .tabs button {
@@ -666,3 +667,83 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .story-item b { font: 700 21px/1.2 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
 .story-item small { color: var(--muted); margin-top: 4px; }
 .story-item .de { font: italic 16px ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
+
+/* the home tile opens the trophy room */
+.trophy-door { padding: 0; border: 0; background: none; cursor: pointer; flex: none; }
+.trophy-door:focus-visible { outline: 3px solid var(--yellow); outline-offset: 6px; border-radius: 12px; }
+
+/* the trophy room (Mosaic.jsx): a faintly tiled wall, an azulejo street sign, one walnut display cabinet */
+.trophies { position: relative; isolation: isolate; gap: 0; padding-bottom: 40px;
+  background: radial-gradient(ellipse at 50% 0%, #fffaf0 0%, rgba(246, 241, 231, .7) 40%, rgba(226, 214, 190, .9) 100%), var(--azulejo) 0 0 / 56px 56px; }
+.trophies::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: rgba(246, 241, 231, .84); }
+
+/* the sign: glazed tiles with their joints, a painted border, cobalt lettering; hung with a shadow */
+.tsign { position: relative; align-self: center; width: min(100%, 330px); aspect-ratio: 3; margin: 2px 0 8px; display: grid; place-items: center;
+  border-radius: 4px; background:
+    linear-gradient(90deg, transparent calc(33.33% - .75px), rgba(120, 105, 80, .35) calc(33.33% - .75px) calc(33.33% + .75px), transparent 0,
+      transparent calc(66.66% - .75px), rgba(120, 105, 80, .35) calc(66.66% - .75px) calc(66.66% + .75px), transparent 0),
+    linear-gradient(160deg, #fffefb 0%, #f6f1e4 48%, #ebe3d0 100%);
+  box-shadow: 0 1px 0 #fff inset, 0 -2px 3px rgba(120, 100, 60, .18) inset, 0 2px 0 #d8ccb2, 0 10px 18px -8px rgba(60, 40, 15, .5); }
+.tsign::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; /* the glaze catching the light */
+  background: linear-gradient(115deg, rgba(255, 255, 255, .7) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, .25) 100%); }
+.tsign-paint { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tsign span { position: relative; font: italic 700 clamp(26px, 8.4vw, 34px)/1 ui-serif, "New York", "Iowan Old Style", Georgia, serif;
+  color: #24418c; letter-spacing: -.005em; text-shadow: 0 0 .5px #24418c, 0 1px 0 rgba(255, 255, 255, .6); }
+.tally { margin: 6px 0 20px; text-align: center; color: var(--muted); font: italic 16px ui-serif, "New York", Georgia, serif; }
+
+/* the cabinet: walnut with grain, bevelled, standing against the wall */
+.cabinet { position: relative; padding: 14px 12px 18px; border-radius: 10px 10px 6px 6px;
+  background:
+    repeating-linear-gradient(92deg, rgba(0, 0, 0, .07) 0 2px, transparent 2px 7px, rgba(255, 255, 255, .03) 7px 8px, transparent 8px 13px),
+    linear-gradient(#7a4a2b, #5e371d 50%, #4c2c16);
+  box-shadow: inset 0 1px 0 rgba(255, 220, 180, .35), inset 0 0 0 1px rgba(0, 0, 0, .35), inset 0 -3px 0 rgba(0, 0, 0, .25),
+    0 18px 26px -12px rgba(50, 28, 10, .6), 0 3px 0 #3a2110; }
+/* inside: navy velvet, lit from the top, behind glass */
+.vitrine { position: relative; overflow: hidden; border-radius: 4px; padding: 14px 6px 4px;
+  background: radial-gradient(ellipse 90% 30% at 50% 0%, rgba(255, 226, 160, .32), transparent 70%), linear-gradient(#16275a, #1d3270 60%, #182a5e);
+  box-shadow: inset 0 0 0 2px #3a2110, inset 0 0 0 3.5px #b98a3e, inset 0 10px 18px rgba(0, 0, 0, .55), inset 0 -6px 12px rgba(0, 0, 0, .35); }
+.vitrine::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3; /* the glass door's reflections */
+  background: linear-gradient(118deg, transparent 22%, rgba(255, 255, 255, .09) 27%, rgba(255, 255, 255, .02) 34%, transparent 36%,
+    transparent 62%, rgba(255, 255, 255, .06) 66%, transparent 71%); }
+.tier { position: relative; display: flex; justify-content: space-around; padding: 10px 0 0; margin-bottom: 30px; }
+.tier::before { content: ""; position: absolute; left: 10%; right: 10%; top: -6px; height: 50px; pointer-events: none; /* each shelf's own little light */
+  background: radial-gradient(ellipse 50% 100% at 50% 0%, rgba(255, 226, 160, .16), transparent); }
+/* the glass shelf: a pale green edge, a highlight on top, its shadow below */
+.tier::after { content: ""; position: absolute; left: -6px; right: -6px; bottom: -8px; height: 7px;
+  background: linear-gradient(rgba(225, 245, 238, .75), rgba(150, 195, 185, .45) 40%, rgba(90, 140, 130, .35));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 8px 12px rgba(0, 0, 0, .45); }
+.exhibit { position: relative; z-index: 1; width: 31%; display: flex; flex-direction: column; align-items: center;
+  padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+.exhibit:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
+/* the stand: a brass rail with feet, and the tile leaning back on it, its shadow on the glass */
+.stand { position: relative; display: grid; place-items: end center; width: 72px; height: 76px; }
+.stand::before { content: ""; position: absolute; left: 14%; right: 14%; bottom: -1px; height: 10px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, .55), transparent); }
+.stand::after { content: ""; position: absolute; left: 22%; right: 22%; bottom: 0; height: 4px; border-radius: 2px 2px 0 0;
+  background: linear-gradient(#f3d98c, #b8862c); box-shadow: 0 -1px 0 rgba(255, 255, 255, .4) inset, 0 1px 1px rgba(0, 0, 0, .5); }
+.exhibit .mosaic { --size: 66px; --rx: 14deg; margin-bottom: 3px; }
+.exhibit .mosaic .obj { animation: none; }
+.exhibit .mosaic .mtile { filter: drop-shadow(0 -1px 0 rgba(255, 244, 210, .85)) drop-shadow(0 6px 5px rgba(0, 0, 0, .55)); }
+.exhibit .mosaic.rays::before { inset: -42%; }
+.exhibit.empty .stand::after { opacity: .55; }
+.exhibit.next .stand::after { opacity: 1; box-shadow: 0 0 10px 2px rgba(255, 220, 130, .55); animation: breathe 2s ease-in-out infinite; }
+.exhibit.nope { animation: nope .45s; }
+@keyframes nope { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+/* one tile up close */
+.showcase { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+  padding: 24px; text-align: center; cursor: pointer; background: radial-gradient(circle at 50% 40%, rgba(255, 247, 223, .97), rgba(236, 226, 204, .97));
+  animation: ufade .35s ease-out both; }
+.showcase .mosaic { animation: upop .6s cubic-bezier(.2, 1.4, .4, 1) both; margin-bottom: 14px; }
+.showcase .mosaic.rays::before { inset: -45%; }
+.showcase .utext { margin: 0; color: var(--muted); font: italic 16px ui-serif, Georgia, serif; }
+.showcase .uhint { margin: 0; color: var(--muted); font: italic 14px ui-serif, Georgia, serif; opacity: .8; }
+.plaque { display: block; overflow: visible; }
+.plaque .engraved { font: 700 11.2px ui-serif, "New York", Georgia, serif; letter-spacing: .02em; fill: #4d3610; }
+.plaque .engraved.hi { fill: #fff3cc; opacity: .85; }
+.plaque .engraved.big { font-size: 21px; letter-spacing: .01em; }
+.plaque .engraved.small { font: italic 600 8.6px ui-serif, "New York", Georgia, serif; }
+.plaque.big { width: min(300px, 86vw); height: auto; filter: drop-shadow(0 6px 8px rgba(60, 40, 15, .35)); animation: upop .6s cubic-bezier(.2, 1.4, .4, 1) .15s both; }
+/* the label on the shelf's front edge */
+.tplate { position: relative; z-index: 2; margin: 8px 0 -16px; }
+.exhibit.empty .tplate { filter: saturate(.2) brightness(.6); }
+.exhibit.next .tplate { filter: none; }

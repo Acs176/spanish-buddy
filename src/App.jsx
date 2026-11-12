@@ -4,7 +4,7 @@ import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
 import Verbs, { kilnReady, verbCount } from "./Verbs.jsx";
 import Stories, { storyNew } from "./Story.jsx";
-import Mosaic, { MILESTONES, reached, unseen, Unlock } from "./Mosaic.jsx";
+import Mosaic, { MILESTONES, reached, unseen, Unlock, Trophies } from "./Mosaic.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic } from "./music.js";
@@ -169,6 +169,7 @@ export default function App() {
   if (screen === "verbs") return <Verbs done={home} />;
   if (screen === "story") return <Stories stories={stories} done={home} />;
   if (screen === "settings") return <Settings done={home} replay={replay} />;
+  if (screen === "trophies") return <Trophies learned={countLearned(words, progress).learned} done={home} />;
   if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
   return <>
     <Home words={words} progress={progress} go={setScreen} stories={stories} calm={news?.stage === "tour"} />
@@ -177,6 +178,11 @@ export default function App() {
 }
 
 // ---------- home ----------
+// words graduated out of the learning steps, plus the verb forms she has mastered in ¿Quién?
+const countLearned = (words, progress) => {
+  const vc = verbCount();
+  return { learned: words.filter(w => progress[w.id]?.st === "review").length + vc.learned, total: words.length + vc.total };
+};
 export const Orn = () => (
   <div className="orn" aria-hidden="true">
     <i />
@@ -273,9 +279,7 @@ function Home({ words, progress, go, stories, calm }) {
   const wotd = wotds[0];
   const [emptyTitle, emptyMsg] = NO_WORD[Math.floor(now / DAY) % NO_WORD.length];
   const due = dueCount(words, progress);
-  const vc = verbCount(); // plus the verb forms she has mastered in ¿Quién?
-  const learned = words.filter(w => progress[w.id]?.st === "review").length + vc.learned; // graduated out of the learning steps
-  const total = words.length + vc.total;
+  const { learned, total } = countLearned(words, progress);
   const toNext = (MILESTONES[reached(learned)] ?? learned) - learned;
   const [unlock, setUnlock] = useState(() => unseen(learned)); // a new milestone on the tile: its unlock screen, once
   const [talking, setTalking] = useState(false);
@@ -321,7 +325,7 @@ function Home({ words, progress, go, stories, calm }) {
         </>}
       </section>}
       <div className="progress">
-        <Mosaic learned={learned} />
+        <button className="trophy-door" onClick={() => go("trophies")} aria-label="Trophäenraum öffnen"><Mosaic learned={learned} /></button>
         <p><b>{due} fällig</b><span>{learned} von {total} Wörtern gelernt</span>{toNext > 0 && <small>noch {toNext} bis zum nächsten Muster</small>}</p>
       </div>
       <nav className="tabs">
