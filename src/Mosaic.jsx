@@ -207,6 +207,19 @@ export const BrassDefs = () => (
         <feColorMatrix values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .8  0 0 0 .55 -.18" />
         <feComposite in2="SourceGraphic" operator="in" />
       </filter>
+      {/* velvet for the cabinet: fine pile and soft crushed patches, lit by a spotlight under the shelf above */}
+      <filter id="velvet" filterUnits="userSpaceOnUse" x="0" y="0" width="320" height="140" colorInterpolationFilters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="2.2 1.8" numOctaves="2" seed="3" result="pile" />
+        <feDiffuseLighting in="pile" surfaceScale=".9" diffuseConstant="1.35" lightingColor="#fff6ea" result="lit">
+          <feSpotLight x="160" y="-36" z="70" pointsAtX="160" pointsAtY="125" pointsAtZ="0" specularExponent="6" limitingConeAngle="60" />
+        </feDiffuseLighting>
+        <feComposite in="lit" in2="SourceGraphic" operator="arithmetic" k1="1.55" k2=".1" result="cloth" />
+        {/* soft patches where the pile lies the other way and catches more light */}
+        <feTurbulence type="fractalNoise" baseFrequency=".014 .024" numOctaves="3" seed="11" result="crush" />
+        <feColorMatrix in="crush" values="0 0 0 0 .55  0 0 0 0 .66  0 0 0 0 1  0 0 0 1.1 -.5" result="sheen" />
+        <feComposite in="sheen" in2="lit" operator="arithmetic" k1=".5" result="litsheen" />
+        <feComposite in="litsheen" in2="cloth" operator="over" />
+      </filter>
       <clipPath id="brassClip"><path d={CART} /></clipPath>
       <clipPath id="brassClipBig"><path d={CART_BIG} /></clipPath>
       <filter id="brassBevelBig" x="-5%" y="-10%" width="110%" height="120%">
@@ -314,6 +327,7 @@ export function Trophies({ learned, done }) {
         <div className="vitrine">
           {rows.map((row, r) => (
             <div key={r} className="tier">
+              <svg className="velvet" viewBox="0 0 320 140" preserveAspectRatio="none" aria-hidden="true"><rect width="320" height="140" fill="#1e3a96" filter="url(#velvet)" /></svg>
               {row.map(n => {
                 const got = n <= learned, isNext = n === MILESTONES[k];
                 return (

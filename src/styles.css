@@ -673,9 +673,10 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .trophy-door:focus-visible { outline: 3px solid var(--yellow); outline-offset: 6px; border-radius: 12px; }
 
 /* the trophy room (Mosaic.jsx): a faintly tiled wall, an azulejo street sign, one walnut display cabinet */
-.trophies { position: relative; isolation: isolate; gap: 0; padding-bottom: 40px;
-  background: radial-gradient(ellipse at 50% 0%, #fffaf0 0%, rgba(246, 241, 231, .7) 40%, rgba(226, 214, 190, .9) 100%), var(--azulejo) 0 0 / 56px 56px; }
-.trophies::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: rgba(246, 241, 231, .84); }
+.trophies { position: relative; isolation: isolate; gap: 0; padding-bottom: 60px; background: #0d1430 var(--azulejo) 0 0 / 56px 56px; }
+/* the dark: the tiled wall barely shows, except where the cabinet's light falls */
+.trophies::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 75% 55% at 50% 62%, rgba(13, 20, 48, .55), rgba(13, 20, 48, .93) 70%, rgba(8, 12, 30, .97)); }
 
 /* the sign: glazed tiles with their joints, a painted border, cobalt lettering; hung with a shadow */
 .tsign { position: relative; align-self: center; width: min(100%, 330px); aspect-ratio: 3; margin: 2px 0 8px; display: grid; place-items: center;
@@ -683,36 +684,45 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
     linear-gradient(90deg, transparent calc(33.33% - .75px), rgba(120, 105, 80, .35) calc(33.33% - .75px) calc(33.33% + .75px), transparent 0,
       transparent calc(66.66% - .75px), rgba(120, 105, 80, .35) calc(66.66% - .75px) calc(66.66% + .75px), transparent 0),
     linear-gradient(160deg, #fffefb 0%, #f6f1e4 48%, #ebe3d0 100%);
-  box-shadow: 0 1px 0 #fff inset, 0 -2px 3px rgba(120, 100, 60, .18) inset, 0 2px 0 #d8ccb2, 0 10px 18px -8px rgba(60, 40, 15, .5); }
+  box-shadow: 0 1px 0 #fff inset, 0 -2px 3px rgba(120, 100, 60, .18) inset, 0 2px 0 #b9ad93, 0 10px 18px -8px rgba(0, 0, 0, .7), 0 -10px 40px rgba(255, 220, 150, .18); }
 .tsign::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; /* the glaze catching the light */
   background: linear-gradient(115deg, rgba(255, 255, 255, .7) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, .25) 100%); }
 .tsign-paint { position: absolute; inset: 0; width: 100%; height: 100%; }
 .tsign span { position: relative; font: italic 700 clamp(26px, 8.4vw, 34px)/1 ui-serif, "New York", "Iowan Old Style", Georgia, serif;
   color: #24418c; letter-spacing: -.005em; text-shadow: 0 0 .5px #24418c, 0 1px 0 rgba(255, 255, 255, .6); }
-.tally { margin: 6px 0 20px; text-align: center; color: var(--muted); font: italic 16px ui-serif, "New York", Georgia, serif; }
+.tally { margin: 6px 0 22px; text-align: center; color: #b9b2a2; font: italic 16px ui-serif, "New York", Georgia, serif; }
 
 /* the cabinet: walnut with grain, bevelled, standing against the wall */
-.cabinet { position: relative; padding: 14px 12px 18px; border-radius: 10px 10px 6px 6px;
+.cabinet { position: relative; margin: 0 6px; padding: 14px 12px 18px; border-radius: 10px 10px 6px 6px;
   background:
     repeating-linear-gradient(92deg, rgba(0, 0, 0, .07) 0 2px, transparent 2px 7px, rgba(255, 255, 255, .03) 7px 8px, transparent 8px 13px),
     linear-gradient(#7a4a2b, #5e371d 50%, #4c2c16);
   box-shadow: inset 0 1px 0 rgba(255, 220, 180, .35), inset 0 0 0 1px rgba(0, 0, 0, .35), inset 0 -3px 0 rgba(0, 0, 0, .25),
-    0 18px 26px -12px rgba(50, 28, 10, .6), 0 3px 0 #3a2110; }
+    0 3px 0 #3a2110, 0 22px 24px -14px rgba(0, 0, 0, .75); }
+/* its glow on the wall around it */
+/* the light from the glass falls on the wall behind it: brightens it rather than glowing on top, so the tiles show through */
+.cabinet::before { content: ""; position: absolute; inset: -90px -110px -40px; z-index: -1; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(ellipse 46% 44% at 50% 52%, rgba(196, 160, 104, .5), rgba(150, 118, 80, .22) 45%, rgba(90, 80, 70, .06) 70%, transparent 85%); }
+/* its light on the floor */
+.cabinet::after { content: ""; position: absolute; left: -25%; right: -25%; bottom: -70px; height: 90px; z-index: -1; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(ellipse 50% 40% at 50% 25%, rgba(200, 160, 100, .35), rgba(120, 95, 65, .12) 55%, transparent 80%); }
 /* inside: navy velvet, lit from the top, behind glass */
+/* inside: navy velvet with its grain, darker towards the sides and corners, a downlight at the very top */
 .vitrine { position: relative; overflow: hidden; border-radius: 4px; padding: 14px 6px 4px;
-  background: radial-gradient(ellipse 90% 30% at 50% 0%, rgba(255, 226, 160, .32), transparent 70%), linear-gradient(#16275a, #1d3270 60%, #182a5e);
-  box-shadow: inset 0 0 0 2px #3a2110, inset 0 0 0 3.5px #b98a3e, inset 0 10px 18px rgba(0, 0, 0, .55), inset 0 -6px 12px rgba(0, 0, 0, .35); }
-.vitrine::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3; /* the glass door's reflections */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 140px 140px,
+    linear-gradient(#0f1a40, #0f1a40);
+ }
+.vitrine::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3; /* the frame's inner edge, the depth at the sides, the glass door's reflections */
+  box-shadow: inset 0 0 0 2px #3a2110, inset 0 0 0 3.5px #b98a3e, inset 0 14px 22px rgba(0, 0, 0, .65), inset 0 -12px 20px rgba(0, 0, 0, .5),
+    inset 22px 0 26px -14px rgba(0, 0, 0, .6), inset -22px 0 26px -14px rgba(0, 0, 0, .6);
   background: linear-gradient(118deg, transparent 22%, rgba(255, 255, 255, .09) 27%, rgba(255, 255, 255, .02) 34%, transparent 36%,
     transparent 62%, rgba(255, 255, 255, .06) 66%, transparent 71%); }
 .tier { position: relative; display: flex; justify-content: space-around; padding: 10px 0 0; margin-bottom: 30px; }
-.tier::before { content: ""; position: absolute; left: 10%; right: 10%; top: -6px; height: 50px; pointer-events: none; /* each shelf's own little light */
-  background: radial-gradient(ellipse 50% 100% at 50% 0%, rgba(255, 226, 160, .16), transparent); }
-/* the glass shelf: a pale green edge, a highlight on top, its shadow below */
+/* each row's velvet (Mosaic.jsx): from just under the shelf above down to its own shelf */
+.tier .velvet { position: absolute; left: -6px; right: -6px; top: -22px; bottom: -1px; width: calc(100% + 12px); height: calc(100% + 23px); pointer-events: none; }
 .tier::after { content: ""; position: absolute; left: -6px; right: -6px; bottom: -8px; height: 7px;
-  background: linear-gradient(rgba(225, 245, 238, .75), rgba(150, 195, 185, .45) 40%, rgba(90, 140, 130, .35));
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset, 0 8px 12px rgba(0, 0, 0, .45); }
-.exhibit { position: relative; z-index: 1; width: 31%; display: flex; flex-direction: column; align-items: center;
+  background: linear-gradient(rgba(235, 250, 244, .85), rgba(170, 215, 200, .55) 35%, rgba(110, 165, 150, .45) 70%, rgba(255, 236, 190, .9) 86%, rgba(255, 236, 190, .4));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 4px 10px rgba(0, 0, 0, .5), 0 9px 16px -2px rgba(255, 222, 160, .28); }.exhibit { position: relative; z-index: 1; width: 31%; display: flex; flex-direction: column; align-items: center;
   padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
 .exhibit:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
 /* the stand: a brass rail with feet, and the tile leaning back on it, its shadow on the glass */
@@ -723,7 +733,9 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
   background: linear-gradient(#f3d98c, #b8862c); box-shadow: 0 -1px 0 rgba(255, 255, 255, .4) inset, 0 1px 1px rgba(0, 0, 0, .5); }
 .exhibit .mosaic { --size: 66px; --rx: 14deg; margin-bottom: 3px; }
 .exhibit .mosaic .obj { animation: none; }
-.exhibit .mosaic .mtile { filter: drop-shadow(0 -1px 0 rgba(255, 244, 210, .85)) drop-shadow(0 6px 5px rgba(0, 0, 0, .55)); }
+.exhibit .mosaic .mtile { filter: drop-shadow(0 -1px 0 rgba(255, 244, 210, .9)) drop-shadow(0 8px 7px rgba(0, 0, 0, .5)) drop-shadow(0 2px 2px rgba(0, 0, 0, .35)); }
+.exhibit .mosaic .tilt::after { content: ""; position: absolute; inset: 2%; border-radius: 8%; pointer-events: none; transform: translateZ(calc(var(--size) * .2));
+  background: linear-gradient(rgba(255, 244, 214, .18), rgba(255, 244, 214, 0) 38%, rgba(10, 20, 55, 0) 55%, rgba(10, 20, 55, .24)); }
 .exhibit .mosaic.rays::before { inset: -42%; }
 .exhibit.empty .stand::after { opacity: .55; }
 .exhibit.next .stand::after { opacity: 1; box-shadow: 0 0 10px 2px rgba(255, 220, 130, .55); animation: breathe 2s ease-in-out infinite; }
@@ -731,12 +743,18 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 @keyframes nope { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
 /* one tile up close */
 .showcase { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
-  padding: 24px; text-align: center; cursor: pointer; background: radial-gradient(circle at 50% 40%, rgba(255, 247, 223, .97), rgba(236, 226, 204, .97));
-  animation: ufade .35s ease-out both; }
+  padding: 24px; text-align: center; cursor: pointer; isolation: isolate; overflow: hidden;
+  background: radial-gradient(ellipse 60% 45% at 50% 42%, #22397a 0%, #142252 50%, #0a1028 100%); animation: ufade .35s ease-out both; }
+/* the beam: from a lamp above the screen, widening onto the tile, a pool of light under it */
+.showcase::before { content: ""; position: absolute; left: 50%; top: -5%; width: 150%; height: 72%; transform: translateX(-50%); z-index: -1; pointer-events: none;
+  clip-path: polygon(44% 0, 56% 0, 82% 100%, 18% 100%); filter: blur(6px);
+  background: linear-gradient(rgba(255, 238, 196, .42), rgba(255, 230, 170, .16) 75%, rgba(255, 230, 170, 0)); animation: ufade .8s ease-out both; }
+.showcase::after { content: ""; position: absolute; left: 50%; top: 60%; width: 120%; height: 34%; transform: translateX(-50%); z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 45% 40% at 50% 30%, rgba(255, 226, 160, .2), transparent 75%); }
 .showcase .mosaic { animation: upop .6s cubic-bezier(.2, 1.4, .4, 1) both; margin-bottom: 14px; }
 .showcase .mosaic.rays::before { inset: -45%; }
-.showcase .utext { margin: 0; color: var(--muted); font: italic 16px ui-serif, Georgia, serif; }
-.showcase .uhint { margin: 0; color: var(--muted); font: italic 14px ui-serif, Georgia, serif; opacity: .8; }
+.showcase .utext { margin: 0; color: #e8dcc0; font: italic 16px ui-serif, Georgia, serif; }
+.showcase .uhint { margin: 0; color: #9aa6c8; font: italic 14px ui-serif, Georgia, serif; opacity: .8; }
 .plaque { display: block; overflow: visible; }
 .plaque .engraved { font: 700 11.2px ui-serif, "New York", Georgia, serif; letter-spacing: .02em; fill: #4d3610; }
 .plaque .engraved.hi { fill: #fff3cc; opacity: .85; }
