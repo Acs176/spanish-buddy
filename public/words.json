@@ -3584,6 +3584,103 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-13",
+   "title": "El café es para ti",
+   "de": "Der Kaffee geht auf dich",
+   "sentences": [
+    {
+     "es": "Hoy estoy muy cansada después de un día arriba.",
+     "de": "Heute bin ich sehr müde nach einem Tag oben (am Berg)."
+    },
+    {
+     "es": "Entonces quiero un café, aquí fuera.",
+     "de": "Also möchte ich einen Kaffee, hier draußen."
+    },
+    {
+     "es": "Ahora estoy aquí y espero.",
+     "de": "Jetzt bin ich hier und warte."
+    },
+    {
+     "es": "El camarero ya está aquí.",
+     "de": "Der Kellner ist schon da."
+    },
+    {
+     "es": "Me hace una pregunta: «¿Qué te pongo?».",
+     "de": "Er stellt mir eine Frage: «Was mache ich dir (was bringe ich dir)?»."
+    },
+    {
+     "es": "—Me pones un café, por favor.",
+     "de": "—Mach mir bitte einen Kaffee."
+    },
+    {
+     "es": "El café está muy bueno y muy dulce.",
+     "de": "Der Kaffee ist sehr gut und sehr süß."
+    },
+    {
+     "es": "Pero entonces... ¡no tengo dinero! Ningún dinero aquí.",
+     "de": "Aber dann... ich habe kein Geld! Gar kein Geld dabei."
+    },
+    {
+     "es": "Yo estoy muy roja, pero el camarero es muy bueno.",
+     "de": "Ich bin ganz rot, aber der Kellner ist sehr nett."
+    },
+    {
+     "es": "—El café es para ti —y está de cachondeo.",
+     "de": "—Der Kaffee geht auf dich —und er macht Spaß/scherzt."
+    },
+    {
+     "es": "Entonces ya no estoy cansada: este es mi sitio.",
+     "de": "Dann bin ich nicht mehr müde: das ist mein Ort."
+    }
+   ],
+   "new": [
+    {
+     "es": "café",
+     "de": "Kaffee"
+    },
+    {
+     "es": "camarero",
+     "de": "Kellner"
+    },
+    {
+     "es": "dinero",
+     "de": "Geld"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Qué quiere ella?",
+     "de": "Was möchte sie?",
+     "answer": "Un café",
+     "options": [
+      "Un queso",
+      "Un café",
+      "Nada"
+     ]
+    },
+    {
+     "es": "¿Qué problema tiene?",
+     "de": "Welches Problem hat sie?",
+     "answer": "No tiene dinero",
+     "options": [
+      "No tiene dinero",
+      "No tiene café",
+      "Está perdida"
+     ]
+    },
+    {
+     "es": "¿Cómo es el camarero?",
+     "de": "Wie ist der Kellner?",
+     "answer": "Muy bueno",
+     "options": [
+      "Muy tarde",
+      "Muy bueno",
+      "Muy cansado"
+     ]
+    }
+   ]
   }
  ]
 }
