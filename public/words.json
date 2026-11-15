@@ -3681,6 +3681,103 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-15",
+   "title": "La roca de la derecha",
+   "de": "Der Felsen rechts",
+   "sentences": [
+    {
+     "es": "Hoy Ana y yo estamos fuera, en un sitio con una roca.",
+     "de": "Heute sind Ana und ich draußen, an einem Ort mit einem Felsen."
+    },
+    {
+     "es": "Dentro de mi mochila tengo dos quesitos.",
+     "de": "In meinem Rucksack habe ich zwei Käsestückchen."
+    },
+    {
+     "es": "Ana hace una pregunta: ¿vamos arriba?",
+     "de": "Ana stellt eine Frage: Gehen wir nach oben?"
+    },
+    {
+     "es": "Mi respuesta es sí, pero no por la izquierda.",
+     "de": "Meine Antwort ist ja, aber nicht links herum."
+    },
+    {
+     "es": "Por la derecha es más fácil.",
+     "de": "Rechts herum ist es einfacher."
+    },
+    {
+     "es": "Entonces voy arriba, y Ana va después.",
+     "de": "Dann gehe ich nach oben, und Ana geht danach."
+    },
+    {
+     "es": "Arriba no hay ningún sitio para estar, pero me gusta mucho.",
+     "de": "Oben gibt es keinen Platz zum Bleiben, aber es gefällt mir sehr."
+    },
+    {
+     "es": "Ahora estoy muy cansada y quiero un quesito.",
+     "de": "Jetzt bin ich sehr müde und will ein Käsestückchen."
+    },
+    {
+     "es": "Ana quiere más, pero ya no hay ninguno.",
+     "de": "Ana will mehr, aber es gibt keins mehr."
+    },
+    {
+     "es": "Después estamos abajo juntas, con mucho cachondeo.",
+     "de": "Danach sind wir zusammen unten, mit viel Gealber."
+    },
+    {
+     "es": "Mañana a otro sitio, ¿vale?",
+     "de": "Morgen an einen anderen Ort, okay?"
+    }
+   ],
+   "new": [
+    {
+     "es": "roca",
+     "de": "Felsen"
+    },
+    {
+     "es": "mochila",
+     "de": "Rucksack"
+    },
+    {
+     "es": "fácil",
+     "de": "einfach, leicht"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Qué tengo dentro de la mochila?",
+     "de": "Was habe ich im Rucksack?",
+     "answer": "Dos quesitos.",
+     "options": [
+      "Dos quesitos.",
+      "Nada.",
+      "Dos cuchillos."
+     ]
+    },
+    {
+     "es": "¿Por dónde es más fácil?",
+     "de": "Wo herum ist es einfacher?",
+     "answer": "Por la derecha.",
+     "options": [
+      "Por abajo.",
+      "Por la izquierda.",
+      "Por la derecha."
+     ]
+    },
+    {
+     "es": "¿Cómo estoy ahora?",
+     "de": "Wie fühle ich mich jetzt?",
+     "answer": "Muy cansada.",
+     "options": [
+      "Muy cansada.",
+      "Fuera.",
+      "Muy lista."
+     ]
+    }
+   ]
   }
  ]
 }
