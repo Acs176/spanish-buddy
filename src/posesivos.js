@@ -1,5 +1,5 @@
 // ¿De quién es?: the objects and the possessive forms.
-// p: 0 yo (Angela), 1 tú (Adrián), 2 él (Mr. Lock 'em up), 3 nosotros (Angela + Adrián), 4 vosotros (Adrián + Mr. Lock 'em up), 5 ellos (Paco y Lola).
+// p: 0 yo (Angela), 1 tú (Adrián), 2 él (Mr. Lock 'em up), 3 nosotros (Angela + Adrián), 4 vosotros (Adrián + Mr. Lock 'em up), 5 ellos (Bojack y Diane).
 // kind: "atono" (mis llaves), "tonico" (estas llaves son mías), "articulo" (¿y las mías?)
 
 // useful everyday things, balanced over el / la / los / las; big ones fall as "objeto gordo"
@@ -61,7 +61,7 @@ export function options(kind, p, g, pl, rnd = Math.random) {
 }
 
 // someone outside the owners, to compare with
-const REF = ["Mr. Lock 'em up", "Mr. Lock 'em up", "Adrián", "Mr. Lock 'em up", "Lola", "Adrián"];
+const REF = ["Mr. Lock 'em up", "Mr. Lock 'em up", "Adrián", "Mr. Lock 'em up", "Diane", "Adrián"];
 const cap = s => s[0].toUpperCase() + s.slice(1);
 // the sentence around the gap, said by Angela
 export function sentence(kind, p, o) {

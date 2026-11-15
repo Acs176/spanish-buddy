@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Adrian from "./Adrian.jsx";
 import Angela from "./Angela.jsx";
 import LockEmUp from "./LockEmUp.jsx";
-import { Lola, Paco } from "./Vecinos.jsx";
+import { Bojack, Diane } from "./Vecinos.jsx";
 import { paintBricks } from "./Kiln.jsx";
 import { Speak, Top, speak } from "./App.jsx";
 import { play } from "./sound.js";
@@ -27,7 +27,7 @@ const pair = (A, B) => ({ size, mood }) => (
 );
 const PEOPLE = [
   { C: Angela, w: "yo" }, { C: Adrian, w: "tú" }, { C: LockEmUp, w: "él" },
-  { C: pair(Angela, Adrian), w: "nosotros" }, { C: pair(Adrian, LockEmUp), w: "vosotros" }, { C: pair(Lola, Paco), w: "ellos" },
+  { C: pair(Angela, Adrian), w: "nosotros" }, { C: pair(Adrian, LockEmUp), w: "vosotros" }, { C: pair(Diane, Bojack), w: "ellos" },
 ];
 const BIG = OBJECTS.filter(o => o.big);
 const any = a => a[Math.floor(Math.random() * a.length)];
