@@ -30,6 +30,7 @@ Each item:
 {{"es": "word with article if noun, e.g. 'la semana'",
   "de": "German translation", "en": "English translation",
   "type": "noun|verb|adjective|adverb|expression|other",
+  "topic": "exactly one of: tiempo (time, days, when) | comida (food, drink, eating out, kitchen tools) | lugares (places, directions, where) | casa (home, rooms, furniture) | hablar (conversation, phrases, opinions, communicating) | preguntas (question words) | pequenas (small grammar words: this, all, nothing, more, nobody...) | sentimientos (feelings, moods, affection, body states) | gente (people, family, friends) | viajar (travel, transport, nature) | ocio (free time, sport, climbing, hobbies) | compras (shopping, money, clothes)",
   "tip": "one short, friendly tip in German (usage, false friend, mnemonic)",
   "examples": [{{"es": "simple everyday sentence using it", "de": "German translation"}}],  // exactly 3, A1-A2 level
   "cloze": {{"es": "a NEW sentence with the word replaced by ___", "answer": "exact text that fills ___", "de": "German translation of the full sentence"}},

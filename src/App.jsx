@@ -7,7 +7,7 @@ import Stories, { storyNew } from "./Story.jsx";
 import Mosaic, { MILESTONES, reached, unseen, Unlock, Trophies } from "./Mosaic.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
-import { startMusic, stopMusic, musicOn, setMusic } from "./music.js";
+import { startMusic, stopMusic, musicOn, setMusic, rasgueo } from "./music.js";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
 
 // ---------- helpers ----------
@@ -163,7 +163,7 @@ export default function App() {
 
   const home = () => setScreen("home");
   const replay = () => { setScreen("home"); setNews({ n: NEWS[0], stage: "letter" }); };
-  if (screen === "cards") return <Flashcards words={words} progress={progress} review={review} done={home} />;
+  if (screen === "cards") return <TopicWall words={words} progress={progress} review={review} done={home} />;
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
   if (screen === "verbs") return <Verbs done={home} />;
@@ -443,6 +443,57 @@ function Flashcards({ words, progress, review, done }) {
   );
 }
 
+// ---------- topics ----------
+// a fixed map of everyday Spanish, A1–B1; topics with no words yet show as empty tiles still waiting for their glaze
+export const TOPICS = [
+  ["tiempo", "El tiempo", "Zeit", <><circle cx="12" cy="12" r="8.5" fill="#fffdf8" /><path d="M12 7v5l3.5 2" /><circle cx="12" cy="12" r="1.3" fill="#c4572f" stroke="none" /></>],
+  ["comida", "La comida", "Essen und Trinken", <><path d="M3.5 11h17a8.5 8.5 0 0 1-17 0Z" fill="#e0b050" /><path d="M9 3.5c-1 1.5 1 2.5 0 4.5M14.5 3.5c-1 1.5 1 2.5 0 4.5" /></>],
+  ["lugares", "Los lugares", "Orte und Wege", <><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z" fill="#f4d9cd" /><circle cx="12" cy="10" r="2.4" fill="#c4572f" stroke="none" /></>],
+  ["casa", "La casa", "Zuhause", <><path d="M5 10.5V20h14v-9.5" fill="#fffdf8" /><path d="M10 20v-5.5h4V20" fill="#e0b050" /><path d="M3 11.5 12 4l9 7.5" stroke="#c4572f" /></>],
+  ["hablar", "Hablar", "Gespräch", <><path d="M4 5h16v10h-9l-4.5 4v-4H4Z" fill="#dfe5f1" /><g fill="#2f4f9d" stroke="none"><circle cx="8.5" cy="10" r="1.1" /><circle cx="12" cy="10" r="1.1" /><circle cx="15.5" cy="10" r="1.1" /></g></>],
+  ["preguntas", "Las preguntas", "Fragewörter", <><circle cx="12" cy="12" r="8.5" fill="#f4d9cd" /><path d="M9.5 9.5a2.6 2.6 0 1 1 3.8 2.3c-.9.5-1.3 1-1.3 2" /><circle cx="12" cy="16.8" r="1" fill="#2f4f9d" stroke="none" /></>],
+  ["pequenas", "Palabras pequeñas", "Kleine Wörter", <><rect x="3.5" y="9" width="7.5" height="7.5" rx="1.2" fill="#dfe5f1" /><rect x="13" y="9" width="7.5" height="7.5" rx="1.2" fill="#e0b050" /><circle cx="12" cy="12.75" r="1" fill="#c4572f" stroke="none" /></>],
+  ["sentimientos", "Sentimientos", "Gefühle", <path d="M12 20s-7.5-4.5-7.5-10A4 4 0 0 1 12 7.5 4 4 0 0 1 19.5 10c0 5.5-7.5 10-7.5 10Z" fill="#f4d9cd" />],
+  ["gente", "La gente", "Menschen", <><path d="M3 20a5.5 5.5 0 0 1 11 0Z" fill="#dfe5f1" /><circle cx="8.5" cy="8.5" r="3" fill="#fffdf8" /><path d="M14 20a4 4 0 0 1 7 0Z" fill="#f4d9cd" /><circle cx="17.5" cy="10" r="2.3" fill="#fffdf8" /></>],
+  ["viajar", "Viajar", "Reisen", <><rect x="4" y="8" width="16" height="12" rx="2" fill="#e0b050" /><path d="M9 8V5.5h6V8M8 8v12M16 8v12" /></>],
+  ["ocio", "Ocio y deporte", "Freizeit", <><path d="M2.5 20 9 9l3.5 5 2.5-4 6.5 10Z" fill="#dfe5f1" /><path d="M7.3 12 9 9l1.8 2.6" stroke="#c4572f" /><circle cx="18" cy="5.5" r="2" fill="#e0b050" stroke="none" /></>],
+  ["compras", "De compras", "Einkaufen", <><path d="M5 8h14l-1 12H6Z" fill="#f4d9cd" /><path d="M9 8a3 3 0 0 1 6 0" /></>],
+];
+const Icon = ({ children, size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
+);
+
+// the Karteikarten tab: all due cards at once, or one tile = one topic; the glaze rises as its words are learned
+function TopicWall({ words, progress, review, done }) {
+  const [topic, setTopic] = useState(null);
+  if (topic) return <Flashcards words={topic === "all" ? words : words.filter(w => w.topic === topic)} progress={progress} review={review} done={() => setTopic(null)} />;
+  const due = dueCount(words, progress);
+  return (
+    <div className="screen">
+      <Top done={done} />
+      <h2 className="title">Karteikarten</h2>
+      <Orn />
+      <button className="btn primary" onClick={() => setTopic("all")}>Alles mischen · {due} fällig</button>
+      <div className="wall">
+        {TOPICS.map(([id, es, de, icon]) => {
+          const ws = words.filter(w => w.topic === id);
+          const learned = ws.filter(w => progress[w.id]?.st === "review").length;
+          const n = ws.length && dueCount(ws, progress);
+          return (
+            <button key={id} className="tile" disabled={!ws.length} onClick={() => n ? setTopic(id) : rasgueo()}
+              style={{ "--glaze": ws.length ? `${learned / ws.length * 100}%` : "0%" }}>
+              <Icon size={40}>{icon}</Icon>
+              <b>{es}</b>
+              <small>{ws.length ? `${learned} / ${ws.length}` : de}</small>
+              {n > 0 && <i>{n}</i>}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ---------- practice ----------
 // sections of Üben, by word type; one shows up once it has enough words for 4 answer options
 const SECTIONS = { all: "Alle", verb: "Verben", adjective: "Adjektive", adverb: "Adverbien", noun: "Nomen", expression: "Ausdrücke" };
@@ -576,11 +627,23 @@ function Practice({ words, progress, done }) {
 // ---------- word list ----------
 function WordList({ words, progress, done }) {
   const [open, setOpen] = useState(null);
-  const list = useMemo(() => [...words].reverse(), [words]);
+  const [topic, setTopic] = useState(null);
+  const list = useMemo(() => words.filter(w => !topic || w.topic === topic).reverse(), [words, topic]);
+  // "Alle" first, then only the topics that have words; the short name drops the article: El tiempo -> Tiempo
+  const strip = [[null, "Alle", <><rect x="4" y="4" width="7" height="7" rx="1" fill="#dfe5f1" /><rect x="13" y="4" width="7" height="7" rx="1" fill="#e0b050" /><rect x="4" y="13" width="7" height="7" rx="1" fill="#f4d9cd" /><rect x="13" y="13" width="7" height="7" rx="1" fill="#fffdf8" /></>],
+    ...TOPICS.filter(([id]) => words.some(w => w.topic === id)).map(([id, es, , icon]) => [id, es.replace(/^(El|La|Los|Las) /, "").replace(/^./, c => c.toUpperCase()), icon])];
   return (
     <div className="screen">
       <Top done={done} />
       <h2 className="title">Alle Wörter</h2>
+      <div className="strip">
+        {strip.map(([id, name, icon]) => (
+          <button key={id ?? "all"} aria-pressed={topic === id} onClick={() => setTopic(id)}>
+            <Icon size={26}>{icon}</Icon>
+            <b>{name}</b>
+          </button>
+        ))}
+      </div>
       <Orn />
       {list.map(w => (
         <section key={w.id} className="card item" onClick={() => setOpen(open === w.id ? null : w.id)}>

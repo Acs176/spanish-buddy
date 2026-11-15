@@ -2,7 +2,7 @@
 // "flamenco" (Andalusian cadence Am–G–F–E) on the ¿Quién? wall. Each 4-chord round picks its own chords,
 // picking pattern, melody and ending, so it doesn't loop the same. Off when localStorage "music" is "off".
 // The flamenco one is also saved standalone in sketches/music-flamenco.html.
-import { ac } from "./sound.js";
+import { ac, soundOn } from "./sound.js";
 
 export const musicOn = () => { try { return localStorage.getItem("music") !== "off"; } catch { return true; } };
 export const setMusic = on => { try { localStorage.setItem("music", on ? "on" : "off"); } catch { /* private mode */ } };
@@ -145,4 +145,17 @@ export function suspense(len) {
   g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.18, t + len);
   src.buffer = b; src.connect(f).connect(g).connect(out); src.start(t);
   return () => { out.gain.cancelScheduledValues(c.currentTime); out.gain.setTargetAtTime(0, c.currentTime, .05); setTimeout(() => out.disconnect(), 500); };
+}
+
+// a topic tile with nothing due: a little "ta-dah!" on the casual (major) guitar, E resolving to A and a quick run up to a
+// ringing high A. Cheerful but light: "all done here!". A sound effect, so it follows the sound switch, not the music one.
+export function rasgueo() {
+  if (!soundOn() || !window.AudioContext) return;
+  const c = ac(), s = STYLES.casual, out = c.createGain(), lp = c.createBiquadFilter(), t = c.currentTime + .03;
+  out.gain.value = .28; lp.type = "lowpass"; lp.frequency.value = 3500; out.connect(lp).connect(c.destination);
+  const note = (f, at, v) => { const src = c.createBufferSource(), g = c.createGain(); src.buffer = string(c, s, f); g.gain.value = v; src.connect(g).connect(out); src.start(t + at); };
+  const strum = (ch, at, v) => s.chords[ch].forEach((f, k) => note(f, at + k * .014, v));
+  strum("E", 0, .22); strum("A", .15, .32);
+  [554.4, 659.3, 880].forEach((f, i) => note(f, .32 + i * .08, .3 + i * .05)); // C#, E, A: up and out
+  setTimeout(() => out.disconnect(), 3000);
 }
