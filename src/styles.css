@@ -793,3 +793,74 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 }
 .strip button[aria-pressed="true"] { background: #f6dfa6; box-shadow: inset 0 0 0 3px #f6dfa6, inset 0 0 0 4.5px var(--blue), 0 3px 0 rgba(27, 47, 94, .35); }
 .strip b { font: 700 12px/1.05 ui-serif, "New York", "Iowan Old Style", Georgia, serif; color: var(--ink); text-align: center; }
+
+/* ¿De quién es? (Posesivos.jsx): things rain onto a shelf in the workshop, the owner stands in the light */
+.pos .pstat { display: flex; justify-content: space-between; align-items: center; font: italic 18px ui-serif, "New York", Georgia, serif; color: #d9c7ab; }
+.pos .pips { display: flex; align-items: center; gap: 4px; }
+.pos .pips i { width: 12px; height: 12px; border: 1.5px solid #e0b050; border-radius: 2px; transform: rotate(45deg); transition: background .2s; }
+.pos .pips i.on { background: #e0b050; box-shadow: 0 0 8px #e0b050; }
+.pos .pips b { margin-left: 6px; font: 700 20px ui-serif, Georgia, serif; font-style: normal; color: #f4dcaa; min-width: 1ch; }
+
+.pos .stage { position: relative; height: 200px; }
+.pos .carry { display: inline-block; position: relative; z-index: 3; }
+.pos .thing { display: block; font-size: 72px; line-height: 1; filter: drop-shadow(0 10px 8px rgba(0, 0, 0, .6)); }
+
+/* it falls from the sky, squashes on the shelf, bounces, then sways */
+.pos .rain { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+.pos .rain .drop { transform-origin: 50% 100%; animation: pdrop calc(.95s * var(--speed)) cubic-bezier(.4, 0, .7, 1) both, psway 2.4s calc(.95s * var(--speed)) ease-in-out infinite; }
+@keyframes pdrop {
+  0% { transform: translateY(-330px) rotate(-40deg); }
+  50% { transform: translateY(0) scale(1.25, .7) rotate(4deg); }
+  66% { transform: translateY(-46px) scale(.92, 1.08) rotate(-6deg); }
+  82% { transform: translateY(0) scale(1.1, .9); }
+  92% { transform: translateY(-8px); }
+  100% { transform: none; }
+}
+@keyframes psway { 50% { transform: rotate(-5deg) translateY(-3px); } }
+.pos .shelf { width: 210px; height: 14px; margin-top: 2px; border-radius: 4px; background: linear-gradient(#9a6a46, #5c3a24); box-shadow: 0 3px 0 #3b2418, 0 16px 18px -6px #000; }
+
+/* the word itself, once it has landed: new ones get a red "neu" tag */
+.pos .word { display: flex; align-items: center; gap: 6px; height: 40px; margin-top: 6px; font: 18px ui-serif, "New York", Georgia, serif; color: #f4dcaa; opacity: 0; transition: opacity .3s; }
+.pos .word.shown { opacity: 1; }
+.pos .word i { color: #d9c7ab; }
+.pos .word small { background: var(--red); color: #fff; border-radius: 4px; padding: 2px 6px; font: 800 11px/1 system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+.pos .word .speak { width: 30px; height: 30px; font-size: 15px; }
+
+/* specials */
+.pos .banner { position: absolute; left: 50%; top: 6px; z-index: 4; transform: translateX(-50%) rotate(-4deg); white-space: nowrap; padding: 6px 16px; border-radius: 8px; background: #1d120c; border: 1px solid #e0b050; color: #f4dcaa; font: 700 20px ui-serif, "New York", Georgia, serif; box-shadow: 0 10px 18px -8px #000; animation: pbanner 1.6s ease-out forwards; }
+@keyframes pbanner { 0% { transform: translateX(-50%) scale(.3) rotate(-12deg); opacity: 0; } 15% { transform: translateX(-50%) scale(1.15) rotate(-2deg); opacity: 1; } 25%, 80% { transform: translateX(-50%) scale(1) rotate(-4deg); opacity: 1; } 100% { opacity: 0; } }
+/* gordo: bigger and heavier; the shelf bends and the stage shakes when it lands */
+.pos .gordo .thing { font-size: 112px; }
+.pos .gordo .shelf { width: 250px; animation: pbend .5s calc(.47s * var(--speed)) ease-out; }
+.pos .gordo .rain { animation: pquake .4s calc(.47s * var(--speed)); }
+@keyframes pbend { 20% { transform: scaleY(.6) translateY(6px); border-radius: 0 0 50% 50% / 0 0 100% 100%; } }
+@keyframes pquake { 20% { transform: translate(-6px, 4px); } 40% { transform: translate(5px, -3px); } 60% { transform: translate(-3px, 2px); } 80% { transform: translate(2px, 0); } }
+/* dorado: a golden glow and glints */
+.pos .dorado .thing { filter: drop-shadow(0 0 10px #f2c94c) drop-shadow(0 0 22px rgba(242, 201, 76, .7)) sepia(.5) saturate(1.6); }
+.pos .dorado .carry::after { content: "✦ ✧ ✦"; position: absolute; left: -10px; right: -10px; top: -14px; text-align: center; color: #ffe08a; font-size: 20px; letter-spacing: 18px; animation: pglints 1.2s ease-in-out infinite; }
+@keyframes pglints { 50% { opacity: .2; transform: translateY(-4px); } }
+/* chaparrón: three in a row, fast, through slanted rain */
+.pos .storm::before { content: ""; position: absolute; inset: -40px -16px 30px; z-index: 0; pointer-events: none; background: repeating-linear-gradient(105deg, transparent 0 14px, rgba(180, 205, 240, .22) 14px 15px, transparent 15px 31px); background-size: 200px 200px; animation: ppour .35s linear infinite; mask: linear-gradient(transparent, #000 25%, #000 75%, transparent); }
+@keyframes ppour { to { background-position: -40px 200px; } }
+
+/* question */
+.pos .pq { text-align: center; padding: 14px 12px; }
+.pos .sent { font: 700 23px/1.35 ui-serif, "New York", "Iowan Old Style", Georgia, serif; }
+.pos .gap { display: inline-block; min-width: 3.4em; border-bottom: 3px dotted #c4572f; }
+.pos .gap.fill { border-bottom-color: transparent; color: var(--green-dark); animation: pop .3s ease-out; }
+.pos .opt:disabled { opacity: .55; }
+.pos .phint { min-height: 20px; font: italic 15px/1.35 ui-serif, Georgia, serif; color: #f2ad91; text-align: center; }
+
+/* the owners along the bottom: the one it belongs to stands in the light */
+.pos .owners { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; margin-top: auto; }
+.pos .owner { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 2px 0; border-radius: 14px; transition: filter .35s; }
+.pos .owner small { font: italic 600 15px ui-serif, Georgia, serif; color: #f4dcaa; }
+.pos .owner.lit { background: radial-gradient(ellipse 60% 70% at 50% 65%, rgba(240, 170, 90, .4), transparent 75%); }
+.pos .owner.dim { filter: brightness(.45) saturate(.6); }
+
+/* every 5 right */
+.pos .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 50; overflow: hidden; display: grid; place-items: center; }
+.pos .confetti i { position: absolute; left: 50%; top: 38%; width: 11px; height: 11px; background: var(--c); border: 1.5px solid rgba(59, 36, 24, .6); animation: pconf 1.8s cubic-bezier(.1, .7, .3, 1) forwards; }
+@keyframes pconf { to { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; } }
+.pos .combo { font: 700 34px ui-serif, "New York", Georgia, serif; color: #f4dcaa; text-shadow: 0 3px 0 #8f3a1c, 0 10px 20px #000; animation: pcombo 1.8s ease-out forwards; }
+@keyframes pcombo { 0% { transform: scale(.3) rotate(-8deg); opacity: 0; } 15% { transform: scale(1.15) rotate(3deg); opacity: 1; } 25% { transform: scale(1) rotate(-2deg); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }

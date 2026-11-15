@@ -4,6 +4,7 @@ import Angela from "./Angela.jsx";
 import Postcards, { hasUnread } from "./Postcards.jsx";
 import Verbs, { kilnReady, verbCount } from "./Verbs.jsx";
 import Stories, { storyNew } from "./Story.jsx";
+import Posesivos from "./Posesivos.jsx";
 import Mosaic, { MILESTONES, reached, unseen, Unlock, Trophies } from "./Mosaic.jsx";
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
@@ -167,6 +168,7 @@ export default function App() {
   if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
   if (screen === "verbs") return <Verbs done={home} />;
+  if (screen === "posesivos") return <Posesivos words={words} done={home} />;
   if (screen === "story") return <Stories stories={stories} done={home} />;
   if (screen === "settings") return <Settings done={home} replay={replay} />;
   if (screen === "trophies") return <Trophies learned={countLearned(words, progress).learned} done={home} />;
@@ -267,6 +269,8 @@ const GAMES = [
   // an open book, a red ribbon bookmark
   ["story", "Geschichten", "Jeden Tag eine neue", <><path d="M12 6C9.5 4.3 6.5 4 3 4.5v14c3.5-.5 6.5-.2 9 1.5 2.5-1.7 5.5-2 9-1.5v-14C17.5 4 14.5 4.3 12 6Z" fill="#fffdf8" /><path d="M12 6v14" /><path d="M15.5 4.6v6l1.5-1.3 1.5 1.3V4.5" fill="#c4572f" stroke="none" /><path d="M5.5 8.5c1.8-.2 3.5 0 4.5.6M5.5 11.5c1.8-.2 3.5 0 4.5.6" stroke="#e0b050" /></>],
   ["verbs", "¿Quién?", "Verben: wer macht was?", <><g fill="#2f4f9d" stroke="none">{[0, 60, 120, 180, 240, 300].map(r => <ellipse key={r} cx="12" cy="6.5" rx="2.6" ry="4.6" transform={`rotate(${r} 12 12)`} />)}</g><circle cx="12" cy="12" r="2.4" fill="#e0b050" stroke="none" /><circle cx="12" cy="12" r="1" fill="#c4572f" stroke="none" /></>],
+  // a key falling, two raindrops beside it
+  ["posesivos", "¿De quién es?", "mi, tu, su… mío, tuyo…", <><circle cx="9" cy="9" r="4.5" fill="#e0b050" /><circle cx="9" cy="9" r="1.5" fill="#fffdf8" /><path d="M12.2 12.2 20 20M16.5 16.5l-2 2M18.5 18.5l-1.5 1.5" /><path d="M19 3.5c-1 1.5-1.5 2.3-1.5 3a1.5 1.5 0 0 0 3 0c0-.7-.5-1.5-1.5-3ZM5 15.5c-.8 1.2-1.2 1.9-1.2 2.4a1.2 1.2 0 0 0 2.4 0c0-.5-.4-1.2-1.2-2.4Z" fill="#2f4f9d" stroke="none" /></>],
 ];
 function Home({ words, progress, go, stories, calm }) {
   const now = useNow();
