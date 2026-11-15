@@ -1,5 +1,5 @@
 {
- "lastMsg": 109353,
+ "lastMsg": 109945,
  "words": [
   {
    "id": "ayer",
@@ -32,7 +32,8 @@
     "Mañana",
     "Nada",
     "Juntos"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "hoy",
@@ -65,7 +66,8 @@
     "Ayer",
     "Antes",
     "Nada"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "manana",
@@ -98,7 +100,8 @@
     "ayer",
     "antes",
     "todo"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "el-dia",
@@ -131,7 +134,8 @@
     "mes",
     "año",
     "semana"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "la-semana",
@@ -164,7 +168,8 @@
     "beso",
     "hoy",
     "nada"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "el-mes",
@@ -197,7 +202,8 @@
     "día",
     "año",
     "beso"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "el-ano",
@@ -230,7 +236,8 @@
     "besos",
     "juntos",
     "tardes"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "ahora",
@@ -263,7 +270,8 @@
     "ayer",
     "antes",
     "nada"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "antes",
@@ -296,7 +304,8 @@
     "ayer",
     "ahora",
     "más"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "despues",
@@ -329,7 +338,8 @@
     "ayer",
     "nada",
     "todo"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "tarde",
@@ -362,7 +372,8 @@
     "ayer",
     "nada",
     "todo"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "un-beso",
@@ -395,7 +406,8 @@
     "mes",
     "día",
     "año"
-   ]
+   ],
+   "topic": "sentimientos"
   },
   {
    "id": "un-besito",
@@ -428,7 +440,8 @@
     "mes",
     "año",
     "todo"
-   ]
+   ],
+   "topic": "sentimientos"
   },
   {
    "id": "cuando",
@@ -461,7 +474,8 @@
     "Ahora",
     "Hoy",
     "Todo"
-   ]
+   ],
+   "topic": "tiempo"
   },
   {
    "id": "este",
@@ -494,7 +508,8 @@
     "este",
     "ese",
     "nada"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "ese",
@@ -527,7 +542,8 @@
     "esa",
     "todo",
     "más"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "juntos",
@@ -560,7 +576,8 @@
     "ayer",
     "nada",
     "semana"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "todo",
@@ -593,7 +610,8 @@
     "ahora",
     "menos",
     "juntos"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "nada",
@@ -626,7 +644,8 @@
     "todo",
     "más",
     "ahora"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "mas",
@@ -659,7 +678,8 @@
     "nada",
     "ayer",
     "antes"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "menos",
@@ -692,7 +712,8 @@
     "más",
     "nada",
     "antes"
-   ]
+   ],
+   "topic": "pequenas"
   },
   {
    "id": "estar-muy-bueno",
@@ -725,7 +746,8 @@
     "bueno",
     "juntos",
     "tarde"
-   ]
+   ],
+   "topic": "comida"
   },
   {
    "id": "me-pones",
@@ -758,7 +780,8 @@
     "Me traes",
     "Me pide"
    ],
-   "added": "2026-10-17"
+   "added": "2026-10-17",
+   "topic": "comida"
   },
   {
    "id": "me-gustaria",
@@ -791,7 +814,8 @@
     "Te gustaría",
     "Me gustaba"
    ],
-   "added": "2026-10-17"
+   "added": "2026-10-17",
+   "topic": "hablar"
   },
   {
    "id": "por-cierto",
@@ -824,7 +848,8 @@
     "Por supuesto",
     "Por fin"
    ],
-   "added": "2026-10-18"
+   "added": "2026-10-18",
+   "topic": "hablar"
   },
   {
    "id": "aqui",
@@ -857,7 +882,8 @@
     "ahí",
     "arriba"
    ],
-   "added": "2026-10-18"
+   "added": "2026-10-18",
+   "topic": "lugares"
   },
   {
    "id": "alli",
@@ -890,7 +916,8 @@
     "ahí",
     "cerca"
    ],
-   "added": "2026-10-18"
+   "added": "2026-10-18",
+   "topic": "lugares"
   },
   {
    "id": "ahi",
@@ -923,7 +950,8 @@
     "allí",
     "lejos"
    ],
-   "added": "2026-10-18"
+   "added": "2026-10-18",
+   "topic": "lugares"
   },
   {
    "id": "arriba",
@@ -956,7 +984,8 @@
     "delante",
     "cerca"
    ],
-   "added": "2026-10-20"
+   "added": "2026-10-20",
+   "topic": "lugares"
   },
   {
    "id": "abajo",
@@ -989,7 +1018,8 @@
     "detrás",
     "lejos"
    ],
-   "added": "2026-10-20"
+   "added": "2026-10-20",
+   "topic": "lugares"
   },
   {
    "id": "la-habitacion",
@@ -1022,7 +1052,8 @@
     "casa",
     "puerta"
    ],
-   "added": "2026-10-20"
+   "added": "2026-10-20",
+   "topic": "casa"
   },
   {
    "id": "la-cocina",
@@ -1055,7 +1086,8 @@
     "mesa",
     "ventana"
    ],
-   "added": "2026-10-23"
+   "added": "2026-10-23",
+   "topic": "casa"
   },
   {
    "id": "cocinar",
@@ -1088,7 +1120,8 @@
     "limpiar",
     "comprar"
    ],
-   "added": "2026-10-23"
+   "added": "2026-10-23",
+   "topic": "comida"
   },
   {
    "id": "el-queso",
@@ -1121,7 +1154,8 @@
     "leche",
     "mantequilla"
    ],
-   "added": "2026-10-24"
+   "added": "2026-10-24",
+   "topic": "comida"
   },
   {
    "id": "un-quesito",
@@ -1154,7 +1188,8 @@
     "caramelo",
     "cielo"
    ],
-   "added": "2026-10-24"
+   "added": "2026-10-24",
+   "topic": "gente"
   },
   {
    "id": "claro",
@@ -1187,7 +1222,8 @@
     "vale",
     "quizás"
    ],
-   "added": "2026-10-24"
+   "added": "2026-10-24",
+   "topic": "hablar"
   },
   {
    "id": "significar",
@@ -1220,7 +1256,8 @@
     "significo",
     "significar"
    ],
-   "added": "2026-10-25"
+   "added": "2026-10-25",
+   "topic": "hablar"
   },
   {
    "id": "dulces-suenos",
@@ -1253,7 +1290,8 @@
     "felices fiestas",
     "buena suerte"
    ],
-   "added": "2026-10-26"
+   "added": "2026-10-26",
+   "topic": "sentimientos"
   },
   {
    "id": "la-derecha",
@@ -1286,7 +1324,8 @@
     "arriba",
     "abajo"
    ],
-   "added": "2026-10-28"
+   "added": "2026-10-28",
+   "topic": "lugares"
   },
   {
    "id": "la-izquierda",
@@ -1319,7 +1358,8 @@
     "aquí",
     "allí"
    ],
-   "added": "2026-10-28"
+   "added": "2026-10-28",
+   "topic": "lugares"
   },
   {
    "id": "quien",
@@ -1352,7 +1392,8 @@
     "Cuál",
     "Cómo"
    ],
-   "added": "2026-11-01"
+   "added": "2026-11-01",
+   "topic": "preguntas"
   },
   {
    "id": "cuanto",
@@ -1385,7 +1426,8 @@
     "Quién",
     "Dónde"
    ],
-   "added": "2026-11-01"
+   "added": "2026-11-01",
+   "topic": "preguntas"
   },
   {
    "id": "cual",
@@ -1418,7 +1460,8 @@
     "Quién",
     "Cómo"
    ],
-   "added": "2026-11-01"
+   "added": "2026-11-01",
+   "topic": "preguntas"
   },
   {
    "id": "como",
@@ -1451,7 +1494,8 @@
     "Cuándo",
     "Quién"
    ],
-   "added": "2026-11-01"
+   "added": "2026-11-01",
+   "topic": "preguntas"
   },
   {
    "id": "donde",
@@ -1484,7 +1528,8 @@
     "Quién",
     "Cuál"
    ],
-   "added": "2026-11-01"
+   "added": "2026-11-01",
+   "topic": "preguntas"
   },
   {
    "id": "el-tenedor",
@@ -1517,7 +1562,8 @@
     "cuchara",
     "plato"
    ],
-   "added": "2026-11-04"
+   "added": "2026-11-04",
+   "topic": "comida"
   },
   {
    "id": "el-cuchillo",
@@ -1550,7 +1596,8 @@
     "cuchara",
     "vaso"
    ],
-   "added": "2026-11-04"
+   "added": "2026-11-04",
+   "topic": "comida"
   },
   {
    "id": "la-cuchara",
@@ -1583,7 +1630,8 @@
     "tenedor",
     "servilleta"
    ],
-   "added": "2026-11-04"
+   "added": "2026-11-04",
+   "topic": "comida"
   },
   {
    "id": "listo",
@@ -1616,7 +1664,8 @@
     "listos",
     "tonto"
    ],
-   "added": "2026-11-04"
+   "added": "2026-11-04",
+   "topic": "hablar"
   },
   {
    "id": "repite-otra-vez",
@@ -1649,7 +1698,8 @@
     "habla otra vez",
     "dilo una vez"
    ],
-   "added": "2026-11-04"
+   "added": "2026-11-04",
+   "topic": "hablar"
   },
   {
    "id": "esperar",
@@ -1682,7 +1732,8 @@
     "Escucha",
     "Corre"
    ],
-   "added": "2026-11-04"
+   "added": "2026-11-04",
+   "topic": "hablar"
   },
   {
    "id": "mismo-misma",
@@ -1715,7 +1766,8 @@
     "igual",
     "única"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "pequenas"
   },
   {
    "id": "ya",
@@ -1748,7 +1800,8 @@
     "todavía",
     "pronto"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "tiempo"
   },
   {
    "id": "nadie",
@@ -1781,7 +1834,8 @@
     "ninguno",
     "nada"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "pequenas"
   },
   {
    "id": "la-pregunta",
@@ -1814,7 +1868,8 @@
     "palabra",
     "duda"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "hablar"
   },
   {
    "id": "la-respuesta",
@@ -1847,7 +1902,8 @@
     "solución",
     "idea"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "hablar"
   },
   {
    "id": "entonces",
@@ -1880,7 +1936,8 @@
     "pronto",
     "todavía"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "tiempo"
   },
   {
    "id": "ningun-ninguno",
@@ -1913,7 +1970,8 @@
     "ninguno",
     "alguna"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "pequenas"
   },
   {
    "id": "el-sitio-el-lugar",
@@ -1946,7 +2004,8 @@
     "casa",
     "tiempo"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "lugares"
   },
   {
    "id": "la-cosa",
@@ -1979,7 +2038,8 @@
     "sitio",
     "persona"
    ],
-   "added": "2026-11-07"
+   "added": "2026-11-07",
+   "topic": "pequenas"
   },
   {
    "id": "fuera",
@@ -2012,7 +2072,8 @@
     "arriba",
     "lejos"
    ],
-   "added": "2026-11-11"
+   "added": "2026-11-11",
+   "topic": "lugares"
   },
   {
    "id": "dentro",
@@ -2045,7 +2106,8 @@
     "abajo",
     "cerca"
    ],
-   "added": "2026-11-11"
+   "added": "2026-11-11",
+   "topic": "lugares"
   },
   {
    "id": "estar-cansado-a",
@@ -2078,7 +2140,8 @@
     "cansados",
     "cansar"
    ],
-   "added": "2026-11-11"
+   "added": "2026-11-11",
+   "topic": "sentimientos"
   },
   {
    "id": "el-cachondeo",
@@ -2111,7 +2174,212 @@
     "cacharreo",
     "cachondismo"
    ],
-   "added": "2026-11-12"
+   "added": "2026-11-12",
+   "topic": "hablar"
+  },
+  {
+   "id": "cerca",
+   "es": "cerca",
+   "de": "nah / in der Nähe",
+   "en": "near",
+   "type": "adverb",
+   "topic": "lugares",
+   "tip": "Nicht mit dem Verb 'buscar' verwechseln. Oft als 'cerca de' = 'in der Nähe von'. Denk an engl. 'circa'.",
+   "examples": [
+    {
+     "es": "La tienda está cerca.",
+     "de": "Der Laden ist in der Nähe."
+    },
+    {
+     "es": "Vivo cerca de aquí.",
+     "de": "Ich wohne in der Nähe von hier."
+    },
+    {
+     "es": "El parque está muy cerca.",
+     "de": "Der Park ist ganz nah."
+    }
+   ],
+   "cloze": {
+    "es": "Mi casa está ___ del centro.",
+    "answer": "cerca",
+    "de": "Mein Haus ist in der Nähe vom Zentrum."
+   },
+   "distractors": [
+    "lejos",
+    "encima",
+    "debajo"
+   ],
+   "added": "2026-11-15"
+  },
+  {
+   "id": "lejos",
+   "es": "lejos",
+   "de": "weit / weit weg",
+   "en": "far",
+   "type": "adverb",
+   "topic": "lugares",
+   "tip": "Gegenteil von 'cerca'. Oft als 'lejos de' = 'weit weg von'. Das 'j' wird wie ein deutsches 'ch' in 'Bach' gesprochen.",
+   "examples": [
+    {
+     "es": "El aeropuerto está lejos.",
+     "de": "Der Flughafen ist weit weg."
+    },
+    {
+     "es": "Vives muy lejos.",
+     "de": "Du wohnst sehr weit weg."
+    },
+    {
+     "es": "La playa está lejos de aquí.",
+     "de": "Der Strand ist weit weg von hier."
+    }
+   ],
+   "cloze": {
+    "es": "No quiero ir, está muy ___.",
+    "answer": "lejos",
+    "de": "Ich will nicht hingehen, es ist sehr weit weg."
+   },
+   "distractors": [
+    "cerca",
+    "encima",
+    "debajo"
+   ],
+   "added": "2026-11-15"
+  },
+  {
+   "id": "encima",
+   "es": "encima",
+   "de": "oben / darauf / darüber",
+   "en": "above / on top",
+   "type": "adverb",
+   "topic": "lugares",
+   "tip": "Oft als 'encima de' = 'auf/über'. Ähnlich wie 'arriba', aber 'encima' betont direkten Kontakt (z.B. auf dem Tisch).",
+   "examples": [
+    {
+     "es": "El libro está encima de la mesa.",
+     "de": "Das Buch liegt auf dem Tisch."
+    },
+    {
+     "es": "Pon la chaqueta encima.",
+     "de": "Leg die Jacke oben drauf."
+    },
+    {
+     "es": "El gato duerme encima del sofá.",
+     "de": "Die Katze schläft auf dem Sofa."
+    }
+   ],
+   "cloze": {
+    "es": "Las llaves están ___ de la mesa.",
+    "answer": "encima",
+    "de": "Die Schlüssel liegen auf dem Tisch."
+   },
+   "distractors": [
+    "debajo",
+    "cerca",
+    "lejos"
+   ],
+   "added": "2026-11-15"
+  },
+  {
+   "id": "debajo",
+   "es": "debajo",
+   "de": "unten / darunter",
+   "en": "below / underneath",
+   "type": "adverb",
+   "topic": "lugares",
+   "tip": "Gegenteil von 'encima'. Oft als 'debajo de' = 'unter'. Nicht mit 'abajo' verwechseln, das eher 'nach unten' meint.",
+   "examples": [
+    {
+     "es": "El perro está debajo de la mesa.",
+     "de": "Der Hund ist unter dem Tisch."
+    },
+    {
+     "es": "Mira debajo de la cama.",
+     "de": "Schau unter das Bett."
+    },
+    {
+     "es": "Los zapatos están debajo de la silla.",
+     "de": "Die Schuhe sind unter dem Stuhl."
+    }
+   ],
+   "cloze": {
+    "es": "El balón está ___ del coche.",
+    "answer": "debajo",
+    "de": "Der Ball ist unter dem Auto."
+   },
+   "distractors": [
+    "encima",
+    "cerca",
+    "lejos"
+   ],
+   "added": "2026-11-15"
+  },
+  {
+   "id": "abierto",
+   "es": "abierto",
+   "de": "offen / geöffnet",
+   "en": "open",
+   "type": "adjective",
+   "topic": "lugares",
+   "tip": "Partizip von 'abrir' (öffnen). Als Adjektiv passt es sich an: 'abierta', 'abiertos'. Steht oft an Ladentüren.",
+   "examples": [
+    {
+     "es": "La tienda está abierta.",
+     "de": "Der Laden ist geöffnet."
+    },
+    {
+     "es": "La ventana está abierta.",
+     "de": "Das Fenster ist offen."
+    },
+    {
+     "es": "El museo está abierto hoy.",
+     "de": "Das Museum ist heute geöffnet."
+    }
+   ],
+   "cloze": {
+    "es": "El supermercado está ___ hasta las diez.",
+    "answer": "abierto",
+    "de": "Der Supermarkt ist bis zehn Uhr geöffnet."
+   },
+   "distractors": [
+    "cerrado",
+    "encima",
+    "cerca"
+   ],
+   "added": "2026-11-15"
+  },
+  {
+   "id": "cerrado",
+   "es": "cerrado",
+   "de": "geschlossen / zu",
+   "en": "closed",
+   "type": "adjective",
+   "topic": "lugares",
+   "tip": "Gegenteil von 'abierto', Partizip von 'cerrar' (schließen). Passt sich an: 'cerrada', 'cerrados'. Nicht mit 'cerca' (nah) verwechseln!",
+   "examples": [
+    {
+     "es": "La puerta está cerrada.",
+     "de": "Die Tür ist geschlossen."
+    },
+    {
+     "es": "El banco está cerrado hoy.",
+     "de": "Die Bank ist heute geschlossen."
+    },
+    {
+     "es": "Los domingos la tienda está cerrada.",
+     "de": "Sonntags ist der Laden geschlossen."
+    }
+   ],
+   "cloze": {
+    "es": "No podemos entrar, está ___.",
+    "answer": "cerrado",
+    "de": "Wir können nicht rein, es ist geschlossen."
+   },
+   "distractors": [
+    "abierto",
+    "cerca",
+    "debajo"
+   ],
+   "added": "2026-11-15"
   }
  ],
  "audio": {
