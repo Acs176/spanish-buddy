@@ -2380,6 +2380,7724 @@
     "debajo"
    ],
    "added": "2026-11-15"
+  },
+  {
+   "id": "si",
+   "es": "sí",
+   "de": "ja",
+   "en": "yes",
+   "type": "adverb",
+   "topic": "hablar",
+   "tip": "Mit Akzent ist „sí“ = ja. Ohne Akzent ist „si“ = wenn/ob: „Si quieres, sí.“ (Wenn du willst, ja.)",
+   "examples": [
+    {
+     "es": "Sí, me gusta mucho.",
+     "de": "Ja, das gefällt mir sehr."
+    },
+    {
+     "es": "¿Vienes esta noche? —Sí, claro.",
+     "de": "Kommst du heute Abend? – Ja, klar."
+    },
+    {
+     "es": "Creo que sí.",
+     "de": "Ich glaube schon."
+    }
+   ],
+   "cloze": {
+    "es": "¿Quieres un café? —___, por favor.",
+    "answer": "Sí",
+    "de": "Möchtest du einen Kaffee? – Ja, bitte."
+   },
+   "distractors": [
+    "Tampoco",
+    "Nada",
+    "Nadie"
+   ],
+   "basic": true
+  },
+  {
+   "id": "no",
+   "es": "no",
+   "de": "nein; nicht",
+   "en": "no; not",
+   "type": "adverb",
+   "topic": "hablar",
+   "tip": "„No“ heißt nein und nicht. Es steht immer direkt vor dem Verb: „No hablo“ = ich spreche nicht.",
+   "examples": [
+    {
+     "es": "No, gracias.",
+     "de": "Nein, danke."
+    },
+    {
+     "es": "No entiendo la pregunta.",
+     "de": "Ich verstehe die Frage nicht."
+    },
+    {
+     "es": "Ella no está en casa.",
+     "de": "Sie ist nicht zu Hause."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy ___ trabajo, es domingo.",
+    "answer": "no",
+    "de": "Heute arbeite ich nicht, es ist Sonntag."
+   },
+   "distractors": [
+    "sí",
+    "nada",
+    "nadie"
+   ],
+   "basic": true
+  },
+  {
+   "id": "que",
+   "es": "qué",
+   "de": "was; welche/r/s; wie (Ausruf)",
+   "en": "what; which; how (exclamation)",
+   "type": "other",
+   "topic": "preguntas",
+   "tip": "Bei Fragen und Ausrufen steht ein Akzent: „¿Qué?“, „¡Qué bonito!“. Ohne Akzent ist „que“ = dass/der/die/das.",
+   "examples": [
+    {
+     "es": "¿Qué haces?",
+     "de": "Was machst du?"
+    },
+    {
+     "es": "¡Qué bonito!",
+     "de": "Wie schön!"
+    },
+    {
+     "es": "¿Qué quieres comer?",
+     "de": "Was möchtest du essen?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ hora es?",
+    "answer": "Qué",
+    "de": "Wie spät ist es?"
+   },
+   "distractors": [
+    "Cuál",
+    "Cómo",
+    "Quién"
+   ],
+   "basic": true
+  },
+  {
+   "id": "y",
+   "es": "y",
+   "de": "und",
+   "en": "and",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "Vor Wörtern, die mit i- oder hi- anfangen, wird „y“ zu „e“: „padre e hijo“.",
+   "examples": [
+    {
+     "es": "Pan y queso, por favor.",
+     "de": "Brot und Käse, bitte."
+    },
+    {
+     "es": "Mi hermano y yo vivimos juntos.",
+     "de": "Mein Bruder und ich wohnen zusammen."
+    },
+    {
+     "es": "¿Y tú?",
+     "de": "Und du?"
+    }
+   ],
+   "cloze": {
+    "es": "Quiero pan ___ tomate.",
+    "answer": "y",
+    "de": "Ich möchte Brot und Tomate."
+   },
+   "distractors": [
+    "pero",
+    "porque",
+    "también"
+   ],
+   "basic": true
+  },
+  {
+   "id": "pero",
+   "es": "pero",
+   "de": "aber",
+   "en": "but",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "Nicht mit „perro“ (Hund) verwechseln! Ein r = aber, zwei rr = Hund.",
+   "examples": [
+    {
+     "es": "Es caro, pero es muy bueno.",
+     "de": "Es ist teuer, aber sehr gut."
+    },
+    {
+     "es": "Quiero ir, pero estoy cansado.",
+     "de": "Ich will gehen, aber ich bin müde."
+    },
+    {
+     "es": "Hablo un poco, pero no mucho.",
+     "de": "Ich spreche ein bisschen, aber nicht viel."
+    }
+   ],
+   "cloze": {
+    "es": "Me gusta el café, ___ hoy no quiero.",
+    "answer": "pero",
+    "de": "Ich mag Kaffee, aber heute will ich keinen."
+   },
+   "distractors": [
+    "porque",
+    "también",
+    "tampoco"
+   ],
+   "basic": true
+  },
+  {
+   "id": "porque",
+   "es": "porque",
+   "de": "weil",
+   "en": "because",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "„porque“ (zusammen, ohne Akzent) = weil. „¿Por qué?“ (getrennt, mit Akzent) = warum?",
+   "examples": [
+    {
+     "es": "Como en casa porque es más barato.",
+     "de": "Ich esse zu Hause, weil es billiger ist."
+    },
+    {
+     "es": "¿Por qué no vienes? —Porque estoy cansada.",
+     "de": "Warum kommst du nicht? – Weil ich müde bin."
+    },
+    {
+     "es": "Estoy feliz porque hoy es viernes.",
+     "de": "Ich bin glücklich, weil heute Freitag ist."
+    }
+   ],
+   "cloze": {
+    "es": "No voy a la fiesta ___ estoy enfermo.",
+    "answer": "porque",
+    "de": "Ich gehe nicht auf die Party, weil ich krank bin."
+   },
+   "distractors": [
+    "pero",
+    "y",
+    "también"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tambien",
+   "es": "también",
+   "de": "auch",
+   "en": "also, too",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "„A mí también“ = ich auch (bei positiven Sätzen). Bei Verneinung nimmt man „tampoco“.",
+   "examples": [
+    {
+     "es": "Me gusta la playa. —A mí también.",
+     "de": "Ich mag den Strand. – Ich auch."
+    },
+    {
+     "es": "Yo también quiero un café.",
+     "de": "Ich möchte auch einen Kaffee."
+    },
+    {
+     "es": "Ella habla inglés y también alemán.",
+     "de": "Sie spricht Englisch und auch Deutsch."
+    }
+   ],
+   "cloze": {
+    "es": "Yo hablo alemán y mi hermano ___.",
+    "answer": "también",
+    "de": "Ich spreche Deutsch und mein Bruder auch."
+   },
+   "distractors": [
+    "tampoco",
+    "pero",
+    "nada"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tampoco",
+   "es": "tampoco",
+   "de": "auch nicht",
+   "en": "neither, not either",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "Das verneinte „también“: „Yo no voy. – Yo tampoco.“ = Ich auch nicht.",
+   "examples": [
+    {
+     "es": "No tengo hambre. —Yo tampoco.",
+     "de": "Ich habe keinen Hunger. – Ich auch nicht."
+    },
+    {
+     "es": "Hoy tampoco llueve.",
+     "de": "Heute regnet es auch nicht."
+    },
+    {
+     "es": "No sé nadar y mi amigo tampoco.",
+     "de": "Ich kann nicht schwimmen und mein Freund auch nicht."
+    }
+   ],
+   "cloze": {
+    "es": "No me gusta el café. —A mí ___.",
+    "answer": "tampoco",
+    "de": "Ich mag keinen Kaffee. – Ich auch nicht."
+   },
+   "distractors": [
+    "también",
+    "nada",
+    "nadie"
+   ],
+   "basic": true
+  },
+  {
+   "id": "hay",
+   "es": "hay",
+   "de": "es gibt; es ist/sind (vorhanden)",
+   "en": "there is, there are",
+   "type": "verb",
+   "topic": "pequenas",
+   "tip": "„hay“ ändert sich nie, egal ob Einzahl oder Mehrzahl: „hay un bar“, „hay dos bares“. „Hay que…“ = man muss…",
+   "examples": [
+    {
+     "es": "¿Hay un supermercado cerca?",
+     "de": "Gibt es einen Supermarkt in der Nähe?"
+    },
+    {
+     "es": "Hay mucha gente aquí.",
+     "de": "Hier sind viele Leute."
+    },
+    {
+     "es": "No hay leche en la nevera.",
+     "de": "Es ist keine Milch im Kühlschrank."
+    }
+   ],
+   "cloze": {
+    "es": "En la cocina ___ dos sillas.",
+    "answer": "hay",
+    "de": "In der Küche gibt es zwei Stühle."
+   },
+   "distractors": [
+    "está",
+    "es",
+    "tiene"
+   ],
+   "basic": true
+  },
+  {
+   "id": "algo",
+   "es": "algo",
+   "de": "etwas",
+   "en": "something, anything",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "„algo“ = etwas, „nada“ = nichts. „¿Algo más?“ hörst du in jedem Laden: Sonst noch etwas?",
+   "examples": [
+    {
+     "es": "¿Quieres algo de beber?",
+     "de": "Möchtest du etwas zu trinken?"
+    },
+    {
+     "es": "Tengo algo para ti.",
+     "de": "Ich habe etwas für dich."
+    },
+    {
+     "es": "¿Algo más? —No, gracias.",
+     "de": "Sonst noch etwas? – Nein, danke."
+    }
+   ],
+   "cloze": {
+    "es": "Tengo hambre, quiero comer ___.",
+    "answer": "algo",
+    "de": "Ich habe Hunger, ich will etwas essen."
+   },
+   "distractors": [
+    "alguien",
+    "nadie",
+    "mucha"
+   ],
+   "basic": true
+  },
+  {
+   "id": "alguien",
+   "es": "alguien",
+   "de": "jemand",
+   "en": "someone, anybody",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "„alguien“ = jemand, „nadie“ = niemand. Merkhilfe: alGUIEN klingt wie quién (wer).",
+   "examples": [
+    {
+     "es": "¿Hay alguien en casa?",
+     "de": "Ist jemand zu Hause?"
+    },
+    {
+     "es": "Alguien está en la puerta.",
+     "de": "Jemand ist an der Tür."
+    },
+    {
+     "es": "¿Alguien quiere más queso?",
+     "de": "Möchte jemand noch Käse?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ ha llamado esta mañana?",
+    "answer": "Alguien",
+    "de": "Hat heute Morgen jemand angerufen?"
+   },
+   "distractors": [
+    "Algo",
+    "Nada",
+    "Mucho"
+   ],
+   "basic": true
+  },
+  {
+   "id": "mucho-mucha",
+   "es": "mucho / mucha",
+   "de": "viel; sehr",
+   "en": "a lot, much, many",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Vor einem Nomen passt es sich an: „mucha gente“, „muchos amigos“. „muy“ steht vor Adjektiven („muy bueno“), „mucho“ nach Verben („me gusta mucho“).",
+   "examples": [
+    {
+     "es": "Te quiero mucho.",
+     "de": "Ich hab dich sehr lieb."
+    },
+    {
+     "es": "Hay mucha gente en la playa.",
+     "de": "Am Strand sind viele Leute."
+    },
+    {
+     "es": "Tengo mucho trabajo hoy.",
+     "de": "Ich habe heute viel Arbeit."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy hace ___ calor en Madrid.",
+    "answer": "mucho",
+    "de": "Heute ist es sehr heiß in Madrid."
+   },
+   "distractors": [
+    "mucha",
+    "muy",
+    "algo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "poco-poca",
+   "es": "poco / poca",
+   "de": "wenig",
+   "en": "little, not much (few)",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Achtung: 'poco' = wenig, aber 'un poco' = ein bisschen! 'Tengo poco tiempo' (kaum Zeit) klingt negativer als 'tengo un poco de tiempo' (ein bisschen Zeit).",
+   "examples": [
+    {
+     "es": "Hoy tengo poco tiempo.",
+     "de": "Heute habe ich wenig Zeit."
+    },
+    {
+     "es": "Hay poca gente en la playa.",
+     "de": "Es sind wenige Leute am Strand."
+    },
+    {
+     "es": "Habla un poco de español.",
+     "de": "Er spricht ein bisschen Spanisch."
+    }
+   ],
+   "cloze": {
+    "es": "Bebo muy ___ café, solo uno al día.",
+    "answer": "poco",
+    "de": "Ich trinke sehr wenig Kaffee, nur einen am Tag."
+   },
+   "distractors": [
+    "tanto",
+    "demasiado",
+    "bastante"
+   ],
+   "basic": true
+  },
+  {
+   "id": "muy",
+   "es": "muy",
+   "de": "sehr",
+   "en": "very",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "'Muy' steht vor Adjektiven und Adverbien ('muy bonito'), aber NIE allein und nie vor Nomen – da nimmst du 'mucho': 'muy bien', aber 'mucho trabajo'.",
+   "examples": [
+    {
+     "es": "La paella está muy buena.",
+     "de": "Die Paella ist sehr lecker."
+    },
+    {
+     "es": "Madrid es muy grande.",
+     "de": "Madrid ist sehr groß."
+    },
+    {
+     "es": "Estoy muy bien, gracias.",
+     "de": "Mir geht's sehr gut, danke."
+    }
+   ],
+   "cloze": {
+    "es": "Este piso es ___ bonito.",
+    "answer": "muy",
+    "de": "Diese Wohnung ist sehr schön."
+   },
+   "distractors": [
+    "mucho",
+    "tanto",
+    "demasiada"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tan",
+   "es": "tan",
+   "de": "so (vor Adjektiven)",
+   "en": "so, as (before adjectives)",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "'Tan' ist die Kurzform von 'tanto' vor Adjektiven/Adverbien: '¡Qué día tan bonito!' Und zum Vergleichen: 'tan alto como yo' = so groß wie ich.",
+   "examples": [
+    {
+     "es": "¡Estás tan guapa hoy!",
+     "de": "Du bist heute so hübsch!"
+    },
+    {
+     "es": "Mi hermano es tan alto como yo.",
+     "de": "Mein Bruder ist so groß wie ich."
+    },
+    {
+     "es": "¡Qué día tan bonito!",
+     "de": "Was für ein schöner Tag!"
+    }
+   ],
+   "cloze": {
+    "es": "No sabía que Sevilla era ___ bonita.",
+    "answer": "tan",
+    "de": "Ich wusste nicht, dass Sevilla so schön ist."
+   },
+   "distractors": [
+    "tanto",
+    "tanta",
+    "mucho"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tanto-tanta",
+   "es": "tanto / tanta",
+   "de": "so viel, so sehr",
+   "en": "so much, so many",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "'Tanto' vor Nomen passt sich an: 'tanta gente', 'tantos libros'. Nach Verben bleibt es 'tanto': 'Te quiero tanto' – ich liebe dich so sehr.",
+   "examples": [
+    {
+     "es": "¡Hay tanta gente aquí!",
+     "de": "Hier sind so viele Leute!"
+    },
+    {
+     "es": "No comas tanto chocolate.",
+     "de": "Iss nicht so viel Schokolade."
+    },
+    {
+     "es": "Te echo de menos tanto.",
+     "de": "Ich vermisse dich so sehr."
+    }
+   ],
+   "cloze": {
+    "es": "¿Por qué trabajas ___ ? Necesitas descansar.",
+    "answer": "tanto",
+    "de": "Warum arbeitest du so viel? Du musst dich ausruhen."
+   },
+   "distractors": [
+    "tan",
+    "muy",
+    "poca"
+   ],
+   "basic": true
+  },
+  {
+   "id": "otro-otra",
+   "es": "otro / otra",
+   "de": "andere(r), noch ein(e)",
+   "en": "other, another",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Typischer Deutschen-Fehler: NIE 'un otro'! Einfach 'otro café, por favor' = noch einen Kaffee, bitte.",
+   "examples": [
+    {
+     "es": "¿Me pones otra cerveza?",
+     "de": "Bringst du mir noch ein Bier?"
+    },
+    {
+     "es": "Prefiero el otro restaurante.",
+     "de": "Ich bevorzuge das andere Restaurant."
+    },
+    {
+     "es": "Lo hacemos otro día.",
+     "de": "Wir machen das an einem anderen Tag."
+    }
+   ],
+   "cloze": {
+    "es": "Esta camiseta es pequeña, ¿tienes ___ talla?",
+    "answer": "otra",
+    "de": "Dieses T-Shirt ist zu klein, hast du eine andere Größe?"
+   },
+   "distractors": [
+    "cada",
+    "tanta",
+    "poca"
+   ],
+   "basic": true
+  },
+  {
+   "id": "cada",
+   "es": "cada",
+   "de": "jede(r/s)",
+   "en": "each, every",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "'Cada' ist unveränderlich – immer 'cada', egal ob männlich oder weiblich: 'cada día', 'cada semana'. 'Cada vez más' = immer mehr.",
+   "examples": [
+    {
+     "es": "Voy al gimnasio cada lunes.",
+     "de": "Ich gehe jeden Montag ins Fitnessstudio."
+    },
+    {
+     "es": "Cada persona paga diez euros.",
+     "de": "Jede Person zahlt zehn Euro."
+    },
+    {
+     "es": "Hablas español cada vez mejor.",
+     "de": "Du sprichst immer besser Spanisch."
+    }
+   ],
+   "cloze": {
+    "es": "Mi madre me llama ___ domingo.",
+    "answer": "cada",
+    "de": "Meine Mutter ruft mich jeden Sonntag an."
+   },
+   "distractors": [
+    "otro",
+    "tanto",
+    "poco"
+   ],
+   "basic": true
+  },
+  {
+   "id": "solo",
+   "es": "solo",
+   "de": "nur; allein",
+   "en": "only; alone",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "Zwei Bedeutungen: 'solo quiero agua' = ich will nur Wasser; 'vivo solo / sola' = ich wohne allein. Und 'un café solo' ist in Spanien ein Espresso!",
+   "examples": [
+    {
+     "es": "Solo quiero un vaso de agua.",
+     "de": "Ich will nur ein Glas Wasser."
+    },
+    {
+     "es": "Vivo solo en un piso pequeño.",
+     "de": "Ich wohne allein in einer kleinen Wohnung."
+    },
+    {
+     "es": "Un café solo, por favor.",
+     "de": "Einen Espresso, bitte."
+    }
+   ],
+   "cloze": {
+    "es": "No tengo mucho dinero, ___ cinco euros.",
+    "answer": "solo",
+    "de": "Ich habe nicht viel Geld, nur fünf Euro."
+   },
+   "distractors": [
+    "casi",
+    "tan",
+    "cada"
+   ],
+   "basic": true
+  },
+  {
+   "id": "casi",
+   "es": "casi",
+   "de": "fast, beinahe",
+   "en": "almost",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "'Casi' klingt fast wie 'quasi' – genau das bedeutet es! 'Casi nunca' = fast nie, 'casi siempre' = fast immer.",
+   "examples": [
+    {
+     "es": "Son casi las diez.",
+     "de": "Es ist fast zehn Uhr."
+    },
+    {
+     "es": "Casi nunca como carne.",
+     "de": "Ich esse fast nie Fleisch."
+    },
+    {
+     "es": "¡Casi me caigo!",
+     "de": "Ich wäre fast hingefallen!"
+    }
+   ],
+   "cloze": {
+    "es": "Estamos ___ en casa, cinco minutos más.",
+    "answer": "casi",
+    "de": "Wir sind fast zu Hause, noch fünf Minuten."
+   },
+   "distractors": [
+    "solo",
+    "tan",
+    "muy"
+   ],
+   "basic": true
+  },
+  {
+   "id": "demasiado",
+   "es": "demasiado",
+   "de": "zu, zu viel",
+   "en": "too, too much",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "Wichtig: Spanisch hat kein kleines 'zu' wie im Deutschen. 'Zu teuer' = 'demasiado caro'. Vor Nomen passt es sich an: 'demasiada gente'.",
+   "examples": [
+    {
+     "es": "Este bolso es demasiado caro.",
+     "de": "Diese Tasche ist zu teuer."
+    },
+    {
+     "es": "Has comido demasiado.",
+     "de": "Du hast zu viel gegessen."
+    },
+    {
+     "es": "Hay demasiada gente en el metro.",
+     "de": "Es sind zu viele Leute in der U-Bahn."
+    }
+   ],
+   "cloze": {
+    "es": "No puedo beber el café, está ___ caliente.",
+    "answer": "demasiado",
+    "de": "Ich kann den Kaffee nicht trinken, er ist zu heiß."
+   },
+   "distractors": [
+    "bastante",
+    "poco",
+    "casi"
+   ],
+   "basic": true
+  },
+  {
+   "id": "bastante",
+   "es": "bastante",
+   "de": "ziemlich; genug",
+   "en": "quite, rather; enough",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "Kein 'Bastard'-Wort 😉: 'bastante bien' = ziemlich gut. Vor Nomen heißt es 'genug': 'tengo bastante dinero'. Plural: 'bastantes'.",
+   "examples": [
+    {
+     "es": "El examen fue bastante fácil.",
+     "de": "Die Prüfung war ziemlich leicht."
+    },
+    {
+     "es": "Ya tengo bastante, gracias.",
+     "de": "Ich habe schon genug, danke."
+    },
+    {
+     "es": "Hablas bastante bien español.",
+     "de": "Du sprichst ziemlich gut Spanisch."
+    }
+   ],
+   "cloze": {
+    "es": "El hotel no es perfecto, pero es ___ bueno.",
+    "answer": "bastante",
+    "de": "Das Hotel ist nicht perfekt, aber ziemlich gut."
+   },
+   "distractors": [
+    "demasiado",
+    "tanto",
+    "casi"
+   ],
+   "basic": true
+  },
+  {
+   "id": "igual",
+   "es": "igual",
+   "de": "gleich; vielleicht",
+   "en": "the same, equal; maybe",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Super nützlich: 'Me da igual' = ist mir egal. Und in Spanien sagt man oft 'igual voy' = vielleicht gehe ich. 'Igual que' = genauso wie.",
+   "examples": [
+    {
+     "es": "Me da igual, elige tú.",
+     "de": "Ist mir egal, such du aus."
+    },
+    {
+     "es": "Tu móvil es igual que el mío.",
+     "de": "Dein Handy ist genauso wie meins."
+    },
+    {
+     "es": "Igual vamos a la playa mañana.",
+     "de": "Vielleicht gehen wir morgen an den Strand."
+    }
+   ],
+   "cloze": {
+    "es": "¿Pizza o pasta? Me da ___.",
+    "answer": "igual",
+    "de": "Pizza oder Pasta? Ist mir egal."
+   },
+   "distractors": [
+    "bastante",
+    "otro",
+    "solo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "con",
+   "es": "con",
+   "de": "mit",
+   "en": "with",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "Achtung bei 'mit mir/dir': Das heißt 'conmigo' und 'contigo' – nicht 'con mí'! '¿Vienes conmigo?' = Kommst du mit mir?",
+   "examples": [
+    {
+     "es": "Un café con leche, por favor.",
+     "de": "Einen Milchkaffee, bitte."
+    },
+    {
+     "es": "Voy al cine con mis amigos.",
+     "de": "Ich gehe mit meinen Freunden ins Kino."
+    },
+    {
+     "es": "¿Quieres venir conmigo?",
+     "de": "Willst du mit mir kommen?"
+    }
+   ],
+   "cloze": {
+    "es": "Me gusta el té ___ limón.",
+    "answer": "con",
+    "de": "Ich mag Tee mit Zitrone."
+   },
+   "distractors": [
+    "sin",
+    "de",
+    "para"
+   ],
+   "basic": true
+  },
+  {
+   "id": "sin",
+   "es": "sin",
+   "de": "ohne",
+   "en": "without",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "Das Gegenteil von 'con'. Nach 'sin' steht oft kein Artikel: 'sin azúcar' = ohne Zucker.",
+   "examples": [
+    {
+     "es": "Un café sin azúcar, por favor.",
+     "de": "Einen Kaffee ohne Zucker, bitte."
+    },
+    {
+     "es": "No puedo vivir sin ti.",
+     "de": "Ich kann ohne dich nicht leben."
+    },
+    {
+     "es": "Hoy salgo sin paraguas.",
+     "de": "Heute gehe ich ohne Regenschirm raus."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy salgo de casa ___ chaqueta porque hace calor.",
+    "answer": "sin",
+    "de": "Heute gehe ich ohne Jacke aus dem Haus, weil es warm ist."
+   },
+   "distractors": [
+    "con",
+    "para",
+    "por"
+   ],
+   "basic": true
+  },
+  {
+   "id": "para",
+   "es": "para",
+   "de": "für, um ... zu",
+   "en": "for, in order to",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "'para' zeigt Ziel oder Empfänger: 'para ti' = für dich, 'para comer' = um zu essen. Merke: para = Pfeil nach vorne.",
+   "examples": [
+    {
+     "es": "Este regalo es para ti.",
+     "de": "Dieses Geschenk ist für dich."
+    },
+    {
+     "es": "Estudio español para hablar con mis amigos.",
+     "de": "Ich lerne Spanisch, um mit meinen Freunden zu sprechen."
+    },
+    {
+     "es": "Necesito el coche para mañana.",
+     "de": "Ich brauche das Auto für morgen."
+    }
+   ],
+   "cloze": {
+    "es": "Voy a la cocina ___ preparar la cena.",
+    "answer": "para",
+    "de": "Ich gehe in die Küche, um das Abendessen zuzubereiten."
+   },
+   "distractors": [
+    "por",
+    "sin",
+    "con"
+   ],
+   "basic": true
+  },
+  {
+   "id": "por",
+   "es": "por",
+   "de": "durch, wegen, für (Dank/Tausch)",
+   "en": "through, because of, for",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "'por' = Grund oder Weg: 'gracias por todo', 'por el parque'. Achtung: 'por la tarde' = am Nachmittag.",
+   "examples": [
+    {
+     "es": "Gracias por todo.",
+     "de": "Danke für alles."
+    },
+    {
+     "es": "Paseamos por el parque.",
+     "de": "Wir spazieren durch den Park."
+    },
+    {
+     "es": "Te llamo por la tarde.",
+     "de": "Ich rufe dich am Nachmittag an."
+    }
+   ],
+   "cloze": {
+    "es": "Muchas gracias ___ tu ayuda.",
+    "answer": "por",
+    "de": "Vielen Dank für deine Hilfe."
+   },
+   "distractors": [
+    "para",
+    "sin",
+    "con"
+   ],
+   "basic": true
+  },
+  {
+   "id": "aunque",
+   "es": "aunque",
+   "de": "obwohl, auch wenn",
+   "en": "although, even though",
+   "type": "other",
+   "topic": "pequenas",
+   "tip": "Klingt wie 'auch' – und 'auch wenn' ist genau die Bedeutung! Kein Verb ans Ende wie im Deutschen.",
+   "examples": [
+    {
+     "es": "Salgo aunque llueve.",
+     "de": "Ich gehe raus, obwohl es regnet."
+    },
+    {
+     "es": "Aunque estoy cansado, voy a escalar.",
+     "de": "Obwohl ich müde bin, gehe ich klettern."
+    },
+    {
+     "es": "Me gusta, aunque es caro.",
+     "de": "Es gefällt mir, obwohl es teuer ist."
+    }
+   ],
+   "cloze": {
+    "es": "Mi hermano come mucho ___ no tiene hambre.",
+    "answer": "aunque",
+    "de": "Mein Bruder isst viel, obwohl er keinen Hunger hat."
+   },
+   "distractors": [
+    "porque",
+    "para",
+    "sin"
+   ],
+   "basic": true
+  },
+  {
+   "id": "asi",
+   "es": "así",
+   "de": "so, auf diese Weise",
+   "en": "like this, so",
+   "type": "adverb",
+   "topic": "pequenas",
+   "tip": "Super praktisch beim Zeigen: 'Se hace así' = So macht man das. 'Así es la vida' = So ist das Leben.",
+   "examples": [
+    {
+     "es": "Se hace así.",
+     "de": "So macht man das."
+    },
+    {
+     "es": "¡Así me gusta!",
+     "de": "So gefällt mir das!"
+    },
+    {
+     "es": "Así es la vida.",
+     "de": "So ist das Leben."
+    }
+   ],
+   "cloze": {
+    "es": "Mira, se hace ___: primero el queso y después el jamón.",
+    "answer": "así",
+    "de": "Schau, so macht man das: zuerst der Käse und dann der Schinken."
+   },
+   "distractors": [
+    "tan",
+    "muy",
+    "tanto"
+   ],
+   "basic": true
+  },
+  {
+   "id": "siempre",
+   "es": "siempre",
+   "de": "immer",
+   "en": "always",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "'para siempre' = für immer. Das Gegenteil ist 'nunca'.",
+   "examples": [
+    {
+     "es": "Siempre desayuno a las ocho.",
+     "de": "Ich frühstücke immer um acht."
+    },
+    {
+     "es": "Te quiero para siempre.",
+     "de": "Ich liebe dich für immer."
+    },
+    {
+     "es": "Ana siempre llega tarde.",
+     "de": "Ana kommt immer zu spät."
+    }
+   ],
+   "cloze": {
+    "es": "Te voy a querer para ___.",
+    "answer": "siempre",
+    "de": "Ich werde dich für immer lieben."
+   },
+   "distractors": [
+    "nunca",
+    "temprano",
+    "todavía"
+   ],
+   "basic": true
+  },
+  {
+   "id": "nunca",
+   "es": "nunca",
+   "de": "nie, niemals",
+   "en": "never",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "Vor dem Verb: 'Nunca bebo café'. Nach dem Verb braucht es 'no': 'No bebo nunca café' – doppelte Verneinung ist richtig!",
+   "examples": [
+    {
+     "es": "Nunca como carne.",
+     "de": "Ich esse nie Fleisch."
+    },
+    {
+     "es": "No bebo nunca café por la noche.",
+     "de": "Ich trinke abends nie Kaffee."
+    },
+    {
+     "es": "Mi padre nunca está en casa.",
+     "de": "Mein Vater ist nie zu Hause."
+    }
+   ],
+   "cloze": {
+    "es": "Más vale tarde que ___.",
+    "answer": "nunca",
+    "de": "Besser spät als nie."
+   },
+   "distractors": [
+    "siempre",
+    "pronto",
+    "temprano"
+   ],
+   "basic": true
+  },
+  {
+   "id": "todavia",
+   "es": "todavía",
+   "de": "noch; noch nicht (mit 'no')",
+   "en": "still, yet",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "'todavía no' = noch nicht. Gegenteil: 'ya' (schon). Betonung auf dem i: to-da-VÍ-a.",
+   "examples": [
+    {
+     "es": "Todavía estoy en casa.",
+     "de": "Ich bin noch zu Hause."
+    },
+    {
+     "es": "¿Todavía no has comido?",
+     "de": "Hast du noch nicht gegessen?"
+    },
+    {
+     "es": "Todavía no lo sé.",
+     "de": "Ich weiß es noch nicht."
+    }
+   ],
+   "cloze": {
+    "es": "Pablo ___ no ha llegado; lo esperamos.",
+    "answer": "todavía",
+    "de": "Pablo ist noch nicht angekommen; wir warten auf ihn."
+   },
+   "distractors": [
+    "ya",
+    "nunca",
+    "pronto"
+   ],
+   "basic": true
+  },
+  {
+   "id": "luego",
+   "es": "luego",
+   "de": "später, dann, danach",
+   "en": "later, then",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "'¡Hasta luego!' = Bis später! In Spanien hört man das ständig, sogar beim Verlassen eines Ladens.",
+   "examples": [
+    {
+     "es": "¡Hasta luego!",
+     "de": "Bis später!"
+    },
+    {
+     "es": "Primero comemos y luego vamos al cine.",
+     "de": "Zuerst essen wir und dann gehen wir ins Kino."
+    },
+    {
+     "es": "Te llamo luego.",
+     "de": "Ich rufe dich später an."
+    }
+   ],
+   "cloze": {
+    "es": "Primero me ducho y ___ desayuno.",
+    "answer": "luego",
+    "de": "Zuerst dusche ich und dann frühstücke ich."
+   },
+   "distractors": [
+    "antes",
+    "nunca",
+    "todavía"
+   ],
+   "basic": true
+  },
+  {
+   "id": "pronto",
+   "es": "pronto",
+   "de": "bald; (in Spanien auch) früh",
+   "en": "soon; early",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "Achtung, in Spanien heißt 'pronto' oft auch 'früh': 'Me levanto pronto'. Kein 'prompt'! '¡Hasta pronto!' = Bis bald!",
+   "examples": [
+    {
+     "es": "¡Hasta pronto!",
+     "de": "Bis bald!"
+    },
+    {
+     "es": "Llego pronto, en cinco minutos.",
+     "de": "Ich komme bald, in fünf Minuten."
+    },
+    {
+     "es": "Mañana me levanto pronto.",
+     "de": "Morgen stehe ich früh auf."
+    }
+   ],
+   "cloze": {
+    "es": "Las vacaciones empiezan muy ___: ¡solo faltan dos días!",
+    "answer": "pronto",
+    "de": "Die Ferien fangen sehr bald an: Es sind nur noch zwei Tage!"
+   },
+   "distractors": [
+    "tarde",
+    "siempre",
+    "nunca"
+   ],
+   "basic": true
+  },
+  {
+   "id": "temprano",
+   "es": "temprano",
+   "de": "früh",
+   "en": "early",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "Das Gegenteil von 'tarde'. Merke: 'temprano' steckt im 'Tempo' – früh dran sein!",
+   "examples": [
+    {
+     "es": "Me levanto temprano.",
+     "de": "Ich stehe früh auf."
+    },
+    {
+     "es": "Es muy temprano para cenar.",
+     "de": "Es ist sehr früh zum Abendessen."
+    },
+    {
+     "es": "Mañana salimos temprano.",
+     "de": "Morgen fahren wir früh los."
+    }
+   ],
+   "cloze": {
+    "es": "Son las seis de la mañana, es muy ___.",
+    "answer": "temprano",
+    "de": "Es ist sechs Uhr morgens, es ist sehr früh."
+   },
+   "distractors": [
+    "tarde",
+    "luego",
+    "siempre"
+   ],
+   "basic": true
+  },
+  {
+   "id": "a-veces",
+   "es": "a veces",
+   "de": "manchmal",
+   "en": "sometimes",
+   "type": "adverb",
+   "topic": "tiempo",
+   "tip": "Wörtlich „zu Malen“ – immer mit Plural-s: a veces, nie „a vez“.",
+   "examples": [
+    {
+     "es": "A veces voy al gimnasio por la mañana.",
+     "de": "Manchmal gehe ich morgens ins Fitnessstudio."
+    },
+    {
+     "es": "A veces no entiendo nada.",
+     "de": "Manchmal verstehe ich gar nichts."
+    },
+    {
+     "es": "Mi hermano a veces cocina para todos.",
+     "de": "Mein Bruder kocht manchmal für alle."
+    }
+   ],
+   "cloze": {
+    "es": "___ tomo café con leche, pero normalmente tomo té.",
+    "answer": "A veces",
+    "de": "Manchmal trinke ich Milchkaffee, aber normalerweise trinke ich Tee."
+   },
+   "distractors": [
+    "Nunca",
+    "Siempre",
+    "Ayer"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-vez",
+   "es": "la vez",
+   "de": "das Mal",
+   "en": "time (occurrence)",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "„Vez“ zählt Male (una vez, dos veces), „tiempo“ ist die Zeit an sich. Plural: veces (z → c).",
+   "examples": [
+    {
+     "es": "Es la primera vez que estoy en Madrid.",
+     "de": "Es ist das erste Mal, dass ich in Madrid bin."
+    },
+    {
+     "es": "Voy a escalar una vez a la semana.",
+     "de": "Ich gehe einmal pro Woche klettern."
+    },
+    {
+     "es": "Te lo digo otra vez.",
+     "de": "Ich sage es dir noch einmal."
+    }
+   ],
+   "cloze": {
+    "es": "La última ___ que comí paella fue en Valencia.",
+    "answer": "vez",
+    "de": "Das letzte Mal, als ich Paella gegessen habe, war in Valencia."
+   },
+   "distractors": [
+    "hora",
+    "semana",
+    "noche"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-hora",
+   "es": "la hora",
+   "de": "die Stunde; die Uhrzeit",
+   "en": "hour; time (of day)",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "„¿Qué hora es?“ = Wie spät ist es? Das h ist stumm: „ora“.",
+   "examples": [
+    {
+     "es": "¿Qué hora es?",
+     "de": "Wie spät ist es?"
+    },
+    {
+     "es": "La película dura dos horas.",
+     "de": "Der Film dauert zwei Stunden."
+    },
+    {
+     "es": "Es la hora de comer.",
+     "de": "Es ist Zeit zum Essen."
+    }
+   ],
+   "cloze": {
+    "es": "Te espero una ___ en la estación.",
+    "answer": "hora",
+    "de": "Ich warte eine Stunde am Bahnhof auf dich."
+   },
+   "distractors": [
+    "vez",
+    "semana",
+    "noche"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-minuto",
+   "es": "el minuto",
+   "de": "die Minute",
+   "en": "minute",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Achtung: maskulin! el minuto, nicht „la“. „Un minuto“ sagt man auch für „Moment mal“.",
+   "examples": [
+    {
+     "es": "Llego en cinco minutos.",
+     "de": "Ich komme in fünf Minuten."
+    },
+    {
+     "es": "Espera un minuto, por favor.",
+     "de": "Warte bitte eine Minute."
+    },
+    {
+     "es": "El autobús pasa cada diez minutos.",
+     "de": "Der Bus kommt alle zehn Minuten."
+    }
+   ],
+   "cloze": {
+    "es": "La pasta está lista en ocho ___.",
+    "answer": "minutos",
+    "de": "Die Nudeln sind in acht Minuten fertig."
+   },
+   "distractors": [
+    "horas",
+    "semanas",
+    "momentos"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-momento",
+   "es": "el momento",
+   "de": "der Moment, der Augenblick",
+   "en": "moment",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "„Un momento“ = Einen Moment! „En este momento“ = gerade, im Moment.",
+   "examples": [
+    {
+     "es": "Un momento, por favor.",
+     "de": "Einen Moment, bitte."
+    },
+    {
+     "es": "En este momento estoy en el trabajo.",
+     "de": "Im Moment bin ich auf der Arbeit."
+    },
+    {
+     "es": "Fue un momento muy bonito.",
+     "de": "Es war ein sehr schöner Moment."
+    }
+   ],
+   "cloze": {
+    "es": "Ahora no puedo hablar, es un mal ___.",
+    "answer": "momento",
+    "de": "Ich kann jetzt nicht reden, es ist ein schlechter Moment."
+   },
+   "distractors": [
+    "minuto",
+    "día",
+    "lunes"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-noche",
+   "es": "la noche",
+   "de": "die Nacht; der Abend (spät)",
+   "en": "night",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "„Buenas noches“ sagt man in Spanien schon ab ca. 21 Uhr – als Gruß UND zum Abschied.",
+   "examples": [
+    {
+     "es": "Buenas noches, ¿qué tal?",
+     "de": "Guten Abend, wie geht's?"
+    },
+    {
+     "es": "Esta noche cenamos en casa.",
+     "de": "Heute Abend essen wir zu Hause."
+    },
+    {
+     "es": "No duermo bien por la noche.",
+     "de": "Ich schlafe nachts nicht gut."
+    }
+   ],
+   "cloze": {
+    "es": "Salimos el sábado por la ___ con los amigos.",
+    "answer": "noche",
+    "de": "Wir gehen am Samstagabend mit den Freunden aus."
+   },
+   "distractors": [
+    "mañana",
+    "hora",
+    "semana"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-manana",
+   "es": "la mañana",
+   "de": "der Morgen, der Vormittag",
+   "en": "morning",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Mit Artikel = der Morgen; ohne = morgen. „Mañana por la mañana“ = morgen früh!",
+   "examples": [
+    {
+     "es": "Trabajo por la mañana.",
+     "de": "Ich arbeite vormittags."
+    },
+    {
+     "es": "Mañana por la mañana voy a escalar.",
+     "de": "Morgen früh gehe ich klettern."
+    },
+    {
+     "es": "Son las ocho de la mañana.",
+     "de": "Es ist acht Uhr morgens."
+    }
+   ],
+   "cloze": {
+    "es": "Me ducho siempre por la ___ antes del desayuno.",
+    "answer": "mañana",
+    "de": "Ich dusche immer morgens vor dem Frühstück."
+   },
+   "distractors": [
+    "noche",
+    "hora",
+    "semana"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-fin-de-semana",
+   "es": "el fin de semana",
+   "de": "das Wochenende",
+   "en": "weekend",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Wörtlich „Ende der Woche“. In Spanien oft kurz: „el finde“.",
+   "examples": [
+    {
+     "es": "¿Qué haces el fin de semana?",
+     "de": "Was machst du am Wochenende?"
+    },
+    {
+     "es": "Este fin de semana vamos a la playa.",
+     "de": "Dieses Wochenende fahren wir an den Strand."
+    },
+    {
+     "es": "Los fines de semana duermo mucho.",
+     "de": "Am Wochenende schlafe ich viel."
+    }
+   ],
+   "cloze": {
+    "es": "El ___ vamos a la montaña con mis padres.",
+    "answer": "fin de semana",
+    "de": "Am Wochenende fahren wir mit meinen Eltern in die Berge."
+   },
+   "distractors": [
+    "lunes",
+    "martes",
+    "momento"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-lunes",
+   "es": "el lunes",
+   "de": "der Montag; am Montag",
+   "en": "Monday; on Monday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Kein „en“ nötig: „el lunes“ = am Montag, „los lunes“ = montags. Wochentage klein schreiben! Merkhilfe: Luna (Mond) → Montag.",
+   "examples": [
+    {
+     "es": "El lunes empiezo el curso.",
+     "de": "Am Montag fange ich den Kurs an."
+    },
+    {
+     "es": "Los lunes trabajo en casa.",
+     "de": "Montags arbeite ich zu Hause."
+    },
+    {
+     "es": "Hoy es lunes.",
+     "de": "Heute ist Montag."
+    }
+   ],
+   "cloze": {
+    "es": "El ___ es el primer día de la semana.",
+    "answer": "lunes",
+    "de": "Der Montag ist der erste Tag der Woche."
+   },
+   "distractors": [
+    "martes",
+    "jueves",
+    "miércoles"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-martes",
+   "es": "el martes",
+   "de": "der Dienstag; am Dienstag",
+   "en": "Tuesday; on Tuesday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Von Mars. Spanisches Pech: „Martes y trece“ – Dienstag der 13. ist der Unglückstag, nicht Freitag!",
+   "examples": [
+    {
+     "es": "El martes tengo médico.",
+     "de": "Am Dienstag habe ich einen Arzttermin."
+    },
+    {
+     "es": "Los martes voy a escalar.",
+     "de": "Dienstags gehe ich klettern."
+    },
+    {
+     "es": "Nos vemos el martes.",
+     "de": "Wir sehen uns am Dienstag."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy es lunes, así que mañana es ___.",
+    "answer": "martes",
+    "de": "Heute ist Montag, also ist morgen Dienstag."
+   },
+   "distractors": [
+    "jueves",
+    "miércoles",
+    "lunes"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-miercoles",
+   "es": "el miércoles",
+   "de": "der Mittwoch; am Mittwoch",
+   "en": "Wednesday; on Wednesday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Akzent auf dem ersten e nicht vergessen: miércoles. Von Merkur.",
+   "examples": [
+    {
+     "es": "El miércoles cenamos juntos.",
+     "de": "Am Mittwoch essen wir zusammen zu Abend."
+    },
+    {
+     "es": "Los miércoles hay mercado.",
+     "de": "Mittwochs ist Markt."
+    },
+    {
+     "es": "El miércoles es mi cumpleaños.",
+     "de": "Am Mittwoch ist mein Geburtstag."
+    }
+   ],
+   "cloze": {
+    "es": "Después del martes viene el ___.",
+    "answer": "miércoles",
+    "de": "Nach dem Dienstag kommt der Mittwoch."
+   },
+   "distractors": [
+    "lunes",
+    "jueves",
+    "martes"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-jueves",
+   "es": "el jueves",
+   "de": "der Donnerstag; am Donnerstag",
+   "en": "Thursday; on Thursday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Von Jupiter (Jove) – wie Donnerstag vom Donnergott Thor. Beide werfen Blitze!",
+   "examples": [
+    {
+     "es": "El jueves salgo con mis amigos.",
+     "de": "Am Donnerstag gehe ich mit meinen Freunden aus."
+    },
+    {
+     "es": "Los jueves tengo clase de español.",
+     "de": "Donnerstags habe ich Spanischunterricht."
+    },
+    {
+     "es": "¿Quedamos el jueves?",
+     "de": "Treffen wir uns am Donnerstag?"
+    }
+   ],
+   "cloze": {
+    "es": "El ___ por la tarde tengo clase de yoga.",
+    "answer": "jueves",
+    "de": "Am Donnerstagnachmittag habe ich Yogakurs."
+   },
+   "distractors": [
+    "martes",
+    "lunes",
+    "miércoles"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-viernes",
+   "es": "el viernes",
+   "de": "der Freitag",
+   "en": "Friday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Wochentage schreibt man klein und ohne Präposition: „el viernes“ = „am Freitag“.",
+   "examples": [
+    {
+     "es": "El viernes vamos al cine.",
+     "de": "Am Freitag gehen wir ins Kino."
+    },
+    {
+     "es": "Los viernes trabajo desde casa.",
+     "de": "Freitags arbeite ich von zu Hause."
+    },
+    {
+     "es": "¿Quedamos el viernes por la tarde?",
+     "de": "Treffen wir uns am Freitagnachmittag?"
+    }
+   ],
+   "cloze": {
+    "es": "Por fin es ___, ¡empieza el fin de semana!",
+    "answer": "viernes",
+    "de": "Endlich ist Freitag, das Wochenende beginnt!"
+   },
+   "distractors": [
+    "lunes",
+    "martes",
+    "miércoles"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-sabado",
+   "es": "el sábado",
+   "de": "der Samstag",
+   "en": "Saturday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Kommt vom hebräischen „Sabbat“, so kannst du es dir leicht merken.",
+   "examples": [
+    {
+     "es": "El sábado vamos a escalar.",
+     "de": "Am Samstag gehen wir klettern."
+    },
+    {
+     "es": "Los sábados me levanto tarde.",
+     "de": "Samstags stehe ich spät auf."
+    },
+    {
+     "es": "El mercado abre el sábado por la mañana.",
+     "de": "Der Markt öffnet am Samstagmorgen."
+    }
+   ],
+   "cloze": {
+    "es": "Este ___ hay una fiesta en casa de Marta.",
+    "answer": "sábado",
+    "de": "Diesen Samstag gibt es eine Party bei Marta."
+   },
+   "distractors": [
+    "jueves",
+    "lunes",
+    "martes"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-domingo",
+   "es": "el domingo",
+   "de": "der Sonntag",
+   "en": "Sunday",
+   "type": "noun",
+   "topic": "tiempo",
+   "tip": "Von lateinisch „dominus“ (Herr) – der Tag des Herrn. In Spanien sind sonntags viele Läden zu.",
+   "examples": [
+    {
+     "es": "El domingo comemos con la familia.",
+     "de": "Am Sonntag essen wir mit der Familie."
+    },
+    {
+     "es": "Los domingos las tiendas están cerradas.",
+     "de": "Sonntags sind die Läden geschlossen."
+    },
+    {
+     "es": "¿Qué haces el domingo?",
+     "de": "Was machst du am Sonntag?"
+    }
+   ],
+   "cloze": {
+    "es": "El ___ no trabajo, descanso todo el día.",
+    "answer": "domingo",
+    "de": "Am Sonntag arbeite ich nicht, ich ruhe mich den ganzen Tag aus."
+   },
+   "distractors": [
+    "miércoles",
+    "jueves",
+    "martes"
+   ],
+   "basic": true
+  },
+  {
+   "id": "por-que",
+   "es": "por qué",
+   "de": "warum",
+   "en": "why",
+   "type": "other",
+   "topic": "preguntas",
+   "tip": "„¿Por qué?“ (getrennt, mit Akzent) = warum; „porque“ (zusammen, ohne Akzent) = weil.",
+   "examples": [
+    {
+     "es": "¿Por qué no vienes?",
+     "de": "Warum kommst du nicht?"
+    },
+    {
+     "es": "¿Por qué estás tan contento?",
+     "de": "Warum bist du so froh?"
+    },
+    {
+     "es": "No sé por qué está cerrado.",
+     "de": "Ich weiß nicht, warum es geschlossen ist."
+    }
+   ],
+   "cloze": {
+    "es": "¿___ llegas tan tarde?",
+    "answer": "Por qué",
+    "de": "Warum kommst du so spät?"
+   },
+   "distractors": [
+    "Cuándo",
+    "Dónde",
+    "Cómo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "cuantos-cuantas",
+   "es": "cuántos / cuántas",
+   "de": "wie viele",
+   "en": "how many",
+   "type": "other",
+   "topic": "preguntas",
+   "tip": "Passt sich dem Nomen an: „¿cuántos años?“ (m), „¿cuántas horas?“ (f). „Cuánto“ allein = wie viel.",
+   "examples": [
+    {
+     "es": "¿Cuántos años tienes?",
+     "de": "Wie alt bist du? (Wie viele Jahre hast du?)"
+    },
+    {
+     "es": "¿Cuántas personas vienen a la cena?",
+     "de": "Wie viele Personen kommen zum Abendessen?"
+    },
+    {
+     "es": "¿Cuántos hermanos tienes?",
+     "de": "Wie viele Geschwister hast du?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ horas duerme tu hijo?",
+    "answer": "Cuántas",
+    "de": "Wie viele Stunden schläft dein Sohn?"
+   },
+   "distractors": [
+    "Cuántos",
+    "Cuál",
+    "Qué tal"
+   ],
+   "basic": true
+  },
+  {
+   "id": "que-tal",
+   "es": "¿qué tal?",
+   "de": "wie geht's?",
+   "en": "how are you? / how's it going?",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Super locker und überall in Spanien. Auch „¿Qué tal el viaje?“ = Wie war die Reise?",
+   "examples": [
+    {
+     "es": "Hola, ¿qué tal?",
+     "de": "Hallo, wie geht's?"
+    },
+    {
+     "es": "¿Qué tal el fin de semana?",
+     "de": "Wie war das Wochenende?"
+    },
+    {
+     "es": "¿Qué tal estás hoy?",
+     "de": "Wie geht es dir heute?"
+    }
+   ],
+   "cloze": {
+    "es": "¡Hola, Ana! ¿___? ¿Todo bien?",
+    "answer": "Qué tal",
+    "de": "Hallo Ana! Wie geht's? Alles gut?"
+   },
+   "distractors": [
+    "De nada",
+    "Por favor",
+    "Adiós"
+   ],
+   "basic": true
+  },
+  {
+   "id": "hola",
+   "es": "hola",
+   "de": "hallo",
+   "en": "hello",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Das „h“ ist stumm: sprich „ola“.",
+   "examples": [
+    {
+     "es": "Hola, me llamo Ana.",
+     "de": "Hallo, ich heiße Ana."
+    },
+    {
+     "es": "¡Hola a todos!",
+     "de": "Hallo zusammen!"
+    },
+    {
+     "es": "Hola, ¿qué tal?",
+     "de": "Hallo, wie geht's?"
+    }
+   ],
+   "cloze": {
+    "es": "___, ¿está Pedro en casa?",
+    "answer": "Hola",
+    "de": "Hallo, ist Pedro zu Hause?"
+   },
+   "distractors": [
+    "Adiós",
+    "Gracias",
+    "Perdona"
+   ],
+   "basic": true
+  },
+  {
+   "id": "adios",
+   "es": "adiós",
+   "de": "tschüss / auf Wiedersehen",
+   "en": "goodbye",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "In Spanien sagt man „adiós“ auch kurz im Vorbeigehen auf der Straße – nicht nur beim endgültigen Abschied.",
+   "examples": [
+    {
+     "es": "Adiós, ¡hasta mañana!",
+     "de": "Tschüss, bis morgen!"
+    },
+    {
+     "es": "Me voy, adiós.",
+     "de": "Ich gehe, tschüss."
+    },
+    {
+     "es": "Dile adiós a la abuela.",
+     "de": "Sag der Oma tschüss."
+    }
+   ],
+   "cloze": {
+    "es": "Me tengo que ir. ¡___, hasta luego!",
+    "answer": "Adiós",
+    "de": "Ich muss gehen. Tschüss, bis später!"
+   },
+   "distractors": [
+    "Hola",
+    "Gracias",
+    "Por favor"
+   ],
+   "basic": true
+  },
+  {
+   "id": "gracias",
+   "es": "gracias",
+   "de": "danke",
+   "en": "thank you",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "„Muchas gracias“ = vielen Dank. In Spanien sagt man in Bars oft weniger „bitte/danke“ als in Deutschland – ist nicht unhöflich.",
+   "examples": [
+    {
+     "es": "Gracias por la cena.",
+     "de": "Danke für das Abendessen."
+    },
+    {
+     "es": "Muchas gracias, eres muy amable.",
+     "de": "Vielen Dank, du bist sehr nett."
+    },
+    {
+     "es": "No, gracias, estoy bien.",
+     "de": "Nein danke, mir geht's gut."
+    }
+   ],
+   "cloze": {
+    "es": "Muchas ___ por tu ayuda.",
+    "answer": "gracias",
+    "de": "Vielen Dank für deine Hilfe."
+   },
+   "distractors": [
+    "perdona",
+    "de nada",
+    "hola"
+   ],
+   "basic": true
+  },
+  {
+   "id": "de-nada",
+   "es": "de nada",
+   "de": "gern geschehen / bitte",
+   "en": "you're welcome",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Antwort auf „gracias“. Achtung: das deutsche „bitte“ als Antwort ist „de nada“, nicht „por favor“!",
+   "examples": [
+    {
+     "es": "—Gracias. —De nada.",
+     "de": "—Danke. —Gern geschehen."
+    },
+    {
+     "es": "De nada, ¡para eso están los amigos!",
+     "de": "Gern geschehen, dafür sind Freunde da!"
+    },
+    {
+     "es": "De nada, cuando quieras.",
+     "de": "Bitte, jederzeit."
+    }
+   ],
+   "cloze": {
+    "es": "—Gracias por el café. —___.",
+    "answer": "De nada",
+    "de": "—Danke für den Kaffee. —Gern geschehen."
+   },
+   "distractors": [
+    "Por favor",
+    "Perdona",
+    "Qué tal"
+   ],
+   "basic": true
+  },
+  {
+   "id": "por-favor",
+   "es": "por favor",
+   "de": "bitte",
+   "en": "please",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Nur für Bitten! Als Antwort auf „danke“ sagt man „de nada“.",
+   "examples": [
+    {
+     "es": "Un café, por favor.",
+     "de": "Einen Kaffee, bitte."
+    },
+    {
+     "es": "¿Me ayudas, por favor?",
+     "de": "Hilfst du mir bitte?"
+    },
+    {
+     "es": "Por favor, cierra la puerta.",
+     "de": "Bitte mach die Tür zu."
+    }
+   ],
+   "cloze": {
+    "es": "¿Me pones una caña, ___?",
+    "answer": "por favor",
+    "de": "Bringst du mir bitte ein kleines Bier?"
+   },
+   "distractors": [
+    "de nada",
+    "gracias",
+    "adiós"
+   ],
+   "basic": true
+  },
+  {
+   "id": "perdona",
+   "es": "perdona",
+   "de": "Entschuldigung / entschuldige",
+   "en": "sorry / excuse me",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "„Perdona“ für du (tú), „perdone“ für Sie (usted). Passt zum Ansprechen und zum Entschuldigen.",
+   "examples": [
+    {
+     "es": "Perdona, ¿dónde está el baño?",
+     "de": "Entschuldige, wo ist die Toilette?"
+    },
+    {
+     "es": "Perdona, no te he visto.",
+     "de": "Entschuldige, ich habe dich nicht gesehen."
+    },
+    {
+     "es": "Perdona por llegar tarde.",
+     "de": "Entschuldige, dass ich zu spät komme."
+    }
+   ],
+   "cloze": {
+    "es": "___, ¿sabes qué hora es?",
+    "answer": "Perdona",
+    "de": "Entschuldige, weißt du, wie spät es ist?"
+   },
+   "distractors": [
+    "De nada",
+    "Adiós",
+    "Gracias"
+   ],
+   "basic": true
+  },
+  {
+   "id": "vale",
+   "es": "vale",
+   "de": "okay, in Ordnung",
+   "en": "okay, alright",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Das spanische „okay“! In Spanien hörst du „vale“ ständig, oft auch doppelt: „Vale, vale.“",
+   "examples": [
+    {
+     "es": "¿Quedamos a las ocho? —Vale.",
+     "de": "Treffen wir uns um acht? —Okay."
+    },
+    {
+     "es": "Vale, te llamo luego.",
+     "de": "Okay, ich rufe dich später an."
+    },
+    {
+     "es": "¿Vale si cocino yo hoy?",
+     "de": "Ist es okay, wenn ich heute koche?"
+    }
+   ],
+   "cloze": {
+    "es": "¿Vamos al cine esta noche? —___, me apetece.",
+    "answer": "Vale",
+    "de": "Gehen wir heute Abend ins Kino? —Okay, hab Lust drauf."
+   },
+   "distractors": [
+    "Oye",
+    "Mira",
+    "Ojalá"
+   ],
+   "basic": true
+  },
+  {
+   "id": "bueno",
+   "es": "bueno",
+   "de": "na ja, also, gut",
+   "en": "well, okay",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Am Satzanfang heißt „bueno“ meist „na ja / also“, wenn man kurz nachdenkt, so wie das deutsche „tja“.",
+   "examples": [
+    {
+     "es": "Bueno, me voy a casa.",
+     "de": "Also, ich gehe nach Hause."
+    },
+    {
+     "es": "Bueno, no sé, a lo mejor mañana.",
+     "de": "Na ja, ich weiß nicht, vielleicht morgen."
+    },
+    {
+     "es": "Bueno, ¿qué hacemos ahora?",
+     "de": "Also, was machen wir jetzt?"
+    }
+   ],
+   "cloze": {
+    "es": "___, ya es tarde, me voy a dormir.",
+    "answer": "Bueno",
+    "de": "Also, es ist schon spät, ich gehe schlafen."
+   },
+   "distractors": [
+    "Ojalá",
+    "Quizás",
+    "Verdad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "de-acuerdo",
+   "es": "de acuerdo",
+   "de": "einverstanden",
+   "en": "agreed, all right",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Etwas förmlicher als „vale“. „Estoy de acuerdo contigo“ = Ich bin deiner Meinung.",
+   "examples": [
+    {
+     "es": "De acuerdo, nos vemos mañana.",
+     "de": "Einverstanden, wir sehen uns morgen."
+    },
+    {
+     "es": "Estoy de acuerdo contigo.",
+     "de": "Ich bin deiner Meinung."
+    },
+    {
+     "es": "¿Estás de acuerdo?",
+     "de": "Bist du einverstanden?"
+    }
+   ],
+   "cloze": {
+    "es": "No estoy ___ con él, creo que es mala idea.",
+    "answer": "de acuerdo",
+    "de": "Ich bin nicht seiner Meinung, ich glaube, das ist eine schlechte Idee."
+   },
+   "distractors": [
+    "en serio",
+    "a lo mejor",
+    "la verdad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "verdad",
+   "es": "¿verdad?",
+   "de": "oder?, nicht wahr?",
+   "en": "right?, isn't it?",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Hängt man ans Satzende wie das deutsche „…, oder?“ oder „…, ne?“.",
+   "examples": [
+    {
+     "es": "Hace frío hoy, ¿verdad?",
+     "de": "Heute ist es kalt, oder?"
+    },
+    {
+     "es": "Tú eres alemán, ¿verdad?",
+     "de": "Du bist Deutscher, nicht wahr?"
+    },
+    {
+     "es": "Vienes mañana, ¿verdad?",
+     "de": "Du kommst morgen, oder?"
+    }
+   ],
+   "cloze": {
+    "es": "El queso está muy bueno, ¿___?",
+    "answer": "verdad",
+    "de": "Der Käse ist sehr lecker, oder?"
+   },
+   "distractors": [
+    "vale",
+    "oye",
+    "venga"
+   ],
+   "basic": true
+  },
+  {
+   "id": "en-serio",
+   "es": "en serio",
+   "de": "im Ernst, ernsthaft",
+   "en": "seriously, really",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Als Frage „¿En serio?“ = „Echt jetzt?“. Ohne Fragezeichen = „Ich mein's ernst.“",
+   "examples": [
+    {
+     "es": "¿En serio? ¡No me lo creo!",
+     "de": "Echt jetzt? Das glaube ich nicht!"
+    },
+    {
+     "es": "Te lo digo en serio.",
+     "de": "Ich sage es dir im Ernst."
+    },
+    {
+     "es": "¿Has terminado ya? ¿En serio?",
+     "de": "Bist du schon fertig? Ernsthaft?"
+    }
+   ],
+   "cloze": {
+    "es": "No es broma, te lo digo ___.",
+    "answer": "en serio",
+    "de": "Das ist kein Witz, ich sage es dir im Ernst."
+   },
+   "distractors": [
+    "de acuerdo",
+    "a lo mejor",
+    "de nada"
+   ],
+   "basic": true
+  },
+  {
+   "id": "mira",
+   "es": "mira",
+   "de": "schau mal, also",
+   "en": "look, listen",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Von „mirar“ (schauen). Leitet oft eine Erklärung ein, wie „Schau mal, …“. Mit „vosotros“: „mirad“.",
+   "examples": [
+    {
+     "es": "Mira, es muy fácil.",
+     "de": "Schau mal, es ist ganz einfach."
+    },
+    {
+     "es": "Mira, ahí está Lola.",
+     "de": "Schau, da ist Lola."
+    },
+    {
+     "es": "Mira, no tengo tiempo hoy.",
+     "de": "Also, ich habe heute keine Zeit."
+    }
+   ],
+   "cloze": {
+    "es": "___, esta es la foto de mi familia.",
+    "answer": "Mira",
+    "de": "Schau mal, das ist das Foto meiner Familie."
+   },
+   "distractors": [
+    "Oye",
+    "Venga",
+    "Vale"
+   ],
+   "basic": true
+  },
+  {
+   "id": "oye",
+   "es": "oye",
+   "de": "hör mal, du",
+   "en": "hey, listen",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Von „oír“ (hören). Damit fängst du ein Gespräch locker an: „Oye, …“ = „Du, sag mal …“. Mit „vosotros“: „oíd“.",
+   "examples": [
+    {
+     "es": "Oye, ¿tienes un momento?",
+     "de": "Du, hast du kurz Zeit?"
+    },
+    {
+     "es": "Oye, ¿dónde está la cocina?",
+     "de": "Sag mal, wo ist die Küche?"
+    },
+    {
+     "es": "¡Oye, espera!",
+     "de": "Hey, warte!"
+    }
+   ],
+   "cloze": {
+    "es": "___, ¿vienes a cenar esta noche?",
+    "answer": "Oye",
+    "de": "Du, kommst du heute Abend zum Essen?"
+   },
+   "distractors": [
+    "Ojalá",
+    "Bueno",
+    "Quizás"
+   ],
+   "basic": true
+  },
+  {
+   "id": "venga",
+   "es": "venga",
+   "de": "komm schon, los, na gut",
+   "en": "come on, okay",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Super spanisch! „¡Venga!“ = „Los!“ oder „Na gut!“. „Venga, adiós“ = typisches Tschüss am Telefon.",
+   "examples": [
+    {
+     "es": "¡Venga, vamos!",
+     "de": "Los, gehen wir!"
+    },
+    {
+     "es": "Venga, hasta luego.",
+     "de": "Na gut, bis später."
+    },
+    {
+     "es": "¡Venga, tú puedes!",
+     "de": "Komm schon, du schaffst das!"
+    }
+   ],
+   "cloze": {
+    "es": "¡___, que llegamos tarde!",
+    "answer": "Venga",
+    "de": "Los, wir kommen zu spät!"
+   },
+   "distractors": [
+    "Verdad",
+    "Ojalá",
+    "Quizás"
+   ],
+   "basic": true
+  },
+  {
+   "id": "a-lo-mejor",
+   "es": "a lo mejor",
+   "de": "vielleicht",
+   "en": "maybe, perhaps",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Achtung, falscher Freund: hat nichts mit „das Beste“ zu tun! Danach kommt normaler Indikativ: „A lo mejor voy.“",
+   "examples": [
+    {
+     "es": "A lo mejor llueve mañana.",
+     "de": "Vielleicht regnet es morgen."
+    },
+    {
+     "es": "A lo mejor está en casa.",
+     "de": "Vielleicht ist er zu Hause."
+    },
+    {
+     "es": "A lo mejor vamos a la playa.",
+     "de": "Vielleicht gehen wir an den Strand."
+    }
+   ],
+   "cloze": {
+    "es": "No sé, ___ vengo el sábado.",
+    "answer": "a lo mejor",
+    "de": "Ich weiß nicht, vielleicht komme ich am Samstag."
+   },
+   "distractors": [
+    "de acuerdo",
+    "en serio",
+    "la verdad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "quizas",
+   "es": "quizás",
+   "de": "vielleicht",
+   "en": "maybe, perhaps",
+   "type": "adverb",
+   "topic": "hablar",
+   "tip": "Wie „a lo mejor“, nur etwas gehobener. Auch „quizá“ ohne s ist richtig.",
+   "examples": [
+    {
+     "es": "Quizás mañana.",
+     "de": "Vielleicht morgen."
+    },
+    {
+     "es": "Quizás tienes razón.",
+     "de": "Vielleicht hast du recht."
+    },
+    {
+     "es": "Quizás vamos juntos.",
+     "de": "Vielleicht gehen wir zusammen."
+    }
+   ],
+   "cloze": {
+    "es": "No estoy seguro, ___ es demasiado tarde.",
+    "answer": "quizás",
+    "de": "Ich bin nicht sicher, vielleicht ist es zu spät."
+   },
+   "distractors": [
+    "siempre",
+    "nunca",
+    "pronto"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-verdad",
+   "es": "la verdad",
+   "de": "die Wahrheit; ehrlich gesagt",
+   "en": "the truth; honestly",
+   "type": "noun",
+   "topic": "hablar",
+   "tip": "Am Satzanfang heißt „La verdad, …“ = „Ehrlich gesagt, …“. Nicht verwechseln mit „¿verdad?“ am Satzende.",
+   "examples": [
+    {
+     "es": "La verdad, no tengo hambre.",
+     "de": "Ehrlich gesagt habe ich keinen Hunger."
+    },
+    {
+     "es": "Dime la verdad.",
+     "de": "Sag mir die Wahrheit."
+    },
+    {
+     "es": "La verdad es que estoy cansado.",
+     "de": "Die Wahrheit ist, ich bin müde."
+    }
+   ],
+   "cloze": {
+    "es": "___ es que no me gusta el café.",
+    "answer": "La verdad",
+    "de": "Ehrlich gesagt mag ich keinen Kaffee."
+   },
+   "distractors": [
+    "La pregunta",
+    "La respuesta",
+    "La cosa"
+   ],
+   "basic": true
+  },
+  {
+   "id": "ojala",
+   "es": "ojalá",
+   "de": "hoffentlich, wenn doch nur",
+   "en": "hopefully, I wish",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Aus dem Arabischen („so Gott will“). Danach kommt der Subjuntivo: „Ojalá haga sol.“ Allein als Antwort: „¡Ojalá!“ = „Hoffentlich!“",
+   "examples": [
+    {
+     "es": "¡Ojalá!",
+     "de": "Hoffentlich!"
+    },
+    {
+     "es": "Ojalá haga sol mañana.",
+     "de": "Hoffentlich scheint morgen die Sonne."
+    },
+    {
+     "es": "Ojalá vengas a la fiesta.",
+     "de": "Hoffentlich kommst du zur Party."
+    }
+   ],
+   "cloze": {
+    "es": "___ tengas un buen viaje.",
+    "answer": "Ojalá",
+    "de": "Hoffentlich hast du eine gute Reise."
+   },
+   "distractors": [
+    "Quizás",
+    "Bueno",
+    "Vale"
+   ],
+   "basic": true
+  },
+  {
+   "id": "no-pasa-nada",
+   "es": "no pasa nada",
+   "de": "kein Problem / macht nichts",
+   "en": "no problem / it's fine",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Super nützlich, wenn sich jemand entschuldigt: wörtlich „es passiert nichts“, gemeint ist „alles gut“.",
+   "examples": [
+    {
+     "es": "—Perdona, llego tarde. —No pasa nada.",
+     "de": "—Entschuldige, ich komme zu spät. —Macht nichts."
+    },
+    {
+     "es": "Si no puedes venir, no pasa nada.",
+     "de": "Wenn du nicht kommen kannst, ist das kein Problem."
+    },
+    {
+     "es": "Tranquila, no pasa nada.",
+     "de": "Ganz ruhig, alles gut."
+    }
+   ],
+   "cloze": {
+    "es": "—Se me ha caído el vaso. —Tranquilo, ___.",
+    "answer": "no pasa nada",
+    "de": "—Mir ist das Glas runtergefallen. —Keine Sorge, macht nichts."
+   },
+   "distractors": [
+    "menos mal",
+    "qué guay",
+    "no entiendo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "menos-mal",
+   "es": "menos mal",
+   "de": "zum Glück / Gott sei Dank",
+   "en": "thank goodness / just as well",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Wörtlich „weniger schlecht“. Man sagt es erleichtert, oft mit „que“: „Menos mal que has venido.“",
+   "examples": [
+    {
+     "es": "¡Menos mal que has llegado!",
+     "de": "Zum Glück bist du da!"
+    },
+    {
+     "es": "Menos mal que no llueve.",
+     "de": "Gott sei Dank regnet es nicht."
+    },
+    {
+     "es": "He encontrado las llaves. ¡Menos mal!",
+     "de": "Ich habe die Schlüssel gefunden. Zum Glück!"
+    }
+   ],
+   "cloze": {
+    "es": "___ que tengo paraguas, está lloviendo mucho.",
+    "answer": "Menos mal",
+    "de": "Zum Glück habe ich einen Regenschirm, es regnet stark."
+   },
+   "distractors": [
+    "No pasa nada",
+    "Qué guay",
+    "Creo que"
+   ],
+   "basic": true
+  },
+  {
+   "id": "que-guay",
+   "es": "¡qué guay!",
+   "de": "wie cool! / super!",
+   "en": "how cool!",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Typisch Spanien! In Lateinamerika sagt man eher „qué chévere“ oder „qué padre“ – in Madrid klingt „guay“ total natürlich.",
+   "examples": [
+    {
+     "es": "¿Vas a Mallorca? ¡Qué guay!",
+     "de": "Du fährst nach Mallorca? Wie cool!"
+    },
+    {
+     "es": "¡Qué guay tu camiseta!",
+     "de": "Wie cool ist dein T-Shirt!"
+    },
+    {
+     "es": "Mañana tenemos fiesta. ¡Qué guay!",
+     "de": "Morgen haben wir frei. Super!"
+    }
+   ],
+   "cloze": {
+    "es": "—Me han regalado una bici nueva. —¡___!",
+    "answer": "Qué guay",
+    "de": "—Man hat mir ein neues Fahrrad geschenkt. —Wie cool!"
+   },
+   "distractors": [
+    "Menos mal",
+    "No entiendo",
+    "No pasa nada"
+   ],
+   "basic": true
+  },
+  {
+   "id": "creo-que",
+   "es": "creo que",
+   "de": "ich glaube, dass",
+   "en": "I think that",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Von „creer“ (glauben). Anders als im Deutschen darf das „que“ nie wegfallen: „Creo que sí“ = „Ich glaube schon“.",
+   "examples": [
+    {
+     "es": "Creo que va a llover.",
+     "de": "Ich glaube, es wird regnen."
+    },
+    {
+     "es": "Creo que Ana está en casa.",
+     "de": "Ich glaube, Ana ist zu Hause."
+    },
+    {
+     "es": "—¿Viene Pedro? —Creo que sí.",
+     "de": "—Kommt Pedro? —Ich glaube schon."
+    }
+   ],
+   "cloze": {
+    "es": "___ el restaurante cierra a las once.",
+    "answer": "Creo que",
+    "de": "Ich glaube, das Restaurant schließt um elf."
+   },
+   "distractors": [
+    "Menos mal",
+    "No entiendo",
+    "Qué guay"
+   ],
+   "basic": true
+  },
+  {
+   "id": "no-entiendo",
+   "es": "no entiendo",
+   "de": "ich verstehe nicht",
+   "en": "I don't understand",
+   "type": "expression",
+   "topic": "hablar",
+   "tip": "Dein Rettungssatz! Kombiniere ihn mit „¿Puedes hablar más despacio?“ – kannst du langsamer sprechen?",
+   "examples": [
+    {
+     "es": "Perdona, no entiendo.",
+     "de": "Entschuldige, ich verstehe nicht."
+    },
+    {
+     "es": "No entiendo esta palabra.",
+     "de": "Ich verstehe dieses Wort nicht."
+    },
+    {
+     "es": "No entiendo por qué está enfadado.",
+     "de": "Ich verstehe nicht, warum er sauer ist."
+    }
+   ],
+   "cloze": {
+    "es": "Hablas muy rápido, ___ nada.",
+    "answer": "no entiendo",
+    "de": "Du sprichst sehr schnell, ich verstehe nichts."
+   },
+   "distractors": [
+    "no pasa",
+    "no hablo",
+    "no creo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "hablar",
+   "es": "hablar",
+   "de": "sprechen / reden",
+   "en": "to speak / to talk",
+   "type": "verb",
+   "topic": "hablar",
+   "tip": "Regelmäßiges -ar-Verb: hablo, hablas, habla, hablamos, habláis, hablan. „Hablar con alguien“ = mit jemandem reden.",
+   "examples": [
+    {
+     "es": "Hablo un poco de español.",
+     "de": "Ich spreche ein bisschen Spanisch."
+    },
+    {
+     "es": "¿Habláis inglés?",
+     "de": "Sprecht ihr Englisch?"
+    },
+    {
+     "es": "Tengo que hablar con mi madre.",
+     "de": "Ich muss mit meiner Mutter reden."
+    }
+   ],
+   "cloze": {
+    "es": "Mi abuela no sabe ___ alemán.",
+    "answer": "hablar",
+    "de": "Meine Oma kann kein Deutsch sprechen."
+   },
+   "distractors": [
+    "entender",
+    "decir",
+    "escuchar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "entender",
+   "es": "entender",
+   "de": "verstehen",
+   "en": "to understand",
+   "type": "verb",
+   "topic": "hablar",
+   "tip": "Stammwechsel e→ie: entiendo, entiendes, entiende – aber entendemos, entendéis (ohne ie!).",
+   "examples": [
+    {
+     "es": "¿Me entiendes?",
+     "de": "Verstehst du mich?"
+    },
+    {
+     "es": "No entendemos la pregunta.",
+     "de": "Wir verstehen die Frage nicht."
+    },
+    {
+     "es": "Es difícil entender a mi jefe.",
+     "de": "Es ist schwer, meinen Chef zu verstehen."
+    }
+   ],
+   "cloze": {
+    "es": "Es importante ___ bien las instrucciones.",
+    "answer": "entender",
+    "de": "Es ist wichtig, die Anweisungen gut zu verstehen."
+   },
+   "distractors": [
+    "hablar",
+    "pensar",
+    "creer"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-palabra",
+   "es": "la palabra",
+   "de": "das Wort",
+   "en": "the word",
+   "type": "noun",
+   "topic": "hablar",
+   "tip": "Achtung, weiblich: la palabra! Denk an „Parole“ – auch ein gesprochenes Wort.",
+   "examples": [
+    {
+     "es": "¿Qué significa esta palabra?",
+     "de": "Was bedeutet dieses Wort?"
+    },
+    {
+     "es": "Aprendo una palabra nueva cada día.",
+     "de": "Ich lerne jeden Tag ein neues Wort."
+    },
+    {
+     "es": "No tengo palabras.",
+     "de": "Mir fehlen die Worte."
+    }
+   ],
+   "cloze": {
+    "es": "No conozco esta ___ en español.",
+    "answer": "palabra",
+    "de": "Ich kenne dieses Wort auf Spanisch nicht."
+   },
+   "distractors": [
+    "idea",
+    "frase",
+    "pregunta"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-idea",
+   "es": "la idea",
+   "de": "die Idee",
+   "en": "the idea",
+   "type": "noun",
+   "topic": "hablar",
+   "tip": "Wie im Deutschen, nur Betonung auf dem e: i-DE-a. „Ni idea“ = keine Ahnung – sehr häufig!",
+   "examples": [
+    {
+     "es": "¡Qué buena idea!",
+     "de": "Was für eine gute Idee!"
+    },
+    {
+     "es": "—¿Dónde está Juan? —Ni idea.",
+     "de": "—Wo ist Juan? —Keine Ahnung."
+    },
+    {
+     "es": "Tengo una idea para el fin de semana.",
+     "de": "Ich habe eine Idee fürs Wochenende."
+    }
+   ],
+   "cloze": {
+    "es": "Ir a la playa es una buena ___.",
+    "answer": "idea",
+    "de": "An den Strand zu gehen ist eine gute Idee."
+   },
+   "distractors": [
+    "palabra",
+    "cosa",
+    "gente"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-gente",
+   "es": "la gente",
+   "de": "die Leute",
+   "en": "people",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Falle! „La gente“ ist Singular: „La gente es simpática“ – nicht „son“.",
+   "examples": [
+    {
+     "es": "La gente aquí es muy amable.",
+     "de": "Die Leute hier sind sehr freundlich."
+    },
+    {
+     "es": "Hay mucha gente en el bar.",
+     "de": "Es sind viele Leute in der Bar."
+    },
+    {
+     "es": "No conozco a la gente de la fiesta.",
+     "de": "Ich kenne die Leute auf der Party nicht."
+    }
+   ],
+   "cloze": {
+    "es": "En verano hay mucha ___ en la playa.",
+    "answer": "gente",
+    "de": "Im Sommer sind viele Leute am Strand."
+   },
+   "distractors": [
+    "familia",
+    "amiga",
+    "palabra"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-amigo-la-amiga",
+   "es": "el amigo / la amiga",
+   "de": "der Freund / die Freundin (platonisch)",
+   "en": "the friend",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Nur Freundschaft! Den festen Freund nennt man „el novio“, die feste Freundin „la novia“.",
+   "examples": [
+    {
+     "es": "Mi amiga Laura vive en Madrid.",
+     "de": "Meine Freundin Laura wohnt in Madrid."
+    },
+    {
+     "es": "Salgo con mis amigos el sábado.",
+     "de": "Ich gehe am Samstag mit meinen Freunden aus."
+    },
+    {
+     "es": "Pedro es un buen amigo.",
+     "de": "Pedro ist ein guter Freund."
+    }
+   ],
+   "cloze": {
+    "es": "Esta noche ceno con un ___ del trabajo.",
+    "answer": "amigo",
+    "de": "Heute Abend esse ich mit einem Freund von der Arbeit."
+   },
+   "distractors": [
+    "hermano",
+    "padre",
+    "vecino"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-familia",
+   "es": "la familia",
+   "de": "die Familie",
+   "en": "the family",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Fast wie im Deutschen. Auch Singular: „Mi familia es grande“ – nicht „son“.",
+   "examples": [
+    {
+     "es": "Mi familia vive en Berlín.",
+     "de": "Meine Familie wohnt in Berlin."
+    },
+    {
+     "es": "En Navidad como con mi familia.",
+     "de": "An Weihnachten esse ich mit meiner Familie."
+    },
+    {
+     "es": "¿Tienes una familia grande?",
+     "de": "Hast du eine große Familie?"
+    }
+   ],
+   "cloze": {
+    "es": "Los domingos visito a mi ___.",
+    "answer": "familia",
+    "de": "Sonntags besuche ich meine Familie."
+   },
+   "distractors": [
+    "gente",
+    "amiga",
+    "casa"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-madre",
+   "es": "la madre",
+   "de": "die Mutter",
+   "en": "the mother",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Liebevoll sagt man „mamá“ (mit Akzent!). Achtung: „¡Tu madre!“ ist in Spanien eine Beleidigung – bitte vorsichtig verwenden 😉",
+   "examples": [
+    {
+     "es": "Mi madre vive en Madrid.",
+     "de": "Meine Mutter wohnt in Madrid."
+    },
+    {
+     "es": "La madre de Ana es muy simpática.",
+     "de": "Anas Mutter ist sehr nett."
+    },
+    {
+     "es": "Hoy llamo a mi madre.",
+     "de": "Heute rufe ich meine Mutter an."
+    }
+   ],
+   "cloze": {
+    "es": "Mi ___ cocina muy bien.",
+    "answer": "madre",
+    "de": "Meine Mutter kocht sehr gut."
+   },
+   "distractors": [
+    "hermana",
+    "novia",
+    "tía"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-padre",
+   "es": "el padre",
+   "de": "der Vater",
+   "en": "the father",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "„Los padres“ heißt meist „die Eltern“, nicht nur „die Väter“! Liebevoll: „papá“.",
+   "examples": [
+    {
+     "es": "Mi padre trabaja mucho.",
+     "de": "Mein Vater arbeitet viel."
+    },
+    {
+     "es": "Mis padres viven en Sevilla.",
+     "de": "Meine Eltern wohnen in Sevilla."
+    },
+    {
+     "es": "El padre de Juan es profesor.",
+     "de": "Juans Vater ist Lehrer."
+    }
+   ],
+   "cloze": {
+    "es": "Mi ___ tiene cincuenta años.",
+    "answer": "padre",
+    "de": "Mein Vater ist fünfzig Jahre alt."
+   },
+   "distractors": [
+    "hermano",
+    "tío",
+    "hijo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-hermano-la-hermana",
+   "es": "el hermano / la hermana",
+   "de": "der Bruder / die Schwester",
+   "en": "the brother / the sister",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "„Los hermanos“ = Geschwister (gemischt). „¿Tienes hermanos?“ = Hast du Geschwister?",
+   "examples": [
+    {
+     "es": "Tengo un hermano y una hermana.",
+     "de": "Ich habe einen Bruder und eine Schwester."
+    },
+    {
+     "es": "¿Tienes hermanos?",
+     "de": "Hast du Geschwister?"
+    },
+    {
+     "es": "Mi hermana vive en Barcelona.",
+     "de": "Meine Schwester wohnt in Barcelona."
+    }
+   ],
+   "cloze": {
+    "es": "Mi ___ pequeña tiene diez años.",
+    "answer": "hermana",
+    "de": "Meine kleine Schwester ist zehn Jahre alt."
+   },
+   "distractors": [
+    "madre",
+    "novia",
+    "compañera"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-hijo-la-hija",
+   "es": "el hijo / la hija",
+   "de": "der Sohn / die Tochter",
+   "en": "the son / the daughter",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "„Los hijos“ = die Kinder (eigene Kinder). „¿Tienes hijos?“ – Das H ist stumm: „ichoo“.",
+   "examples": [
+    {
+     "es": "Tienen dos hijos.",
+     "de": "Sie haben zwei Kinder."
+    },
+    {
+     "es": "Mi hija estudia en Valencia.",
+     "de": "Meine Tochter studiert in Valencia."
+    },
+    {
+     "es": "¿Tienes hijos?",
+     "de": "Hast du Kinder?"
+    }
+   ],
+   "cloze": {
+    "es": "Su ___ se llama Pablo.",
+    "answer": "hijo",
+    "de": "Sein/Ihr Sohn heißt Pablo."
+   },
+   "distractors": [
+    "padre",
+    "hermano",
+    "tío"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-chico-la-chica",
+   "es": "el chico / la chica",
+   "de": "der Junge, Typ / das Mädchen, die junge Frau",
+   "en": "the boy, guy / the girl, young woman",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "In Spanien sagt man „chico/chica“ auch zu Erwachsenen bis ca. 40 – ganz normal und freundlich, wie „Typ“ oder „Frau“.",
+   "examples": [
+    {
+     "es": "Ese chico es mi vecino.",
+     "de": "Der Typ da ist mein Nachbar."
+    },
+    {
+     "es": "Las chicas están en el bar.",
+     "de": "Die Mädels sind in der Bar."
+    },
+    {
+     "es": "¡Hola, chicos! ¿Qué tal?",
+     "de": "Hallo Leute! Wie geht's?"
+    }
+   ],
+   "cloze": {
+    "es": "La ___ de la tienda es muy simpática.",
+    "answer": "chica",
+    "de": "Die junge Frau im Laden ist sehr nett."
+   },
+   "distractors": [
+    "madre",
+    "hija",
+    "novia"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-persona",
+   "es": "la persona",
+   "de": "die Person, der Mensch",
+   "en": "the person",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Immer weiblich – auch für Männer: „Juan es una persona muy maja.“",
+   "examples": [
+    {
+     "es": "Es una persona muy maja.",
+     "de": "Er/Sie ist ein sehr netter Mensch."
+    },
+    {
+     "es": "Una mesa para cuatro personas, por favor.",
+     "de": "Einen Tisch für vier Personen, bitte."
+    },
+    {
+     "es": "Hay muchas personas en la calle.",
+     "de": "Es sind viele Menschen auf der Straße."
+    }
+   ],
+   "cloze": {
+    "es": "Somos tres ___ para cenar.",
+    "answer": "personas",
+    "de": "Wir sind drei Personen zum Abendessen."
+   },
+   "distractors": [
+    "hombres",
+    "chicos",
+    "hermanos"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-hombre",
+   "es": "el hombre",
+   "de": "der Mann",
+   "en": "the man",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Das H ist stumm: „ombre“. „¡Hombre!“ allein ist ein Ausruf wie „Mensch!“ oder „Na klar!“ – sehr spanisch.",
+   "examples": [
+    {
+     "es": "Ese hombre es mi profesor.",
+     "de": "Dieser Mann ist mein Lehrer."
+    },
+    {
+     "es": "¡Hombre, qué sorpresa!",
+     "de": "Mensch, was für eine Überraschung!"
+    },
+    {
+     "es": "Hay un hombre en la puerta.",
+     "de": "Da ist ein Mann an der Tür."
+    }
+   ],
+   "cloze": {
+    "es": "El ___ del bar es muy alto.",
+    "answer": "hombre",
+    "de": "Der Mann aus der Bar ist sehr groß."
+   },
+   "distractors": [
+    "padre",
+    "hijo",
+    "novio"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-mujer",
+   "es": "la mujer",
+   "de": "die Frau",
+   "en": "the woman",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "„Mi mujer“ = meine Ehefrau. Genau wie im Deutschen: Frau und Ehefrau ist dasselbe Wort.",
+   "examples": [
+    {
+     "es": "Esa mujer habla alemán.",
+     "de": "Diese Frau spricht Deutsch."
+    },
+    {
+     "es": "Mi mujer se llama Carmen.",
+     "de": "Meine Frau heißt Carmen."
+    },
+    {
+     "es": "Hay dos mujeres en la tienda.",
+     "de": "Es sind zwei Frauen im Laden."
+    }
+   ],
+   "cloze": {
+    "es": "La ___ de Pedro es médica.",
+    "answer": "mujer",
+    "de": "Pedros Frau ist Ärztin."
+   },
+   "distractors": [
+    "madre",
+    "hermana",
+    "hija"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-novio-la-novia",
+   "es": "el novio / la novia",
+   "de": "der feste Freund / die feste Freundin",
+   "en": "the boyfriend / the girlfriend",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Wichtig: „amigo“ = nur Freund, „novio“ = Beziehung! Bei der Hochzeit heißt „los novios“ auch Braut und Bräutigam.",
+   "examples": [
+    {
+     "es": "Mi novia es de Granada.",
+     "de": "Meine Freundin ist aus Granada."
+    },
+    {
+     "es": "¿Tienes novio?",
+     "de": "Hast du einen Freund?"
+    },
+    {
+     "es": "Los novios están muy contentos.",
+     "de": "Das Brautpaar ist sehr glücklich."
+    }
+   ],
+   "cloze": {
+    "es": "Ana y su ___ van al cine.",
+    "answer": "novio",
+    "de": "Ana und ihr Freund gehen ins Kino."
+   },
+   "distractors": [
+    "padre",
+    "tío",
+    "hijo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-nino-la-nina",
+   "es": "el niño / la niña",
+   "de": "das Kind, der Junge / das Mädchen (klein)",
+   "en": "the child, little boy / the little girl",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Für kleine Kinder. „Los niños“ = die Kinder allgemein. Unterschied: „hijos“ sind deine eigenen, „niños“ alle Kinder.",
+   "examples": [
+    {
+     "es": "Los niños juegan en el parque.",
+     "de": "Die Kinder spielen im Park."
+    },
+    {
+     "es": "La niña tiene cinco años.",
+     "de": "Das Mädchen ist fünf Jahre alt."
+    },
+    {
+     "es": "Cuando era niño, vivía en Berlín.",
+     "de": "Als ich ein Kind war, wohnte ich in Berlin."
+    }
+   ],
+   "cloze": {
+    "es": "El ___ come un helado.",
+    "answer": "niño",
+    "de": "Das Kind isst ein Eis."
+   },
+   "distractors": [
+    "hombre",
+    "padre",
+    "novio"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-tio-la-tia",
+   "es": "el tío / la tía",
+   "de": "der Onkel / die Tante; umgangssprachlich: Typ, Alter",
+   "en": "the uncle / the aunt; slang: guy, dude",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "In Spanien super häufig als Slang: „¡Tío, qué fuerte!“ = „Alter, krass!“. „Ese tío“ = „der Typ da“.",
+   "examples": [
+    {
+     "es": "Mi tía vive en Málaga.",
+     "de": "Meine Tante wohnt in Málaga."
+    },
+    {
+     "es": "¡Tío, qué guay!",
+     "de": "Alter, wie cool!"
+    },
+    {
+     "es": "Ese tío es muy raro.",
+     "de": "Der Typ da ist sehr komisch."
+    }
+   ],
+   "cloze": {
+    "es": "El hermano de mi madre es mi ___.",
+    "answer": "tío",
+    "de": "Der Bruder meiner Mutter ist mein Onkel."
+   },
+   "distractors": [
+    "padre",
+    "hijo",
+    "novio"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-companero-la-companera",
+   "es": "el compañero / la compañera",
+   "de": "der Kollege, Mitschüler / die Kollegin, Mitschülerin",
+   "en": "the colleague, classmate / partner",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "„Compañero de piso“ = Mitbewohner, „compañero de trabajo“ = Arbeitskollege, „compañero de clase“ = Mitschüler.",
+   "examples": [
+    {
+     "es": "Mi compañero de piso es italiano.",
+     "de": "Mein Mitbewohner ist Italiener."
+    },
+    {
+     "es": "Como con mis compañeros de trabajo.",
+     "de": "Ich esse mit meinen Arbeitskollegen."
+    },
+    {
+     "es": "Mi compañera de clase habla inglés.",
+     "de": "Meine Mitschülerin spricht Englisch."
+    }
+   ],
+   "cloze": {
+    "es": "Vivo con un ___ de piso.",
+    "answer": "compañero",
+    "de": "Ich wohne mit einem Mitbewohner zusammen."
+   },
+   "distractors": [
+    "hermano",
+    "novio",
+    "tío"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-jefe-la-jefa",
+   "es": "el jefe / la jefa",
+   "de": "der Chef / die Chefin",
+   "en": "the boss",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Klingt wie 'Chef', ist auch genau das. 'Jefe' sagt man in Spanien auch locker zum Kellner oder zu einem Freund: '¡Gracias, jefe!'",
+   "examples": [
+    {
+     "es": "Mi jefa es muy simpática.",
+     "de": "Meine Chefin ist sehr nett."
+    },
+    {
+     "es": "El jefe llega tarde hoy.",
+     "de": "Der Chef kommt heute spät."
+    },
+    {
+     "es": "¿Quién es el jefe aquí?",
+     "de": "Wer ist hier der Chef?"
+    }
+   ],
+   "cloze": {
+    "es": "Mañana tengo una reunión con mi ___.",
+    "answer": "jefe",
+    "de": "Morgen habe ich ein Meeting mit meinem Chef."
+   },
+   "distractors": [
+    "cliente",
+    "vecino",
+    "primo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "feliz",
+   "es": "feliz",
+   "de": "glücklich",
+   "en": "happy",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "'Feliz' bleibt bei Mann und Frau gleich, nur die Mehrzahl ändert sich: 'felices'. Kennst du schon aus '¡Feliz cumpleaños!'",
+   "examples": [
+    {
+     "es": "Hoy estoy muy feliz.",
+     "de": "Heute bin ich sehr glücklich."
+    },
+    {
+     "es": "¡Feliz Navidad!",
+     "de": "Frohe Weihnachten!"
+    },
+    {
+     "es": "Los niños son felices en la playa.",
+     "de": "Die Kinder sind am Strand glücklich."
+    }
+   ],
+   "cloze": {
+    "es": "¡___ cumpleaños, Ana!",
+    "answer": "Feliz",
+    "de": "Alles Gute zum Geburtstag, Ana!"
+   },
+   "distractors": [
+    "Triste",
+    "Tranquilo",
+    "Nervioso"
+   ],
+   "basic": true
+  },
+  {
+   "id": "triste",
+   "es": "triste",
+   "de": "traurig",
+   "en": "sad",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Klingt wie 'trist' auf Deutsch, bedeutet aber einfach 'traurig'. Gleich für Mann und Frau.",
+   "examples": [
+    {
+     "es": "¿Por qué estás triste?",
+     "de": "Warum bist du traurig?"
+    },
+    {
+     "es": "Es una película muy triste.",
+     "de": "Das ist ein sehr trauriger Film."
+    },
+    {
+     "es": "Mi amiga está triste hoy.",
+     "de": "Meine Freundin ist heute traurig."
+    }
+   ],
+   "cloze": {
+    "es": "Estoy un poco ___ porque te vas mañana.",
+    "answer": "triste",
+    "de": "Ich bin ein bisschen traurig, weil du morgen wegfährst."
+   },
+   "distractors": [
+    "feliz",
+    "contento",
+    "tranquilo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "contento-contenta",
+   "es": "contento / contenta",
+   "de": "zufrieden, froh",
+   "en": "happy, pleased",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Immer mit 'estar': 'estoy contento'. Es ist eher 'froh' im Moment, 'feliz' ist größer und tiefer.",
+   "examples": [
+    {
+     "es": "Estoy muy contento con mi piso.",
+     "de": "Ich bin sehr zufrieden mit meiner Wohnung."
+    },
+    {
+     "es": "Ella está contenta hoy.",
+     "de": "Sie ist heute froh."
+    },
+    {
+     "es": "¿Estás contento con el trabajo?",
+     "de": "Bist du zufrieden mit der Arbeit?"
+    }
+   ],
+   "cloze": {
+    "es": "Mi madre está muy ___ con el regalo.",
+    "answer": "contenta",
+    "de": "Meine Mutter freut sich sehr über das Geschenk."
+   },
+   "distractors": [
+    "enfadada",
+    "preocupada",
+    "nerviosa"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tranquilo-tranquila",
+   "es": "tranquilo / tranquila",
+   "de": "ruhig, entspannt",
+   "en": "calm, relaxed",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "'¡Tranquilo!' oder '¡Tranqui!' hörst du in Spanien ständig, so wie 'Keine Sorge, alles gut!'",
+   "examples": [
+    {
+     "es": "Tranquila, no pasa nada.",
+     "de": "Ganz ruhig, nichts passiert."
+    },
+    {
+     "es": "Es un pueblo muy tranquilo.",
+     "de": "Das ist ein sehr ruhiges Dorf."
+    },
+    {
+     "es": "Hoy estoy tranquilo en casa.",
+     "de": "Heute bin ich entspannt zu Hause."
+    }
+   ],
+   "cloze": {
+    "es": "El domingo por la mañana la calle está muy ___.",
+    "answer": "tranquila",
+    "de": "Am Sonntagmorgen ist die Straße sehr ruhig."
+   },
+   "distractors": [
+    "nerviosa",
+    "enfadada",
+    "triste"
+   ],
+   "basic": true
+  },
+  {
+   "id": "enfadado-enfadada",
+   "es": "enfadado / enfadada",
+   "de": "verärgert, sauer",
+   "en": "angry",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "In Spanien sagt man 'enfadado', in Lateinamerika eher 'enojado'. Merke: 'estar enfadado con alguien' = auf jemanden sauer sein.",
+   "examples": [
+    {
+     "es": "¿Estás enfadada conmigo?",
+     "de": "Bist du sauer auf mich?"
+    },
+    {
+     "es": "Mi padre está enfadado.",
+     "de": "Mein Vater ist verärgert."
+    },
+    {
+     "es": "No estoy enfadado, estoy cansado.",
+     "de": "Ich bin nicht sauer, ich bin müde."
+    }
+   ],
+   "cloze": {
+    "es": "Lola está ___ porque Paco llega tarde otra vez.",
+    "answer": "enfadada",
+    "de": "Lola ist sauer, weil Paco schon wieder zu spät kommt."
+   },
+   "distractors": [
+    "contenta",
+    "tranquila",
+    "feliz"
+   ],
+   "basic": true
+  },
+  {
+   "id": "nervioso-nerviosa",
+   "es": "nervioso / nerviosa",
+   "de": "nervös, aufgeregt",
+   "en": "nervous",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Fast wie auf Deutsch. Mit 'estar': 'estoy nervioso'. 'Ponerse nervioso' = nervös werden.",
+   "examples": [
+    {
+     "es": "Estoy nervioso antes del examen.",
+     "de": "Ich bin vor der Prüfung nervös."
+    },
+    {
+     "es": "¿Por qué estás tan nerviosa?",
+     "de": "Warum bist du so nervös?"
+    },
+    {
+     "es": "El perro está nervioso hoy.",
+     "de": "Der Hund ist heute unruhig."
+    }
+   ],
+   "cloze": {
+    "es": "Mañana tengo una entrevista y estoy muy ___.",
+    "answer": "nervioso",
+    "de": "Morgen habe ich ein Vorstellungsgespräch und bin sehr nervös."
+   },
+   "distractors": [
+    "tranquilo",
+    "contento",
+    "feliz"
+   ],
+   "basic": true
+  },
+  {
+   "id": "preocupado-preocupada",
+   "es": "preocupado / preocupada",
+   "de": "besorgt",
+   "en": "worried",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Vorsicht, falscher Freund: hat nichts mit 'beschäftigt' (occupied) zu tun! 'No te preocupes' = mach dir keine Sorgen.",
+   "examples": [
+    {
+     "es": "Estoy preocupada por mi hermano.",
+     "de": "Ich mache mir Sorgen um meinen Bruder."
+    },
+    {
+     "es": "No estés preocupado, todo va bien.",
+     "de": "Sei nicht besorgt, alles läuft gut."
+    },
+    {
+     "es": "Mi madre siempre está preocupada.",
+     "de": "Meine Mutter ist immer besorgt."
+    }
+   ],
+   "cloze": {
+    "es": "Paco no contesta al teléfono y estoy ___.",
+    "answer": "preocupado",
+    "de": "Paco geht nicht ans Telefon und ich mache mir Sorgen."
+   },
+   "distractors": [
+    "contento",
+    "tranquilo",
+    "feliz"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-miedo",
+   "es": "el miedo",
+   "de": "die Angst",
+   "en": "fear",
+   "type": "noun",
+   "topic": "sentimientos",
+   "tip": "Man 'hat' Angst wie im Deutschen: 'tengo miedo'. Wovor? 'Tengo miedo de las arañas.' Merke: 'miedo' ist männlich.",
+   "examples": [
+    {
+     "es": "Tengo miedo de los perros.",
+     "de": "Ich habe Angst vor Hunden."
+    },
+    {
+     "es": "¿Tienes miedo?",
+     "de": "Hast du Angst?"
+    },
+    {
+     "es": "¡Qué miedo!",
+     "de": "Wie gruselig!"
+    }
+   ],
+   "cloze": {
+    "es": "Mi hermana tiene ___ de volar.",
+    "answer": "miedo",
+    "de": "Meine Schwester hat Flugangst."
+   },
+   "distractors": [
+    "hambre",
+    "sueño",
+    "frío"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-amor",
+   "es": "el amor",
+   "de": "die Liebe",
+   "en": "love",
+   "type": "noun",
+   "topic": "sentimientos",
+   "tip": "Achtung: 'el amor' ist männlich, die Liebe weiblich. 'Mi amor' ist ein sehr häufiges Kosewort, wie 'Schatz'.",
+   "examples": [
+    {
+     "es": "Hola, mi amor.",
+     "de": "Hallo, mein Schatz."
+    },
+    {
+     "es": "Es una canción de amor.",
+     "de": "Das ist ein Liebeslied."
+    },
+    {
+     "es": "El amor es bonito.",
+     "de": "Die Liebe ist schön."
+    }
+   ],
+   "cloze": {
+    "es": "Te echo de menos, mi ___.",
+    "answer": "amor",
+    "de": "Ich vermisse dich, mein Schatz."
+   },
+   "distractors": [
+    "miedo",
+    "jefe",
+    "amigo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "te-quiero",
+   "es": "te quiero",
+   "de": "ich hab dich lieb / ich liebe dich",
+   "en": "I love you",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "'Te quiero' sagt man zu Partner, Familie und guten Freunden. 'Te amo' ist viel stärker und in Spanien eher selten.",
+   "examples": [
+    {
+     "es": "Te quiero mucho, mamá.",
+     "de": "Ich hab dich sehr lieb, Mama."
+    },
+    {
+     "es": "Buenas noches, te quiero.",
+     "de": "Gute Nacht, ich liebe dich."
+    },
+    {
+     "es": "Yo también te quiero.",
+     "de": "Ich liebe dich auch."
+    }
+   ],
+   "cloze": {
+    "es": "Antes de dormir le digo: ___ mucho.",
+    "answer": "te quiero",
+    "de": "Vor dem Schlafen sage ich ihm: ich liebe dich sehr."
+   },
+   "distractors": [
+    "te espero",
+    "te llamo",
+    "te veo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "me-gusta",
+   "es": "me gusta",
+   "de": "mir gefällt / ich mag",
+   "en": "I like",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Wörtlich 'mir gefällt'. Das Ding ist das Subjekt, also bei Mehrzahl: 'me gustan los perros'. Für Verben immer 'me gusta': 'me gusta cocinar'.",
+   "examples": [
+    {
+     "es": "Me gusta el chocolate.",
+     "de": "Ich mag Schokolade."
+    },
+    {
+     "es": "Me gusta mucho bailar.",
+     "de": "Ich tanze sehr gerne."
+    },
+    {
+     "es": "No me gusta el café.",
+     "de": "Ich mag keinen Kaffee."
+    }
+   ],
+   "cloze": {
+    "es": "___ mucho escalar los domingos.",
+    "answer": "Me gusta",
+    "de": "Ich klettere sonntags sehr gerne."
+   },
+   "distractors": [
+    "Me pone",
+    "Me llama",
+    "Me queda"
+   ],
+   "basic": true
+  },
+  {
+   "id": "me-encanta",
+   "es": "me encanta",
+   "de": "ich liebe (etwas) / es gefällt mir sehr",
+   "en": "I love (it)",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Funktioniert wie 'me gusta', nur stärker: Das Ding ist das Subjekt. Mehrere Dinge → 'me encantan'.",
+   "examples": [
+    {
+     "es": "Me encanta el chocolate.",
+     "de": "Ich liebe Schokolade."
+    },
+    {
+     "es": "Me encanta esta canción.",
+     "de": "Ich liebe dieses Lied."
+    },
+    {
+     "es": "Me encantan los perros.",
+     "de": "Ich liebe Hunde."
+    }
+   ],
+   "cloze": {
+    "es": "¡___ tu camiseta nueva!",
+    "answer": "Me encanta",
+    "de": "Ich liebe dein neues T-Shirt!"
+   },
+   "distractors": [
+    "Me duele",
+    "Me llamo",
+    "Me pongo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tener-hambre",
+   "es": "tener hambre",
+   "de": "Hunger haben",
+   "en": "to be hungry",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Im Spanischen 'hat' man Hunger wie im Deutschen: 'Tengo hambre', nicht 'estoy hambre'. Viel Hunger: 'mucha hambre'.",
+   "examples": [
+    {
+     "es": "Tengo mucha hambre.",
+     "de": "Ich habe großen Hunger."
+    },
+    {
+     "es": "¿Tienes hambre?",
+     "de": "Hast du Hunger?"
+    },
+    {
+     "es": "Los niños tienen hambre.",
+     "de": "Die Kinder haben Hunger."
+    }
+   ],
+   "cloze": {
+    "es": "Vamos a comer, ¡tengo ___!",
+    "answer": "hambre",
+    "de": "Lass uns essen, ich habe Hunger!"
+   },
+   "distractors": [
+    "sed",
+    "frío",
+    "suerte"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tener-sed",
+   "es": "tener sed",
+   "de": "Durst haben",
+   "en": "to be thirsty",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Wie 'tener hambre': 'Tengo sed'. Viel Durst: 'mucha sed' (sed ist feminin).",
+   "examples": [
+    {
+     "es": "Tengo sed, ¿hay agua?",
+     "de": "Ich habe Durst, gibt es Wasser?"
+    },
+    {
+     "es": "Después de escalar siempre tengo sed.",
+     "de": "Nach dem Klettern habe ich immer Durst."
+    },
+    {
+     "es": "¿Tenéis sed?",
+     "de": "Habt ihr Durst?"
+    }
+   ],
+   "cloze": {
+    "es": "Hace mucho sol y tengo ___.",
+    "answer": "sed",
+    "de": "Die Sonne scheint stark und ich habe Durst."
+   },
+   "distractors": [
+    "hambre",
+    "frío",
+    "miedo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tener-frio",
+   "es": "tener frío",
+   "de": "frieren / mir ist kalt",
+   "en": "to be cold",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Für Personen 'tener frío' (Tengo frío = mir ist kalt). Für das Wetter 'hace frío'.",
+   "examples": [
+    {
+     "es": "Tengo frío, ¿cierras la ventana?",
+     "de": "Mir ist kalt, machst du das Fenster zu?"
+    },
+    {
+     "es": "En invierno siempre tengo frío.",
+     "de": "Im Winter ist mir immer kalt."
+    },
+    {
+     "es": "¿Tienes frío?",
+     "de": "Ist dir kalt?"
+    }
+   ],
+   "cloze": {
+    "es": "Dame tu chaqueta, tengo mucho ___.",
+    "answer": "frío",
+    "de": "Gib mir deine Jacke, mir ist sehr kalt."
+   },
+   "distractors": [
+    "calor",
+    "sed",
+    "hambre"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tener-calor",
+   "es": "tener calor",
+   "de": "schwitzen / mir ist heiß",
+   "en": "to be hot",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Tengo calor = mir ist warm/heiß. Vorsicht: 'Estoy caliente' heißt etwas ganz anderes (erregt)!",
+   "examples": [
+    {
+     "es": "Tengo calor, voy a abrir la ventana.",
+     "de": "Mir ist heiß, ich mache das Fenster auf."
+    },
+    {
+     "es": "En agosto en Madrid tenemos mucho calor.",
+     "de": "Im August in Madrid ist uns sehr heiß."
+    },
+    {
+     "es": "¿Tienes calor?",
+     "de": "Ist dir warm?"
+    }
+   ],
+   "cloze": {
+    "es": "Me quito el jersey porque tengo ___.",
+    "answer": "calor",
+    "de": "Ich ziehe den Pulli aus, weil mir warm ist."
+   },
+   "distractors": [
+    "frío",
+    "sed",
+    "suerte"
+   ],
+   "basic": true
+  },
+  {
+   "id": "me-duele",
+   "es": "me duele",
+   "de": "mir tut ... weh",
+   "en": "... hurts (me)",
+   "type": "expression",
+   "topic": "sentimientos",
+   "tip": "Wie 'me gusta': Der Körperteil ist das Subjekt, mit Artikel statt 'mein': 'Me duele la cabeza'. Mehrere: 'me duelen los pies'.",
+   "examples": [
+    {
+     "es": "Me duele la cabeza.",
+     "de": "Mir tut der Kopf weh."
+    },
+    {
+     "es": "Me duele la espalda.",
+     "de": "Mir tut der Rücken weh."
+    },
+    {
+     "es": "¿Te duele mucho?",
+     "de": "Tut es dir sehr weh?"
+    }
+   ],
+   "cloze": {
+    "es": "No puedo comer, ___ el estómago.",
+    "answer": "me duele",
+    "de": "Ich kann nicht essen, mir tut der Magen weh."
+   },
+   "distractors": [
+    "me encanta",
+    "me gusta",
+    "me llama"
+   ],
+   "basic": true
+  },
+  {
+   "id": "enfermo-enferma",
+   "es": "enfermo / enferma",
+   "de": "krank",
+   "en": "sick, ill",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Immer mit 'estar': 'Estoy enfermo/enferma' – weil es ein vorübergehender Zustand ist.",
+   "examples": [
+    {
+     "es": "Hoy estoy enferma, no voy a trabajar.",
+     "de": "Heute bin ich krank, ich gehe nicht arbeiten."
+    },
+    {
+     "es": "Mi hermano está enfermo.",
+     "de": "Mein Bruder ist krank."
+    },
+    {
+     "es": "¿Estás enfermo?",
+     "de": "Bist du krank?"
+    }
+   ],
+   "cloze": {
+    "es": "Mi madre está ___ y se queda en la cama.",
+    "answer": "enferma",
+    "de": "Meine Mutter ist krank und bleibt im Bett."
+   },
+   "distractors": [
+    "cansada",
+    "contenta",
+    "tranquila"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-suerte",
+   "es": "la suerte",
+   "de": "das Glück (Zufall)",
+   "en": "luck",
+   "type": "noun",
+   "topic": "hablar",
+   "tip": "'Suerte' ist Glück im Sinne von Zufall/Glück haben. Glücklich sein = 'feliz'. '¡Buena suerte!' = Viel Glück!",
+   "examples": [
+    {
+     "es": "¡Buena suerte con el examen!",
+     "de": "Viel Glück bei der Prüfung!"
+    },
+    {
+     "es": "¡Qué suerte!",
+     "de": "Was für ein Glück!"
+    },
+    {
+     "es": "Tengo mucha suerte contigo.",
+     "de": "Ich habe großes Glück mit dir."
+    }
+   ],
+   "cloze": {
+    "es": "Mañana tienes la entrevista, ¡mucha ___!",
+    "answer": "suerte",
+    "de": "Morgen hast du das Vorstellungsgespräch, viel Glück!"
+   },
+   "distractors": [
+    "hambre",
+    "calor",
+    "verdad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "carino",
+   "es": "cariño",
+   "de": "Schatz / Liebling; auch: Zuneigung",
+   "en": "darling, honey; affection",
+   "type": "noun",
+   "topic": "sentimientos",
+   "tip": "Als Kosename ohne Artikel: '¡Hola, cariño!'. Als Nomen 'el cariño' = Zuneigung. In Spanien sagen das auch Verkäuferinnen zu Fremden!",
+   "examples": [
+    {
+     "es": "Buenas noches, cariño.",
+     "de": "Gute Nacht, Schatz."
+    },
+    {
+     "es": "Cariño, ¿quieres un café?",
+     "de": "Liebling, möchtest du einen Kaffee?"
+    },
+    {
+     "es": "Le tengo mucho cariño.",
+     "de": "Ich habe ihn/sie sehr gern."
+    }
+   ],
+   "cloze": {
+    "es": "¿Qué tal tu día, ___?",
+    "answer": "cariño",
+    "de": "Wie war dein Tag, Schatz?"
+   },
+   "distractors": [
+    "suerte",
+    "amigo",
+    "jefe"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-casa",
+   "es": "la casa",
+   "de": "das Haus / das Zuhause",
+   "en": "house, home",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "'En casa' (ohne Artikel) = zu Hause, 'a casa' = nach Hause. Wie im Deutschen!",
+   "examples": [
+    {
+     "es": "Estoy en casa.",
+     "de": "Ich bin zu Hause."
+    },
+    {
+     "es": "Me voy a casa.",
+     "de": "Ich gehe nach Hause."
+    },
+    {
+     "es": "Su casa es muy grande.",
+     "de": "Sein/Ihr Haus ist sehr groß."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy no salgo, me quedo en ___.",
+    "answer": "casa",
+    "de": "Heute gehe ich nicht aus, ich bleibe zu Hause."
+   },
+   "distractors": [
+    "piso",
+    "puerta",
+    "cocina"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-piso",
+   "es": "el piso",
+   "de": "die Wohnung; auch: das Stockwerk",
+   "en": "apartment, flat; floor",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "In Spanien ist 'piso' die normale Wohnung (Lateinamerika: 'departamento'). 'Vivo en el tercer piso' = im dritten Stock.",
+   "examples": [
+    {
+     "es": "Mi piso es pequeño pero bonito.",
+     "de": "Meine Wohnung ist klein, aber schön."
+    },
+    {
+     "es": "Compartimos piso en Madrid.",
+     "de": "Wir teilen uns eine Wohnung in Madrid (WG)."
+    },
+    {
+     "es": "Vivo en el segundo piso.",
+     "de": "Ich wohne im zweiten Stock."
+    }
+   ],
+   "cloze": {
+    "es": "Buscamos un ___ con dos habitaciones.",
+    "answer": "piso",
+    "de": "Wir suchen eine Wohnung mit zwei Zimmern."
+   },
+   "distractors": [
+    "cuarto",
+    "jardín",
+    "baño"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-puerta",
+   "es": "la puerta",
+   "de": "die Tür",
+   "en": "door",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Eselsbrücke: Portal/Pforte. 'Cierra la puerta' = Mach die Tür zu.",
+   "examples": [
+    {
+     "es": "¿Puedes abrir la puerta?",
+     "de": "Kannst du die Tür aufmachen?"
+    },
+    {
+     "es": "Cierra la puerta, por favor.",
+     "de": "Mach bitte die Tür zu."
+    },
+    {
+     "es": "Alguien está en la puerta.",
+     "de": "Jemand ist an der Tür."
+    }
+   ],
+   "cloze": {
+    "es": "Hace frío, cierra la ___ por favor.",
+    "answer": "puerta",
+    "de": "Es ist kalt, mach bitte die Tür zu."
+   },
+   "distractors": [
+    "mesa",
+    "silla",
+    "cama"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-cama",
+   "es": "la cama",
+   "de": "das Bett",
+   "en": "the bed",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Irse a la cama = ins Bett gehen. Hacer la cama heißt 'das Bett machen', nicht 'ein Bett bauen'!",
+   "examples": [
+    {
+     "es": "La cama es muy cómoda.",
+     "de": "Das Bett ist sehr bequem."
+    },
+    {
+     "es": "Me voy a la cama, estoy cansado.",
+     "de": "Ich gehe ins Bett, ich bin müde."
+    },
+    {
+     "es": "Todos los días hago la cama.",
+     "de": "Ich mache jeden Tag das Bett."
+    }
+   ],
+   "cloze": {
+    "es": "El gato duerme encima de la ___.",
+    "answer": "cama",
+    "de": "Die Katze schläft auf dem Bett."
+   },
+   "distractors": [
+    "silla",
+    "mesa",
+    "ventana"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-bano",
+   "es": "el baño",
+   "de": "das Bad / die Toilette",
+   "en": "the bathroom / toilet",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "In Spanien fragt man im Restaurant: ¿Dónde está el baño? So fragst du nach der Toilette.",
+   "examples": [
+    {
+     "es": "¿Dónde está el baño, por favor?",
+     "de": "Wo ist die Toilette, bitte?"
+    },
+    {
+     "es": "El baño está al lado de la habitación.",
+     "de": "Das Bad ist neben dem Zimmer."
+    },
+    {
+     "es": "Mi piso tiene dos baños.",
+     "de": "Meine Wohnung hat zwei Bäder."
+    }
+   ],
+   "cloze": {
+    "es": "Perdona, ¿el ___ está arriba?",
+    "answer": "baño",
+    "de": "Entschuldige, ist das Bad oben?"
+   },
+   "distractors": [
+    "salón",
+    "jardín",
+    "balcón"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-ducha",
+   "es": "la ducha",
+   "de": "die Dusche",
+   "en": "the shower",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Duschen heißt ducharse: Me ducho por la mañana. Klingt fast wie 'Dusche'!",
+   "examples": [
+    {
+     "es": "La ducha está en el baño.",
+     "de": "Die Dusche ist im Bad."
+    },
+    {
+     "es": "Necesito una ducha después de escalar.",
+     "de": "Ich brauche eine Dusche nach dem Klettern."
+    },
+    {
+     "es": "El agua de la ducha está fría.",
+     "de": "Das Wasser der Dusche ist kalt."
+    }
+   ],
+   "cloze": {
+    "es": "Después del deporte, me doy una ___.",
+    "answer": "ducha",
+    "de": "Nach dem Sport gehe ich duschen."
+   },
+   "distractors": [
+    "cama",
+    "siesta",
+    "mesa"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-mesa",
+   "es": "la mesa",
+   "de": "der Tisch",
+   "en": "the table",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Poner la mesa = den Tisch decken. Achtung: la mesa ist weiblich, der Tisch männlich!",
+   "examples": [
+    {
+     "es": "Las llaves están en la mesa.",
+     "de": "Die Schlüssel liegen auf dem Tisch."
+    },
+    {
+     "es": "¿Pones la mesa, por favor?",
+     "de": "Deckst du bitte den Tisch?"
+    },
+    {
+     "es": "Una mesa para dos, por favor.",
+     "de": "Einen Tisch für zwei, bitte."
+    }
+   ],
+   "cloze": {
+    "es": "Comemos todos juntos en la ___ de la cocina.",
+    "answer": "mesa",
+    "de": "Wir essen alle zusammen am Küchentisch."
+   },
+   "distractors": [
+    "silla",
+    "cama",
+    "ducha"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-silla",
+   "es": "la silla",
+   "de": "der Stuhl",
+   "en": "the chair",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Silla = Stuhl, sillón = Sessel. Das doppelte L spricht man in Spanien wie ein 'j' aus: 'si-ja'.",
+   "examples": [
+    {
+     "es": "Siéntate en esta silla.",
+     "de": "Setz dich auf diesen Stuhl."
+    },
+    {
+     "es": "Faltan dos sillas para la cena.",
+     "de": "Für das Abendessen fehlen zwei Stühle."
+    },
+    {
+     "es": "La silla está al lado de la mesa.",
+     "de": "Der Stuhl steht neben dem Tisch."
+    }
+   ],
+   "cloze": {
+    "es": "¿Hay una ___ libre para mí?",
+    "answer": "silla",
+    "de": "Gibt es einen freien Stuhl für mich?"
+   },
+   "distractors": [
+    "mesa",
+    "ventana",
+    "llave"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-ventana",
+   "es": "la ventana",
+   "de": "das Fenster",
+   "en": "the window",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Denk an 'Ventilation': durch la ventana kommt frische Luft rein!",
+   "examples": [
+    {
+     "es": "Abre la ventana, hace calor.",
+     "de": "Mach das Fenster auf, es ist warm."
+    },
+    {
+     "es": "Desde la ventana veo el mar.",
+     "de": "Vom Fenster aus sehe ich das Meer."
+    },
+    {
+     "es": "La ventana de la cocina está cerrada.",
+     "de": "Das Küchenfenster ist geschlossen."
+    }
+   ],
+   "cloze": {
+    "es": "Tengo frío, ¿cierras la ___?",
+    "answer": "ventana",
+    "de": "Mir ist kalt, machst du das Fenster zu?"
+   },
+   "distractors": [
+    "llave",
+    "mesa",
+    "ducha"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-llave",
+   "es": "la llave",
+   "de": "der Schlüssel",
+   "en": "the key",
+   "type": "noun",
+   "topic": "casa",
+   "tip": "Achtung: la llave ist weiblich! Und 'llave' auch für Wasserhahn in manchen Ländern, aber in Spanien sagt man dafür el grifo.",
+   "examples": [
+    {
+     "es": "¿Dónde están mis llaves?",
+     "de": "Wo sind meine Schlüssel?"
+    },
+    {
+     "es": "No encuentro la llave del piso.",
+     "de": "Ich finde den Wohnungsschlüssel nicht."
+    },
+    {
+     "es": "Te dejo la llave debajo de la puerta.",
+     "de": "Ich lasse dir den Schlüssel unter der Tür."
+    }
+   ],
+   "cloze": {
+    "es": "No puedo abrir la puerta sin la ___.",
+    "answer": "llave",
+    "de": "Ich kann die Tür ohne den Schlüssel nicht öffnen."
+   },
+   "distractors": [
+    "ventana",
+    "silla",
+    "cama"
+   ],
+   "basic": true
+  },
+  {
+   "id": "dormir",
+   "es": "dormir",
+   "de": "schlafen",
+   "en": "to sleep",
+   "type": "verb",
+   "topic": "casa",
+   "tip": "Unregelmäßig: o → ue. Yo duermo, tú duermes – aber nosotros dormimos, vosotros dormís.",
+   "examples": [
+    {
+     "es": "Duermo ocho horas cada noche.",
+     "de": "Ich schlafe jede Nacht acht Stunden."
+    },
+    {
+     "es": "¿Has dormido bien?",
+     "de": "Hast du gut geschlafen?"
+    },
+    {
+     "es": "Los domingos dormimos hasta tarde.",
+     "de": "Sonntags schlafen wir lange."
+    }
+   ],
+   "cloze": {
+    "es": "Estoy muy cansado, quiero ___ un poco.",
+    "answer": "dormir",
+    "de": "Ich bin sehr müde, ich will ein bisschen schlafen."
+   },
+   "distractors": [
+    "comer",
+    "beber",
+    "cocinar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "comer",
+   "es": "comer",
+   "de": "essen / zu Mittag essen",
+   "en": "to eat / to have lunch",
+   "type": "verb",
+   "topic": "comida",
+   "tip": "In Spanien heißt comer oft speziell 'zu Mittag essen' – und das ist erst so um 14–15 Uhr!",
+   "examples": [
+    {
+     "es": "¿Qué comemos hoy?",
+     "de": "Was essen wir heute?"
+    },
+    {
+     "es": "Como a las dos con mi familia.",
+     "de": "Ich esse um zwei mit meiner Familie zu Mittag."
+    },
+    {
+     "es": "No me gusta comer solo.",
+     "de": "Ich esse nicht gern allein."
+    }
+   ],
+   "cloze": {
+    "es": "Tengo hambre, ¿vamos a ___ algo?",
+    "answer": "comer",
+    "de": "Ich habe Hunger, gehen wir etwas essen?"
+   },
+   "distractors": [
+    "beber",
+    "dormir",
+    "hablar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "beber",
+   "es": "beber",
+   "de": "trinken",
+   "en": "to drink",
+   "type": "verb",
+   "topic": "comida",
+   "tip": "Im Alltag hörst du oft auch tomar: ¿Qué vas a tomar? = Was trinkst du? Beide sind richtig.",
+   "examples": [
+    {
+     "es": "Bebo mucha agua cuando hace calor.",
+     "de": "Ich trinke viel Wasser, wenn es heiß ist."
+    },
+    {
+     "es": "¿Quieres beber algo?",
+     "de": "Möchtest du etwas trinken?"
+    },
+    {
+     "es": "No bebo café por la noche.",
+     "de": "Abends trinke ich keinen Kaffee."
+    }
+   ],
+   "cloze": {
+    "es": "Tengo sed, necesito ___ agua.",
+    "answer": "beber",
+    "de": "Ich habe Durst, ich muss Wasser trinken."
+   },
+   "distractors": [
+    "comer",
+    "dormir",
+    "cocinar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-agua",
+   "es": "el agua",
+   "de": "das Wasser",
+   "en": "the water",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "Trick: agua ist weiblich, bekommt aber 'el' wegen des betonten a-Anfangs. Darum: el agua fría (nicht frío)!",
+   "examples": [
+    {
+     "es": "Una botella de agua, por favor.",
+     "de": "Eine Flasche Wasser, bitte."
+    },
+    {
+     "es": "El agua del mar está fría.",
+     "de": "Das Meerwasser ist kalt."
+    },
+    {
+     "es": "¿Agua con gas o sin gas?",
+     "de": "Wasser mit oder ohne Kohlensäure?"
+    }
+   ],
+   "cloze": {
+    "es": "¿Me pones un vaso de ___, por favor?",
+    "answer": "agua",
+    "de": "Bringst du mir bitte ein Glas Wasser?"
+   },
+   "distractors": [
+    "café",
+    "leche",
+    "zumo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-cafe",
+   "es": "el café",
+   "de": "der Kaffee / das Café",
+   "en": "the coffee / the café",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "In Spanien bestellt man un café con leche, un cortado (mit wenig Milch) oder un solo (Espresso).",
+   "examples": [
+    {
+     "es": "Me pones un café con leche, por favor.",
+     "de": "Einen Milchkaffee, bitte."
+    },
+    {
+     "es": "Por la mañana siempre tomo café.",
+     "de": "Morgens trinke ich immer Kaffee."
+    },
+    {
+     "es": "Quedamos en el café de la esquina.",
+     "de": "Wir treffen uns im Café an der Ecke."
+    }
+   ],
+   "cloze": {
+    "es": "Estoy cansado, necesito un ___.",
+    "answer": "café",
+    "de": "Ich bin müde, ich brauche einen Kaffee."
+   },
+   "distractors": [
+    "agua",
+    "zumo",
+    "té"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-vino",
+   "es": "el vino",
+   "de": "der Wein",
+   "en": "wine",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "Rotwein heißt 'vino tinto', nicht 'vino rojo'! Weißwein ist 'vino blanco'.",
+   "examples": [
+    {
+     "es": "¿Quieres una copa de vino?",
+     "de": "Möchtest du ein Glas Wein?"
+    },
+    {
+     "es": "El vino de La Rioja es muy famoso.",
+     "de": "Der Wein aus La Rioja ist sehr berühmt."
+    },
+    {
+     "es": "Me pones un vino tinto, por favor.",
+     "de": "Bringst du mir bitte einen Rotwein?"
+    }
+   ],
+   "cloze": {
+    "es": "Con la paella tomamos un ___ blanco.",
+    "answer": "vino",
+    "de": "Zur Paella trinken wir einen Weißwein."
+   },
+   "distractors": [
+    "pan",
+    "queso",
+    "café"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-cerveza",
+   "es": "la cerveza",
+   "de": "das Bier",
+   "en": "beer",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "Ein kleines Bier vom Fass bestellst du in Spanien als 'una caña'.",
+   "examples": [
+    {
+     "es": "Una cerveza fría, por favor.",
+     "de": "Ein kaltes Bier, bitte."
+    },
+    {
+     "es": "En verano bebo mucha cerveza.",
+     "de": "Im Sommer trinke ich viel Bier."
+    },
+    {
+     "es": "La cerveza alemana es muy buena.",
+     "de": "Das deutsche Bier ist sehr gut."
+    }
+   ],
+   "cloze": {
+    "es": "Después del trabajo tomamos una ___ en el bar.",
+    "answer": "cerveza",
+    "de": "Nach der Arbeit trinken wir ein Bier in der Bar."
+   },
+   "distractors": [
+    "leche",
+    "cuenta",
+    "calle"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-pan",
+   "es": "el pan",
+   "de": "das Brot",
+   "en": "bread",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "'Pan con tomate' ist ein typisches spanisches Frühstück – Brot mit Tomate und Olivenöl.",
+   "examples": [
+    {
+     "es": "Compro pan todos los días.",
+     "de": "Ich kaufe jeden Tag Brot."
+    },
+    {
+     "es": "El pan está muy rico.",
+     "de": "Das Brot ist sehr lecker."
+    },
+    {
+     "es": "¿Hay pan en casa?",
+     "de": "Gibt es Brot zu Hause?"
+    }
+   ],
+   "cloze": {
+    "es": "Para desayunar como ___ con tomate.",
+    "answer": "pan",
+    "de": "Zum Frühstück esse ich Brot mit Tomate."
+   },
+   "distractors": [
+    "vino",
+    "país",
+    "pueblo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-leche",
+   "es": "la leche",
+   "de": "die Milch",
+   "en": "milk",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "'Café con leche' ist der Klassiker in jeder spanischen Bar am Morgen.",
+   "examples": [
+    {
+     "es": "Un café con leche, por favor.",
+     "de": "Einen Milchkaffee, bitte."
+    },
+    {
+     "es": "No hay leche en la nevera.",
+     "de": "Es ist keine Milch im Kühlschrank."
+    },
+    {
+     "es": "Los niños beben leche.",
+     "de": "Die Kinder trinken Milch."
+    }
+   ],
+   "cloze": {
+    "es": "Me gusta el café con mucha ___.",
+    "answer": "leche",
+    "de": "Ich mag den Kaffee mit viel Milch."
+   },
+   "distractors": [
+    "cerveza",
+    "cuenta",
+    "ciudad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "desayunar",
+   "es": "desayunar",
+   "de": "frühstücken",
+   "en": "to have breakfast",
+   "type": "verb",
+   "topic": "comida",
+   "tip": "Merkhilfe: des-ayunar = das Fasten (ayuno) beenden – wie englisch 'break-fast'.",
+   "examples": [
+    {
+     "es": "¿Qué desayunas normalmente?",
+     "de": "Was frühstückst du normalerweise?"
+    },
+    {
+     "es": "Desayuno a las ocho.",
+     "de": "Ich frühstücke um acht."
+    },
+    {
+     "es": "Hoy desayunamos en un bar.",
+     "de": "Heute frühstücken wir in einer Bar."
+    }
+   ],
+   "cloze": {
+    "es": "Mañana vamos a ___ juntos en la cafetería.",
+    "answer": "desayunar",
+    "de": "Morgen werden wir zusammen im Café frühstücken."
+   },
+   "distractors": [
+    "cenar",
+    "dormir",
+    "beber"
+   ],
+   "basic": true
+  },
+  {
+   "id": "cenar",
+   "es": "cenar",
+   "de": "zu Abend essen",
+   "en": "to have dinner",
+   "type": "verb",
+   "topic": "comida",
+   "tip": "In Spanien isst man spät zu Abend – oft erst um 21 oder 22 Uhr!",
+   "examples": [
+    {
+     "es": "¿A qué hora cenamos?",
+     "de": "Um wie viel Uhr essen wir zu Abend?"
+    },
+    {
+     "es": "Esta noche ceno con mis amigos.",
+     "de": "Heute Abend esse ich mit meinen Freunden."
+    },
+    {
+     "es": "En España cenan muy tarde.",
+     "de": "In Spanien isst man sehr spät zu Abend."
+    }
+   ],
+   "cloze": {
+    "es": "El sábado vamos a ___ en un restaurante.",
+    "answer": "cenar",
+    "de": "Am Samstag werden wir in einem Restaurant zu Abend essen."
+   },
+   "distractors": [
+    "desayunar",
+    "cocinar",
+    "esperar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-cuenta",
+   "es": "la cuenta",
+   "de": "die Rechnung",
+   "en": "the bill",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "Im Restaurant: '¿Nos traes la cuenta?' oder einfach 'La cuenta, por favor.'",
+   "examples": [
+    {
+     "es": "La cuenta, por favor.",
+     "de": "Die Rechnung, bitte."
+    },
+    {
+     "es": "Yo pago la cuenta hoy.",
+     "de": "Heute zahle ich die Rechnung."
+    },
+    {
+     "es": "¿Cuánto es la cuenta?",
+     "de": "Wie viel macht die Rechnung?"
+    }
+   ],
+   "cloze": {
+    "es": "Camarero, ¿nos traes la ___?",
+    "answer": "cuenta",
+    "de": "Kellner, bringst du uns die Rechnung?"
+   },
+   "distractors": [
+    "leche",
+    "cerveza",
+    "calle"
+   ],
+   "basic": true
+  },
+  {
+   "id": "rico-rica",
+   "es": "rico / rica",
+   "de": "lecker; reich",
+   "en": "tasty; rich",
+   "type": "adjective",
+   "topic": "comida",
+   "tip": "Beim Essen heißt 'rico' lecker: '¡Qué rico!'. Bei Menschen bedeutet es reich.",
+   "examples": [
+    {
+     "es": "¡Qué rica está la tortilla!",
+     "de": "Wie lecker die Tortilla ist!"
+    },
+    {
+     "es": "Este pan está muy rico.",
+     "de": "Dieses Brot ist sehr lecker."
+    },
+    {
+     "es": "Mi tío es muy rico.",
+     "de": "Mein Onkel ist sehr reich."
+    }
+   ],
+   "cloze": {
+    "es": "La paella de tu madre está muy ___.",
+    "answer": "rica",
+    "de": "Die Paella deiner Mutter ist sehr lecker."
+   },
+   "distractors": [
+    "cansada",
+    "cerrada",
+    "triste"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-calle",
+   "es": "la calle",
+   "de": "die Straße",
+   "en": "the street",
+   "type": "noun",
+   "topic": "lugares",
+   "tip": "'Estar en la calle' heißt auch einfach 'draußen sein'.",
+   "examples": [
+    {
+     "es": "Vivo en esta calle.",
+     "de": "Ich wohne in dieser Straße."
+    },
+    {
+     "es": "Hay mucha gente en la calle.",
+     "de": "Es sind viele Leute auf der Straße."
+    },
+    {
+     "es": "La calle es muy bonita.",
+     "de": "Die Straße ist sehr schön."
+    }
+   ],
+   "cloze": {
+    "es": "El bar está al final de la ___.",
+    "answer": "calle",
+    "de": "Die Bar ist am Ende der Straße."
+   },
+   "distractors": [
+    "cuenta",
+    "leche",
+    "cerveza"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-ciudad",
+   "es": "la ciudad",
+   "de": "die Stadt",
+   "en": "the city",
+   "type": "noun",
+   "topic": "lugares",
+   "tip": "Wörter auf -dad sind immer weiblich: la ciudad, la verdad, la universidad.",
+   "examples": [
+    {
+     "es": "Madrid es una ciudad grande.",
+     "de": "Madrid ist eine große Stadt."
+    },
+    {
+     "es": "Me gusta vivir en la ciudad.",
+     "de": "Ich wohne gern in der Stadt."
+    },
+    {
+     "es": "¿Conoces la ciudad?",
+     "de": "Kennst du die Stadt?"
+    }
+   ],
+   "cloze": {
+    "es": "Barcelona es una ___ muy bonita.",
+    "answer": "ciudad",
+    "de": "Barcelona ist eine sehr schöne Stadt."
+   },
+   "distractors": [
+    "calle",
+    "cuenta",
+    "casa"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-pueblo",
+   "es": "el pueblo",
+   "de": "das Dorf",
+   "en": "the village",
+   "type": "noun",
+   "topic": "lugares",
+   "tip": "'El pueblo' kann auch 'das Volk' heißen, meistens aber das Dorf. 'Mi pueblo' = mein Heimatort.",
+   "examples": [
+    {
+     "es": "Mis abuelos viven en un pueblo.",
+     "de": "Meine Großeltern wohnen in einem Dorf."
+    },
+    {
+     "es": "El pueblo es pequeño y tranquilo.",
+     "de": "Das Dorf ist klein und ruhig."
+    },
+    {
+     "es": "En verano vamos al pueblo.",
+     "de": "Im Sommer fahren wir ins Dorf."
+    }
+   ],
+   "cloze": {
+    "es": "Mi madre es de un ___ pequeño cerca de Toledo.",
+    "answer": "pueblo",
+    "de": "Meine Mutter kommt aus einem kleinen Dorf bei Toledo."
+   },
+   "distractors": [
+    "país",
+    "pan",
+    "vino"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-pais",
+   "es": "el país",
+   "de": "das Land",
+   "en": "the country",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Achte auf den Akzent: pa-ÍS, zwei Silben. Im Plural: los países.",
+   "examples": [
+    {
+     "es": "España es un país muy bonito.",
+     "de": "Spanien ist ein sehr schönes Land."
+    },
+    {
+     "es": "¿De qué país eres?",
+     "de": "Aus welchem Land kommst du?"
+    },
+    {
+     "es": "Quiero visitar muchos países.",
+     "de": "Ich möchte viele Länder besuchen."
+    }
+   ],
+   "cloze": {
+    "es": "Alemania es un ___ grande.",
+    "answer": "país",
+    "de": "Deutschland ist ein großes Land."
+   },
+   "distractors": [
+    "pueblo",
+    "pan",
+    "vino"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-mundo",
+   "es": "el mundo",
+   "de": "die Welt",
+   "en": "the world",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Merke: 'todo el mundo' heißt nicht 'die ganze Welt', sondern meistens 'alle (Leute)'!",
+   "examples": [
+    {
+     "es": "Quiero viajar por todo el mundo.",
+     "de": "Ich möchte durch die ganze Welt reisen."
+    },
+    {
+     "es": "Todo el mundo habla de esa película.",
+     "de": "Alle reden über diesen Film."
+    },
+    {
+     "es": "El mundo es muy grande.",
+     "de": "Die Welt ist sehr groß."
+    }
+   ],
+   "cloze": {
+    "es": "Para mí, eres lo más bonito del ___.",
+    "answer": "mundo",
+    "de": "Für mich bist du das Schönste auf der Welt."
+   },
+   "distractors": [
+    "mapa",
+    "viaje",
+    "centro"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-bar",
+   "es": "el bar",
+   "de": "die Bar, die Kneipe",
+   "en": "the bar",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "In Spanien ist 'el bar' viel mehr als eine Bar: Man frühstückt dort, trinkt Kaffee und isst Tapas – den ganzen Tag.",
+   "examples": [
+    {
+     "es": "Desayuno en el bar de la esquina.",
+     "de": "Ich frühstücke in der Bar an der Ecke."
+    },
+    {
+     "es": "¿Quedamos en el bar a las ocho?",
+     "de": "Treffen wir uns um acht in der Bar?"
+    },
+    {
+     "es": "Este bar tiene unas tapas muy ricas.",
+     "de": "Diese Bar hat sehr leckere Tapas."
+    }
+   ],
+   "cloze": {
+    "es": "Vamos al ___ a tomar unas cañas.",
+    "answer": "bar",
+    "de": "Gehen wir in die Bar, ein paar kleine Bier trinken."
+   },
+   "distractors": [
+    "tren",
+    "coche",
+    "mundo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-restaurante",
+   "es": "el restaurante",
+   "de": "das Restaurant",
+   "en": "the restaurant",
+   "type": "noun",
+   "topic": "comida",
+   "tip": "Fast wie im Deutschen – aber mit -e am Ende und Betonung auf '-ran-': res-tau-RAN-te.",
+   "examples": [
+    {
+     "es": "Esta noche cenamos en un restaurante.",
+     "de": "Heute Abend essen wir in einem Restaurant."
+    },
+    {
+     "es": "El restaurante está cerrado los lunes.",
+     "de": "Das Restaurant ist montags geschlossen."
+    },
+    {
+     "es": "¿Conoces un buen restaurante por aquí?",
+     "de": "Kennst du ein gutes Restaurant hier in der Nähe?"
+    }
+   ],
+   "cloze": {
+    "es": "He reservado una mesa en el ___ para las nueve.",
+    "answer": "restaurante",
+    "de": "Ich habe für neun Uhr einen Tisch im Restaurant reserviert."
+   },
+   "distractors": [
+    "autobús",
+    "avión",
+    "viaje"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-centro",
+   "es": "el centro",
+   "de": "das Zentrum, die Innenstadt",
+   "en": "the centre, downtown",
+   "type": "noun",
+   "topic": "lugares",
+   "tip": "'Ir al centro' = in die Stadt gehen. 'El centro comercial' ist das Einkaufszentrum.",
+   "examples": [
+    {
+     "es": "Vivo en el centro de Madrid.",
+     "de": "Ich wohne im Zentrum von Madrid."
+    },
+    {
+     "es": "¿Vamos al centro esta tarde?",
+     "de": "Gehen wir heute Nachmittag in die Stadt?"
+    },
+    {
+     "es": "El hotel está muy cerca del centro.",
+     "de": "Das Hotel ist ganz nah am Zentrum."
+    }
+   ],
+   "cloze": {
+    "es": "Cogemos el autobús para ir al ___.",
+    "answer": "centro",
+    "de": "Wir nehmen den Bus, um in die Innenstadt zu fahren."
+   },
+   "distractors": [
+    "mundo",
+    "viaje",
+    "avión"
+   ],
+   "basic": true
+  },
+  {
+   "id": "todo-recto",
+   "es": "todo recto",
+   "de": "geradeaus",
+   "en": "straight ahead",
+   "type": "expression",
+   "topic": "lugares",
+   "tip": "Wichtig beim Wegfragen! 'Siga todo recto' = Gehen Sie geradeaus. Nicht 'derecho' sagen – das klingt nach 'rechts'.",
+   "examples": [
+    {
+     "es": "Sigue todo recto y luego a la derecha.",
+     "de": "Geh geradeaus und dann nach rechts."
+    },
+    {
+     "es": "La estación está todo recto.",
+     "de": "Der Bahnhof ist geradeaus."
+    },
+    {
+     "es": "Ve todo recto hasta el semáforo.",
+     "de": "Geh geradeaus bis zur Ampel."
+    }
+   ],
+   "cloze": {
+    "es": "Para ir a la playa, sigue ___ unos cinco minutos.",
+    "answer": "todo recto",
+    "de": "Um zum Strand zu kommen, geh etwa fünf Minuten geradeaus."
+   },
+   "distractors": [
+    "a la derecha",
+    "a la izquierda",
+    "en la esquina"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-esquina",
+   "es": "la esquina",
+   "de": "die Ecke",
+   "en": "the corner",
+   "type": "noun",
+   "topic": "lugares",
+   "tip": "'En la esquina' = an der (Straßen-)Ecke. Für die Ecke im Zimmer sagt man oft 'el rincón'.",
+   "examples": [
+    {
+     "es": "La farmacia está en la esquina.",
+     "de": "Die Apotheke ist an der Ecke."
+    },
+    {
+     "es": "Gira a la izquierda en la próxima esquina.",
+     "de": "Biege an der nächsten Ecke links ab."
+    },
+    {
+     "es": "Te espero en la esquina.",
+     "de": "Ich warte an der Ecke auf dich."
+    }
+   ],
+   "cloze": {
+    "es": "Hay un bar muy bueno en la ___ de mi calle.",
+    "answer": "esquina",
+    "de": "Es gibt eine sehr gute Bar an der Ecke meiner Straße."
+   },
+   "distractors": [
+    "estación",
+    "ventana",
+    "ciudad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-viaje",
+   "es": "el viaje",
+   "de": "die Reise",
+   "en": "the trip, the journey",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "'¡Buen viaje!' = Gute Reise! Das Verb dazu ist 'viajar' (reisen).",
+   "examples": [
+    {
+     "es": "¡Buen viaje!",
+     "de": "Gute Reise!"
+    },
+    {
+     "es": "El viaje a Sevilla fue precioso.",
+     "de": "Die Reise nach Sevilla war wunderschön."
+    },
+    {
+     "es": "Estamos preparando un viaje a Galicia.",
+     "de": "Wir planen eine Reise nach Galicien."
+    }
+   ],
+   "cloze": {
+    "es": "¿Qué tal el ___ a Barcelona?",
+    "answer": "viaje",
+    "de": "Wie war die Reise nach Barcelona?"
+   },
+   "distractors": [
+    "mundo",
+    "centro",
+    "bar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-tren",
+   "es": "el tren",
+   "de": "der Zug",
+   "en": "the train",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "In Spanien fährt man 'en tren'. Der Schnellzug heißt AVE – wie der Vogel (ave)!",
+   "examples": [
+    {
+     "es": "Voy a Valencia en tren.",
+     "de": "Ich fahre mit dem Zug nach Valencia."
+    },
+    {
+     "es": "El tren sale a las diez.",
+     "de": "Der Zug fährt um zehn ab."
+    },
+    {
+     "es": "El tren llega con retraso.",
+     "de": "Der Zug hat Verspätung."
+    }
+   ],
+   "cloze": {
+    "es": "Prefiero ir en ___ porque puedo leer.",
+    "answer": "tren",
+    "de": "Ich fahre lieber mit dem Zug, weil ich lesen kann."
+   },
+   "distractors": [
+    "bar",
+    "centro",
+    "mundo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-avion",
+   "es": "el avión",
+   "de": "das Flugzeug",
+   "en": "the plane",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Akzent auf dem -ó-: a-vi-ÓN. Im Plural fällt er weg: los aviones.",
+   "examples": [
+    {
+     "es": "El avión sale a las siete de la mañana.",
+     "de": "Das Flugzeug startet um sieben Uhr morgens."
+    },
+    {
+     "es": "Me da miedo ir en avión.",
+     "de": "Ich habe Angst zu fliegen."
+    },
+    {
+     "es": "Vamos a Mallorca en avión.",
+     "de": "Wir fliegen nach Mallorca."
+    }
+   ],
+   "cloze": {
+    "es": "Para ir a Canarias tienes que coger el ___.",
+    "answer": "avión",
+    "de": "Um auf die Kanaren zu kommen, musst du das Flugzeug nehmen."
+   },
+   "distractors": [
+    "coche",
+    "tren",
+    "autobús"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-autobus",
+   "es": "el autobús",
+   "de": "der Bus",
+   "en": "the bus",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Oft kurz 'el bus'. Und in Spanien sagt man 'coger el autobús' (den Bus nehmen) – ganz normal!",
+   "examples": [
+    {
+     "es": "Cojo el autobús todos los días.",
+     "de": "Ich nehme jeden Tag den Bus."
+    },
+    {
+     "es": "¿Dónde está la parada del autobús?",
+     "de": "Wo ist die Bushaltestelle?"
+    },
+    {
+     "es": "El autobús va muy lleno.",
+     "de": "Der Bus ist sehr voll."
+    }
+   ],
+   "cloze": {
+    "es": "Llego tarde porque he perdido el ___.",
+    "answer": "autobús",
+    "de": "Ich komme zu spät, weil ich den Bus verpasst habe."
+   },
+   "distractors": [
+    "avión",
+    "viaje",
+    "bar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-coche",
+   "es": "el coche",
+   "de": "das Auto",
+   "en": "the car",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "In Spanien immer 'el coche' – 'el carro' oder 'el auto' sagt man in Lateinamerika.",
+   "examples": [
+    {
+     "es": "Mi coche es rojo.",
+     "de": "Mein Auto ist rot."
+    },
+    {
+     "es": "Vamos en coche a la playa.",
+     "de": "Wir fahren mit dem Auto zum Strand."
+    },
+    {
+     "es": "No encuentro sitio para aparcar el coche.",
+     "de": "Ich finde keinen Parkplatz für das Auto."
+    }
+   ],
+   "cloze": {
+    "es": "¿Me dejas tu ___ el sábado?",
+    "answer": "coche",
+    "de": "Leihst du mir am Samstag dein Auto?"
+   },
+   "distractors": [
+    "tren",
+    "avión",
+    "autobús"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-estacion",
+   "es": "la estación",
+   "de": "der Bahnhof, die Station",
+   "en": "the station",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "'La estación de tren' = Bahnhof, 'la estación de autobuses' = Busbahnhof. Achtung: heißt auch 'Jahreszeit'!",
+   "examples": [
+    {
+     "es": "¿Dónde está la estación de tren?",
+     "de": "Wo ist der Bahnhof?"
+    },
+    {
+     "es": "Te recojo en la estación.",
+     "de": "Ich hole dich am Bahnhof ab."
+    },
+    {
+     "es": "La estación está en el centro.",
+     "de": "Der Bahnhof ist im Zentrum."
+    }
+   ],
+   "cloze": {
+    "es": "El tren llega a la ___ a las cinco.",
+    "answer": "estación",
+    "de": "Der Zug kommt um fünf am Bahnhof an."
+   },
+   "distractors": [
+    "esquina",
+    "calle",
+    "ciudad"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-aeropuerto",
+   "es": "el aeropuerto",
+   "de": "der Flughafen",
+   "en": "the airport",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Aero- wie in Aerobic oder Aerodynamik, und puerto heißt Hafen. Also wörtlich der Lufthafen.",
+   "examples": [
+    {
+     "es": "El aeropuerto está lejos del centro.",
+     "de": "Der Flughafen ist weit vom Zentrum entfernt."
+    },
+    {
+     "es": "Te recojo en el aeropuerto.",
+     "de": "Ich hole dich am Flughafen ab."
+    },
+    {
+     "es": "Vamos al aeropuerto en tren.",
+     "de": "Wir fahren mit dem Zug zum Flughafen."
+    }
+   ],
+   "cloze": {
+    "es": "Mi avión sale a las ocho, tengo que estar en el ___ a las seis.",
+    "answer": "aeropuerto",
+    "de": "Mein Flugzeug geht um acht, ich muss um sechs am Flughafen sein."
+   },
+   "distractors": [
+    "puerto",
+    "andén",
+    "garaje"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-billete",
+   "es": "el billete",
+   "de": "das Ticket, die Fahrkarte; auch der Geldschein",
+   "en": "the ticket; also the banknote",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "In Spanien sagt man el billete für Zug- und Flugtickets. El boleto ist Lateinamerika. Billete heißt auch Geldschein: un billete de veinte euros.",
+   "examples": [
+    {
+     "es": "¿Dónde compro el billete de tren?",
+     "de": "Wo kaufe ich die Zugfahrkarte?"
+    },
+    {
+     "es": "Tengo dos billetes para Sevilla.",
+     "de": "Ich habe zwei Tickets nach Sevilla."
+    },
+    {
+     "es": "Solo tengo un billete de cincuenta euros.",
+     "de": "Ich habe nur einen Fünfzig-Euro-Schein."
+    }
+   ],
+   "cloze": {
+    "es": "Ya he comprado el ___ de avión para el viernes.",
+    "answer": "billete",
+    "de": "Ich habe das Flugticket für Freitag schon gekauft."
+   },
+   "distractors": [
+    "boleto",
+    "pasaporte",
+    "asiento"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-maleta",
+   "es": "la maleta",
+   "de": "der Koffer",
+   "en": "the suitcase",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Hacer la maleta heißt den Koffer packen, wörtlich den Koffer machen.",
+   "examples": [
+    {
+     "es": "Mi maleta es muy grande.",
+     "de": "Mein Koffer ist sehr groß."
+    },
+    {
+     "es": "Esta noche hago la maleta.",
+     "de": "Heute Abend packe ich den Koffer."
+    },
+    {
+     "es": "¿Dónde está tu maleta?",
+     "de": "Wo ist dein Koffer?"
+    }
+   ],
+   "cloze": {
+    "es": "Mañana nos vamos de viaje y todavía no he hecho la ___.",
+    "answer": "maleta",
+    "de": "Morgen verreisen wir und ich habe den Koffer noch nicht gepackt."
+   },
+   "distractors": [
+    "mochila",
+    "cama",
+    "cuenta"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-mar",
+   "es": "el mar",
+   "de": "das Meer",
+   "en": "the sea",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Normalerweise el mar. Fischer und Dichter sagen manchmal la mar, das ist kein Fehler.",
+   "examples": [
+    {
+     "es": "Me encanta nadar en el mar.",
+     "de": "Ich schwimme total gern im Meer."
+    },
+    {
+     "es": "El mar está muy tranquilo hoy.",
+     "de": "Das Meer ist heute sehr ruhig."
+    },
+    {
+     "es": "Desde mi piso se ve el mar.",
+     "de": "Von meiner Wohnung aus sieht man das Meer."
+    }
+   ],
+   "cloze": {
+    "es": "En verano vamos a Valencia para bañarnos en el ___.",
+    "answer": "mar",
+    "de": "Im Sommer fahren wir nach Valencia, um im Meer zu baden."
+   },
+   "distractors": [
+    "río",
+    "sol",
+    "lago"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-playa",
+   "es": "la playa",
+   "de": "der Strand",
+   "en": "the beach",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Ir a la playa heißt an den Strand gehen. Die Spanier sagen auch gern ¡a la playa! als Plan fürs Wochenende.",
+   "examples": [
+    {
+     "es": "¿Vamos a la playa el sábado?",
+     "de": "Gehen wir am Samstag an den Strand?"
+    },
+    {
+     "es": "La playa está llena de gente.",
+     "de": "Der Strand ist voller Leute."
+    },
+    {
+     "es": "Esta playa es preciosa.",
+     "de": "Dieser Strand ist wunderschön."
+    }
+   ],
+   "cloze": {
+    "es": "Hace mucho calor, ¿nos vamos a la ___ a tomar el sol?",
+    "answer": "playa",
+    "de": "Es ist sehr heiß, gehen wir an den Strand, uns sonnen?"
+   },
+   "distractors": [
+    "montaña",
+    "estación",
+    "calle"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-montana",
+   "es": "la montaña",
+   "de": "der Berg, das Gebirge",
+   "en": "the mountain",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Ähnelt dem deutschen Montan- (Montanindustrie). Ir a la montaña heißt in die Berge fahren.",
+   "examples": [
+    {
+     "es": "Este fin de semana vamos a la montaña.",
+     "de": "Dieses Wochenende fahren wir in die Berge."
+    },
+    {
+     "es": "La montaña es muy alta.",
+     "de": "Der Berg ist sehr hoch."
+    },
+    {
+     "es": "Prefiero la montaña a la playa.",
+     "de": "Ich mag die Berge lieber als den Strand."
+    }
+   ],
+   "cloze": {
+    "es": "En invierno hay nieve en la ___.",
+    "answer": "montaña",
+    "de": "Im Winter liegt Schnee in den Bergen."
+   },
+   "distractors": [
+    "playa",
+    "ciudad",
+    "cocina"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-rio",
+   "es": "el río",
+   "de": "der Fluss",
+   "en": "the river",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Denk an Rio de Janeiro, den Januarfluss. Achtung: río mit Akzent ist der Fluss, rio ohne Akzent heißt ich lache.",
+   "examples": [
+    {
+     "es": "El río pasa por el centro de la ciudad.",
+     "de": "Der Fluss fließt durch die Stadtmitte."
+    },
+    {
+     "es": "Paseamos al lado del río.",
+     "de": "Wir spazieren am Fluss entlang."
+    },
+    {
+     "es": "El agua del río está fría.",
+     "de": "Das Flusswasser ist kalt."
+    }
+   ],
+   "cloze": {
+    "es": "En Sevilla hay un ___ muy famoso, el Guadalquivir.",
+    "answer": "río",
+    "de": "In Sevilla gibt es einen sehr berühmten Fluss, den Guadalquivir."
+   },
+   "distractors": [
+    "mar",
+    "puente",
+    "lago"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-sol",
+   "es": "el sol",
+   "de": "die Sonne",
+   "en": "the sun",
+   "type": "noun",
+   "topic": "viajar",
+   "tip": "Im Spanischen ist die Sonne männlich: el sol. Tomar el sol heißt sich sonnen.",
+   "examples": [
+    {
+     "es": "Hoy hace sol.",
+     "de": "Heute scheint die Sonne."
+    },
+    {
+     "es": "Me gusta tomar el sol en la playa.",
+     "de": "Ich sonne mich gern am Strand."
+    },
+    {
+     "es": "El sol está muy fuerte a mediodía.",
+     "de": "Die Sonne ist mittags sehr stark."
+    }
+   ],
+   "cloze": {
+    "es": "No hay nubes, hace mucho ___.",
+    "answer": "sol",
+    "de": "Es gibt keine Wolken, die Sonne scheint stark."
+   },
+   "distractors": [
+    "frío",
+    "viento",
+    "mar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "llegar",
+   "es": "llegar",
+   "de": "ankommen",
+   "en": "to arrive",
+   "type": "verb",
+   "topic": "viajar",
+   "tip": "Llegar a heißt ankommen in: llego a Madrid. Llegar tarde heißt zu spät kommen.",
+   "examples": [
+    {
+     "es": "¿A qué hora llega el tren?",
+     "de": "Um wie viel Uhr kommt der Zug an?"
+    },
+    {
+     "es": "Llego a casa a las siete.",
+     "de": "Ich komme um sieben nach Hause."
+    },
+    {
+     "es": "Siempre llegas tarde.",
+     "de": "Du kommst immer zu spät."
+    }
+   ],
+   "cloze": {
+    "es": "Mi hermana ___ a Barcelona mañana por la mañana.",
+    "answer": "llega",
+    "de": "Meine Schwester kommt morgen früh in Barcelona an."
+   },
+   "distractors": [
+    "sale",
+    "vuelve",
+    "pierde"
+   ],
+   "basic": true
+  },
+  {
+   "id": "salir",
+   "es": "salir",
+   "de": "hinausgehen, abfahren; ausgehen",
+   "en": "to leave, to go out",
+   "type": "verb",
+   "topic": "viajar",
+   "tip": "Unregelmäßig: yo salgo. Der Zug sale heißt er fährt ab, und salir con amigos heißt mit Freunden ausgehen. La salida ist der Ausgang.",
+   "examples": [
+    {
+     "es": "El autobús sale a las nueve.",
+     "de": "Der Bus fährt um neun ab."
+    },
+    {
+     "es": "Salgo de casa muy temprano.",
+     "de": "Ich gehe sehr früh aus dem Haus."
+    },
+    {
+     "es": "¿Salimos esta noche?",
+     "de": "Gehen wir heute Abend aus?"
+    }
+   ],
+   "cloze": {
+    "es": "Date prisa, el tren ___ en cinco minutos.",
+    "answer": "sale",
+    "de": "Beeil dich, der Zug fährt in fünf Minuten ab."
+   },
+   "distractors": [
+    "llega",
+    "vuelve",
+    "entra"
+   ],
+   "basic": true
+  },
+  {
+   "id": "volver",
+   "es": "volver",
+   "de": "zurückkommen, zurückkehren",
+   "en": "to return, to come back",
+   "type": "verb",
+   "topic": "viajar",
+   "tip": "Stammwechsel o zu ue: vuelvo, vuelves, aber volvemos und volvéis. Volver a + Infinitiv heißt etwas wieder tun: vuelvo a llamar.",
+   "examples": [
+    {
+     "es": "Vuelvo a casa a las ocho.",
+     "de": "Ich komme um acht nach Hause zurück."
+    },
+    {
+     "es": "¿Cuándo volvéis de Italia?",
+     "de": "Wann kommt ihr aus Italien zurück?"
+    },
+    {
+     "es": "Ahora vuelvo.",
+     "de": "Ich bin gleich zurück."
+    }
+   ],
+   "cloze": {
+    "es": "Nos vamos de viaje el lunes y ___ el domingo.",
+    "answer": "volvemos",
+    "de": "Wir verreisen am Montag und kommen am Sonntag zurück."
+   },
+   "distractors": [
+    "salimos",
+    "llegamos",
+    "perdemos"
+   ],
+   "basic": true
+  },
+  {
+   "id": "perderse",
+   "es": "perderse",
+   "de": "sich verlaufen, sich verirren",
+   "en": "to get lost",
+   "type": "verb",
+   "topic": "viajar",
+   "tip": "Reflexiv und mit Stammwechsel: me pierdo, te pierdes. Ohne se heißt perder verlieren oder verpassen: perder el tren.",
+   "examples": [
+    {
+     "es": "Siempre me pierdo en esta ciudad.",
+     "de": "In dieser Stadt verlaufe ich mich immer."
+    },
+    {
+     "es": "No te preocupes, no te vas a perder.",
+     "de": "Keine Sorge, du wirst dich nicht verlaufen."
+    },
+    {
+     "es": "Nos perdimos en la montaña.",
+     "de": "Wir haben uns in den Bergen verirrt."
+    }
+   ],
+   "cloze": {
+    "es": "Sin mapa, yo siempre me ___ en Madrid.",
+    "answer": "pierdo",
+    "de": "Ohne Karte verlaufe ich mich in Madrid immer."
+   },
+   "distractors": [
+    "quedo",
+    "encuentro",
+    "llego"
+   ],
+   "basic": true
+  },
+  {
+   "id": "escalar",
+   "es": "escalar",
+   "de": "klettern",
+   "en": "to climb",
+   "type": "verb",
+   "topic": "ocio",
+   "tip": "Für Klettern im Sport sagt man escalar, nicht subir. Subir heißt einfach hochgehen, z. B. Treppen.",
+   "examples": [
+    {
+     "es": "Los sábados escalo con mis amigos.",
+     "de": "Samstags klettere ich mit meinen Freunden."
+    },
+    {
+     "es": "¿Quieres escalar mañana?",
+     "de": "Willst du morgen klettern?"
+    },
+    {
+     "es": "Escalar es mi deporte favorito.",
+     "de": "Klettern ist mein Lieblingssport."
+    }
+   ],
+   "cloze": {
+    "es": "Este verano vamos a ___ en los Pirineos.",
+    "answer": "escalar",
+    "de": "Diesen Sommer gehen wir in den Pyrenäen klettern."
+   },
+   "distractors": [
+    "bailar",
+    "jugar",
+    "cocinar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-roca",
+   "es": "la roca",
+   "de": "der Fels",
+   "en": "the rock",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Merkhilfe: Rock'n'Roll, nur weiblich: LA roca. Ein einzelner kleiner Stein heißt la piedra.",
+   "examples": [
+    {
+     "es": "La roca está mojada hoy.",
+     "de": "Der Fels ist heute nass."
+    },
+    {
+     "es": "Me gusta escalar en roca.",
+     "de": "Ich klettere gern am Fels."
+    },
+    {
+     "es": "Esta roca es muy alta.",
+     "de": "Dieser Fels ist sehr hoch."
+    }
+   ],
+   "cloze": {
+    "es": "No podemos escalar, la ___ está muy fría.",
+    "answer": "roca",
+    "de": "Wir können nicht klettern, der Fels ist sehr kalt."
+   },
+   "distractors": [
+    "cuerda",
+    "cima",
+    "fiesta"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-via",
+   "es": "la vía",
+   "de": "die Kletterroute",
+   "en": "the climbing route",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Vía heißt eigentlich Weg oder Gleis, beim Klettern ist es die Route. Eine vía ferrata kennst du vielleicht schon.",
+   "examples": [
+    {
+     "es": "Esta vía es muy difícil.",
+     "de": "Diese Route ist sehr schwer."
+    },
+    {
+     "es": "¿Qué vía quieres hacer?",
+     "de": "Welche Route willst du klettern?"
+    },
+    {
+     "es": "Hoy he hecho tres vías.",
+     "de": "Heute bin ich drei Routen geklettert."
+    }
+   ],
+   "cloze": {
+    "es": "La ___ de la izquierda es más fácil.",
+    "answer": "vía",
+    "de": "Die Route links ist leichter."
+   },
+   "distractors": [
+    "roca",
+    "cuerda",
+    "cima"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-cuerda",
+   "es": "la cuerda",
+   "de": "das Seil",
+   "en": "the rope",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Klingt wie die Kordel: la cuerda ist das Seil. Eine Gitarrensaite heißt übrigens auch cuerda.",
+   "examples": [
+    {
+     "es": "¿Tienes la cuerda?",
+     "de": "Hast du das Seil?"
+    },
+    {
+     "es": "La cuerda es nueva.",
+     "de": "Das Seil ist neu."
+    },
+    {
+     "es": "Necesitamos una cuerda más larga.",
+     "de": "Wir brauchen ein längeres Seil."
+    }
+   ],
+   "cloze": {
+    "es": "Sin ___ no podemos escalar esta vía.",
+    "answer": "cuerda",
+    "de": "Ohne Seil können wir diese Route nicht klettern."
+   },
+   "distractors": [
+    "roca",
+    "cima",
+    "música"
+   ],
+   "basic": true
+  },
+  {
+   "id": "los-pies-de-gato",
+   "es": "los pies de gato",
+   "de": "die Kletterschuhe",
+   "en": "the climbing shoes",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Wörtlich Katzenpfoten: Mit Kletterschuhen bist du so geschickt wie eine Katze. Immer im Plural.",
+   "examples": [
+    {
+     "es": "Mis pies de gato son muy pequeños.",
+     "de": "Meine Kletterschuhe sind sehr klein."
+    },
+    {
+     "es": "¿Dónde están mis pies de gato?",
+     "de": "Wo sind meine Kletterschuhe?"
+    },
+    {
+     "es": "Me duelen los pies con estos pies de gato.",
+     "de": "Mir tun die Füße weh mit diesen Kletterschuhen."
+    }
+   ],
+   "cloze": {
+    "es": "Me he olvidado los ___ en casa.",
+    "answer": "pies de gato",
+    "de": "Ich habe die Kletterschuhe zu Hause vergessen."
+   },
+   "distractors": [
+    "cuerdas",
+    "vías",
+    "rocas"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-cima",
+   "es": "la cima",
+   "de": "der Gipfel",
+   "en": "the summit, the top",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Nicht verwechseln mit el clima (Klima). La cima ist ganz oben, auch im übertragenen Sinn.",
+   "examples": [
+    {
+     "es": "¡Por fin estamos en la cima!",
+     "de": "Endlich sind wir auf dem Gipfel!"
+    },
+    {
+     "es": "Desde la cima se ve el mar.",
+     "de": "Vom Gipfel aus sieht man das Meer."
+    },
+    {
+     "es": "La cima está muy lejos.",
+     "de": "Der Gipfel ist sehr weit weg."
+    }
+   ],
+   "cloze": {
+    "es": "Llegamos a la ___ de la montaña a las doce.",
+    "answer": "cima",
+    "de": "Wir sind um zwölf auf dem Gipfel des Berges angekommen."
+   },
+   "distractors": [
+    "vía",
+    "cuerda",
+    "roca"
+   ],
+   "basic": true
+  },
+  {
+   "id": "quedar",
+   "es": "quedar",
+   "de": "sich verabreden, sich treffen",
+   "en": "to meet up, to arrange to meet",
+   "type": "verb",
+   "topic": "ocio",
+   "tip": "Ganz typisch in Spanien: quedar con alguien = sich mit jemandem verabreden. ¿Quedamos? = Treffen wir uns?",
+   "examples": [
+    {
+     "es": "¿Quedamos mañana?",
+     "de": "Treffen wir uns morgen?"
+    },
+    {
+     "es": "He quedado con Ana a las ocho.",
+     "de": "Ich bin mit Ana um acht verabredet."
+    },
+    {
+     "es": "¿Dónde quedamos?",
+     "de": "Wo treffen wir uns?"
+    }
+   ],
+   "cloze": {
+    "es": "¿___ el viernes para tomar algo?",
+    "answer": "Quedamos",
+    "de": "Treffen wir uns am Freitag auf einen Drink?"
+   },
+   "distractors": [
+    "Bailamos",
+    "Jugamos",
+    "Escalamos"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-fiesta",
+   "es": "la fiesta",
+   "de": "die Party, das Fest",
+   "en": "the party",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Kennst du schon als Wort: la fiesta. Ir de fiesta heißt feiern gehen. Ein Feiertag ist auch un día de fiesta.",
+   "examples": [
+    {
+     "es": "Hay una fiesta en mi casa el sábado.",
+     "de": "Am Samstag gibt es eine Party bei mir."
+    },
+    {
+     "es": "¿Vienes a la fiesta?",
+     "de": "Kommst du zur Party?"
+    },
+    {
+     "es": "La fiesta fue muy divertida.",
+     "de": "Die Party war sehr lustig."
+    }
+   ],
+   "cloze": {
+    "es": "Esta noche vamos a una ___ en el centro.",
+    "answer": "fiesta",
+    "de": "Heute Abend gehen wir auf eine Party im Zentrum."
+   },
+   "distractors": [
+    "película",
+    "música",
+    "cima"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-musica",
+   "es": "la música",
+   "de": "die Musik",
+   "en": "the music",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Achte auf den Akzent: MÚ-si-ca, die Betonung liegt vorne, nicht wie im Deutschen hinten.",
+   "examples": [
+    {
+     "es": "Me encanta esta música.",
+     "de": "Ich liebe diese Musik."
+    },
+    {
+     "es": "¿Qué música te gusta?",
+     "de": "Welche Musik magst du?"
+    },
+    {
+     "es": "La música está muy alta.",
+     "de": "Die Musik ist sehr laut."
+    }
+   ],
+   "cloze": {
+    "es": "¿Pones un poco de ___ en el coche?",
+    "answer": "música",
+    "de": "Machst du ein bisschen Musik im Auto an?"
+   },
+   "distractors": [
+    "película",
+    "fiesta",
+    "cuerda"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-pelicula",
+   "es": "la película",
+   "de": "der Film",
+   "en": "the movie",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Weiblich, obwohl es im Deutschen DER Film ist! Ver una película = einen Film schauen.",
+   "examples": [
+    {
+     "es": "¿Vemos una película esta noche?",
+     "de": "Schauen wir heute Abend einen Film?"
+    },
+    {
+     "es": "La película es muy larga.",
+     "de": "Der Film ist sehr lang."
+    },
+    {
+     "es": "Mi película favorita es española.",
+     "de": "Mein Lieblingsfilm ist spanisch."
+    }
+   ],
+   "cloze": {
+    "es": "Anoche vimos una ___ muy buena en el cine.",
+    "answer": "película",
+    "de": "Gestern Abend haben wir einen sehr guten Film im Kino gesehen."
+   },
+   "distractors": [
+    "música",
+    "fiesta",
+    "roca"
+   ],
+   "basic": true
+  },
+  {
+   "id": "bailar",
+   "es": "bailar",
+   "de": "tanzen",
+   "en": "to dance",
+   "type": "verb",
+   "topic": "ocio",
+   "tip": "Merkhilfe: Ball, Tanzball. Wer auf den Ball geht, will bailar.",
+   "examples": [
+    {
+     "es": "¿Bailamos?",
+     "de": "Tanzen wir?"
+    },
+    {
+     "es": "No sé bailar salsa.",
+     "de": "Ich kann nicht Salsa tanzen."
+    },
+    {
+     "es": "Me encanta bailar en las fiestas.",
+     "de": "Ich tanze total gern auf Partys."
+    }
+   ],
+   "cloze": {
+    "es": "En la fiesta todos queremos ___.",
+    "answer": "bailar",
+    "de": "Auf der Party wollen wir alle tanzen."
+   },
+   "distractors": [
+    "escalar",
+    "jugar",
+    "quedar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "jugar",
+   "es": "jugar",
+   "de": "spielen",
+   "en": "to play (games, sports)",
+   "type": "verb",
+   "topic": "ocio",
+   "tip": "Unregelmäßig: juego, juegas, juega. Mit Sport meist jugar al: jugar al fútbol. Ein Instrument spielen heißt aber tocar!",
+   "examples": [
+    {
+     "es": "Los niños juegan en el parque.",
+     "de": "Die Kinder spielen im Park."
+    },
+    {
+     "es": "¿Jugamos a las cartas?",
+     "de": "Spielen wir Karten?"
+    },
+    {
+     "es": "Juego al fútbol los domingos.",
+     "de": "Ich spiele sonntags Fußball."
+    }
+   ],
+   "cloze": {
+    "es": "¿Quieres ___ al tenis conmigo?",
+    "answer": "jugar",
+    "de": "Willst du mit mir Tennis spielen?"
+   },
+   "distractors": [
+    "bailar",
+    "escalar",
+    "quedar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "leer",
+   "es": "leer",
+   "de": "lesen",
+   "en": "to read",
+   "type": "verb",
+   "topic": "ocio",
+   "tip": "Bei leer wird in manchen Formen das i zu y: él leyó (er las), leyendo (lesend).",
+   "examples": [
+    {
+     "es": "Me gusta leer en la cama.",
+     "de": "Ich lese gern im Bett."
+    },
+    {
+     "es": "¿Qué estás leyendo?",
+     "de": "Was liest du gerade?"
+    },
+    {
+     "es": "Leo el periódico por la mañana.",
+     "de": "Ich lese morgens die Zeitung."
+    }
+   ],
+   "cloze": {
+    "es": "Mi hermana ___ mucho los fines de semana.",
+    "answer": "lee",
+    "de": "Meine Schwester liest am Wochenende viel."
+   },
+   "distractors": [
+    "come",
+    "baila",
+    "duerme"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-libro",
+   "es": "el libro",
+   "de": "das Buch",
+   "en": "the book",
+   "type": "noun",
+   "topic": "ocio",
+   "tip": "Falscher Freund: la librería ist die Buchhandlung, nicht die Bibliothek. Die Bibliothek heißt la biblioteca.",
+   "examples": [
+    {
+     "es": "Este libro es muy bueno.",
+     "de": "Dieses Buch ist sehr gut."
+    },
+    {
+     "es": "¿Me dejas tu libro?",
+     "de": "Leihst du mir dein Buch?"
+    },
+    {
+     "es": "Tengo muchos libros en casa.",
+     "de": "Ich habe zu Hause viele Bücher."
+    }
+   ],
+   "cloze": {
+    "es": "Estoy leyendo un ___ muy interesante.",
+    "answer": "libro",
+    "de": "Ich lese gerade ein sehr interessantes Buch."
+   },
+   "distractors": [
+    "coche",
+    "vaso",
+    "pan"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-trabajo",
+   "es": "el trabajo",
+   "de": "die Arbeit, der Job",
+   "en": "work, job",
+   "type": "noun",
+   "topic": "gente",
+   "tip": "Ir al trabajo = zur Arbeit gehen. Umgangssprachlich in Spanien hört man auch el curro.",
+   "examples": [
+    {
+     "es": "Hoy tengo mucho trabajo.",
+     "de": "Heute habe ich viel Arbeit."
+    },
+    {
+     "es": "Voy al trabajo en bici.",
+     "de": "Ich fahre mit dem Fahrrad zur Arbeit."
+    },
+    {
+     "es": "Me gusta mi nuevo trabajo.",
+     "de": "Mein neuer Job gefällt mir."
+    }
+   ],
+   "cloze": {
+    "es": "Salgo del ___ a las seis.",
+    "answer": "trabajo",
+    "de": "Ich komme um sechs von der Arbeit."
+   },
+   "distractors": [
+    "libro",
+    "precio",
+    "dinero"
+   ],
+   "basic": true
+  },
+  {
+   "id": "trabajar",
+   "es": "trabajar",
+   "de": "arbeiten",
+   "en": "to work",
+   "type": "verb",
+   "topic": "gente",
+   "tip": "Regelmäßiges -ar-Verb: trabajo, trabajas, trabaja, trabajamos, trabajáis, trabajan.",
+   "examples": [
+    {
+     "es": "Trabajo en una oficina.",
+     "de": "Ich arbeite in einem Büro."
+    },
+    {
+     "es": "¿Trabajáis mañana?",
+     "de": "Arbeitet ihr morgen?"
+    },
+    {
+     "es": "Mi padre trabaja mucho.",
+     "de": "Mein Vater arbeitet viel."
+    }
+   ],
+   "cloze": {
+    "es": "Los sábados no ___ , descanso en casa.",
+    "answer": "trabajo",
+    "de": "Samstags arbeite ich nicht, ich ruhe mich zu Hause aus."
+   },
+   "distractors": [
+    "compro",
+    "pago",
+    "leo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-dinero",
+   "es": "el dinero",
+   "de": "das Geld",
+   "en": "money",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "Immer Singular: el dinero (nicht los dineros). In Spanien sagt man umgangssprachlich auch la pasta.",
+   "examples": [
+    {
+     "es": "No tengo dinero.",
+     "de": "Ich habe kein Geld."
+    },
+    {
+     "es": "¿Cuánto dinero necesitas?",
+     "de": "Wie viel Geld brauchst du?"
+    },
+    {
+     "es": "El dinero no da la felicidad.",
+     "de": "Geld macht nicht glücklich."
+    }
+   ],
+   "cloze": {
+    "es": "Necesito sacar ___ del cajero.",
+    "answer": "dinero",
+    "de": "Ich muss Geld am Automaten abheben."
+   },
+   "distractors": [
+    "trabajo",
+    "precio",
+    "libro"
+   ],
+   "basic": true
+  },
+  {
+   "id": "comprar",
+   "es": "comprar",
+   "de": "kaufen",
+   "en": "to buy",
+   "type": "verb",
+   "topic": "compras",
+   "tip": "Ir de compras = shoppen gehen. Hacer la compra = den Wocheneinkauf erledigen.",
+   "examples": [
+    {
+     "es": "Voy a comprar pan.",
+     "de": "Ich gehe Brot kaufen."
+    },
+    {
+     "es": "¿Dónde compraste esa camiseta?",
+     "de": "Wo hast du das T-Shirt gekauft?"
+    },
+    {
+     "es": "Compramos fruta en el mercado.",
+     "de": "Wir kaufen Obst auf dem Markt."
+    }
+   ],
+   "cloze": {
+    "es": "Mañana quiero ___ un regalo para mi madre.",
+    "answer": "comprar",
+    "de": "Morgen will ich ein Geschenk für meine Mutter kaufen."
+   },
+   "distractors": [
+    "leer",
+    "trabajar",
+    "pagar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "pagar",
+   "es": "pagar",
+   "de": "bezahlen",
+   "en": "to pay",
+   "type": "verb",
+   "topic": "compras",
+   "tip": "Pagar braucht kein \"für\": pagar la cena = das Abendessen bezahlen. Achtung: yo pagué mit ue.",
+   "examples": [
+    {
+     "es": "¿Puedo pagar con tarjeta?",
+     "de": "Kann ich mit Karte zahlen?"
+    },
+    {
+     "es": "Hoy pago yo.",
+     "de": "Heute zahle ich."
+    },
+    {
+     "es": "Pagamos a medias.",
+     "de": "Wir zahlen halbe-halbe."
+    }
+   ],
+   "cloze": {
+    "es": "¿Vas a ___ en efectivo o con tarjeta?",
+    "answer": "pagar",
+    "de": "Zahlst du bar oder mit Karte?"
+   },
+   "distractors": [
+    "comprar",
+    "leer",
+    "trabajar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "cuanto-cuesta",
+   "es": "¿cuánto cuesta?",
+   "de": "Wie viel kostet das?",
+   "en": "how much does it cost?",
+   "type": "expression",
+   "topic": "compras",
+   "tip": "Bei mehreren Dingen: ¿cuánto cuestan? Kurz und locker geht auch: ¿cuánto es?",
+   "examples": [
+    {
+     "es": "Perdona, ¿cuánto cuesta este libro?",
+     "de": "Entschuldigung, wie viel kostet dieses Buch?"
+    },
+    {
+     "es": "¿Cuánto cuesta un café aquí?",
+     "de": "Wie viel kostet hier ein Kaffee?"
+    },
+    {
+     "es": "¿Cuánto cuesta el billete a Madrid?",
+     "de": "Wie viel kostet die Fahrkarte nach Madrid?"
+    }
+   ],
+   "cloze": {
+    "es": "Hola, ¿___ esta camiseta?",
+    "answer": "cuánto cuesta",
+    "de": "Hallo, wie viel kostet dieses T-Shirt?"
+   },
+   "distractors": [
+    "cuánto pagas",
+    "qué compra",
+    "dónde está"
+   ],
+   "basic": true
+  },
+  {
+   "id": "caro-cara",
+   "es": "caro / cara",
+   "de": "teuer",
+   "en": "expensive",
+   "type": "adjective",
+   "topic": "compras",
+   "tip": "Wie Englisch \"care\": Was teuer ist, behandelt man vorsichtig. Querida/cariño sagt man für \"lieb\", caro bedeutet heute fast nur teuer.",
+   "examples": [
+    {
+     "es": "Este restaurante es muy caro.",
+     "de": "Dieses Restaurant ist sehr teuer."
+    },
+    {
+     "es": "La casa es demasiado cara.",
+     "de": "Das Haus ist zu teuer."
+    },
+    {
+     "es": "¡Qué caro está todo!",
+     "de": "Wie teuer alles ist!"
+    }
+   ],
+   "cloze": {
+    "es": "No compro esa chaqueta, es muy ___.",
+    "answer": "cara",
+    "de": "Ich kaufe die Jacke nicht, sie ist sehr teuer."
+   },
+   "distractors": [
+    "barata",
+    "bonita",
+    "larga"
+   ],
+   "basic": true
+  },
+  {
+   "id": "barato-barata",
+   "es": "barato / barata",
+   "de": "billig, günstig",
+   "en": "cheap",
+   "type": "adjective",
+   "topic": "compras",
+   "tip": "Das Gegenteil von caro. Merkhilfe: \"Bar-at-o\" – bar und günstig bezahlt.",
+   "examples": [
+    {
+     "es": "Este bar es bueno y barato.",
+     "de": "Diese Bar ist gut und günstig."
+    },
+    {
+     "es": "Los zapatos son muy baratos.",
+     "de": "Die Schuhe sind sehr billig."
+    },
+    {
+     "es": "Busco un hotel barato.",
+     "de": "Ich suche ein günstiges Hotel."
+    }
+   ],
+   "cloze": {
+    "es": "La fruta en el mercado es más ___ que en el súper.",
+    "answer": "barata",
+    "de": "Das Obst auf dem Markt ist günstiger als im Supermarkt."
+   },
+   "distractors": [
+    "cara",
+    "rica",
+    "grande"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-precio",
+   "es": "el precio",
+   "de": "der Preis",
+   "en": "the price",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "Nur für Kosten! Ein Preis, den man gewinnt, heißt el premio.",
+   "examples": [
+    {
+     "es": "¿Cuál es el precio?",
+     "de": "Was ist der Preis?"
+    },
+    {
+     "es": "El precio está bien.",
+     "de": "Der Preis ist in Ordnung."
+    },
+    {
+     "es": "Los precios suben cada año.",
+     "de": "Die Preise steigen jedes Jahr."
+    }
+   ],
+   "cloze": {
+    "es": "No veo el ___ de estos pantalones.",
+    "answer": "precio",
+    "de": "Ich sehe den Preis dieser Hose nicht."
+   },
+   "distractors": [
+    "dinero",
+    "libro",
+    "trabajo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-tienda",
+   "es": "la tienda",
+   "de": "der Laden, das Geschäft",
+   "en": "the shop",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "La tienda kann auch \"das Zelt\" heißen: la tienda de campaña.",
+   "examples": [
+    {
+     "es": "La tienda abre a las diez.",
+     "de": "Der Laden öffnet um zehn."
+    },
+    {
+     "es": "Hay una tienda en la esquina.",
+     "de": "An der Ecke ist ein Laden."
+    },
+    {
+     "es": "Compro el pan en la tienda de abajo.",
+     "de": "Ich kaufe das Brot im Laden unten."
+    }
+   ],
+   "cloze": {
+    "es": "Voy a la ___ a comprar leche.",
+    "answer": "tienda",
+    "de": "Ich gehe in den Laden, um Milch zu kaufen."
+   },
+   "distractors": [
+    "playa",
+    "cama",
+    "ventana"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-super",
+   "es": "el súper",
+   "de": "der Supermarkt",
+   "en": "the supermarket",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "Kurz für „el supermercado“. In Spanien sagt man fast immer nur „el súper“, so wie „der Supi“ … nur dass es wirklich alle sagen!",
+   "examples": [
+    {
+     "es": "Voy al súper a comprar leche.",
+     "de": "Ich gehe in den Supermarkt, um Milch zu kaufen."
+    },
+    {
+     "es": "El súper cierra a las diez.",
+     "de": "Der Supermarkt schließt um zehn."
+    },
+    {
+     "es": "¿Necesitas algo del súper?",
+     "de": "Brauchst du etwas aus dem Supermarkt?"
+    }
+   ],
+   "cloze": {
+    "es": "Hay un ___ al lado de mi casa.",
+    "answer": "súper",
+    "de": "Neben meinem Haus gibt es einen Supermarkt."
+   },
+   "distractors": [
+    "banco",
+    "parque",
+    "cine"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-tarjeta",
+   "es": "la tarjeta",
+   "de": "die Karte (Bankkarte)",
+   "en": "the card",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "„¿Puedo pagar con tarjeta?“ ist der wichtigste Satz an jeder Kasse. „La carta“ ist dagegen der Brief oder die Speisekarte!",
+   "examples": [
+    {
+     "es": "¿Puedo pagar con tarjeta?",
+     "de": "Kann ich mit Karte zahlen?"
+    },
+    {
+     "es": "He perdido mi tarjeta.",
+     "de": "Ich habe meine Karte verloren."
+    },
+    {
+     "es": "Aquí no aceptan tarjeta.",
+     "de": "Hier nehmen sie keine Karte."
+    }
+   ],
+   "cloze": {
+    "es": "Pago siempre con ___ en el súper.",
+    "answer": "tarjeta",
+    "de": "Ich zahle im Supermarkt immer mit Karte."
+   },
+   "distractors": [
+    "carta",
+    "llave",
+    "maleta"
+   ],
+   "basic": true
+  },
+  {
+   "id": "en-efectivo",
+   "es": "en efectivo",
+   "de": "bar (in bar)",
+   "en": "in cash",
+   "type": "expression",
+   "topic": "compras",
+   "tip": "Gegenstück zu „con tarjeta“. Das Bargeld selbst heißt „el efectivo“, umgangssprachlich auch „en metálico“.",
+   "examples": [
+    {
+     "es": "¿Pagas en efectivo o con tarjeta?",
+     "de": "Zahlst du bar oder mit Karte?"
+    },
+    {
+     "es": "Solo aceptan pago en efectivo.",
+     "de": "Sie nehmen nur Barzahlung."
+    },
+    {
+     "es": "No llevo dinero en efectivo.",
+     "de": "Ich habe kein Bargeld dabei."
+    }
+   ],
+   "cloze": {
+    "es": "En este bar solo se puede pagar ___.",
+    "answer": "en efectivo",
+    "de": "In dieser Bar kann man nur bar zahlen."
+   },
+   "distractors": [
+    "con cuidado",
+    "de verdad",
+    "en serio"
+   ],
+   "basic": true
+  },
+  {
+   "id": "la-ropa",
+   "es": "la ropa",
+   "de": "die Kleidung",
+   "en": "the clothes",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "„La ropa“ ist Singular, obwohl es viele Kleidungsstücke sind – wie im Deutschen „die Kleidung“. Also: „la ropa está sucia“.",
+   "examples": [
+    {
+     "es": "Tengo que lavar la ropa.",
+     "de": "Ich muss die Wäsche waschen."
+    },
+    {
+     "es": "Me gusta esta tienda de ropa.",
+     "de": "Mir gefällt dieser Kleidungsladen."
+    },
+    {
+     "es": "Tu ropa está en la cama.",
+     "de": "Deine Kleidung liegt auf dem Bett."
+    }
+   ],
+   "cloze": {
+    "es": "Voy a comprar ___ nueva para la fiesta.",
+    "answer": "ropa",
+    "de": "Ich kaufe neue Kleidung für die Party."
+   },
+   "distractors": [
+    "comida",
+    "agua",
+    "música"
+   ],
+   "basic": true
+  },
+  {
+   "id": "los-zapatos",
+   "es": "los zapatos",
+   "de": "die Schuhe",
+   "en": "the shoes",
+   "type": "noun",
+   "topic": "compras",
+   "tip": "Denk an „zap-zap“ beim Gehen. Turnschuhe heißen in Spanien „las zapatillas“ – und Kletterschuhe kennst du schon: „los pies de gato“!",
+   "examples": [
+    {
+     "es": "Estos zapatos son muy cómodos.",
+     "de": "Diese Schuhe sind sehr bequem."
+    },
+    {
+     "es": "¿Dónde están mis zapatos?",
+     "de": "Wo sind meine Schuhe?"
+    },
+    {
+     "es": "Quiero comprar zapatos negros.",
+     "de": "Ich möchte schwarze Schuhe kaufen."
+    }
+   ],
+   "cloze": {
+    "es": "Quítate los ___ antes de entrar.",
+    "answer": "zapatos",
+    "de": "Zieh die Schuhe aus, bevor du reinkommst."
+   },
+   "distractors": [
+    "guantes",
+    "libros",
+    "platos"
+   ],
+   "basic": true
+  },
+  {
+   "id": "el-movil",
+   "es": "el móvil",
+   "de": "das Handy",
+   "en": "the mobile phone",
+   "type": "noun",
+   "topic": "hablar",
+   "tip": "In Spanien „el móvil“, in Lateinamerika „el celular“. Fast wie im Deutschen: „Mobiltelefon“.",
+   "examples": [
+    {
+     "es": "Te llamo al móvil.",
+     "de": "Ich ruf dich auf dem Handy an."
+    },
+    {
+     "es": "Mi móvil no tiene batería.",
+     "de": "Mein Handy hat keinen Akku mehr."
+    },
+    {
+     "es": "¿Me das tu número de móvil?",
+     "de": "Gibst du mir deine Handynummer?"
+    }
+   ],
+   "cloze": {
+    "es": "He dejado el ___ en casa y no puedo llamarte.",
+    "answer": "móvil",
+    "de": "Ich habe das Handy zu Hause gelassen und kann dich nicht anrufen."
+   },
+   "distractors": [
+    "libro",
+    "coche",
+    "queso"
+   ],
+   "basic": true
+  },
+  {
+   "id": "necesitar",
+   "es": "necesitar",
+   "de": "brauchen",
+   "en": "to need",
+   "type": "verb",
+   "topic": "compras",
+   "tip": "Regelmäßiges -ar-Verb, direkt gefolgt vom Infinitiv: „necesito dormir“ = ich muss schlafen / brauche Schlaf. Klingt wie „Notwendigkeit“ → „necesidad“.",
+   "examples": [
+    {
+     "es": "Necesito un café.",
+     "de": "Ich brauche einen Kaffee."
+    },
+    {
+     "es": "¿Necesitas ayuda?",
+     "de": "Brauchst du Hilfe?"
+    },
+    {
+     "es": "Necesitamos comprar pan.",
+     "de": "Wir müssen Brot kaufen."
+    }
+   ],
+   "cloze": {
+    "es": "No ___ nada, gracias.",
+    "answer": "necesito",
+    "de": "Ich brauche nichts, danke."
+   },
+   "distractors": [
+    "quiero dar",
+    "pienso",
+    "conozco"
+   ],
+   "basic": true
+  },
+  {
+   "id": "pensar",
+   "es": "pensar",
+   "de": "denken",
+   "en": "to think",
+   "type": "verb",
+   "topic": "hablar",
+   "tip": "Stammwechsel e → ie: pienso, piensas, piensa, pensamos, pensáis, piensan. „Pensar en“ = denken an: „pienso en ti“.",
+   "examples": [
+    {
+     "es": "Pienso en ti.",
+     "de": "Ich denke an dich."
+    },
+    {
+     "es": "¿Qué piensas de esta idea?",
+     "de": "Was hältst du von dieser Idee?"
+    },
+    {
+     "es": "Pienso que tienes razón.",
+     "de": "Ich denke, du hast recht."
+    }
+   ],
+   "cloze": {
+    "es": "¿En qué ___, cariño?",
+    "answer": "piensas",
+    "de": "Woran denkst du, Schatz?"
+   },
+   "distractors": [
+    "necesitas",
+    "llevas",
+    "conoces"
+   ],
+   "basic": true
+  },
+  {
+   "id": "conocer",
+   "es": "conocer",
+   "de": "kennen, kennenlernen",
+   "en": "to know (a person/place), to meet",
+   "type": "verb",
+   "topic": "gente",
+   "tip": "Für Personen und Orte (kennen), nicht für Fakten – dafür „saber“. Ich-Form unregelmäßig: „conozco“. „Encantado de conocerte“ = freut mich, dich kennenzulernen.",
+   "examples": [
+    {
+     "es": "¿Conoces a mi hermana?",
+     "de": "Kennst du meine Schwester?"
+    },
+    {
+     "es": "No conozco Madrid.",
+     "de": "Ich kenne Madrid nicht."
+    },
+    {
+     "es": "Encantado de conocerte.",
+     "de": "Freut mich, dich kennenzulernen."
+    }
+   ],
+   "cloze": {
+    "es": "Quiero ___ a tus amigos.",
+    "answer": "conocer",
+    "de": "Ich möchte deine Freunde kennenlernen."
+   },
+   "distractors": [
+    "pensar",
+    "necesitar",
+    "tomar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "poner",
+   "es": "poner",
+   "de": "setzen, stellen, legen",
+   "en": "to put",
+   "type": "verb",
+   "topic": "casa",
+   "tip": "Ich-Form unregelmäßig: „pongo“. Du kennst es schon aus „¿Me pones un café?“ – im Bar heißt es also „bring mir“. „Poner la mesa“ = den Tisch decken.",
+   "examples": [
+    {
+     "es": "¿Dónde pongo las llaves?",
+     "de": "Wo lege ich die Schlüssel hin?"
+    },
+    {
+     "es": "Pon la música más alta.",
+     "de": "Mach die Musik lauter."
+    },
+    {
+     "es": "Vamos a poner la mesa.",
+     "de": "Lass uns den Tisch decken."
+    }
+   ],
+   "cloze": {
+    "es": "Siempre ___ el móvil encima de la mesa.",
+    "answer": "pongo",
+    "de": "Ich lege das Handy immer auf den Tisch."
+   },
+   "distractors": [
+    "tomo",
+    "pienso",
+    "conozco"
+   ],
+   "basic": true
+  },
+  {
+   "id": "tomar",
+   "es": "tomar",
+   "de": "nehmen; trinken/essen",
+   "en": "to take; to have (food/drink)",
+   "type": "verb",
+   "topic": "comida",
+   "tip": "In Spanien super häufig für Essen und Trinken: „¿Tomamos algo?“ = Trinken wir was? Auch: „tomar el sol“ = sich sonnen.",
+   "examples": [
+    {
+     "es": "¿Tomamos algo después del trabajo?",
+     "de": "Trinken wir nach der Arbeit was?"
+    },
+    {
+     "es": "Voy a tomar un café con leche.",
+     "de": "Ich nehme einen Milchkaffee."
+    },
+    {
+     "es": "Me gusta tomar el sol en la playa.",
+     "de": "Ich sonne mich gern am Strand."
+    }
+   ],
+   "cloze": {
+    "es": "¿Qué vas a ___, una cerveza o un vino?",
+    "answer": "tomar",
+    "de": "Was nimmst du, ein Bier oder einen Wein?"
+   },
+   "distractors": [
+    "llevar",
+    "poner",
+    "pensar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "llevar",
+   "es": "llevar",
+   "de": "tragen; mitnehmen; bringen",
+   "en": "to wear; to carry; to take",
+   "type": "verb",
+   "topic": "compras",
+   "tip": "Vielseitig: Kleidung tragen („llevo zapatos rojos“), etwas dabeihaben („no llevo dinero“) und Zeit („llevo dos años aquí“ = ich bin seit zwei Jahren hier).",
+   "examples": [
+    {
+     "es": "Hoy llevo una camiseta azul.",
+     "de": "Heute trage ich ein blaues T-Shirt."
+    },
+    {
+     "es": "¿Llevas dinero en efectivo?",
+     "de": "Hast du Bargeld dabei?"
+    },
+    {
+     "es": "Te llevo a casa en coche.",
+     "de": "Ich bringe dich mit dem Auto nach Hause."
+    }
+   ],
+   "cloze": {
+    "es": "Mi novia ___ unos zapatos muy bonitos.",
+    "answer": "lleva",
+    "de": "Meine Freundin trägt sehr schöne Schuhe."
+   },
+   "distractors": [
+    "toma",
+    "piensa",
+    "necesita dar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "dejar",
+   "es": "dejar",
+   "de": "lassen; verlassen; leihen",
+   "en": "to leave; to let; to lend",
+   "type": "verb",
+   "topic": "casa",
+   "tip": "Sehr vielseitig: 'deja la llave' = leg den Schlüssel hin, 'déjame' = lass mich, 'dejar de + Infinitiv' = mit etwas aufhören.",
+   "examples": [
+    {
+     "es": "Dejo las llaves en la mesa.",
+     "de": "Ich lege die Schlüssel auf den Tisch."
+    },
+    {
+     "es": "¿Me dejas tu libro?",
+     "de": "Leihst du mir dein Buch?"
+    },
+    {
+     "es": "Quiero dejar de fumar.",
+     "de": "Ich will mit dem Rauchen aufhören."
+    }
+   ],
+   "cloze": {
+    "es": "¿Dónde ___ el coche anoche?",
+    "answer": "dejaste",
+    "de": "Wo hast du gestern Abend das Auto gelassen?"
+   },
+   "distractors": [
+    "llamaste",
+    "empezaste",
+    "viviste"
+   ],
+   "basic": true
+  },
+  {
+   "id": "pasar",
+   "es": "pasar",
+   "de": "vorbeigehen; verbringen; passieren",
+   "en": "to pass; to spend (time); to happen",
+   "type": "verb",
+   "topic": "tiempo",
+   "tip": "'¿Qué pasa?' = Was ist los? Und 'pasar el fin de semana' = das Wochenende verbringen. 'No pasa nada' kennst du schon!",
+   "examples": [
+    {
+     "es": "¿Qué te pasa?",
+     "de": "Was ist mit dir los?"
+    },
+    {
+     "es": "Pasamos el verano en la playa.",
+     "de": "Wir verbringen den Sommer am Strand."
+    },
+    {
+     "es": "Pasa, pasa, la puerta está abierta.",
+     "de": "Komm rein, die Tür ist offen."
+    }
+   ],
+   "cloze": {
+    "es": "El autobús ___ por aquí cada diez minutos.",
+    "answer": "pasa",
+    "de": "Der Bus fährt hier alle zehn Minuten vorbei."
+   },
+   "distractors": [
+    "busca",
+    "ayuda",
+    "deja"
+   ],
+   "basic": true
+  },
+  {
+   "id": "encontrar",
+   "es": "encontrar",
+   "de": "finden; treffen",
+   "en": "to find; to meet",
+   "type": "verb",
+   "topic": "lugares",
+   "tip": "Stammwechsel o→ue: encuentro, encuentras... aber encontramos, encontráis. 'Encontrarse con alguien' = jemanden (zufällig) treffen.",
+   "examples": [
+    {
+     "es": "No encuentro mi móvil.",
+     "de": "Ich finde mein Handy nicht."
+    },
+    {
+     "es": "Encontramos un bar muy bueno.",
+     "de": "Wir haben eine sehr gute Bar gefunden."
+    },
+    {
+     "es": "Me encontré con Ana en la calle.",
+     "de": "Ich habe Ana auf der Straße getroffen."
+    }
+   ],
+   "cloze": {
+    "es": "¿___ las llaves? No las veo.",
+    "answer": "Encuentras",
+    "de": "Findest du die Schlüssel? Ich sehe sie nicht."
+   },
+   "distractors": [
+    "Empiezas",
+    "Vives",
+    "Llamas"
+   ],
+   "basic": true
+  },
+  {
+   "id": "buscar",
+   "es": "buscar",
+   "de": "suchen; abholen",
+   "en": "to look for; to pick up",
+   "type": "verb",
+   "topic": "lugares",
+   "tip": "Ohne 'para': 'busco un piso' = ich suche eine Wohnung. 'Ir a buscar a alguien' = jemanden abholen. Achtung: busqué (mit qu).",
+   "examples": [
+    {
+     "es": "Busco un piso en el centro.",
+     "de": "Ich suche eine Wohnung im Zentrum."
+    },
+    {
+     "es": "¿Qué buscas?",
+     "de": "Was suchst du?"
+    },
+    {
+     "es": "Voy a buscarte a la estación.",
+     "de": "Ich hole dich am Bahnhof ab."
+    }
+   ],
+   "cloze": {
+    "es": "Estoy ___ mi cartera, ¿la has visto?",
+    "answer": "buscando",
+    "de": "Ich suche meinen Geldbeutel, hast du ihn gesehen?"
+   },
+   "distractors": [
+    "viviendo",
+    "empezando",
+    "dejando"
+   ],
+   "basic": true
+  },
+  {
+   "id": "llamar",
+   "es": "llamar",
+   "de": "anrufen; rufen",
+   "en": "to call",
+   "type": "verb",
+   "topic": "hablar",
+   "tip": "'Me llamo...' = ich heiße (wörtlich: ich rufe mich). 'Te llamo luego' = ich ruf dich später an.",
+   "examples": [
+    {
+     "es": "Te llamo esta noche.",
+     "de": "Ich rufe dich heute Abend an."
+    },
+    {
+     "es": "¿Cómo te llamas?",
+     "de": "Wie heißt du?"
+    },
+    {
+     "es": "Llama a tu madre, por favor.",
+     "de": "Ruf bitte deine Mutter an."
+    }
+   ],
+   "cloze": {
+    "es": "Mi hermana me ___ todos los domingos.",
+    "answer": "llama",
+    "de": "Meine Schwester ruft mich jeden Sonntag an."
+   },
+   "distractors": [
+    "busca",
+    "pasa",
+    "deja"
+   ],
+   "basic": true
+  },
+  {
+   "id": "empezar",
+   "es": "empezar",
+   "de": "anfangen, beginnen",
+   "en": "to start, to begin",
+   "type": "verb",
+   "topic": "tiempo",
+   "tip": "Stammwechsel e→ie: empiezo, empiezas... 'Empezar a + Infinitiv' = anfangen, etwas zu tun.",
+   "examples": [
+    {
+     "es": "La película empieza a las nueve.",
+     "de": "Der Film fängt um neun an."
+    },
+    {
+     "es": "Empiezo a trabajar el lunes.",
+     "de": "Ich fange am Montag an zu arbeiten."
+    },
+    {
+     "es": "¿Empezamos?",
+     "de": "Fangen wir an?"
+    }
+   ],
+   "cloze": {
+    "es": "La clase ___ a las diez de la mañana.",
+    "answer": "empieza",
+    "de": "Der Unterricht beginnt um zehn Uhr morgens."
+   },
+   "distractors": [
+    "encuentra",
+    "ayuda",
+    "vive"
+   ],
+   "basic": true
+  },
+  {
+   "id": "ayudar",
+   "es": "ayudar",
+   "de": "helfen",
+   "en": "to help",
+   "type": "verb",
+   "topic": "gente",
+   "tip": "Anders als im Deutschen mit direktem Objekt: 'te ayudo' = ich helfe dir. '¡Ayuda!' = Hilfe!",
+   "examples": [
+    {
+     "es": "¿Te ayudo con la maleta?",
+     "de": "Soll ich dir mit dem Koffer helfen?"
+    },
+    {
+     "es": "Mi amigo me ayuda con el español.",
+     "de": "Mein Freund hilft mir mit dem Spanisch."
+    },
+    {
+     "es": "¿Me puedes ayudar?",
+     "de": "Kannst du mir helfen?"
+    }
+   ],
+   "cloze": {
+    "es": "Gracias por ___me con la mudanza.",
+    "answer": "ayudar",
+    "de": "Danke, dass du mir beim Umzug hilfst."
+   },
+   "distractors": [
+    "buscar",
+    "pasar",
+    "llamar"
+   ],
+   "basic": true
+  },
+  {
+   "id": "vivir",
+   "es": "vivir",
+   "de": "leben; wohnen",
+   "en": "to live",
+   "type": "verb",
+   "topic": "casa",
+   "tip": "Bedeutet sowohl 'wohnen' als auch 'leben': '¿Dónde vives?' = Wo wohnst du? Regelmäßiges -ir-Verb: vivo, vives, vivís.",
+   "examples": [
+    {
+     "es": "Vivo en Madrid.",
+     "de": "Ich wohne in Madrid."
+    },
+    {
+     "es": "¿Vivís juntos?",
+     "de": "Wohnt ihr zusammen?"
+    },
+    {
+     "es": "Mis abuelos viven en un pueblo.",
+     "de": "Meine Großeltern leben in einem Dorf."
+    }
+   ],
+   "cloze": {
+    "es": "¿Dónde ___ tú ahora?",
+    "answer": "vives",
+    "de": "Wo wohnst du jetzt?"
+   },
+   "distractors": [
+    "buscas",
+    "dejas",
+    "llamas"
+   ],
+   "basic": true
+  },
+  {
+   "id": "grande",
+   "es": "grande",
+   "de": "groß",
+   "en": "big, large",
+   "type": "adjective",
+   "topic": "casa",
+   "tip": "Gleich für männlich und weiblich. Vor einem Substantiv wird es zu 'gran' und heißt oft 'großartig': 'un gran amigo'.",
+   "examples": [
+    {
+     "es": "Mi piso es muy grande.",
+     "de": "Meine Wohnung ist sehr groß."
+    },
+    {
+     "es": "Madrid es una ciudad grande.",
+     "de": "Madrid ist eine große Stadt."
+    },
+    {
+     "es": "Quiero una cerveza grande.",
+     "de": "Ich möchte ein großes Bier."
+    }
+   ],
+   "cloze": {
+    "es": "La cocina es ___, caben diez personas.",
+    "answer": "grande",
+    "de": "Die Küche ist groß, es passen zehn Personen hinein."
+   },
+   "distractors": [
+    "pequeña",
+    "vieja",
+    "nueva"
+   ],
+   "basic": true
+  },
+  {
+   "id": "pequeno-pequena",
+   "es": "pequeño / pequeña",
+   "de": "klein",
+   "en": "small, little",
+   "type": "adjective",
+   "topic": "casa",
+   "tip": "In Spanien sagt man oft auch 'chico' oder einfach die Verkleinerung mit -ito: 'una casita' = ein kleines Haus.",
+   "examples": [
+    {
+     "es": "Tengo una habitación pequeña.",
+     "de": "Ich habe ein kleines Zimmer."
+    },
+    {
+     "es": "Mi hermano pequeño tiene diez años.",
+     "de": "Mein kleiner Bruder ist zehn Jahre alt."
+    },
+    {
+     "es": "Es un pueblo muy pequeño.",
+     "de": "Es ist ein sehr kleines Dorf."
+    }
+   ],
+   "cloze": {
+    "es": "El baño es muy ___, no cabe la lavadora.",
+    "answer": "pequeño",
+    "de": "Das Bad ist sehr klein, die Waschmaschine passt nicht rein."
+   },
+   "distractors": [
+    "grande",
+    "nuevo",
+    "viejo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "nuevo-nueva",
+   "es": "nuevo / nueva",
+   "de": "neu",
+   "en": "new",
+   "type": "adjective",
+   "topic": "compras",
+   "tip": "Nicht verwechseln mit 'nueve' (neun)! 'De nuevo' = noch einmal.",
+   "examples": [
+    {
+     "es": "Tengo un móvil nuevo.",
+     "de": "Ich habe ein neues Handy."
+    },
+    {
+     "es": "¿Es nueva tu chaqueta?",
+     "de": "Ist deine Jacke neu?"
+    },
+    {
+     "es": "Vivimos en un piso nuevo.",
+     "de": "Wir wohnen in einer neuen Wohnung."
+    }
+   ],
+   "cloze": {
+    "es": "Me he comprado unos zapatos ___.",
+    "answer": "nuevos",
+    "de": "Ich habe mir neue Schuhe gekauft."
+   },
+   "distractors": [
+    "grandes",
+    "pequeños",
+    "viejos"
+   ],
+   "basic": true
+  },
+  {
+   "id": "viejo-vieja",
+   "es": "viejo / vieja",
+   "de": "alt",
+   "en": "old",
+   "type": "adjective",
+   "topic": "gente",
+   "tip": "Bei Personen etwas unhöflich – besser 'mayor' sagen. Für Dinge ganz normal: 'un coche viejo'.",
+   "examples": [
+    {
+     "es": "Mi coche es muy viejo.",
+     "de": "Mein Auto ist sehr alt."
+    },
+    {
+     "es": "Es un viejo amigo.",
+     "de": "Er ist ein alter Freund."
+    },
+    {
+     "es": "Esta ropa ya está vieja.",
+     "de": "Diese Kleidung ist schon alt."
+    }
+   ],
+   "cloze": {
+    "es": "Este ordenador es muy ___, necesito uno nuevo.",
+    "answer": "viejo",
+    "de": "Dieser Computer ist sehr alt, ich brauche einen neuen."
+   },
+   "distractors": [
+    "pequeño",
+    "grande",
+    "nuevo"
+   ],
+   "basic": true
+  },
+  {
+   "id": "facil",
+   "es": "fácil",
+   "de": "leicht, einfach",
+   "en": "easy",
+   "type": "adjective",
+   "topic": "hablar",
+   "tip": "Akzent auf dem A: FÁ-cil. Plural: fáciles. „Es fácil“ heißt „das ist einfach“.",
+   "examples": [
+    {
+     "es": "El español no es tan difícil, es fácil.",
+     "de": "Spanisch ist nicht so schwer, es ist leicht."
+    },
+    {
+     "es": "Esta pregunta es muy fácil.",
+     "de": "Diese Frage ist sehr einfach."
+    },
+    {
+     "es": "No es fácil encontrar piso en Madrid.",
+     "de": "Es ist nicht leicht, in Madrid eine Wohnung zu finden."
+    }
+   ],
+   "cloze": {
+    "es": "La receta es muy ___, solo necesitas tres cosas.",
+    "answer": "fácil",
+    "de": "Das Rezept ist sehr einfach, du brauchst nur drei Dinge."
+   },
+   "distractors": [
+    "difícil",
+    "rápido",
+    "caro"
+   ],
+   "basic": true
+  },
+  {
+   "id": "dificil",
+   "es": "difícil",
+   "de": "schwer, schwierig",
+   "en": "difficult",
+   "type": "adjective",
+   "topic": "hablar",
+   "tip": "Das Gegenteil von fácil, nur mit „di-“ davor. Betonung: di-FÍ-cil.",
+   "examples": [
+    {
+     "es": "El examen fue muy difícil.",
+     "de": "Die Prüfung war sehr schwer."
+    },
+    {
+     "es": "Es difícil hablar rápido en español.",
+     "de": "Es ist schwer, schnell Spanisch zu sprechen."
+    },
+    {
+     "es": "Esta vía de escalada es difícil.",
+     "de": "Diese Kletterroute ist schwierig."
+    }
+   ],
+   "cloze": {
+    "es": "Para mí, la gramática es un poco ___.",
+    "answer": "difícil",
+    "de": "Für mich ist die Grammatik ein bisschen schwierig."
+   },
+   "distractors": [
+    "fácil",
+    "bonita",
+    "rápida"
+   ],
+   "basic": true
+  },
+  {
+   "id": "bonito-bonita",
+   "es": "bonito / bonita",
+   "de": "schön, hübsch",
+   "en": "pretty, nice",
+   "type": "adjective",
+   "topic": "lugares",
+   "tip": "Passt sich an: el pueblo bonito, la playa bonita. Achtung: „el bonito“ ist auch ein Thunfisch!",
+   "examples": [
+    {
+     "es": "¡Qué pueblo tan bonito!",
+     "de": "Was für ein schönes Dorf!"
+    },
+    {
+     "es": "Tu casa es muy bonita.",
+     "de": "Dein Haus ist sehr schön."
+    },
+    {
+     "es": "Hoy hace un día bonito.",
+     "de": "Heute ist ein schöner Tag."
+    }
+   ],
+   "cloze": {
+    "es": "La playa de Cádiz es muy ___.",
+    "answer": "bonita",
+    "de": "Der Strand von Cádiz ist sehr schön."
+   },
+   "distractors": [
+    "bonito",
+    "rápida",
+    "difícil"
+   ],
+   "basic": true
+  },
+  {
+   "id": "rapido",
+   "es": "rápido",
+   "de": "schnell",
+   "en": "fast, quick",
+   "type": "adjective",
+   "topic": "viajar",
+   "tip": "Klingt wie „rapide“. Als Adverb auch einfach „rápido“: ¡Ven rápido! – Komm schnell!",
+   "examples": [
+    {
+     "es": "El tren AVE es muy rápido.",
+     "de": "Der AVE-Zug ist sehr schnell."
+    },
+    {
+     "es": "Hablas demasiado rápido.",
+     "de": "Du sprichst zu schnell."
+    },
+    {
+     "es": "Vamos a comer algo rápido.",
+     "de": "Lass uns schnell etwas essen."
+    }
+   ],
+   "cloze": {
+    "es": "El avión es más ___ que el autobús.",
+    "answer": "rápido",
+    "de": "Das Flugzeug ist schneller als der Bus."
+   },
+   "distractors": [
+    "despacio",
+    "bonito",
+    "fácil"
+   ],
+   "basic": true
+  },
+  {
+   "id": "despacio",
+   "es": "despacio",
+   "de": "langsam",
+   "en": "slowly",
+   "type": "adverb",
+   "topic": "viajar",
+   "tip": "Super nützlich: „Más despacio, por favor“ – langsamer, bitte! Nicht verwechseln mit „el despacho“ (Büro).",
+   "examples": [
+    {
+     "es": "Habla más despacio, por favor.",
+     "de": "Sprich bitte langsamer."
+    },
+    {
+     "es": "Conduce despacio, que llueve.",
+     "de": "Fahr langsam, es regnet."
+    },
+    {
+     "es": "Vamos despacio, no hay prisa.",
+     "de": "Wir gehen langsam, es eilt nicht."
+    }
+   ],
+   "cloze": {
+    "es": "No entiendo, ¿puedes repetir más ___?",
+    "answer": "despacio",
+    "de": "Ich verstehe nicht, kannst du es langsamer wiederholen?"
+   },
+   "distractors": [
+    "rápido",
+    "pronto",
+    "temprano"
+   ],
+   "basic": true
+  },
+  {
+   "id": "importante",
+   "es": "importante",
+   "de": "wichtig",
+   "en": "important",
+   "type": "adjective",
+   "topic": "hablar",
+   "tip": "Fast wie im Deutschen „importand“. Gleich für männlich und weiblich. „Lo importante es…“ – das Wichtige ist…",
+   "examples": [
+    {
+     "es": "La familia es muy importante para mí.",
+     "de": "Die Familie ist mir sehr wichtig."
+    },
+    {
+     "es": "Tengo una reunión importante mañana.",
+     "de": "Ich habe morgen ein wichtiges Meeting."
+    },
+    {
+     "es": "Lo importante es estar juntos.",
+     "de": "Das Wichtige ist, zusammen zu sein."
+    }
+   ],
+   "cloze": {
+    "es": "Es ___ beber mucha agua cuando hace calor.",
+    "answer": "importante",
+    "de": "Es ist wichtig, viel Wasser zu trinken, wenn es heiß ist."
+   },
+   "distractors": [
+    "difícil",
+    "seguro",
+    "fácil"
+   ],
+   "basic": true
+  },
+  {
+   "id": "seguro-segura",
+   "es": "seguro / segura",
+   "de": "sicher",
+   "en": "sure, safe",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Zwei Bedeutungen wie im Deutschen: „Estoy seguro“ = ich bin mir sicher; „un sitio seguro“ = ein sicherer Ort. „¡Seguro!“ = Klar doch!",
+   "examples": [
+    {
+     "es": "¿Estás segura? Sí, segurísima.",
+     "de": "Bist du sicher? Ja, total sicher."
+    },
+    {
+     "es": "Este barrio es muy seguro.",
+     "de": "Dieses Viertel ist sehr sicher."
+    },
+    {
+     "es": "No estoy seguro de la respuesta.",
+     "de": "Ich bin mir bei der Antwort nicht sicher."
+    }
+   ],
+   "cloze": {
+    "es": "¿Estás ___ de que el tren sale a las ocho?",
+    "answer": "seguro",
+    "de": "Bist du sicher, dass der Zug um acht abfährt?"
+   },
+   "distractors": [
+    "importante",
+    "rápido",
+    "último"
+   ],
+   "basic": true
+  },
+  {
+   "id": "primero-primera",
+   "es": "primero / primera",
+   "de": "erste(r), zuerst",
+   "en": "first",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Vor männlichen Nomen fällt das -o weg: el primer día. Allein als Adverb: „Primero, comemos“ – zuerst essen wir.",
+   "examples": [
+    {
+     "es": "Es mi primera vez en Sevilla.",
+     "de": "Es ist mein erstes Mal in Sevilla."
+    },
+    {
+     "es": "Primero desayuno y luego trabajo.",
+     "de": "Zuerst frühstücke ich und dann arbeite ich."
+    },
+    {
+     "es": "El primer día fue difícil.",
+     "de": "Der erste Tag war schwer."
+    }
+   ],
+   "cloze": {
+    "es": "Hoy es mi ___ clase de español.",
+    "answer": "primera",
+    "de": "Heute ist meine erste Spanischstunde."
+   },
+   "distractors": [
+    "última",
+    "primero",
+    "mejor"
+   ],
+   "basic": true
+  },
+  {
+   "id": "ultimo-ultima",
+   "es": "último / última",
+   "de": "letzte(r)",
+   "en": "last",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Betonung auf dem Ú: ÚL-ti-mo. „Por último“ = zum Schluss. „La última vez“ = das letzte Mal.",
+   "examples": [
+    {
+     "es": "Es el último tren de la noche.",
+     "de": "Das ist der letzte Zug der Nacht."
+    },
+    {
+     "es": "La última vez fuimos a la playa.",
+     "de": "Das letzte Mal sind wir an den Strand gegangen."
+    },
+    {
+     "es": "¿Quién es el último en la cola?",
+     "de": "Wer ist der Letzte in der Schlange?"
+    }
+   ],
+   "cloze": {
+    "es": "Diciembre es el ___ mes del año.",
+    "answer": "último",
+    "de": "Dezember ist der letzte Monat des Jahres."
+   },
+   "distractors": [
+    "primero",
+    "mejor",
+    "peor"
+   ],
+   "basic": true
+  },
+  {
+   "id": "malo-mala",
+   "es": "malo / mala",
+   "de": "schlecht, böse",
+   "en": "bad",
+   "type": "adjective",
+   "topic": "sentimientos",
+   "tip": "Vor männlichen Nomen: mal (un mal día). „Estar malo“ heißt in Spanien auch „krank sein“!",
+   "examples": [
+    {
+     "es": "Hoy he tenido un mal día.",
+     "de": "Heute hatte ich einen schlechten Tag."
+    },
+    {
+     "es": "Esta película es muy mala.",
+     "de": "Dieser Film ist sehr schlecht."
+    },
+    {
+     "es": "Estoy malo, me duele la cabeza.",
+     "de": "Ich bin krank, mir tut der Kopf weh."
+    }
+   ],
+   "cloze": {
+    "es": "El café de este bar es muy ___.",
+    "answer": "malo",
+    "de": "Der Kaffee in dieser Bar ist sehr schlecht."
+   },
+   "distractors": [
+    "bueno",
+    "peor",
+    "bonito"
+   ],
+   "basic": true
+  },
+  {
+   "id": "mejor",
+   "es": "mejor",
+   "de": "besser, am besten",
+   "en": "better, best",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Unregelmäßig: nie „más bueno“ sagen, sondern „mejor“. „El mejor“ = der Beste. „¡Que te mejores!“ = Gute Besserung!",
+   "examples": [
+    {
+     "es": "Hoy me siento mejor.",
+     "de": "Heute fühle ich mich besser."
+    },
+    {
+     "es": "Eres mi mejor amiga.",
+     "de": "Du bist meine beste Freundin."
+    },
+    {
+     "es": "Mejor vamos mañana.",
+     "de": "Lass uns lieber morgen gehen."
+    }
+   ],
+   "cloze": {
+    "es": "Este restaurante es ___ que el otro.",
+    "answer": "mejor",
+    "de": "Dieses Restaurant ist besser als das andere."
+   },
+   "distractors": [
+    "peor",
+    "último",
+    "importante"
+   ],
+   "basic": true
+  },
+  {
+   "id": "peor",
+   "es": "peor",
+   "de": "schlechter, am schlechtesten",
+   "en": "worse, worst",
+   "type": "adjective",
+   "topic": "pequenas",
+   "tip": "Gegenteil von mejor. Nicht „más malo“, sondern „peor“. „Lo peor“ = das Schlimmste.",
+   "examples": [
+    {
+     "es": "El tiempo hoy es peor que ayer.",
+     "de": "Das Wetter ist heute schlechter als gestern."
+    },
+    {
+     "es": "Es la peor película del año.",
+     "de": "Das ist der schlechteste Film des Jahres."
+    },
+    {
+     "es": "Lo peor es esperar.",
+     "de": "Das Schlimmste ist das Warten."
+    }
+   ],
+   "cloze": {
+    "es": "Mi español es ___ que tu alemán.",
+    "answer": "peor",
+    "de": "Mein Spanisch ist schlechter als dein Deutsch."
+   },
+   "distractors": [
+    "mejor",
+    "malo",
+    "primero"
+   ],
+   "basic": true
   }
  ],
  "audio": {

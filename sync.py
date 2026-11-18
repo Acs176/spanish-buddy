@@ -4,6 +4,7 @@ local DB, have Claude turn them into study cards, append to public/words.json,
 then voice every Spanish text the app speaks with ElevenLabs into public/audio/.
 
 Usage: python3 sync.py [--push]
+       python3 sync.py --basics basics.txt   (one-off: adds common words she may already know, see basics())
 """
 import hashlib, json, random, re, sqlite3, subprocess, sys, time, unicodedata, urllib.request
 from datetime import datetime
@@ -20,6 +21,7 @@ SUBS = ROOT / "push-subscriptions.txt"  # gitignored: one subscription per line,
 VAPID_PUBLIC = "BJvxbb3jG83tIPDC6MRVbuTyoieXgScH6VezXfCxOD_3hDDc6cxM9hQ4CQdwwv-bNX9jHuqmENYP5l0_doDR9-Q"  # same as KEY in App.jsx
 VOICE = "MV203a6fgbW4G4K46Fbw"  # Adrián's cloned voice
 MODEL = "eleven_v4"
+ELEVENLABS = False  # paused until further notice: new texts use the browser voice; flip to True to resume
 
 PROMPT = """You help a native GERMAN speaker learn SPANISH FROM SPAIN (Castilian: vosotros, Spain vocabulary).
 Below is a WhatsApp message in which their friend teaches them one or more "Spanish words of the day".
@@ -213,7 +215,33 @@ def voice(data):
     return made
 
 
+def basics(path):
+    """--basics FILE: very common words she likely knows already, one per line. They get "basic": true and no "added"
+    date, so they're never a word of the day; the app asks her once which ones she knows (Basics.jsx)."""
+    data = json.loads(WORDS.read_text())
+    words = data["words"]
+    have = {norm(w["es"]) for w in words}
+    todo = [l.strip() for l in Path(path).read_text().splitlines() if l.strip() and not l.startswith("#") and norm(l) not in have]
+    for i in range(0, len(todo), 12):  # ponytail: 12 per call keeps claude's answer well under its output limit
+        batch = todo[i:i + 12]
+        try:
+            items = ask_claude("La palabra española del día:\n" + "\n".join(batch), [w["es"] for w in words])
+        except Exception as e:  # run it again: the words already written are skipped
+            sys.exit(f"basics: stopped at {batch[0]} ({e})")
+        ids = {w["id"] for w in words}
+        for it in items:
+            wid = re.sub(r"[^a-z0-9]+", "-", norm(it["es"])).strip("-")
+            if wid in ids or norm(it["es"]) in have:
+                continue
+            words.append({"id": wid, **it, "basic": True})
+            ids.add(wid); have.add(norm(it["es"]))
+            print(f"  + {it['es']} — {it['de']}")
+        WORDS.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
+
+
 def main():
+    if "--basics" in sys.argv:
+        return basics(sys.argv[sys.argv.index("--basics") + 1])
     data = json.loads(WORDS.read_text()) if WORDS.exists() else {"lastMsg": 0, "words": []}
     words = data["words"]
     msgs = new_messages(data["lastMsg"])
@@ -243,7 +271,7 @@ def main():
         wrote = False
 
     try:
-        made = voice(data)
+        made = voice(data) if ELEVENLABS else 0
     except Exception as e:  # no key, node missing...: still push the new words
         print(f"audio: skipped ({e})", file=sys.stderr)
         made = 0

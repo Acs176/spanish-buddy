@@ -54,7 +54,8 @@ function queues(words, cards, now, day) {
   const open = all.filter(i => !buried(i));
   const byDue = (a, b) => cards[a.key].due - cards[b.key].due;
   const newToday = dir => all.filter(i => i.dir === dir && cards[i.key]?.seen === day).length;
-  const fresh = (dir, cap) => open.filter(i => i.dir === dir && !cards[i.key]).slice(0, Math.max(0, cap - newToday(dir)));
+  // basic words she didn't know yet (Basics.jsx) wait behind Adrián's words
+  const fresh = (dir, cap) => open.filter(i => i.dir === dir && !cards[i.key]).sort((a, b) => !!a.w.basic - !!b.w.basic).slice(0, Math.max(0, cap - newToday(dir)));
   return {
     learn: open.filter(i => cards[i.key]?.st === "learn" && cards[i.key].due <= now + LEARN_AHEAD * MIN).sort(byDue),
     rev: open.filter(i => cards[i.key]?.st === "review" && cards[i.key].due <= day).sort(byDue),
@@ -81,6 +82,13 @@ export function wait(card, now = Date.now(), day = today(now)) {
   if (d < 30) return `${d} ${d === 1 ? "Tag" : "Tage"}`;
   return d < 365 ? `${Math.round(d / 30)} Mon` : `${+(d / 365).toFixed(1)} J`;
 }
+
+// a word she says she already knows (Basics.jsx): graduated, back for a check in 40 to 80 days, spread so they don't all
+// come back on one day. seen: 0, so it doesn't use up today's new cards.
+export const knownCard = (day = today()) => {
+  const ivl = 40 + Math.floor(Math.random() * 41);
+  return { st: "review", step: 0, ivl, ease: 2.5, lapses: 0, due: day + ivl, seen: 0, last: day };
+};
 
 // azulejo flowers on the word list: 0 new, 1 learning, then by interval
 export const stage = c => !c ? 0 : c.st === "learn" ? 1 : c.ivl < 7 ? 2 : c.ivl < 21 ? 3 : c.ivl < 60 ? 4 : 5;

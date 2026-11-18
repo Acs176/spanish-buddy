@@ -864,3 +864,13 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 @keyframes pconf { to { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; } }
 .pos .combo { font: 700 34px ui-serif, "New York", Georgia, serif; color: #f4dcaa; text-shadow: 0 3px 0 #8f3a1c, 0 10px 20px #000; animation: pcombo 1.8s ease-out forwards; }
 @keyframes pcombo { 0% { transform: scale(.3) rotate(-8deg); opacity: 0; } 15% { transform: scale(1.15) rotate(3deg); opacity: 1; } 25% { transform: scale(1) rotate(-2deg); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
+
+/* Kennst du die schon? (Basics.jsx): the tiles she knows glaze azulejo blue */
+.basics { gap: 12px; }
+.basics .kicker { text-align: center; color: var(--red-dark); font: 800 12px/1 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.basics .lead, .basics-end .lead { text-align: center; color: var(--muted); font: italic 16px/1.4 ui-serif, "New York", Georgia, serif; }
+.basics .tile { aspect-ratio: auto; min-height: 76px; }
+.basics .tile.on { background: var(--blue); box-shadow: inset 0 0 0 4px var(--blue), inset 0 0 0 5.5px var(--yellow), 0 4px 0 rgba(27, 47, 94, .35); }
+.basics .tile.on b, .basics .tile.on small { color: var(--card); }
+.basics .row .btn { flex: 1; }
+.basics-end { gap: 16px; }

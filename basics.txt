@@ -1,0 +1,245 @@
+# Very common words (OpenSubtitles 2018 frequency list, adapted to Spain), imported once with:
+#   python3 sync.py --basics basics.txt
+# Angela says in the app which ones she already knows; the rest become normal new cards.
+# pequenas
+sí
+no
+qué
+y
+pero
+porque
+también
+tampoco
+hay
+algo
+alguien
+mucho / mucha
+poco / poca
+muy
+tan
+tanto
+otro / otra
+cada
+solo
+casi
+demasiado
+bastante
+igual
+con
+sin
+para
+por
+aunque
+si
+así
+# tiempo
+siempre
+nunca
+todavía
+luego
+pronto
+temprano
+a veces
+la vez
+la hora
+el minuto
+el momento
+la noche
+la mañana
+el fin de semana
+el lunes
+el martes
+el miércoles
+el jueves
+el viernes
+el sábado
+el domingo
+# preguntas
+por qué
+cuántos / cuántas
+¿qué tal?
+# hablar
+hola
+adiós
+gracias
+de nada
+por favor
+perdona
+vale
+bueno
+de acuerdo
+¿verdad?
+en serio
+mira
+oye
+venga
+a lo mejor
+quizás
+la verdad
+ojalá
+no pasa nada
+menos mal
+¡qué guay!
+creo que
+no entiendo
+hablar
+entender
+la palabra
+la idea
+# gente
+la gente
+el amigo / la amiga
+la familia
+la madre
+el padre
+el hermano / la hermana
+el hijo / la hija
+el chico / la chica
+la persona
+el hombre
+la mujer
+el novio / la novia
+el niño / la niña
+el tío / la tía
+el compañero / la compañera
+el jefe / la jefa
+# sentimientos
+feliz
+triste
+contento / contenta
+tranquilo / tranquila
+enfadado / enfadada
+nervioso / nerviosa
+preocupado / preocupada
+el miedo
+el amor
+te quiero
+me gusta
+me encanta
+tener hambre
+tener sed
+tener frío
+tener calor
+me duele
+enfermo / enferma
+la suerte
+cariño
+# casa
+la casa
+el piso
+la puerta
+la cama
+el baño
+la ducha
+la mesa
+la silla
+la ventana
+la llave
+dormir
+# comida
+comer
+beber
+el agua
+el café
+el vino
+la cerveza
+el pan
+la leche
+desayunar
+cenar
+la cuenta
+rico / rica
+# lugares
+la calle
+la ciudad
+el pueblo
+el país
+el mundo
+el bar
+el restaurante
+el centro
+todo recto
+la esquina
+# viajar
+el viaje
+el tren
+el avión
+el autobús
+el coche
+la estación
+el aeropuerto
+el billete
+la maleta
+el mar
+la playa
+la montaña
+el río
+el sol
+llegar
+salir
+volver
+perderse
+# ocio
+escalar
+la roca
+la vía
+la cuerda
+los pies de gato
+la cima
+quedar
+la fiesta
+la música
+la película
+bailar
+jugar
+leer
+el libro
+el trabajo
+trabajar
+# compras
+el dinero
+comprar
+pagar
+¿cuánto cuesta?
+caro / cara
+barato / barata
+el precio
+la tienda
+el súper
+la tarjeta
+en efectivo
+la ropa
+los zapatos
+el móvil
+# verbos
+necesitar
+pensar
+conocer
+poner
+tomar
+llevar
+dejar
+pasar
+encontrar
+buscar
+llamar
+empezar
+ayudar
+vivir
+# adjetivos
+grande
+pequeño / pequeña
+nuevo / nueva
+viejo / vieja
+fácil
+difícil
+bonito / bonita
+rápido
+despacio
+importante
+seguro / segura
+primero / primera
+último / última
+malo / mala
+mejor
+peor

@@ -9,7 +9,8 @@ import Mosaic, { MILESTONES, reached, unseen, Unlock, Trophies } from "./Mosaic.
 import { Welcome, Tour, NEWS, nextNews, markSeen } from "./Welcome.jsx";
 import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic, rasgueo } from "./music.js";
-import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss } from "./srs.js";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss, knownCard } from "./srs.js";
+import Basics from "./Basics.jsx";
 
 // ---------- helpers ----------
 const DAY = 864e5;
@@ -27,6 +28,8 @@ const store = (key, v) => {
 };
 const save = p => store("cards", p);
 // Üben mistakes per word id, see miss() in srs.js
+// basic words she said she doesn't know yet (Basics.jsx): they join the deck as normal new cards
+const loadUnknown = () => { try { return JSON.parse(localStorage.getItem("basicsNew")) || []; } catch { return []; } };
 const loadMisses = () => { try { return JSON.parse(localStorage.getItem("misses")) || {}; } catch { return {}; } };
 
 // backup = all of localStorage as one line of text, so new keys are included without touching this
@@ -131,6 +134,8 @@ export default function App() {
   const [stories, setStories] = useState([]);
   const [progress, setProgress] = useState(load);
   const [screen, setScreen] = useState("home");
+  const [unknownBasics, setUnknown] = useState(loadUnknown);
+  const [sweep, setSweep] = useState("auto"); // the Kennst-du-die-schon screen: auto (when there are basics to sort), on, off
   const [splashing, setSplashing] = useState(true);
   // an announcement she hasn't seen (Welcome.jsx): the envelope (and its letter, if any) first, then its tour over the home screen
   const [news, setNews] = useState(() => { const n = nextNews(); return n && { n, stage: "letter" }; });
@@ -162,19 +167,33 @@ export default function App() {
   const seen = () => { markSeen(news.n); const n = nextNews(); setNews(n && { n, stage: "letter" }); };
   if (news?.stage === "letter") return <Welcome key={news.n.id} news={news.n} done={() => news.n.steps ? setNews({ ...news, stage: "tour" }) : seen()} />;
 
+  // basic words wait outside the deck until she has said whether she knows them
+  const deck = words.filter(w => !w.basic || progress[w.id] || unknownBasics.includes(w.id));
+  const unsorted = words.filter(w => !deck.includes(w));
+  if (sweep === "on" || (sweep === "auto" && unsorted.length && !news && screen === "home")) return (
+    <Basics words={unsorted} done={() => setSweep("off")}
+      known={ids => { setSweep("on"); setProgress(prev => {
+        const next = { ...prev };
+        for (const id of ids) { next[id] = knownCard(); next[id + ":p"] = knownCard(); }
+        save(next);
+        return next;
+      }); }}
+      unknown={ids => { setSweep("on"); setUnknown(prev => { const next = [...prev, ...ids]; store("basicsNew", next); return next; }); }} />
+  );
+
   const home = () => setScreen("home");
   const replay = () => { setScreen("home"); setNews({ n: NEWS[0], stage: "letter" }); };
-  if (screen === "cards") return <TopicWall words={words} progress={progress} review={review} done={home} />;
-  if (screen === "practice") return <Practice words={words} progress={progress} done={home} />;
+  if (screen === "cards") return <TopicWall words={deck} progress={progress} review={review} done={home} />;
+  if (screen === "practice") return <Practice words={deck} progress={progress} done={home} />;
   if (screen === "post") return <Postcards done={home} />;
   if (screen === "verbs") return <Verbs done={home} />;
-  if (screen === "posesivos") return <Posesivos words={words} done={home} />;
+  if (screen === "posesivos") return <Posesivos words={deck} done={home} />;
   if (screen === "story") return <Stories stories={stories} done={home} />;
   if (screen === "settings") return <Settings done={home} replay={replay} />;
-  if (screen === "trophies") return <Trophies learned={countLearned(words, progress).learned} done={home} />;
-  if (screen === "list") return <WordList words={words} progress={progress} done={home} />;
+  if (screen === "trophies") return <Trophies learned={countLearned(deck, progress).learned} done={home} />;
+  if (screen === "list") return <WordList words={deck} progress={progress} done={home} />;
   return <>
-    <Home words={words} progress={progress} go={setScreen} stories={stories} calm={news?.stage === "tour"} />
+    <Home words={deck} progress={progress} go={setScreen} stories={stories} calm={news?.stage === "tour"} />
     {news?.stage === "tour" && <Tour key={news.n.id} steps={news.n.steps} done={seen} />}
   </>;
 }
@@ -348,7 +367,7 @@ function Home({ words, progress, go, stories, calm }) {
           </button>
         ))}
       </nav>
-      {unlock && !calm && <Unlock learned={learned} done={() => setUnlock(false)} />}
+      {unlock > 0 && !calm && <Unlock key={unlock} k={unlock} learned={learned} done={() => setUnlock(unseen(learned))} />}
       <div className={`sheet-bg ${games ? "open" : ""}`} onClick={() => setGames(false)} />
       <div className={`sheet ${games ? "open" : ""}`} role="dialog" aria-label="Spiele">
         <i className="grip" aria-hidden="true" />

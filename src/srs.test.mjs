@@ -1,6 +1,6 @@
 // run: node src/srs.test.mjs
 import assert from "node:assert/strict";
-import { schedule, pickNext, dueCount, wait, stage, fromLeitner, today, check, difficulty, pickHard, miss } from "./srs.js";
+import { schedule, pickNext, dueCount, wait, stage, fromLeitner, today, check, difficulty, pickHard, miss, knownCard } from "./srs.js";
 
 const now = Date.UTC(2026, 9, 17, 12), day = today(now), MIN = 6e4;
 const rev = (ivl, ease = 2.5) => ({ st: "review", ivl, ease, lapses: 0, due: day, seen: 0 });
@@ -101,3 +101,13 @@ let first = 0;
 for (let i = 0; i < 2000; i++) if (pickHard([easy, hard], w => w === hard ? 9 : 1, 1)[0] === hard) first++;
 assert.ok(first > 1700 && first < 1900, first);
 assert.equal(pickHard([easy, hard], () => 1, 5).length, 2);
+
+// basic words she didn't know wait behind Adrián's words; a known one is learned, back in 40 to 80 days, and uses no new-card slot
+{
+  const ws = [{ id: "sí", basic: true }, { id: "hoy" }];
+  assert.equal(pickNext(ws, {}, now, day).w.id, "hoy");
+  const k = knownCard(day);
+  assert.ok(k.st === "review" && k.ivl >= 40 && k.ivl <= 80 && k.due === day + k.ivl);
+  assert.equal(dueCount(ws, { "sí": k, "sí:p": k }, now, day), 1); // only hoy, still new
+}
+console.log("basics ok");

@@ -116,15 +116,15 @@ const localDay = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() +
 const dates = () => { try { return JSON.parse(localStorage.getItem("mosaicDates")) || {}; } catch { return {}; } };
 const longDay = day => new Date(day + "T12:00").toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
 
-// a milestone newer than the last one she was shown, if any
-export const unseen = learned => { try { return reached(learned) > +(localStorage.getItem("mosaic") ?? 0); } catch { return false; } };
+// the next milestone she hasn't been shown (how many layers it makes), or 0. Several at once are shown one after another.
+export const unseen = learned => { try { const s = +(localStorage.getItem("mosaic") ?? 0); return reached(learned) > s ? s + 1 : 0; } catch { return 0; } };
 
-// The unlock screen: the new tile waits face down; a tap turns it over (the tap also lets iOS play sound), the new layer
-// glazes in, then a flourish on the guitar, sparks, and what she has reached.
-export function Unlock({ learned, done }) {
+// The unlock screen for milestone k: the new tile waits face down; a tap turns it over (the tap also lets iOS play sound),
+// the new layer glazes in, then a flourish on the guitar, sparks, and what she has reached.
+export function Unlock({ k, learned, done }) {
   const [phase, setPhase] = useState("wait"); // wait | turn | paint | done
   const [reveal, setReveal] = useState(0);
-  const k = reached(learned), n = MILESTONES[k - 1];
+  const n = MILESTONES[k - 1], more = reached(learned) > k; // more: another one waits right after this
   const aura = AURAS.find(([a]) => a === n);
   const hush = useRef(() => {});
   useEffect(() => {
@@ -154,7 +154,7 @@ export function Unlock({ learned, done }) {
     <div className={`unlock ${phase}`} onClick={open}>
       <p className="ulabel">{phase === "done" ? "¡Nuevo azulejo!" : "Ein neues Muster ist fertig"}</p>
       <div className="ustage">
-        <Mosaic learned={learned} size={220} reveal={phase === "done" ? 1 : reveal} flipped={phase === "wait"} />
+        <Mosaic learned={n} size={220} reveal={phase === "done" ? 1 : reveal} flipped={phase === "wait"} />
         {phase === "done" && <div className="burst" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ "--a": i * 360 / 14 + "deg", animationDelay: (i % 3) * .06 + "s" }}>✦</i>)}</div>}
       </div>
       <div className="ufoot">{/* same height before and after, so the tile doesn't move when the text arrives */}
@@ -162,8 +162,8 @@ export function Unlock({ learned, done }) {
       {phase === "done" && <>
         <h2>{n} Wörter!</h2>
         <p className="utext">{aura ? `Dein Azulejo hat jetzt ${aura[2]}. ✨` : "Dein Azulejo hat ein neues Muster bekommen."}
-          {MILESTONES[k] && <><br />Das nächste gibt's bei {MILESTONES[k]} Wörtern.</>}</p>
-        <button className="btn primary" onClick={() => { done(); startMusic("casual"); }}>¡Olé!</button>
+          {more ? <><br />Und da wartet noch eins…</> : MILESTONES[k] && <><br />Das nächste gibt's bei {MILESTONES[k]} Wörtern.</>}</p>
+        <button className="btn primary" onClick={() => { done(); if (!more) startMusic("casual"); }}>{more ? "¡Otro más!" : "¡Olé!"}</button>
       </>}
       </div>
     </div>
