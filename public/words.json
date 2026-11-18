@@ -11764,6 +11764,107 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-18",
+   "title": "El asiento de la ventana",
+   "de": "Der Fensterplatz",
+   "sentences": [
+    {
+     "es": "Hoy Lena va en tren a las montañas de Suiza.",
+     "de": "Heute fährt Lena mit dem Zug in die Berge der Schweiz."
+    },
+    {
+     "es": "En la maleta lleva la cuerda y los pies de gato.",
+     "de": "Im Koffer hat sie das Seil und die Kletterschuhe."
+    },
+    {
+     "es": "Su asiento es el último del tren, pero tiene ventana.",
+     "de": "Ihr Sitzplatz ist der letzte im Zug, aber er hat ein Fenster."
+    },
+    {
+     "es": "Pero allí ya hay un niño pequeño con un libro.",
+     "de": "Aber dort ist schon ein kleiner Junge mit einem Buch."
+    },
+    {
+     "es": "—Perdona, creo que este es mi asiento —dice Lena.",
+     "de": "„Entschuldige, ich glaube, das ist mein Platz“, sagt Lena."
+    },
+    {
+     "es": "—Ya, pero me encanta mirar fuera —dice el niño, un poco triste.",
+     "de": "„Ja, schon, aber ich schaue so gern hinaus“, sagt der Junge, ein bisschen traurig."
+    },
+    {
+     "es": "Lena piensa un momento: —Vale, no pasa nada.",
+     "de": "Lena denkt kurz nach: „Okay, kein Problem.“"
+    },
+    {
+     "es": "El tren va despacio y fuera todo está blanco de nieve.",
+     "de": "Der Zug fährt langsam, und draußen ist alles weiß vom Schnee."
+    },
+    {
+     "es": "Juntos miran un río, un pueblo bonito y, muy arriba, una cima grande.",
+     "de": "Zusammen schauen sie auf einen Fluss, ein hübsches Dorf und, ganz weit oben, einen großen Gipfel."
+    },
+    {
+     "es": "—Mañana voy a subir allí —dice Lena.",
+     "de": "„Morgen steige ich da hinauf“, sagt Lena."
+    },
+    {
+     "es": "—¿En serio? ¡Qué guay! Entonces el asiento es para ti —dice el niño.",
+     "de": "„Echt? Wie cool! Dann ist der Platz für dich“, sagt der Junge."
+    },
+    {
+     "es": "Ahora Lena tiene la ventana, y el niño tiene una pregunta cada minuto.",
+     "de": "Jetzt hat Lena das Fenster, und der Junge hat jede Minute eine Frage."
+    }
+   ],
+   "new": [
+    {
+     "es": "asiento",
+     "de": "der Sitzplatz"
+    },
+    {
+     "es": "nieve",
+     "de": "der Schnee"
+    },
+    {
+     "es": "subir",
+     "de": "hinaufsteigen, hochgehen"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Qué lleva Lena en la maleta?",
+     "de": "Was hat Lena im Koffer?",
+     "answer": "La cuerda y los pies de gato",
+     "options": [
+      "Ropa y vino",
+      "La cuerda y los pies de gato",
+      "Un libro y pan"
+     ]
+    },
+    {
+     "es": "¿Quién está en el asiento de Lena?",
+     "de": "Wer sitzt auf Lenas Platz?",
+     "answer": "Un niño pequeño",
+     "options": [
+      "Un niño pequeño",
+      "Una mujer vieja",
+      "Nadie"
+     ]
+    },
+    {
+     "es": "¿Qué va a hacer Lena mañana?",
+     "de": "Was macht Lena morgen?",
+     "answer": "Subir a la cima",
+     "options": [
+      "Leer un libro",
+      "Subir a la cima",
+      "Volver a casa"
+     ]
+    }
+   ]
   }
  ]
 }
