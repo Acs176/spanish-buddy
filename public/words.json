@@ -11865,6 +11865,107 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-19",
+   "title": "La cama de arriba",
+   "de": "Das obere Bett",
+   "sentences": [
+    {
+     "es": "Llego a Lisboa muy tarde, después de doce horas en tren.",
+     "de": "Ich komme sehr spät in Lissabon an, nach zwölf Stunden im Zug."
+    },
+    {
+     "es": "En la habitación hay seis camas, y para mí solo hay una: la última, arriba, en una litera.",
+     "de": "Im Zimmer gibt es sechs Betten, und für mich gibt es nur eins: das letzte, oben, in einem Etagenbett."
+    },
+    {
+     "es": "No pasa nada, porque escalo cada fin de semana.",
+     "de": "Kein Problem, denn ich klettere jedes Wochenende."
+    },
+    {
+     "es": "En dos segundos estoy arriba.",
+     "de": "In zwei Sekunden bin ich oben."
+    },
+    {
+     "es": "Abajo duerme un chico muy tranquilo.",
+     "de": "Unten schläft ein sehr ruhiger Typ."
+    },
+    {
+     "es": "Pero a la una de la mañana, el chico ronca.",
+     "de": "Aber um ein Uhr morgens schnarcht der Typ."
+    },
+    {
+     "es": "Ronca mucho, demasiado: es el peor ruido del mundo.",
+     "de": "Er schnarcht viel, zu viel: Es ist das schlimmste Geräusch der Welt."
+    },
+    {
+     "es": "Por la mañana, el chico de abajo me habla: «Perdona, ¿qué tal la noche?»",
+     "de": "Am Morgen spricht mich der Typ von unten an: „Entschuldige, wie war die Nacht?“"
+    },
+    {
+     "es": "«La verdad, bastante mala.»",
+     "de": "„Ehrlich gesagt, ziemlich schlecht.“"
+    },
+    {
+     "es": "«Para mí también, porque la chica de arriba habla en alemán toda la noche.»",
+     "de": "„Für mich auch, weil das Mädchen von oben die ganze Nacht auf Deutsch redet.“"
+    },
+    {
+     "es": "¿En serio? ¿Yo hablo alemán cuando duermo?",
+     "de": "Im Ernst? Ich rede Deutsch, wenn ich schlafe?"
+    },
+    {
+     "es": "Bueno, entonces estamos igual: ¡uno ronca y otra habla!",
+     "de": "Na gut, dann sind wir quitt: Einer schnarcht und eine redet!"
+    }
+   ],
+   "new": [
+    {
+     "es": "litera",
+     "de": "das Etagenbett / Stockbett"
+    },
+    {
+     "es": "ronca",
+     "de": "schnarcht (roncar = schnarchen)"
+    },
+    {
+     "es": "ruido",
+     "de": "das Geräusch / der Lärm"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Dónde duerme la chica?",
+     "de": "Wo schläft das Mädchen?",
+     "answer": "Arriba, en una litera",
+     "options": [
+      "En el tren",
+      "Arriba, en una litera",
+      "Abajo, en una litera"
+     ]
+    },
+    {
+     "es": "¿Qué hace el chico a la una de la mañana?",
+     "de": "Was macht der Typ um ein Uhr morgens?",
+     "answer": "Ronca",
+     "options": [
+      "Escala",
+      "Cocina",
+      "Ronca"
+     ]
+    },
+    {
+     "es": "¿Qué hace la chica por la noche?",
+     "de": "Was macht das Mädchen in der Nacht?",
+     "answer": "Habla en alemán",
+     "options": [
+      "Habla en alemán",
+      "Baila",
+      "Lee un libro"
+     ]
+    }
+   ]
   }
  ]
 }
