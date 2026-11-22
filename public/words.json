@@ -11966,6 +11966,107 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-22",
+   "title": "Un día de lluvia",
+   "de": "Ein Regentag",
+   "sentences": [
+    {
+     "es": "Hoy es sábado y Lena está en Asturias con su amiga Marta.",
+     "de": "Heute ist Samstag und Lena ist mit ihrer Freundin Marta in Asturien."
+    },
+    {
+     "es": "Quieren escalar, pero fuera hay mucha lluvia.",
+     "de": "Sie wollen klettern, aber draußen gibt es viel Regen."
+    },
+    {
+     "es": "Lena mira por la ventana: la roca está muy mojada.",
+     "de": "Lena schaut aus dem Fenster: Der Fels ist sehr nass."
+    },
+    {
+     "es": "—Escalar con la roca mojada no es seguro —piensa.",
+     "de": "„Mit nassem Fels zu klettern ist nicht sicher“, denkt sie."
+    },
+    {
+     "es": "Entonces Marta tiene una idea: —¡Venga, cerca hay un rocódromo!",
+     "de": "Da hat Marta eine Idee: „Komm, in der Nähe gibt es eine Kletterhalle!“"
+    },
+    {
+     "es": "En el rocódromo hay mucha gente, porque nadie puede escalar fuera hoy.",
+     "de": "In der Kletterhalle sind viele Leute, weil heute niemand draußen klettern kann."
+    },
+    {
+     "es": "Lena empieza despacio, pero la última vía la hace muy rápido.",
+     "de": "Lena fängt langsam an, aber die letzte Route klettert sie sehr schnell."
+    },
+    {
+     "es": "—¡Qué guay, Lena!",
+     "de": "„Wie cool, Lena!“"
+    },
+    {
+     "es": "Después toman un café en el bar del rocódromo.",
+     "de": "Danach trinken sie einen Kaffee in der Bar der Kletterhalle."
+    },
+    {
+     "es": "Cuando salen, ya no hay lluvia y hay sol.",
+     "de": "Als sie hinausgehen, gibt es keinen Regen mehr und die Sonne scheint."
+    },
+    {
+     "es": "Lena está contenta: —Vale, mañana la roca.",
+     "de": "Lena ist zufrieden: „Okay, morgen der Fels.“"
+    },
+    {
+     "es": "—Y hoy, otro café.",
+     "de": "„Und heute noch ein Kaffee.“"
+    }
+   ],
+   "new": [
+    {
+     "es": "lluvia",
+     "de": "der Regen"
+    },
+    {
+     "es": "mojada",
+     "de": "nass"
+    },
+    {
+     "es": "rocódromo",
+     "de": "die Kletterhalle"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Por qué no escalan fuera?",
+     "de": "Warum klettern sie nicht draußen?",
+     "answer": "Porque hay mucha lluvia.",
+     "options": [
+      "Porque es domingo.",
+      "Porque están cansadas.",
+      "Porque hay mucha lluvia."
+     ]
+    },
+    {
+     "es": "¿Dónde escalan hoy?",
+     "de": "Wo klettern sie heute?",
+     "answer": "En un rocódromo.",
+     "options": [
+      "En un rocódromo.",
+      "En la playa.",
+      "En la montaña."
+     ]
+    },
+    {
+     "es": "¿Qué toman después de escalar?",
+     "de": "Was trinken sie nach dem Klettern?",
+     "answer": "Un café.",
+     "options": [
+      "Agua.",
+      "Un café.",
+      "Una cerveza."
+     ]
+    }
+   ]
   }
  ]
 }
