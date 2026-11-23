@@ -12067,6 +12067,107 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-23",
+   "title": "Despacio es mejor",
+   "de": "Langsam ist besser",
+   "sentences": [
+    {
+     "es": "Hoy es sábado y Lena y su amiga Marta van muy temprano a la montaña.",
+     "de": "Heute ist Samstag, und Lena und ihre Freundin Marta fahren sehr früh in die Berge."
+    },
+    {
+     "es": "El camino a la cima es bastante difícil.",
+     "de": "Der Weg zum Gipfel ist ziemlich schwierig."
+    },
+    {
+     "es": "Lena siempre quiere ir rápido.",
+     "de": "Lena will immer schnell gehen."
+    },
+    {
+     "es": "—¡Venga, Marta! ¡Quiero ser la primera arriba!",
+     "de": "„Komm schon, Marta! Ich will als Erste oben sein!“"
+    },
+    {
+     "es": "Pero Marta va despacio y tranquila.",
+     "de": "Aber Marta geht langsam und ruhig."
+    },
+    {
+     "es": "—No pasa nada, la montaña no se va.",
+     "de": "„Kein Problem, der Berg läuft nicht weg.“"
+    },
+    {
+     "es": "Después de una hora, Lena está muy cansada y tiene sed.",
+     "de": "Nach einer Stunde ist Lena sehr müde und hat Durst."
+    },
+    {
+     "es": "Marta pasa y llega a la cima primero.",
+     "de": "Marta geht an ihr vorbei und kommt zuerst am Gipfel an."
+    },
+    {
+     "es": "Arriba hace sol y la vista es muy bonita.",
+     "de": "Oben scheint die Sonne, und die Aussicht ist sehr schön."
+    },
+    {
+     "es": "Marta tiene dos bocadillos de queso, uno para Lena.",
+     "de": "Marta hat zwei Käsebrötchen dabei, eins für Lena."
+    },
+    {
+     "es": "—¿Qué tal, la última? ¿Un bocadillo?",
+     "de": "„Na, du Letzte? Ein Brötchen?“"
+    },
+    {
+     "es": "Lena come y piensa que, a veces, despacio es mejor.",
+     "de": "Lena isst und denkt, dass langsam manchmal besser ist."
+    }
+   ],
+   "new": [
+    {
+     "es": "camino",
+     "de": "der Weg"
+    },
+    {
+     "es": "vista",
+     "de": "die Aussicht"
+    },
+    {
+     "es": "bocadillos",
+     "de": "belegte Brötchen (Baguette-Sandwiches)"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Quién quiere ir rápido?",
+     "de": "Wer will schnell gehen?",
+     "answer": "Lena",
+     "options": [
+      "Nadie",
+      "Marta",
+      "Lena"
+     ]
+    },
+    {
+     "es": "¿Quién llega primero a la cima?",
+     "de": "Wer kommt zuerst am Gipfel an?",
+     "answer": "Marta",
+     "options": [
+      "Lena",
+      "Marta",
+      "Las dos juntas"
+     ]
+    },
+    {
+     "es": "¿De qué son los bocadillos?",
+     "de": "Womit sind die Brötchen belegt?",
+     "answer": "De queso",
+     "options": [
+      "De queso",
+      "De pan",
+      "De leche"
+     ]
+    }
+   ]
   }
  ]
 }
