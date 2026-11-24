@@ -12168,6 +12168,103 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-24",
+   "title": "El último barco",
+   "de": "Das letzte Schiff",
+   "sentences": [
+    {
+     "es": "Hoy estoy en Grecia, en un pueblo pequeño cerca del mar.",
+     "de": "Heute bin ich in Griechenland, in einem kleinen Dorf in der Nähe des Meeres."
+    },
+    {
+     "es": "Mañana quiero escalar en una isla muy bonita.",
+     "de": "Morgen möchte ich auf einer sehr schönen Insel klettern."
+    },
+    {
+     "es": "Pero el último barco sale a las ocho, y ya son las ocho menos cinco.",
+     "de": "Aber das letzte Schiff fährt um acht ab, und es ist schon fünf vor acht."
+    },
+    {
+     "es": "Llevo la maleta, la cuerda y los pies de gato, y voy muy rápido al puerto.",
+     "de": "Ich trage den Koffer, das Seil und die Kletterschuhe und gehe sehr schnell zum Hafen."
+    },
+    {
+     "es": "Allí hay mucha gente y nadie habla español.",
+     "de": "Dort sind viele Leute, und niemand spricht Spanisch."
+    },
+    {
+     "es": "—Perdona, ¿este es el barco para la isla?",
+     "de": "„Entschuldigung, ist das hier das Schiff zur Insel?“"
+    },
+    {
+     "es": "Un hombre mira mi billete y está muy tranquilo.",
+     "de": "Ein Mann schaut sich mein Ticket an und ist ganz ruhig."
+    },
+    {
+     "es": "—Sí, sí. Pero no pasa nada, el barco siempre sale tarde.",
+     "de": "„Ja, ja. Aber kein Problem, das Schiff fährt immer spät ab.“"
+    },
+    {
+     "es": "Entonces espero en un bar con un café.",
+     "de": "Also warte ich in einer Bar mit einem Kaffee."
+    },
+    {
+     "es": "Casi una hora después, el barco sale, muy despacio.",
+     "de": "Fast eine Stunde später fährt das Schiff ab, ganz langsam."
+    },
+    {
+     "es": "Creo que en esta isla la hora es solo una idea.",
+     "de": "Ich glaube, auf dieser Insel ist die Uhrzeit nur eine Idee."
+    }
+   ],
+   "new": [
+    {
+     "es": "isla",
+     "de": "die Insel"
+    },
+    {
+     "es": "barco",
+     "de": "das Schiff, das Boot"
+    },
+    {
+     "es": "puerto",
+     "de": "der Hafen"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Dónde quiere escalar mañana?",
+     "de": "Wo möchte sie morgen klettern?",
+     "answer": "En una isla",
+     "options": [
+      "En una isla",
+      "En la playa",
+      "En el pueblo"
+     ]
+    },
+    {
+     "es": "¿Cuándo sale el barco de verdad?",
+     "de": "Wann fährt das Schiff wirklich ab?",
+     "answer": "Casi una hora después",
+     "options": [
+      "Mañana",
+      "A las ocho",
+      "Casi una hora después"
+     ]
+    },
+    {
+     "es": "¿Qué toma ella cuando espera?",
+     "de": "Was trinkt sie, während sie wartet?",
+     "answer": "Un café",
+     "options": [
+      "Un vino",
+      "Una cerveza",
+      "Un café"
+     ]
+    }
+   ]
   }
  ]
 }
