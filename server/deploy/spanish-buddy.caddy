@@ -1,0 +1,9 @@
+# imported by /etc/caddy/Caddyfile (Nibelung's): import /etc/caddy/sites/*.caddy
+# The app stays on GitHub Pages; only the API is here, on its own host so it never touches Nibelung's routes.
+spanish-buddy.51-170-52-105.sslip.io {
+	encode gzip
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8788
+	}
+	respond 404
+}

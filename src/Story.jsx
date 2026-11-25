@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Speak, Top, Orn, speak } from "./App.jsx";
 import { Quiz } from "./Postcards.jsx";
+import { get, set } from "./store.js";
 
 // all stories from sync.py, newest first; one is written each day. built from her words plus 3 new ones, which are marked; tap a sentence to hear it and see the German
 const bare = es => es.replace(/^(el|la|los|las|un|una)\s+/i, ""); // "el café" is "un café" in the text
@@ -8,10 +9,10 @@ const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 // red dot on a story newer than the newest one she has opened, and on the game while there is one
 // ponytail: one "newest opened" day, not a list; opening the newest also clears older unread ones
-const seen = () => { try { return localStorage.getItem("storySeen") ?? ""; } catch { return ""; } };
+const seen = () => get("storySeen", "");
 export const storyNew = stories => {
   // first time: only the newest story counts as new, not the whole archive
-  if (stories.length && !seen()) try { localStorage.setItem("storySeen", stories.at(-2)?.day ?? " "); } catch { /* private mode */ }
+  if (stories.length && !seen()) set("storySeen", stories.at(-2)?.day ?? " ");
   return (stories.at(-1)?.day ?? "") > seen();
 };
 
@@ -27,7 +28,7 @@ export default function Stories({ stories, done }) {
       {[...stories].reverse().map(st => (
         <button key={st.day + st.title} className="card item story-item" onClick={() => {
           setOpen(st); window.scrollTo(0, 0);
-          if (st.day > seen()) try { localStorage.setItem("storySeen", st.day); } catch { /* private mode */ }
+          if (st.day > seen()) set("storySeen", st.day);
         }}>
           <b>{st.title}</b>
           {st.day > seen() && <i className="dot" />}

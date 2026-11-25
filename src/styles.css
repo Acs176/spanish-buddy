@@ -519,6 +519,14 @@ button.postcard:active { transform: rotate(var(--tilt)) translateY(3px); }
 .setting { display: flex; flex-direction: column; gap: 10px; }
 .setting h3 { margin: 0; font: 700 20px/1.2 ui-serif, "New York", Georgia, serif; }
 .setting p { color: var(--muted); font-size: 15px; line-height: 1.45; }
+.setting textarea {
+  width: 100%; box-sizing: border-box; padding: 12px; border: 2px solid var(--blue); border-radius: 8px; resize: vertical;
+  background: var(--card); color: var(--ink); font: 500 17px/1.4 ui-serif, "New York", Georgia, serif;
+}
+.setting textarea:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.inbox { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.inbox li { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--line, #e4dccb); padding-top: 8px; }
+.inbox small { color: var(--muted); overflow-wrap: anywhere; }
 
 /* ¿Quién?: the workshop, a brick wall in warm light behind every page of the game */
 .workshop { position: relative; min-height: 100dvh; background: #0b0705; color: #f7ecd8; isolation: isolate; }

@@ -8,9 +8,9 @@
     <!-- via bash: macOS lets bash-launched children read WhatsApp's DB, a bare python3 from launchd gets "authorization denied" -->
     <string>/bin/bash</string>
     <string>-c</string>
-    <string>/usr/bin/python3 -u /Users/adriancarbonell/personal/spanish-buddy/sync.py --push</string>
+    <string>/usr/bin/python3 -u /Users/adriancarbonell/personal/spanish-buddy/mac/send.py</string>
   </array>
-  <!-- hourly, not nightly: a 02:00 run fires in a 2s DarkWake with the lid shut and freezes; runs with no new messages are a cheap no-op -->
+  <!-- only sends WhatsApp messages to the server (it does the rest). Hourly: a run with nothing new is a cheap no-op -->
   <key>StartInterval</key><integer>3600</integer>
   <key>StandardOutPath</key><string>/tmp/spanish-buddy.log</string>
   <key>StandardErrorPath</key><string>/tmp/spanish-buddy.log</string>

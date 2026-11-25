@@ -1,0 +1,7 @@
+[Unit]
+Description=Spanish Buddy: back up the database to GitHub
+
+[Service]
+Type=oneshot
+User=ubuntu
+ExecStart=/bin/sh /srv/spanish-buddy/backup.sh

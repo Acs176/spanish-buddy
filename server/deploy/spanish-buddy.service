@@ -1,0 +1,15 @@
+[Unit]
+Description=Spanish Buddy API
+After=network.target
+
+[Service]
+User=ubuntu
+EnvironmentFile=/etc/spanish-buddy.env
+Environment=SB_DB=/srv/spanish-buddy/data/spanish-buddy.db
+Environment=TZ=Europe/Madrid
+Environment=PATH=/home/ubuntu/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 /srv/spanish-buddy/server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

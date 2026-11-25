@@ -11,10 +11,11 @@ import { Speak, Top, speak } from "./App.jsx";
 import { play } from "./sound.js";
 import { fanfare, startMusic, stopMusic } from "./music.js";
 import { OBJECTS, deck, form, hint, info, options, sentence } from "./posesivos.js";
+import { get, set } from "./store.js";
 
 // nouns already met here, so they stop counting as new
-const loadSeen = () => { try { return new Set(JSON.parse(localStorage.getItem("posSeen")) || []); } catch { return new Set(); } };
-const saveSeen = s => { try { localStorage.setItem("posSeen", JSON.stringify([...s])); } catch { /* private mode */ } };
+const loadSeen = () => new Set(get("posSeen", []));
+const saveSeen = s => set("posSeen", [...s]);
 
 // two of them cheek to cheek, as on the ¿Quién? wall
 const pair = (A, B) => ({ size, mood }) => (

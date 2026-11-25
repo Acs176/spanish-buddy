@@ -1,9 +1,10 @@
 import { useState } from "react";
 import CARDS from "./postcards.js";
 import { Speak, Top, speak } from "./App.jsx";
+import { get, set } from "./store.js";
 
 // ids of postcards she has opened; the mailbox shows a dot while any is unread
-const readIds = () => { try { return JSON.parse(localStorage.getItem("read")) || []; } catch { return []; } };
+const readIds = () => get("read", []);
 export const hasUnread = () => { const r = readIds(); return CARDS.some(c => !r.includes(c.id)); };
 
 const STAMPS = ["var(--blue)", "var(--red)", "var(--green)"];
@@ -38,7 +39,7 @@ export default function Postcards({ done }) {
   const show = c => {
     const r = read.includes(c.id) ? read : [...read, c.id];
     setRead(r);
-    try { localStorage.setItem("read", JSON.stringify(r)); } catch { /* private mode */ }
+    set("read", r);
     setOpen(c);
     window.scrollTo(0, 0);
   };

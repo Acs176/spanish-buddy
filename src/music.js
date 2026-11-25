@@ -3,9 +3,10 @@
 // picking pattern, melody and ending, so it doesn't loop the same. Off when localStorage "music" is "off".
 // The flamenco one is also saved standalone in sketches/music-flamenco.html.
 import { ac, soundOn } from "./sound.js";
+import { get, set } from "./store.js";
 
-export const musicOn = () => { try { return localStorage.getItem("music") !== "off"; } catch { return true; } };
-export const setMusic = on => { try { localStorage.setItem("music", on ? "on" : "off"); } catch { /* private mode */ } };
+export const musicOn = () => get("music") !== "off";
+export const setMusic = on => set("music", on ? "on" : "off");
 
 const VOLUME = .22; // light background, well under the voice and the chimes
 const r = a => a[Math.floor(Math.random() * a.length)];

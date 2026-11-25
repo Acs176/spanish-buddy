@@ -1,8 +1,9 @@
 import { useLayoutEffect, useState } from "react";
 import Mascot from "./Adrian.jsx";
+import { get, set } from "./store.js";
 
 // Announcements: a letter from Adrián in an envelope, then a tour with a spotlight on the home screen.
-// Each shows once; the ids she has seen live in localStorage "seen". To announce a new feature, add an entry at the end:
+// Each shows once; the ids she has seen live in store.js "seen". To announce a new feature, add an entry at the end:
 // Every entry opens with the envelope. letter (optional) = paragraphs; without one, opening the envelope goes straight to the tour.
 // steps (optional) = [CSS selector on the home screen, or null for no spotlight, text].
 // The first entry is the first-run welcome; finishing it marks every entry seen, since the welcome tour covers the app.
@@ -79,12 +80,12 @@ export const NEWS = [
   },
 ];
 
-const readSeen = () => { try { return JSON.parse(localStorage.getItem("seen")) || []; } catch { return []; } };
+const readSeen = () => get("seen", []);
 // the oldest announcement she hasn't seen yet, or undefined
 export const nextNews = () => { const seen = readSeen(); return NEWS.find(n => !seen.includes(n.id)); };
 export function markSeen(n) {
   const ids = n.id === NEWS[0].id ? NEWS.map(x => x.id) : [...new Set([...readSeen(), n.id])];
-  try { localStorage.setItem("seen", JSON.stringify(ids)); } catch { /* private mode: it shows again next time */ }
+  set("seen", ids);
 }
 
 export function Welcome({ news, done }) {

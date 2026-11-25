@@ -11,6 +11,7 @@ import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic, rasgueo } from "./music.js";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss, knownCard } from "./srs.js";
 import Basics from "./Basics.jsx";
+import { get, set, logAnswer, auth, call, connect, pending, onPending, flush, restored, cachedData, fetchData, backupText } from "./store.js";
 
 // ---------- helpers ----------
 const DAY = 864e5;
@@ -18,23 +19,17 @@ const shuffle = a => [...a].sort(() => Math.random() - 0.5); // ponytail: biased
 const pick = (arr, n, not) => shuffle(arr.filter(x => x !== not)).slice(0, n);
 
 // progress: { word-id: card }, scheduled by srs.js. The old Leitner "progress" key is converted once.
-function load() {
-  try {
-    return JSON.parse(localStorage.getItem("cards")) || fromLeitner(JSON.parse(localStorage.getItem("progress")) || {});
-  } catch { return {}; }
-}
-const store = (key, v) => {
-  try { localStorage.setItem(key, JSON.stringify(v)); } catch { /* private mode: progress just won't stick */ }
-};
-const save = p => store("cards", p);
+// Everything here is saved through store.js: on the phone, and on the server once there is a connection.
+const load = () => get("cards") || fromLeitner(get("progress", {}));
+const save = p => set("cards", p);
 // Üben mistakes per word id, see miss() in srs.js
 // basic words she said she doesn't know yet (Basics.jsx): they join the deck as normal new cards
-const loadUnknown = () => { try { return JSON.parse(localStorage.getItem("basicsNew")) || []; } catch { return []; } };
-const loadMisses = () => { try { return JSON.parse(localStorage.getItem("misses")) || {}; } catch { return {}; } };
+const loadUnknown = () => get("basicsNew", []);
+const loadMisses = () => get("misses", {});
 
-// backup = all of localStorage as one line of text, so new keys are included without touching this
+// backup = all of her keys as one line of text, so new keys are included without touching this
 async function backup() {
-  const text = JSON.stringify({ ...localStorage });
+  const text = backupText();
   try { await navigator.share({ title: "Spanisch-Backup", text }); }
   catch (e) {
     if (e.name === "AbortError") return; // closed the share sheet
@@ -50,33 +45,27 @@ function restore() {
     JSON.parse(data.cards); // throws unless there is progress in it
     if (!confirm("Aktuellen Fortschritt durch das Backup ersetzen?")) return;
     Object.entries(data).forEach(([k, v]) => localStorage.setItem(k, v));
+    restored(); // the restored progress is the newest: it goes to the server too
     location.reload();
   } catch { alert("Das ist kein gültiges Backup."); }
 }
 
-// notifications: she turns them on here, then sends the subscription (one line) to Adrián, who adds it to
-// push-subscriptions.txt on the Mac; sync.py pushes "Morgen lernst du…" with it. KEY's private half is in his Keychain.
+// notifications: she turns them on here and the subscription goes to the server (POST /api/subscriptions), which
+// pushes "Morgen lernst du…" when a new word arrives. KEY's private half is in the server's /etc/spanish-buddy.env.
 const KEY = "BJvxbb3jG83tIPDC6MRVbuTyoieXgScH6VezXfCxOD_3hDDc6cxM9hQ4CQdwwv-bNX9jHuqmENYP5l0_doDR9-Q";
-// iOS only allows subscribe() and share() straight from a tap, with no await before them: so the worker is
-// looked up ahead of time, subscribe() asks permission itself, and sending the line is a second tap.
+// iOS only allows subscribe() straight from a tap, with no await before it: so the worker is looked up ahead of time.
 let worker;
 navigator.serviceWorker?.ready.then(r => worker = r);
 const KEY_BYTES = Uint8Array.from(atob(KEY.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
 function subscribe() {
   if (!worker || !("PushManager" in window)) return Promise.reject(new Error("Das geht nur in der App auf dem Home-Bildschirm. Öffne sie von dort und versuch es nochmal."));
   return worker.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: KEY_BYTES }) // same key: returns the existing one
-    .then(sub => JSON.stringify(sub), e => {
+    .then(sub => call("/subscriptions", { method: "POST", body: JSON.stringify(sub) }), e => {
       throw Notification.permission === "denied" ? new Error("Ohne Erlaubnis keine Nachrichten. Du kannst sie in den iPhone-Einstellungen bei „Adrián“ erlauben.") : e;
     });
 }
-function sendLine(text) {
-  navigator.share({ title: "Für Adrián", text }).catch(e => {
-    if (e.name === "AbortError") return; // closed the share sheet
-    navigator.clipboard.writeText(text).then(() => alert("Kopiert. Schick es Adrián per WhatsApp."), () => prompt("Kopier das und schick es Adrián:", text));
-  });
-}
 
-// text -> mp3 in Adrián's voice, from words.json (sync.py); anything missing uses the browser voice
+// text -> mp3 in Adrián's voice (files on Pages, the map from /api/data); anything missing uses the browser voice
 let audio = {}, playing;
 
 export function speak(text) {
@@ -144,10 +133,12 @@ export default function App() {
   // asks the browser not to clear our storage when the phone runs low on space
   useEffect(() => { navigator.storage?.persist?.(); }, []);
 
+  // the copy from last time right away (offline too), then the server's when it answers
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + "words.json", { cache: "no-cache" })
-      .then(r => r.json()).then(d => { audio = d.audio ?? {}; setStories(d.stories ?? []); setWords(d.words); })
-      .catch(() => setWords([]));
+    const show = d => { audio = d.audio ?? {}; setStories(d.stories ?? []); setWords(d.words); };
+    const cached = cachedData();
+    if (cached) show(cached);
+    fetchData().then(show, () => cached || setWords([]));
   }, []);
 
   const review = (id, card) => setProgress(prev => {
@@ -178,7 +169,7 @@ export default function App() {
         save(next);
         return next;
       }); }}
-      unknown={ids => { setSweep("on"); setUnknown(prev => { const next = [...prev, ...ids]; store("basicsNew", next); return next; }); }} />
+      unknown={ids => { setSweep("on"); setUnknown(prev => { const next = [...prev, ...ids]; set("basicsNew", next); return next; }); }} />
   );
 
   const home = () => setScreen("home");
@@ -422,6 +413,7 @@ function Flashcards({ words, progress, review, done }) {
   const answer = rating => {
     const next = schedule(card, rating, now);
     review(it.key, next);
+    logAnswer({ word: w.id, mode: "cards", dir: it.dir === "prod" ? "p" : "r", rating });
     if (rating !== 2) play(rating === 1 ? "wrong" : "right");
     setMood(["", "sad", "idle", "happy", "happy"][rating]);
     setFlipped(false);
@@ -585,7 +577,8 @@ function Practice({ words, progress, done }) {
     if (right) setScore(s => s + 1);
     const m = miss(misses, q.w.id, right);
     setMisses(m);
-    store("misses", m);
+    set("misses", m);
+    logAnswer({ word: q.w.id, mode: "practice", kind: q.kind, correct: right });
   };
   const submit = e => {
     e.preventDefault();
@@ -689,16 +682,71 @@ function WordList({ words, progress, done }) {
 }
 
 // ---------- settings ----------
+// "Bei Adrián gespeichert": the code connects this phone to the server (store.js). Hers syncs her progress;
+// Adrián's own code turns the app into his: the form to add words, and his practice stays on his device.
+function Sync() {
+  const [who, setWho] = useState(() => auth()?.role);
+  const [n, setN] = useState(pending);
+  useEffect(() => onPending(setN), []);
+  useEffect(() => { flush(); }, []);
+  const enter = async () => {
+    const code = prompt("Der Code von Adrián:");
+    if (!code?.trim()) return;
+    try { setWho(await connect(code)); location.reload(); } // starts over: her progress goes up, the server's comes down
+    catch (e) { alert(e.status === 401 ? "Dieser Code stimmt nicht." : "Keine Verbindung. Versuch es mit Internet nochmal."); }
+  };
+  if (who === "admin") return <section className="card setting"><h3>Adrián-Modus</h3><p>Mit deinem Code: Wörter hinzufügen. Dein eigenes Üben bleibt auf diesem Gerät.</p><AddWord /></section>;
+  return (
+    <section className="card setting">
+      <h3>Bei Adrián gespeichert</h3>
+      {who === "learner"
+        ? <p>{n ? `✓ Verbunden. ${n} ${n === 1 ? "Änderung wartet" : "Änderungen warten"} aufs Internet, dann geht alles von allein zu Adrián.` : "✓ Verbunden. Alles ist bei Adrián gesichert, auch für ein neues Handy."}</p>
+        : <p>Im Moment ist dein Fortschritt nur auf diesem Handy. Mit dem Code von Adrián wird er bei ihm gesichert. Was du ohne Internet lernst, kommt später von allein nach.</p>}
+      {who !== "learner" && <button className="btn primary" onClick={enter}>Code eingeben</button>}
+    </section>
+  );
+}
+
+// Adrián types the word(s) of the day; the server makes the cards (and WhatsApp still works, via the Mac's send.py)
+function AddWord() {
+  const [text, setText] = useState("");
+  const [items, setItems] = useState([]);
+  const [busy, setBusy] = useState(false);
+  const refresh = () => call("/inbox").then(r => setItems(r.items), () => {});
+  useEffect(() => { refresh(); const t = setInterval(refresh, 10000); return () => clearInterval(t); }, []);
+  const submit = async e => {
+    e.preventDefault();
+    if (!text.trim() || busy) return;
+    setBusy(true);
+    try { await call("/words", { method: "POST", body: JSON.stringify({ text, day: localDay(new Date()) }) }); setText(""); refresh(); }
+    catch (err) { alert(err.status ? err.message : "Kein Internet: das Wort ist noch hier, versuch es gleich nochmal."); }
+    finally { setBusy(false); }
+  };
+  const state = i => i.status === "new" ? "⏳ wird geschrieben…" : i.status === "failed" ? `⚠️ ${i.error}` : i.words ? `✓ ${i.words}` : "✓ schon da";
+  return <>
+    <form className="typed" onSubmit={submit}>
+      <textarea value={text} onChange={e => setText(e.target.value)} rows={3} lang="es" aria-label="Wörter"
+        placeholder="la palabra española del día: …" />
+      <button className="btn primary" disabled={!text.trim() || busy}>{busy ? "…" : "Hinzufügen"}</button>
+    </form>
+    <ul className="inbox">
+      {items.map(i => <li key={i.id}><b>{i.text.split("\n").find(l => l.trim()).slice(0, 60)}</b><small>{i.day} · {state(i)}</small></li>)}
+    </ul>
+  </>;
+}
+
 function Settings({ done, replay }) {
   const [sound, setOn] = useState(soundOn);
   const toggle = () => { setSound(!sound); setOn(!sound); if (!sound) play("right"); };
   const [music, setM] = useState(musicOn);
-  const [line, setLine] = useState(null); // her push subscription, ready to send
+  const [bell, setBell] = useState(false);
+  const learner = auth()?.role === "learner";
   return (
     <div className="screen">
       <Top done={done} />
       <h2 className="title">Einstellungen</h2>
       <Orn />
+      <Sync />
       <section className="card setting">
         <h3>Tour durch die App</h3>
         <p>Adriáns Brief und die Tour vom ersten Mal, noch einmal von vorn.</p>
@@ -714,16 +762,16 @@ function Settings({ done, replay }) {
         <p>Leise Gitarre auf dem Startbildschirm und an der ¿Quién?-Wand.</p>
         <button className="btn" onClick={() => { setMusic(!music); setM(!music); }} aria-pressed={music}>{music ? "🎸 An" : "🔇 Aus"}</button>
       </section>
-      <section className="card setting">
+      {learner && <section className="card setting">
         <h3>Benachrichtigungen</h3>
-        <p>Eine Nachricht, sobald Adrián dir ein neues Wort schickt. Erlaube sie und schick ihm dann die Zeile, die erscheint.</p>
-        {line
-          ? <button className="btn primary" onClick={() => sendLine(line)}>An Adrián schicken</button>
-          : <button className="btn" onClick={() => subscribe().then(setLine, e => alert(e.name === "Error" ? e.message : "Das hat nicht geklappt: " + e.message) /* ours are plain Errors, the browser's DOMExceptions */)}>🔔 Aktivieren</button>}
-      </section>
+        <p>Eine Nachricht, sobald Adrián dir ein neues Wort schickt.</p>
+        {bell
+          ? <p>✓ Aktiviert.</p>
+          : <button className="btn" onClick={() => subscribe().then(() => setBell(true), e => alert(e.name === "Error" || e.status ? e.message : "Das hat nicht geklappt: " + e.message) /* ours are plain Errors, the browser's DOMExceptions */)}>🔔 Aktivieren</button>}
+      </section>}
       <section className="card setting">
         <h3>Backup</h3>
-        <p>Dein Fortschritt ist nur auf diesem Handy gespeichert. Sichere ihn ab und zu, z. B. in Notizen oder per WhatsApp an Adrián. Mit „Laden“ holst du ihn zurück, auch auf einem neuen Handy.</p>
+        <p>Eine Kopie deines Fortschritts als Text, z. B. für Notizen. Mit „Laden“ holst du sie zurück.</p>
         <div className="row">
           <button className="btn" onClick={backup}>Sichern</button>
           <button className="btn" onClick={restore}>Laden</button>

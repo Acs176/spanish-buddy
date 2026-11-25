@@ -1,8 +1,9 @@
 // Little sounds, made on the fly with Web Audio, no files. Off when localStorage "sound" is "off" (Einstellungen).
 // On an iPhone the silent switch mutes them too.
+import { get, set } from "./store.js";
 let ctx;
-export const soundOn = () => { try { return localStorage.getItem("sound") !== "off"; } catch { return true; } };
-export const setSound = on => { try { localStorage.setItem("sound", on ? "on" : "off"); } catch { /* private mode */ } };
+export const soundOn = () => get("sound") !== "off";
+export const setSound = on => set("sound", on ? "on" : "off");
 
 export function ac() {
   ctx ||= new AudioContext();

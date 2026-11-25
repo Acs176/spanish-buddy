@@ -8,12 +8,13 @@ import VERBS, { BASE, PER_FORM, PEOPLE, PETALS, SLOTS, active, finished, fire, k
 import { check, today } from "./srs.js";
 import { play } from "./sound.js";
 import { startMusic, stopMusic } from "./music.js";
+import { get, set } from "./store.js";
 
 // petals painted per form, see paint() in verbs.js
-const load = () => { try { return JSON.parse(localStorage.getItem("verbs")) || {}; } catch { return {}; } };
+const load = () => get("verbs", {});
 export const verbCount = () => verbWords(load()); // its fired forms count as learned words on the home screen
 export const kilnReady = () => waiting(load(), today()).length > 0; // yesterday's petals wait in the kiln: red dot on the game
-const save = p => { try { localStorage.setItem("verbs", JSON.stringify(p)); } catch { /* private mode */ } };
+const save = p => set("verbs", p);
 const any = a => a[Math.floor(Math.random() * a.length)];
 const RIGHT = ["¡Eso es!", "¡Olé!", "¡Claro que sí!", "¡Muy bien!", "¡Qué crack!"];
 const WRONG = ["¡Uy! Fast!", "¡Ay, ay, ay!", "¿Cómo? Adrián ist verwirrt.", "¡Qué va! Noch nicht ganz.", "¡Madre mía! Gleich nochmal."];
@@ -152,9 +153,9 @@ export default function Verbs({ done }) {
   const [game, setGame] = useState(0); // which round, 0 = none: a new number starts the round fresh
   const [open, setOpen] = useState(null);
   const [firing, setFiring] = useState(() => waiting(load(), today()).length > 0); // yesterday's petals come first
-  const [help, setHelp] = useState(() => { try { return !localStorage.getItem("verbsIntro"); } catch { return false; } });
+  const [help, setHelp] = useState(() => !get("verbsIntro"));
   const [fresh, setFresh] = useState([]); // verbs the kiln just unlocked
-  const [met, setMet] = useState(() => { try { return +localStorage.getItem("verbsMet") || BASE; } catch { return BASE; } }); // people she has been introduced to
+  const [met, setMet] = useState(() => +get("verbsMet", 0) || BASE); // people she has been introduced to
   const play = () => { setFresh([]); setGame(g => g + 1); };
   const wall = !firing && !help && !game;
   useEffect(() => { if (wall) { startMusic("flamenco"); return stopMusic; } }, [wall]);
@@ -165,9 +166,9 @@ export default function Verbs({ done }) {
     const won = unlocked(next).slice(before).map(v => v.id);
     save(next); setPainted(next); setFiring(false); setFresh(won);
   }} /></>;
-  if (help) return <Intro done={() => { try { localStorage.setItem("verbsIntro", "1"); } catch { /* private mode: it shows again next time */ } setHelp(false); window.scrollTo(0, 0); }} />;
+  if (help) return <Intro done={() => { set("verbsIntro", "1"); setHelp(false); window.scrollTo(0, 0); }} />;
   const n = active(painted);
-  if (met < n) return <Arrival key={met} p={met} done={() => { try { localStorage.setItem("verbsMet", met + 1); } catch { /* private mode: he knocks again next time */ } setMet(met + 1); }} />;
+  if (met < n) return <Arrival key={met} p={met} done={() => { set("verbsMet", met + 1); setMet(met + 1); }} />;
   const v = VERBS.find(x => x.id === open), next = nextStep(painted);
   if (game) return <Round key={game} painted={painted} focus={v} earn={earn} again={play} done={() => setGame(0)} />;
   return (

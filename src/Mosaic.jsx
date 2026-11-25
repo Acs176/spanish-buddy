@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { play } from "./sound.js";
 import { Top } from "./App.jsx";
 import { fanfare, startMusic, stopMusic, suspense } from "./music.js";
+import { get, set } from "./store.js";
 // The home screen's azulejo: it gains a new layer of ornament at each milestone of learned words.
 // The next layer shows faintly and glazes in from the bottom as she gets closer to it.
 const BLUE = "#3a5aa8", DEEP = "#1f3570", LIGHT = "#a9b9de", GOLD = "#d9a441", GOLD_D = "#8f6a1e", RED = "#c4572f", GREEN = "#3f9a6c", ORANGE = "#e39a45";
@@ -113,11 +114,11 @@ export default function Mosaic({ learned, size = 120, reveal, flipped, pure }) {
 
 // the day each milestone was unveiled, for the plaques in the trophy room (only from the unlock screen on)
 const localDay = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-const dates = () => { try { return JSON.parse(localStorage.getItem("mosaicDates")) || {}; } catch { return {}; } };
+const dates = () => get("mosaicDates", {});
 const longDay = day => new Date(day + "T12:00").toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
 
 // the next milestone she hasn't been shown (how many layers it makes), or 0. Several at once are shown one after another.
-export const unseen = learned => { try { const s = +(localStorage.getItem("mosaic") ?? 0); return reached(learned) > s ? s + 1 : 0; } catch { return 0; } };
+export const unseen = learned => { const s = +get("mosaic", 0); return reached(learned) > s ? s + 1 : 0; };
 
 // The unlock screen for milestone k: the new tile waits face down; a tap turns it over (the tap also lets iOS play sound),
 // the new layer glazes in, then a flourish on the guitar, sparks, and what she has reached.
@@ -129,7 +130,7 @@ export function Unlock({ k, learned, done }) {
   const hush = useRef(() => {});
   useEffect(() => {
     stopMusic();
-    try { localStorage.setItem("mosaic", k); localStorage.setItem("mosaicDates", JSON.stringify({ [n]: localDay(), ...dates() })); } catch { /* private mode */ }
+    set("mosaic", k); set("mosaicDates", { [n]: localDay(), ...dates() });
   }, [k, n]);
   useEffect(() => () => hush.current(), []); // closed early: cut the build-up
   // once revealed, a soft twinkle now and then, in time with the sparks
