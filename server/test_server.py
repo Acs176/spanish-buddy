@@ -126,6 +126,22 @@ assert items[2]["words"] == "la semana, el mes" and call("GET", "/api/whatsapp/l
 server.process_inbox(); server.process_inbox()
 assert call("GET", "/api/inbox", token="him")[1]["items"][0]["status"] == "failed"  # gives up after 3 tries
 
+# words typed in the app: through the same outbox as progress, so offline is fine; both codes may, a resend counts once
+server.notify = lambda new: sent.append([w["es"] for w in new])
+started = []
+server.threading = type("T", (), {"Thread": lambda target, **kw: type("N", (), {"start": lambda self: started.append(1)})()})
+w = {"k": "word", "v": {"id": "w1", "text": "el mes", "day": "2026-11-26"}, "at": 10}
+assert call("POST", "/api/sync", {"ops": [w, w]})[1]["applied"] == 2 and started == [1]
+assert call("POST", "/api/sync", {"ops": [w]})[1]["applied"] == 1 and started == [1]  # already there: nothing new to process
+r = call("POST", "/api/sync", {"ops": [{"k": "word", "v": {"id": "w2", "text": "la semana"}, "at": 11}, {"k": "misses", "id": "hoy", "v": 9, "at": 999}]}, token="him")[1]
+assert r["applied"] == 1 and [x["i"] for x in r["rejected"]] == [1], r  # Adrián's code: his words yes, progress no
+assert call("POST", "/api/sync", {"ops": [{"k": "word", "v": {"id": "w3", "text": " "}, "at": 1}]})[1]["rejected"]
+mine = call("GET", "/api/inbox")[1]["items"]
+assert [i["client_id"] for i in mine] == ["w2", "w1"], mine  # Angela sees what was typed in the app, never raw WhatsApp
+assert any(i["client_id"] is None for i in call("GET", "/api/inbox", token="him")[1]["items"])
+server.process_inbox()
+assert [i["status"] for i in call("GET", "/api/inbox")[1]["items"]] == ["done", "done"]
+
 # story: once a day
 assert server.write_story("2026-11-25") == "En la roca" and server.write_story("2026-11-25") is None
 assert call("GET", "/api/data", token=None)[1]["stories"][-1]["title"] == "En la roca"

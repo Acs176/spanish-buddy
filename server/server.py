@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Spanish Buddy API, on the Oracle VM next to Nibelung. Words come in (the app's form, or WhatsApp via the Mac's
-send.py), Claude turns them into cards, one story is written a day, and Angela's progress is kept here so nothing
+"""Spanish Buddy API, on the Oracle VM next to Nibelung. Words come in (typed in the app by Angela or Adrián, or WhatsApp via
+the Mac's send.py), Claude turns them into cards, one story is written a day, and Angela's progress is kept here so nothing
 lives only on her phone.
 
     python3 server.py                  serve on 127.0.0.1:8788 (Caddy proxies https://spanish-buddy.<vm>.sslip.io/api/*)
     python3 server.py tick             hourly (systemd timer): retry waiting words, write today's story if missing
     python3 server.py import FILE.json [SUBS.txt]   one-off: the old public/words.json and push-subscriptions.txt
 
-Env: SB_TOKEN (Angela's app: her progress), SB_ADMIN_TOKEN (Adrián: adding words, the Mac's send.py),
+Env: SB_TOKEN (Angela's app: her progress and her words), SB_ADMIN_TOKEN (Adrián: his words, the Mac's send.py),
      SB_DB (default ./spanish-buddy.db), SB_PORT (8788), CLAUDE / NODE (default: found on PATH),
      VAPID_PRIVATE (web push; unset = no notifications), SB_ORIGINS (CORS, comma separated).
 TZ should be Europe/Madrid: "today" for stories and words is her day, not UTC's.
@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS inbox (                -- every message that may teac
   day TEXT NOT NULL,                              -- local day it was sent: the word is the word of the day after
   source TEXT NOT NULL CHECK (source IN ('form', 'whatsapp')),
   msg_id INTEGER UNIQUE,                          -- WhatsApp's Z_PK: the Mac can send a message twice, it's kept once
+  client_id TEXT UNIQUE,                          -- typed in the app (Angela or Adrián): made on the phone, so a resend is kept once
   status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'done', 'failed')),
   tries INTEGER NOT NULL DEFAULT 0,
   error TEXT,
@@ -151,6 +152,10 @@ def db():
 def init():
     with db() as con:
         con.execute("PRAGMA journal_mode = WAL")  # the API reads while the timer writes
+        if con.execute("SELECT 1 FROM sqlite_master WHERE name = 'inbox'").fetchone() and \
+                "client_id" not in [r[1] for r in con.execute("PRAGMA table_info(inbox)")]:  # databases from before client_id
+            con.execute("ALTER TABLE inbox ADD COLUMN client_id TEXT")
+            con.execute("CREATE UNIQUE INDEX inbox_client_id ON inbox (client_id)")
         con.executescript(SCHEMA)
 
 
@@ -367,6 +372,12 @@ def apply_op(con, op):
         con.execute("INSERT INTO answers (id, at, word_id, mode, dir, rating, kind, correct) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO NOTHING",
                     (str(v["id"]), at, v["word"], mode, v.get("dir"), v.get("rating"), v.get("kind"),
                      None if v.get("correct") is None else int(bool(v["correct"]))))
+    elif k == "word":  # a word typed in the app, maybe offline days ago: into the inbox, Claude does the rest
+        text, day = str(v.get("text", "")).strip()[:4000], str(v.get("day", ""))
+        if not text:
+            raise ValueError("empty word")
+        return con.execute("INSERT INTO inbox (text, day, source, client_id, created) VALUES (?, ?, 'form', ?, ?) ON CONFLICT DO NOTHING",
+                           (text, day if re.fullmatch(r"\d{4}-\d{2}-\d{2}", day) else date.today().isoformat(), str(v["id"]), int(time.time()))).rowcount
     else:
         raise ValueError(f"unknown key {k!r}")
 
@@ -456,29 +467,39 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(401, {"error": "Falscher Code."})
             if method == "GET" and path == "/api/whoami":
                 return self.send(200, {"role": role})
+            if method == "POST" and path == "/api/sync":  # Angela: her progress and her words. Adrián: only words.
+                ops = self.body().get("ops")
+                if not isinstance(ops, list):
+                    return self.send(400, {"error": "ops must be a list"})
+                rejected, words = [], 0
+                with db() as con:
+                    for i, op in enumerate(ops):
+                        try:
+                            con.execute("SAVEPOINT op")
+                            if role == "admin" and op.get("k") != "word":
+                                raise ValueError("progress is Angela's: not synced from Adrián's code")
+                            words += apply_op(con, op) or 0  # only a new word returns 1
+                            con.execute("RELEASE op")
+                        except (ValueError, KeyError, TypeError, AttributeError, sqlite3.IntegrityError) as e:
+                            # can never apply (unknown word, bad shape, a CHECK): drop it, or it would block the queue forever
+                            con.execute("ROLLBACK TO op")
+                            con.execute("RELEASE op")
+                            rejected.append({"i": i, "error": str(e)[:200]})
+                if rejected:
+                    print(f"sync: rejected {rejected[:5]}", file=sys.stderr)
+                if words:
+                    threading.Thread(target=process_inbox, daemon=True).start()
+                return self.send(200, {"applied": len(ops) - len(rejected), "rejected": rejected})
+            if method == "GET" and path == "/api/inbox":  # the words typed in the app, and how far Claude got; Adrián also sees WhatsApp's
+                with db() as con:
+                    rows = con.execute("SELECT i.id, i.client_id, i.text, i.day, i.source, i.status, i.error, "
+                                       "(SELECT group_concat(es, ', ') FROM words WHERE inbox_id = i.id) AS words FROM inbox i "
+                                       + ("" if role == "admin" else "WHERE i.client_id IS NOT NULL ") + "ORDER BY i.id DESC LIMIT 20").fetchall()
+                return self.send(200, {"items": [dict(r) for r in rows]})
             if role == "learner":
                 if method == "GET" and path == "/api/progress":
                     with db() as con:
                         return self.send(200, progress(con))
-                if method == "POST" and path == "/api/sync":
-                    ops = self.body().get("ops")
-                    if not isinstance(ops, list):
-                        return self.send(400, {"error": "ops must be a list"})
-                    rejected = []
-                    with db() as con:
-                        for i, op in enumerate(ops):
-                            try:
-                                con.execute("SAVEPOINT op")
-                                apply_op(con, op)
-                                con.execute("RELEASE op")
-                            except (ValueError, KeyError, TypeError, AttributeError, sqlite3.IntegrityError) as e:
-                                # can never apply (unknown word, bad shape, a CHECK): drop it, or it would block the queue forever
-                                con.execute("ROLLBACK TO op")
-                                con.execute("RELEASE op")
-                                rejected.append({"i": i, "error": str(e)[:200]})
-                    if rejected:
-                        print(f"sync: rejected {rejected[:5]}", file=sys.stderr)
-                    return self.send(200, {"applied": len(ops) - len(rejected), "rejected": rejected})
                 if method == "POST" and path == "/api/subscriptions":
                     sub = self.body()
                     if not str(sub.get("endpoint", "")).startswith("https://"):
@@ -494,12 +515,6 @@ class Handler(BaseHTTPRequestHandler):
                     if msg_id is not None and (isinstance(msg_id, bool) or not isinstance(msg_id, int)):
                         return self.send(400, {"error": "msg_id must be an integer"})
                     return self.send(*add_message(str(b.get("text", "")), str(b.get("day", "")), msg_id))
-                if method == "GET" and path == "/api/inbox":
-                    with db() as con:
-                        rows = con.execute("SELECT i.id, i.text, i.day, i.source, i.status, i.error, "
-                                           "(SELECT group_concat(es, ', ') FROM words WHERE inbox_id = i.id) AS words "
-                                           "FROM inbox i ORDER BY i.id DESC LIMIT 20").fetchall()
-                    return self.send(200, {"items": [dict(r) for r in rows]})
                 if method == "GET" and path == "/api/whatsapp/last":  # the Mac's send.py: newest message already here
                     with db() as con:
                         last = max(con.execute("SELECT coalesce(max(msg_id), 0) FROM inbox").fetchone()[0],

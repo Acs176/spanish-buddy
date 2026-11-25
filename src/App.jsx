@@ -11,7 +11,7 @@ import { play, soundOn, setSound } from "./sound.js";
 import { startMusic, stopMusic, musicOn, setMusic, rasgueo } from "./music.js";
 import { schedule, pickNext, dueCount, wait, stage, fromLeitner, check, difficulty, pickHard, miss, knownCard } from "./srs.js";
 import Basics from "./Basics.jsx";
-import { get, set, logAnswer, auth, call, connect, pending, onPending, flush, restored, cachedData, fetchData, backupText } from "./store.js";
+import { get, set, logAnswer, addWord, waitingWords, auth, call, connect, pending, onPending, flush, restored, cachedData, fetchData, backupText } from "./store.js";
 
 // ---------- helpers ----------
 const DAY = 864e5;
@@ -652,6 +652,7 @@ function WordList({ words, progress, done }) {
     <div className="screen">
       <Top done={done} />
       <h2 className="title">Alle Wörter</h2>
+      <AddWord />
       <div className="strip">
         {strip.map(([id, name, icon]) => (
           <button key={id ?? "all"} aria-pressed={topic === id} onClick={() => setTopic(id)}>
@@ -682,8 +683,8 @@ function WordList({ words, progress, done }) {
 }
 
 // ---------- settings ----------
-// "Bei Adrián gespeichert": the code connects this phone to the server (store.js). Hers syncs her progress;
-// Adrián's own code turns the app into his: the form to add words, and his practice stays on his device.
+// "Bei Adrián gespeichert": the code connects this phone to the server (store.js). Hers syncs her progress and her words;
+// with Adrián's own code only his words go up (his practice stays on his device) and he sees WhatsApp's words too.
 function Sync() {
   const [who, setWho] = useState(() => auth()?.role);
   const [n, setN] = useState(pending);
@@ -695,7 +696,7 @@ function Sync() {
     try { setWho(await connect(code)); location.reload(); } // starts over: her progress goes up, the server's comes down
     catch (e) { alert(e.status === 401 ? "Dieser Code stimmt nicht." : "Keine Verbindung. Versuch es mit Internet nochmal."); }
   };
-  if (who === "admin") return <section className="card setting"><h3>Adrián-Modus</h3><p>Mit deinem Code: Wörter hinzufügen. Dein eigenes Üben bleibt auf diesem Gerät.</p><AddWord /></section>;
+  if (who === "admin") return <section className="card setting"><h3>Adrián-Modus</h3><p>Mit deinem Code: Wörter hinzufügen (unter „Alle Wörter“), auch die von WhatsApp siehst du dort. Dein eigenes Üben bleibt auf diesem Gerät.</p></section>;
   return (
     <section className="card setting">
       <h3>Bei Adrián gespeichert</h3>
@@ -707,32 +708,50 @@ function Sync() {
   );
 }
 
-// Adrián types the word(s) of the day; the server makes the cards (and WhatsApp still works, via the Mac's send.py)
+// a new word, typed by Angela or Adrián: it goes into the outbox (store.js) and the server makes the card. Offline it waits.
+// Below: the last ones typed and how far they got (Adrián also sees WhatsApp's, which come from the Mac's send.py).
 function AddWord() {
+  const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
-  const [busy, setBusy] = useState(false);
-  const refresh = () => call("/inbox").then(r => setItems(r.items), () => {});
-  useEffect(() => { refresh(); const t = setInterval(refresh, 10000); return () => clearInterval(t); }, []);
-  const submit = async e => {
+  const [waiting, setWaiting] = useState(waitingWords);
+  const refresh = () => { setWaiting(waitingWords()); if (auth()) call("/inbox").then(r => setItems(r.items), () => {}); };
+  useEffect(() => {
+    if (!open) return;
+    refresh();
+    const t = setInterval(refresh, 8000); // Claude takes about half a minute
+    const off = onPending(refresh);
+    return () => { clearInterval(t); off(); };
+  }, [open]);
+  const submit = e => {
     e.preventDefault();
-    if (!text.trim() || busy) return;
-    setBusy(true);
-    try { await call("/words", { method: "POST", body: JSON.stringify({ text, day: localDay(new Date()) }) }); setText(""); refresh(); }
-    catch (err) { alert(err.status ? err.message : "Kein Internet: das Wort ist noch hier, versuch es gleich nochmal."); }
-    finally { setBusy(false); }
+    if (!text.trim()) return;
+    addWord(text, localDay(new Date()));
+    flush();
+    setText("");
+    refresh();
   };
-  const state = i => i.status === "new" ? "⏳ wird geschrieben…" : i.status === "failed" ? `⚠️ ${i.error}` : i.words ? `✓ ${i.words}` : "✓ schon da";
-  return <>
-    <form className="typed" onSubmit={submit}>
-      <textarea value={text} onChange={e => setText(e.target.value)} rows={3} lang="es" aria-label="Wörter"
-        placeholder="la palabra española del día: …" />
-      <button className="btn primary" disabled={!text.trim() || busy}>{busy ? "…" : "Hinzufügen"}</button>
-    </form>
-    <ul className="inbox">
-      {items.map(i => <li key={i.id}><b>{i.text.split("\n").find(l => l.trim()).slice(0, 60)}</b><small>{i.day} · {state(i)}</small></li>)}
-    </ul>
-  </>;
+  const state = i => i.status === "new" ? "⏳ Adrián schreibt die Karte…" : i.status === "failed" ? "⚠️ Das hat nicht geklappt" : i.words ? `✓ ${i.words}` : "✓ Hast du schon";
+  if (!open) return <button className="btn ghost addword-open" onClick={() => setOpen(true)}>＋ Neues Wort</button>;
+  return (
+    <section className="card setting addword">
+      <h3>Neues Wort</h3>
+      <p>Ein spanisches Wort oder ein Ausdruck, gern auch mehrere. Adrián macht daraus eine Karte, mit Beispielen und allem.</p>
+      <form className="typed" onSubmit={submit}>
+        <textarea value={text} onChange={e => setText(e.target.value)} rows={2} lang="es" aria-label="Neues Wort"
+          autoCapitalize="off" placeholder="z. B. el ascensor" autoFocus />
+        <button className="btn primary" disabled={!text.trim()}>Hinzufügen</button>
+      </form>
+      <ul className="inbox">
+        {waiting.map(w => <li key={w.id}><b>{w.text}</b><small>📶 wartet aufs Internet</small></li>)}
+        {items.filter(i => !waiting.some(w => w.id === i.client_id)).map(i => (
+          <li key={i.id}><b>{i.text.split("\n").find(l => l.trim())?.slice(0, 60)}</b><small>{state(i)}{auth()?.role === "admin" && i.status === "failed" ? ` (${i.error})` : ""}</small></li>
+        ))}
+      </ul>
+      {!auth() && <p><small>Gib in den Einstellungen den Code von Adrián ein, dann geht es los.</small></p>}
+      <button className="btn ghost" onClick={() => setOpen(false)}>Schließen</button>
+    </section>
+  );
 }
 
 function Settings({ done, replay }) {

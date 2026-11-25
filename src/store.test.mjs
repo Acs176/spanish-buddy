@@ -66,8 +66,25 @@ assert.equal(mem.get("sound"), "on");
 // an empty server never overwrites the phone
 // (covered above: start() returns before applying when p.empty)
 
-// Adrián's device: his practice is never queued
+// a word typed offline waits, then goes up through the same outbox
+online = false; sent = [];
+s.addWord("  el ascensor ", "2026-11-25");
+assert.deepEqual(s.waitingWords().map(w => [w.text, w.day]), [["el ascensor", "2026-11-25"]]);
+assert.equal(await s.flush(), false);
+online = true;
+assert.equal(await s.flush(), true);
+assert.equal(sent[0].k, "word");
+assert.equal(s.waitingWords().length, 0);
+
+// Adrián's device: his practice is never queued, his words are
+s.set("misses", { ayer: 1 });
+s.addWord("la llave", "2026-11-25");
 await s.connect("him");
+assert.deepEqual(JSON.parse(mem.get("outbox")).map(o => o.k), ["word"]);
 s.set("misses", { hoy: 2 });
-assert.equal(s.pending(), 0);
+assert.equal(s.pending(), 1);
+s.addWord("el mes", "2026-11-25");
+sent = [];
+assert.equal(await s.flush(), true);
+assert.deepEqual(sent.map(o => o.v.text), ["la llave", "el mes"]);
 console.log("ok");

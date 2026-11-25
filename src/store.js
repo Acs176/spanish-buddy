@@ -35,11 +35,17 @@ export function set(key, value) {
   raw.set(key, SCALARS.includes(key) ? String(value) : JSON.stringify(value));
   queue(diff(key, prev, value, Date.now()));
 }
+const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
 // one answer, for her history on the server (only there: the app itself never reads it back)
-export const logAnswer = a => queue([{ k: "answer", v: { id: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`, ...a }, at: Date.now() }]);
+export const logAnswer = a => queue([{ k: "answer", v: { id: uid(), ...a }, at: Date.now() }]);
+// a word typed in the app (hers or Adrián's): same outbox, so it waits for the internet like everything else.
+// day: her local day; like a WhatsApp word, it is the word of the day after.
+export const addWord = (text, day) => queue([{ k: "word", v: { id: uid(), text: text.trim(), day }, at: Date.now() }]);
+export const waitingWords = () => json("outbox", []).filter(o => o.k === "word").map(o => o.v);
 
 // ---------- connection ----------
-// auth: { token, role }. "learner" is Angela: her progress syncs. "admin" is Adrián: adds words; his own practice stays local.
+// auth: { token, role }. "learner" is Angela: her progress and her words sync. "admin" is Adrián: only his words go up,
+// his own practice stays on his device.
 export const auth = () => json("auth", null);
 export async function call(path, opts = {}, token = auth()?.token) {
   const ctl = new AbortController();
@@ -58,7 +64,7 @@ export async function call(path, opts = {}, token = auth()?.token) {
 export async function connect(code) {
   const { role } = await call("/whoami", {}, code.trim());
   raw.set("auth", JSON.stringify({ token: code.trim(), role }));
-  if (role === "admin") raw.set("outbox", "[]"); // whatever was practised here before isn't hers
+  if (role === "admin") raw.set("outbox", JSON.stringify(json("outbox", []).filter(o => o.k === "word"))); // what was practised here isn't hers
   return role;
 }
 
@@ -69,7 +75,8 @@ export const onPending = fn => { listeners.add(fn); return () => listeners.delet
 const changed = () => listeners.forEach(fn => fn(pending()));
 
 function queue(ops) {
-  if (!ops.length || auth()?.role === "admin") return;
+  if (auth()?.role === "admin") ops = ops.filter(o => o.k === "word");
+  if (!ops.length) return;
   raw.set("outbox", JSON.stringify([...json("outbox", []), ...ops]));
   changed();
   clearTimeout(queue.t);
@@ -82,7 +89,7 @@ async function send() {
     for (;;) {
       const ops = json("outbox", []);
       if (!ops.length) return true;
-      if (auth()?.role !== "learner") return false;
+      if (!auth()) return false; // no code yet: it waits
       const batch = ops.slice(0, 500);
       await call("/sync", { method: "POST", body: JSON.stringify({ ops: batch }) }); // rejected entries can never apply: dropped too
       raw.set("outbox", JSON.stringify(json("outbox", []).slice(batch.length))); // only send() takes from the front, queue adds at the back
