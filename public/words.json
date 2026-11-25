@@ -12265,6 +12265,107 @@
      ]
     }
    ]
+  },
+  {
+   "day": "2026-11-25",
+   "title": "La foto de la cima",
+   "de": "Das Foto vom Gipfel",
+   "sentences": [
+    {
+     "es": "Hoy Lena y su amiga Carmen están en los Picos de Europa.",
+     "de": "Heute sind Lena und ihre Freundin Carmen in den Picos de Europa."
+    },
+    {
+     "es": "Salen muy temprano porque la montaña es grande y la cima está lejos.",
+     "de": "Sie brechen sehr früh auf, weil der Berg groß ist und der Gipfel weit weg ist."
+    },
+    {
+     "es": "Carmen lleva el mapa, pero no está segura de dónde están.",
+     "de": "Carmen hat die Karte dabei, aber sie ist sich nicht sicher, wo sie sind."
+    },
+    {
+     "es": "—Creo que es a la izquierda —dice Lena. —¿Segura? —pregunta Carmen.",
+     "de": "„Ich glaube, es geht nach links“, sagt Lena. „Sicher?“, fragt Carmen."
+    },
+    {
+     "es": "Después de tres horas, llegan arriba, muy cansadas pero contentas.",
+     "de": "Nach drei Stunden kommen sie oben an, sehr müde, aber zufrieden."
+    },
+    {
+     "es": "Hace mucho frío y hay nieve en la roca, todo está blanco.",
+     "de": "Es ist sehr kalt und auf dem Felsen liegt Schnee, alles ist weiß."
+    },
+    {
+     "es": "Carmen toma el móvil: —¡Venga, una foto!",
+     "de": "Carmen nimmt das Handy: „Los, ein Foto!“"
+    },
+    {
+     "es": "La primera foto es mala porque Lena no está lista.",
+     "de": "Das erste Foto ist schlecht, weil Lena nicht bereit ist."
+    },
+    {
+     "es": "La segunda es peor: en la foto no hay nadie, solo nieve.",
+     "de": "Das zweite ist noch schlechter: Auf dem Foto ist niemand, nur Schnee."
+    },
+    {
+     "es": "La última foto es la mejor: las dos están juntas, felices y con frío.",
+     "de": "Das letzte Foto ist das beste: Die beiden sind zusammen, glücklich und durchgefroren."
+    },
+    {
+     "es": "—Qué bonita —dice Lena—. Lo importante no es la foto, es el día.",
+     "de": "„Wie schön“, sagt Lena. „Das Wichtige ist nicht das Foto, sondern der Tag.“"
+    },
+    {
+     "es": "Carmen mira la foto otra vez: —Vale, pero para Instagram la foto es más importante.",
+     "de": "Carmen schaut sich das Foto noch einmal an: „Okay, aber für Instagram ist das Foto wichtiger.“"
+    }
+   ],
+   "new": [
+    {
+     "es": "mapa",
+     "de": "die Karte (Landkarte)"
+    },
+    {
+     "es": "nieve",
+     "de": "der Schnee"
+    },
+    {
+     "es": "foto",
+     "de": "das Foto"
+    }
+   ],
+   "questions": [
+    {
+     "es": "¿Quién lleva el mapa?",
+     "de": "Wer hat die Karte dabei?",
+     "answer": "Carmen",
+     "options": [
+      "Nadie",
+      "Lena",
+      "Carmen"
+     ]
+    },
+    {
+     "es": "¿Cómo es la primera foto?",
+     "de": "Wie ist das erste Foto?",
+     "answer": "Mala",
+     "options": [
+      "Bonita",
+      "Mala",
+      "La mejor"
+     ]
+    },
+    {
+     "es": "¿Qué hay en la segunda foto?",
+     "de": "Was ist auf dem zweiten Foto?",
+     "answer": "Solo nieve",
+     "options": [
+      "Un mapa",
+      "Solo nieve",
+      "Las dos amigas"
+     ]
+    }
+   ]
   }
  ]
 }
